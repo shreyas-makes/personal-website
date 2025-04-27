@@ -14,4 +14,4 @@ binding = "SESSION"
 id = "SESSION"
 
 [env.production]
-vars = { OPENAI_API_KEY = "" } 
+vars = { OPENAI_API_KEY = "sk-proj-cXNhQPnkURzTxIT_DSUlSQ6NxULe87w0aedpWCfCZtFPogIJ0lBzqrBCK8qwoyKptNcwsYp0LQT3BlbkFJ-En" } 
