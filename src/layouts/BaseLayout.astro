@@ -1,0 +1,441 @@
+---
+// All server-side code goes inside this frontmatter block
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+// Destructure title from Astro.props and provide a default if not passed
+const { title = 'Default Title' } = Astro.props;
+
+// Remove the prefersDarkMode function and simplify theme handling
+const theme = Astro.cookies.get('theme')?.value || 'light';
+---
+<!DOCTYPE html>
+<html lang="en" class:list={['scroll-smooth', theme]} data-theme={theme} data-astro-transition-persist>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+  
+  <!-- Add Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-dark.min.css" />
+  <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" />
+  
+  <!-- Prism.js Theme and Core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-dark.min.css" rel="stylesheet" />
+  
+  <!-- Mermaid JS for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+  
+  <style>
+    /* Typography System */
+    :root {
+      --font-primary: 'Verdana', Geneva, sans-serif;
+      --font-heading: 'Verdana', Geneva, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Font sizes */
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.25rem;
+      
+      /* Line heights */
+      --leading-tight: 1.25;
+      --leading-normal: 1.5;
+      --leading-relaxed: 1.625;
+      --leading-loose: 2;
+      
+      /* Colors */
+      --color-text-primary: #111827;
+      --color-text-secondary: #4B5563;
+      --color-text-tertiary: #6B7280;
+      --color-bg-primary: #FFFFFF;
+      --color-bg-secondary: #F9FAFB;
+    }
+    
+    /* Dark mode variables */
+    .dark {
+      --color-text-primary: #F9FAFB;
+      --color-text-secondary: #D1D5DB;
+      --color-text-tertiary: #9CA3AF;
+      --color-bg-primary: #161618;
+      --color-bg-secondary: #1F2937;
+    }
+    
+    body {
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Typography hierarchy */
+    h1, .h1 {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      line-height: normal;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    
+    h2, .h2 {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      line-height: normal;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    
+    h3, .h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      line-height: normal;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    
+    /* Responsive typography */
+    @media (min-width: 640px) {
+      h1, .h1 {
+        font-size: var(--text-xl);
+      }
+      
+      h2, .h2 {
+        font-size: var(--text-xl);
+      }
+      
+      h3, .h3 {
+        font-size: var(--text-xl);
+      }
+    }
+    
+    /* Custom Prism.js styles */
+    pre[class*="language-"] {
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      overflow: auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .dark pre[class*="language-"] {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.18);
+    }
+
+    code[class*="language-"] {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.9em;
+      padding: 0.2em 0.4em;
+      border-radius: 0.25rem;
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .dark code[class*="language-"] {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Enhanced inline code styling */
+    :not(pre) > code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.875em;
+      font-weight: 500;
+      padding: 0.2em 0.4em;
+      border-radius: 0.25rem;
+      background: #f1f1f1;
+      color: #2d3748;
+      border: 1px solid #e2e8f0;
+      margin: 0 0.2em;
+      white-space: nowrap;
+      vertical-align: middle;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .dark :not(pre) > code {
+      background: rgba(45, 55, 72, 0.8);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Special styling for command-line code */
+    code.command-line {
+      background: #2d3748 !important;
+      color: #ffffff !important;
+      border: 1px solid #4a5568 !important;
+    }
+
+    .dark code.command-line {
+      background: #1a202c !important;
+      color: #ffffff !important;
+      border: 1px solid #2d3748 !important;
+    }
+  </style>
+  <ViewTransitions />
+  <!-- Add preconnect for external resources -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <script>
+    // Theme handling function that runs on every page
+    function handleTheme() {
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+      
+      // Apply theme to document
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(theme);
+      
+      // Store theme
+      localStorage.setItem('theme', theme);
+      document.cookie = `theme=${theme};path=/;max-age=31536000`; // 1 year expiry
+    }
+
+    // Run on initial load
+    handleTheme();
+
+    // Run after each view transition
+    document.addEventListener('astro:after-swap', handleTheme);
+
+    // Watch for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.classList.toggle('dark', e.matches);
+      }
+    });
+  </script>
+  <!-- Add preload directives -->
+  <link rel="preload" href="/fonts/your-main-font.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="modulepreload" href="/src/components/Header.astro">
+</head>
+<body class="min-h-screen flex flex-col bg-[#FFFFFF] dark:bg-[#161618] text-gray-900 dark:text-gray-100 transition-colors duration-300 overflow-x-hidden">
+  <Header />
+  <main class="flex-grow w-full overflow-x-hidden">
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- Prism.js Script - Load deferred -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+  <!-- Additional Prism.js language support -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  
+  <!-- Initialize Prism.js -->
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      // Reinitialize Prism.js after page transitions
+      if (typeof Prism !== 'undefined') {
+        Prism.highlightAll();
+      }
+
+      // Add command-line class to git and terminal commands
+      document.querySelectorAll('code').forEach(code => {
+        const text = code.textContent || '';
+        if (text.startsWith('git ') || text.startsWith('$ ') || text.startsWith('npm ') || text.startsWith('yarn ')) {
+          code.classList.add('command-line');
+        }
+      });
+
+      // Process Mermaid diagrams in regular code blocks
+      if (typeof mermaid !== 'undefined') {
+        try {
+          // Initialize mermaid with configuration
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+            flowchart: {
+              htmlLabels: true,
+              useMaxWidth: false
+            },
+            er: {
+              useMaxWidth: false
+            },
+            sequence: {
+              useMaxWidth: false
+            }
+          });
+
+          // Find all code blocks with mermaid language class first (explicit mermaid)
+          document.querySelectorAll('pre code.language-mermaid').forEach(codeBlock => {
+            // Create a new div for the diagram
+            const diagramContainer = document.createElement('div');
+            diagramContainer.classList.add('mermaid');
+            diagramContainer.textContent = codeBlock.textContent;
+            
+            // Replace the pre code block with the diagram div
+            const preBlock = codeBlock.parentElement;
+            if (preBlock && preBlock.parentElement) {
+              preBlock.parentElement.replaceChild(diagramContainer, preBlock);
+              
+              // Render the diagram
+              mermaid.init(undefined, [diagramContainer]);
+            }
+          });
+          
+          // Now detect Mermaid syntax in other code blocks (implicit mermaid)
+          document.querySelectorAll('pre code:not(.language-mermaid)').forEach(codeBlock => {
+            const text = codeBlock.textContent || '';
+            
+            // Check if the code block potentially contains Mermaid syntax
+            const isMermaidGraph = /^graph (?:TB|BT|RL|LR|TD)/m.test(text);
+            const isSequenceDiagram = /^sequenceDiagram/m.test(text);
+            const isClassDiagram = /^classDiagram/m.test(text);
+            const isFlowchart = /^flowchart (?:TB|BT|RL|LR|TD)/m.test(text);
+            const isERDiagram = /^erDiagram/m.test(text);
+            const isGantt = /^gantt/m.test(text);
+            const isPieChart = /^pie/m.test(text);
+            const isStateDiagram = /^stateDiagram/m.test(text);
+            const isJourneyDiagram = /^journey/m.test(text);
+            const isGitGraph = /^gitGraph/m.test(text);
+            
+            if (isMermaidGraph || isSequenceDiagram || isClassDiagram || isFlowchart || 
+                isERDiagram || isGantt || isPieChart || isStateDiagram || isJourneyDiagram || isGitGraph) {
+              // This looks like Mermaid syntax - create a container
+              const container = document.createElement('div');
+              container.className = 'mermaid-container';
+              
+              // Add toggle button to show original code
+              const toggleButton = document.createElement('button');
+              toggleButton.className = 'mermaid-source-toggle';
+              toggleButton.textContent = 'View Source';
+              toggleButton.setAttribute('type', 'button');
+              toggleButton.setAttribute('aria-expanded', 'false');
+              container.appendChild(toggleButton);
+              
+              // Create the mermaid diagram div
+              const diagramContainer = document.createElement('div');
+              diagramContainer.classList.add('mermaid');
+              diagramContainer.textContent = text;
+              container.appendChild(diagramContainer);
+              
+              // Create a hidden pre element with the original code
+              const originalCode = document.createElement('pre');
+              originalCode.className = 'mermaid-original-code';
+              originalCode.style.display = 'none';
+              
+              // Create and add the code element with the original content
+              const codeElement = document.createElement('code');
+              codeElement.textContent = text;
+              originalCode.appendChild(codeElement);
+              container.appendChild(originalCode);
+              
+              // Replace the pre code block with our container
+              const preBlock = codeBlock.parentElement;
+              if (preBlock && preBlock.parentElement) {
+                preBlock.parentElement.replaceChild(container, preBlock);
+                
+                // Try to render the diagram
+                try {
+                  mermaid.init(undefined, [diagramContainer]);
+                  
+                  // Add toggle functionality
+                  toggleButton.addEventListener('click', function() {
+                    const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                    toggleButton.setAttribute('aria-expanded', (!isExpanded).toString());
+                    toggleButton.textContent = isExpanded ? 'View Source' : 'Hide Source';
+                    originalCode.style.display = isExpanded ? 'none' : 'block';
+                  });
+                } catch (err) {
+                  // If rendering fails, it might not be Mermaid after all - restore the original
+                  console.warn('Failed to render potential Mermaid diagram:', err);
+                  preBlock.parentElement.replaceChild(preBlock, container);
+                }
+              }
+            }
+          });
+        } catch (error) {
+          console.error('Error processing mermaid diagrams:', error);
+        }
+      }
+
+      const loadingIndicator = document.getElementById('loading-indicator');
+      
+      document.addEventListener('astro:before-preparation', () => {
+        loadingIndicator?.classList.remove('hidden');
+      });
+      
+      document.addEventListener('astro:after-preparation', () => {
+        loadingIndicator?.classList.add('hidden');
+      });
+    });
+  </script>
+
+  <div 
+    id="loading-indicator" 
+    class="fixed top-0 left-0 right-0 h-1 bg-gray-900 dark:bg-gray-100 transform scale-x-0 transition-transform duration-300 z-50 hidden opacity-80"
+    transition:persist
+  >
+  </div>
+
+  <script>
+    let loadingTimer;
+    
+    document.addEventListener('astro:before-preparation', () => {
+      const indicator = document.getElementById('loading-indicator');
+      if (indicator) {
+        indicator.classList.remove('hidden', 'scale-x-0');
+        indicator.classList.add('scale-x-30', 'opacity-80');
+        
+        // Smoother progress animation
+        loadingTimer = setTimeout(() => {
+          indicator.classList.remove('scale-x-30');
+          indicator.classList.add('scale-x-60');
+          
+          setTimeout(() => {
+            indicator.classList.remove('scale-x-60');
+            indicator.classList.add('scale-x-80');
+          }, 300);
+        }, 200);
+      }
+    });
+
+    document.addEventListener('astro:after-preparation', () => {
+      clearTimeout(loadingTimer);
+      const indicator = document.getElementById('loading-indicator');
+      if (indicator) {
+        indicator.classList.remove('scale-x-80');
+        indicator.classList.add('scale-x-100');
+        
+        // Smoother hide animation
+        setTimeout(() => {
+          indicator.classList.add('opacity-0');
+          setTimeout(() => {
+            indicator.classList.add('hidden', 'scale-x-0');
+            indicator.classList.remove('opacity-0', 'scale-x-100');
+          }, 200);
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html> 

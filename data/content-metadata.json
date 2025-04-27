@@ -1,0 +1,1444 @@
+[
+  {
+    "id": "About.md",
+    "url": "/About",
+    "title": "About",
+    "description": "",
+    "date": "2024-01-23T00:00:00.000Z",
+    "tags": []
+  },
+  {
+    "id": "BICEPS for conflict management.md",
+    "url": "/BICEPS for conflict management",
+    "title": "Better way to think about conflicts",
+    "description": "",
+    "date": "2024-02-06T00:00:00.000Z",
+    "tags": [
+      "conflict-management",
+      "rough-notes",
+      "leadership"
+    ]
+  },
+  {
+    "id": "Balancing work, time and focus.md",
+    "url": "/Balancing work, time and focus",
+    "title": "Balancing work, time and focus",
+    "description": "",
+    "date": "2024-11-15T15:56:40.000Z",
+    "tags": [
+      "productivity",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Beauty of Zettels.md",
+    "url": "/Beauty of Zettels",
+    "title": "Beauty of Zettels",
+    "description": "",
+    "date": "2024-12-06T14:11:48.000Z",
+    "tags": [
+      "knowledge",
+      "zettelkasten",
+      "writing"
+    ]
+  },
+  {
+    "id": "Better mental models for writing, listening to podcasts, and taking notes.md",
+    "url": "/Better mental models for writing, listening to podcasts, and taking notes",
+    "title": "Trees, Branches, Twigs and Leaves — Mental Models for Writing",
+    "description": "",
+    "date": "2024-12-21T12:03:15.000Z",
+    "tags": [
+      "writing",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Brand treatments, Design Systems, Vibes.md",
+    "url": "/Brand treatments, Design Systems, Vibes",
+    "title": "Brand treatments, Design Systems, Vibes",
+    "description": "",
+    "date": "2024-09-20T08:04:38.000Z",
+    "tags": [
+      "design",
+      "software",
+      "brand"
+    ]
+  },
+  {
+    "id": "Brew your ideas lazily.md",
+    "url": "/Brew your ideas lazily",
+    "title": "Brew your ideas lazily",
+    "description": "",
+    "date": "2024-12-28T13:03:59.000Z",
+    "tags": [
+      "ideas",
+      "procrastination"
+    ]
+  },
+  {
+    "id": "Build.md",
+    "url": "/Build",
+    "title": "Build with AI",
+    "description": "",
+    "date": "2024-12-28T13:03:59.000Z",
+    "tags": [
+      "projects"
+    ]
+  },
+  {
+    "id": "Can a thought be an algorithm.md",
+    "url": "/Can a thought be an algorithm",
+    "title": "Can a thought be an algorithm?",
+    "description": "",
+    "date": "2024-08-17T12:57:11.000Z",
+    "tags": [
+      "knowledge",
+      "product",
+      "first-principles"
+    ]
+  },
+  {
+    "id": "Classify incentive problems into stag hunts, and prisoners dilemmas.md",
+    "url": "/Classify incentive problems into stag hunts, and prisoners dilemmas",
+    "title": "Classify incentive problems into stag hunts, and prisoners dilemmas",
+    "description": "",
+    "date": "2025-04-07T00:00:00.000Z",
+    "tags": [
+      "game-theory",
+      "product-strategy"
+    ]
+  },
+  {
+    "id": "Complex project management for product.md",
+    "url": "/Complex project management for product",
+    "title": "Complex project management for product",
+    "description": "",
+    "date": "2023-04-29T00:00:00.000Z",
+    "tags": [
+      "products",
+      "advice",
+      "productivity"
+    ]
+  },
+  {
+    "id": "Compound Interest of Private Notes.md",
+    "url": "/Compound Interest of Private Notes",
+    "title": "Compound Interest of Private Notes",
+    "description": "",
+    "date": "2024-12-11T09:05:12.000Z",
+    "tags": [
+      "knowledge",
+      "writing"
+    ]
+  },
+  {
+    "id": "Computational and AI everything.md",
+    "url": "/Computational and AI everything",
+    "title": "It's computational and AI everything",
+    "description": "",
+    "date": "2025-02-21T00:00:00.000Z",
+    "tags": [
+      "rough-notes",
+      "llm"
+    ]
+  },
+  {
+    "id": "Conceptual Compression for LLMs.md",
+    "url": "/Conceptual Compression for LLMs",
+    "title": "Conceptual Compression for LLMs",
+    "description": "",
+    "date": "2024-12-07T17:48:08.000Z",
+    "tags": [
+      "software",
+      "ai"
+    ]
+  },
+  {
+    "id": "Conducting reference checks.md",
+    "url": "/Conducting reference checks",
+    "title": "Thorough reference checks",
+    "description": "",
+    "date": "2024-12-06T13:32:54.000Z",
+    "tags": [
+      "leadership",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Dear enterprises, we are tired of subscriptions.md",
+    "url": "/Dear enterprises, we are tired of subscriptions",
+    "title": "Dear enterprises, we're tired of your subscriptions",
+    "description": "",
+    "date": "2024-01-23T14:31:25.000Z",
+    "tags": [
+      "software"
+    ]
+  },
+  {
+    "id": "Deploying Home Cooked Apps with Rails.md",
+    "url": "/Deploying Home Cooked Apps with Rails",
+    "title": "Deploying Home Cooked Apps with Rails",
+    "description": "",
+    "date": "2024-11-24T22:01:30.000Z",
+    "tags": [
+      "software"
+    ]
+  },
+  {
+    "id": "Design Manifesto.md",
+    "url": "/Design Manifesto",
+    "title": "Design Manifesto",
+    "description": "",
+    "date": "2023-05-10T14:37:00.000Z",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "id": "Design is a confusing word.md",
+    "url": "/Design is a confusing word",
+    "title": "Design is a confusing word",
+    "description": "",
+    "date": "2023-09-06T14:43:00.000Z",
+    "tags": [
+      "design",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Design that's so bad its actually good.md",
+    "url": "/Design that's so bad its actually good",
+    "title": "Design that's so bad it's actually good",
+    "description": "",
+    "date": "2024-05-16T19:38:53.000Z",
+    "tags": [
+      "design",
+      "software"
+    ]
+  },
+  {
+    "id": "Digital products built like artisanal tools.md",
+    "url": "/Digital products built like artisanal tools",
+    "title": "Digital Products built like physical artisanal tools",
+    "description": "",
+    "date": "2023-12-18T14:44:00.000Z",
+    "tags": [
+      "design",
+      "software"
+    ]
+  },
+  {
+    "id": "Does AI affect UI.md",
+    "url": "/Does AI affect UI",
+    "title": "How does AI affect UI?",
+    "description": "",
+    "date": "2024-08-12T08:56:23.000Z",
+    "tags": [
+      "design",
+      "software"
+    ]
+  },
+  {
+    "id": "Dos and Donts of User Research.md",
+    "url": "/Dos and Donts of User Research",
+    "title": "Do's and Don'ts of User Research",
+    "description": "",
+    "date": "2023-06-21T14:35:00.000Z",
+    "tags": [
+      "design",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "English is the hot new programming language.md",
+    "url": "/English is the hot new programming language",
+    "title": "English is the hot new programming language",
+    "description": "",
+    "date": "2024-02-17T10:27:02.000Z",
+    "tags": [
+      "software",
+      "no-code",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Every field becomes computational.md",
+    "url": "/Every field becomes computational",
+    "title": "It's computational everything",
+    "description": "",
+    "date": "2025-02-21T00:00:00.000Z",
+    "tags": [
+      "rough-notes",
+      "llm",
+      "trends"
+    ]
+  },
+  {
+    "id": "Everything is a prioritisation problem.md",
+    "url": "/Everything is a prioritisation problem",
+    "title": "Everything is a prioritisation problem",
+    "description": "",
+    "date": "2024-07-29T05:47:29.000Z",
+    "tags": [
+      "product-management"
+    ]
+  },
+  {
+    "id": "Exploring smart connections for note taking.md",
+    "url": "/Exploring smart connections for note taking",
+    "title": "Exploring \"smart connections\" for note taking",
+    "description": "",
+    "date": "2024-12-02T09:13:43.000Z",
+    "tags": [
+      "knowledge",
+      "writing"
+    ]
+  },
+  {
+    "id": "Frightening Tech versus Big Daddy Regulators.md",
+    "url": "/Frightening Tech versus Big Daddy Regulators",
+    "title": "Frightening Tech versus Big Daddy Regulators",
+    "description": "",
+    "date": "2025-01-12T11:47:44.000Z",
+    "tags": [
+      "technology",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Git branch way of learning to code.md",
+    "url": "/Git branch way of learning to code",
+    "title": "Git way of learning to code",
+    "description": "",
+    "date": "2025-02-14T00:00:00.000Z",
+    "tags": [
+      "rough-notes",
+      "ai-coding",
+      "llm"
+    ]
+  },
+  {
+    "id": "Hiring personal doctors.md",
+    "url": "/Hiring personal doctors",
+    "title": "How to hire a personal doctor",
+    "description": "",
+    "date": "2023-12-06T00:00:00.000Z",
+    "tags": [
+      "health",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "How I blog blog with Obsidian, Cloudflare, AstroJS, Github.md",
+    "url": "/How I blog blog with Obsidian, Cloudflare, AstroJS, Github",
+    "title": "How I blog with Obsidian, Cloudflare, AstroJS, Github",
+    "description": "",
+    "date": "2025-04-25T00:00:00.000Z",
+    "tags": [
+      "writing",
+      "ai-coding",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "How I build greenfield apps with AI-assisted coding.md",
+    "url": "/How I build greenfield apps with AI-assisted coding",
+    "title": "How I build greenfield apps with AI-assisted coding",
+    "description": "",
+    "date": "2025-04-08T00:00:00.000Z",
+    "tags": [
+      "ai-coding",
+      "llm",
+      "ruby-on-rails",
+      "prototyping"
+    ]
+  },
+  {
+    "id": "How I do product roasts.md",
+    "url": "/How I do product roasts",
+    "title": "How I do product roasts",
+    "description": "",
+    "date": "2024-07-13T03:53:21.000Z",
+    "tags": [
+      "product-management",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "How do we absorb ideas better.md",
+    "url": "/How do we absorb ideas better",
+    "title": "How do we absorb ideas better?",
+    "description": "",
+    "date": "2025-01-01T12:36:53.000Z",
+    "tags": [
+      "knowledge",
+      "first-principles"
+    ]
+  },
+  {
+    "id": "How do you know what you believe is true.md",
+    "url": "/How do you know what you believe is true",
+    "title": "How do you know what you believe is true?",
+    "description": "",
+    "date": "2025-02-21T00:00:00.000Z",
+    "tags": [
+      "rough-notes",
+      "epistemology",
+      "product-management"
+    ]
+  },
+  {
+    "id": "How i ship stuff.md",
+    "url": "/How i ship stuff",
+    "title": "How I ship \"stuff\"",
+    "description": "",
+    "date": "2025-01-11T19:46:34.000Z",
+    "tags": [
+      "rough-notes",
+      "indie-softwares"
+    ]
+  },
+  {
+    "id": "How might we assist deafblind runners to navigate.md",
+    "url": "/How might we assist deafblind runners to navigate",
+    "title": "How might we assist deafblind runners to navigate?",
+    "description": "",
+    "date": "2019-06-16T15:30:18.000Z",
+    "tags": [
+      "social-design",
+      "projects"
+    ]
+  },
+  {
+    "id": "How might we disinfect COVID wards.md",
+    "url": "/How might we disinfect COVID wards",
+    "title": "How might we disinfect COVID wards?",
+    "description": "",
+    "date": "2020-06-16T14:20:56.000Z",
+    "tags": [
+      "health",
+      "digital-health",
+      "projects"
+    ]
+  },
+  {
+    "id": "How might we enable patients and caregivers to overcome preventable health conditions.md",
+    "url": "/How might we enable patients and caregivers to overcome preventable health conditions",
+    "title": "How might we enable patients and caregivers to overcome preventable health conditions?",
+    "description": "",
+    "date": "2022-06-16T15:27:02.000Z",
+    "tags": [
+      "health",
+      "digital-health",
+      "projects"
+    ]
+  },
+  {
+    "id": "How might we help children invent for social good.md",
+    "url": "/How might we help children invent for social good",
+    "title": "How might we help children invent for social good?",
+    "description": "",
+    "date": "2024-06-16T15:29:06.000Z",
+    "tags": [
+      "social-design",
+      "rough-notes",
+      "projects"
+    ]
+  },
+  {
+    "id": "How to arrive at on-brand colours.md",
+    "url": "/How to arrive at on-brand colours",
+    "title": "How to arrive at on-brand colours?",
+    "description": "",
+    "date": "2023-12-14T14:43:00.000Z",
+    "tags": [
+      "design",
+      "branding"
+    ]
+  },
+  {
+    "id": "How to spot human writing on the internet.md",
+    "url": "/How to spot human writing on the internet",
+    "title": "How to spot human writing on the internet?",
+    "description": "",
+    "date": "2024-08-20T15:56:39.000Z",
+    "tags": [
+      "writing",
+      "ai"
+    ]
+  },
+  {
+    "id": "Hunt a purpose before building products.md",
+    "url": "/Hunt a purpose before building products",
+    "title": "World's most ancient public health problem",
+    "description": "",
+    "date": "2024-01-23T18:00:00.000Z",
+    "tags": [
+      "health",
+      "rough-notes",
+      "indie-softwares"
+    ]
+  },
+  {
+    "id": "Hyperlinks are like cashew nuts.md",
+    "url": "/Hyperlinks are like cashew nuts",
+    "title": "Hyperlinks are like cashew nuts",
+    "description": "",
+    "date": "2024-11-15T09:11:52.000Z",
+    "tags": [
+      "writing",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Hyperpersonalised N=1 learning.md",
+    "url": "/Hyperpersonalised N=1 learning",
+    "title": "Hyperpersonalised N=1 learning",
+    "description": "",
+    "date": "2025-03-28T00:00:00.000Z",
+    "tags": [
+      "education"
+    ]
+  },
+  {
+    "id": "I was wrong about optimal stopping.md",
+    "url": "/I was wrong about optimal stopping",
+    "title": "I was wrong about optimal stopping",
+    "description": "",
+    "date": "2025-04-07T00:00:00.000Z",
+    "tags": [
+      "mathematics",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Idea in the shower, testing before breakfast.md",
+    "url": "/Idea in the shower, testing before breakfast",
+    "title": "Idea in the shower, testing before breakfast",
+    "description": "",
+    "date": "2025-01-12T12:31:35.000Z",
+    "tags": [
+      "software",
+      "ai",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Importance of Why.md",
+    "url": "/Importance of Why",
+    "title": "Importance of Why",
+    "description": "",
+    "date": "2023-12-11T14:36:00.000Z",
+    "tags": [
+      "task-management",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "In person vision transmission.md",
+    "url": "/In person vision transmission",
+    "title": "In-person vision transmission",
+    "description": "",
+    "date": "2024-06-18T05:58:16.000Z",
+    "tags": [
+      "product-management",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Insights are not just a salad of facts.md",
+    "url": "/Insights are not just a salad of facts",
+    "title": "Insights are not just a salad of facts",
+    "description": "",
+    "date": "2024-01-06T14:39:00.000Z",
+    "tags": [
+      "design",
+      "research",
+      "user-research",
+      "insights",
+      "methodology",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Interview hackers.md",
+    "url": "/Interview hackers",
+    "title": "Breaking the fourth wall of an interview",
+    "description": "",
+    "date": "2024-05-15T12:56:00.000Z",
+    "tags": [
+      "interviewing",
+      "product-management",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Journey of design education.md",
+    "url": "/Journey of design education",
+    "title": "Design education amidst social tribulations",
+    "description": "",
+    "date": "2019-07-21T06:27:26.000Z",
+    "tags": [
+      "design",
+      "education",
+      "social-design",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Making Nielsens heuristics digestible.md",
+    "url": "/Making Nielsens heuristics digestible",
+    "title": "Making Nielsen's heuristics more digestible",
+    "description": "",
+    "date": "2024-01-09T14:12:00.000Z",
+    "tags": [
+      "design",
+      "usability",
+      "ux",
+      "user-experience",
+      "design-principles",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Mapping interconnections.md",
+    "url": "/Mapping interconnections",
+    "title": "A Primer to Service Design Blueprints",
+    "description": "",
+    "date": "2023-08-22T14:41:00.000Z",
+    "tags": [
+      "design",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Mediums to help humans complement superintelligence.md",
+    "url": "/Mediums to help humans complement superintelligence",
+    "title": "New mediums for humans to complement superintelligence",
+    "description": "",
+    "date": "2025-03-19T00:00:00.000Z",
+    "tags": [
+      "ai-coding"
+    ]
+  },
+  {
+    "id": "Meeting before the meeting.md",
+    "url": "/Meeting before the meeting",
+    "title": "The meeting before the meeting",
+    "description": "",
+    "date": "2024-06-15T18:57:07.000Z",
+    "tags": [
+      "product-management",
+      "meetings",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Meta-analysis for contradictory research findings.md",
+    "url": "/Meta-analysis for contradictory research findings",
+    "title": "Meta-analysis for contradictory research findings",
+    "description": "",
+    "date": "2024-12-06T15:07:31.000Z",
+    "tags": [
+      "health",
+      "digital-health",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Methods are lifejackets.md",
+    "url": "/Methods are lifejackets",
+    "title": "Methods are lifejackets not straight jackets",
+    "description": "",
+    "date": "2023-12-27T14:39:00.000Z",
+    "tags": [
+      "methodology",
+      "product-management",
+      "frameworks",
+      "design-thinking"
+    ]
+  },
+  {
+    "id": "Minimum lovable products.md",
+    "url": "/Minimum lovable products",
+    "title": "Minimum Lovable Product",
+    "description": "",
+    "date": "2024-01-02T14:39:00.000Z",
+    "tags": [
+      "product",
+      "design",
+      "startups",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Minto principle.md",
+    "url": "/Minto principle",
+    "title": "Minto principle for writing memos",
+    "description": "",
+    "date": "2023-12-12T15:23:00.000Z",
+    "tags": [
+      "writing",
+      "communication",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Modern startup stack.md",
+    "url": "/Modern startup stack",
+    "title": "The Modern Startup Stack",
+    "description": "",
+    "date": "2024-06-23T17:05:19.000Z",
+    "tags": [
+      "software"
+    ]
+  },
+  {
+    "id": "Now.md",
+    "url": "/Now",
+    "title": "Now",
+    "description": "",
+    "date": "2024-07-23T21:52:30.000Z",
+    "tags": []
+  },
+  {
+    "id": "Obsessing over personal website.md",
+    "url": "/Obsessing over personal website",
+    "title": "Obsessing over personal websites",
+    "description": "",
+    "date": "2024-04-07T14:09:03.000Z",
+    "tags": [
+      "software",
+      "personal-branding"
+    ]
+  },
+  {
+    "id": "Opportunity Harvesting.md",
+    "url": "/Opportunity Harvesting",
+    "title": "Opportunity Harvesting",
+    "description": "",
+    "date": "2024-08-14T16:08:08.000Z",
+    "tags": [
+      "careers",
+      "ai"
+    ]
+  },
+  {
+    "id": "Pedagogy of Uncharted.md",
+    "url": "/Pedagogy of Uncharted",
+    "title": "Pedagogy of the Uncharted — What for, and Where to?",
+    "description": "",
+    "date": "2022-01-19T18:18:47.000Z",
+    "tags": [
+      "education",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Personal Observation Techniques.md",
+    "url": "/Personal Observation Techniques",
+    "title": "Personal Observation Techniques",
+    "description": "",
+    "date": "2023-09-12T14:39:00.000Z",
+    "tags": [
+      "design",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Pluginisation of modern software.md",
+    "url": "/Pluginisation of modern software",
+    "title": "Pluginisation of Modern Software",
+    "description": "",
+    "date": "2024-01-22T14:37:00.000Z",
+    "tags": [
+      "design",
+      "software",
+      "product-strategy",
+      "user-experience",
+      "tools"
+    ]
+  },
+  {
+    "id": "Poetic License of Design.md",
+    "url": "/Poetic License of Design",
+    "title": "Poetic License of Design",
+    "description": "",
+    "date": "2025-01-12T14:16:36.000Z",
+    "tags": [
+      "design",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Preventing hospital acquired infections.md",
+    "url": "/Preventing hospital acquired infections",
+    "title": "Preventing hospital acquired infections",
+    "description": "",
+    "date": "2020-01-16T15:31:40.000Z",
+    "tags": [
+      "health",
+      "digital-health",
+      "projects"
+    ]
+  },
+  {
+    "id": "ProductCon 2025.md",
+    "url": "/ProductCon 2025",
+    "title": "ProductCon 2025 washup",
+    "description": "",
+    "date": "2025-02-19T00:00:00.000Z",
+    "tags": [
+      "product-management",
+      "llm",
+      "prototyping",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Products need not always be user centered.md",
+    "url": "/Products need not always be user centered",
+    "title": "Products need not be user centered",
+    "description": "",
+    "date": "2024-01-23T14:28:59.000Z",
+    "tags": [
+      "design",
+      "software",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Proof of work.md",
+    "url": "/Proof of work",
+    "title": "Proof of work",
+    "description": "",
+    "date": "2024-12-06T13:41:29.000Z",
+    "tags": [
+      "product-management",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Public gardens and secret routes.md",
+    "url": "/Public gardens and secret routes",
+    "title": "Public gardens, secret routes",
+    "description": "",
+    "date": "2025-02-19T00:00:00.000Z",
+    "tags": [
+      "digital-garden",
+      "writing",
+      "personal-sites",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Publish Originally, Syndicate Elsewhere.md",
+    "url": "/Publish Originally, Syndicate Elsewhere",
+    "title": "Publish Originally, Syndicate Elsewhere",
+    "description": "",
+    "date": "2025-01-16T00:00:00.000Z",
+    "tags": [
+      "blogging",
+      "writing",
+      "digital-gardens"
+    ]
+  },
+  {
+    "id": "Quality ideas trump execution.md",
+    "url": "/Quality ideas trump execution",
+    "title": "Quality Ideas Trump Execution",
+    "description": "",
+    "date": "2023-12-10T14:34:00.000Z",
+    "tags": [
+      "rough-notes",
+      "indie-softwares"
+    ]
+  },
+  {
+    "id": "Questions to ask every decade.md",
+    "url": "/Questions to ask every decade",
+    "title": "Questions to ask every decade",
+    "description": "",
+    "date": "2024-11-15T16:02:21.000Z",
+    "tags": [
+      "rough-notes",
+      "journalling"
+    ]
+  },
+  {
+    "id": "Rapid Journey prototyping.md",
+    "url": "/Rapid Journey prototyping",
+    "title": "Rapid Journey Prototyping",
+    "description": "",
+    "date": "2023-08-15T14:38:00.000Z",
+    "tags": [
+      "design",
+      "product",
+      "service-design",
+      "methodology",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Read writers who operate.md",
+    "url": "/Read writers who operate",
+    "title": "Read writers who operate",
+    "description": "",
+    "date": "2024-12-29T15:03:28.000Z",
+    "tags": [
+      "writing"
+    ]
+  },
+  {
+    "id": "Referencing Research Citations with Zotero.md",
+    "url": "/Referencing Research Citations with Zotero",
+    "title": "Referencing Research Citations with Zotero",
+    "description": "",
+    "date": "2025-02-14T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "llm"
+    ]
+  },
+  {
+    "id": "Repetitive Copyprompting.md",
+    "url": "/Repetitive Copyprompting",
+    "title": "Repetitive Copyprompting",
+    "description": "",
+    "date": "2024-11-15T16:07:35.000Z",
+    "tags": [
+      "writing",
+      "ai",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Self Marketing.md",
+    "url": "/Self Marketing",
+    "title": "Self Marketing",
+    "description": "",
+    "date": "2024-11-17T13:37:21.000Z",
+    "tags": [
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Simple Personal Websites.md",
+    "url": "/Simple Personal Websites",
+    "title": "Simple Personal Websites",
+    "description": "",
+    "date": "2025-03-14T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "ai-coding"
+    ]
+  },
+  {
+    "id": "Song of Shapes, Words and Paths.md",
+    "url": "/Song of Shapes, Words and Paths",
+    "title": "Song of Shapes, Words and Paths",
+    "description": "",
+    "date": "2025-01-01T15:52:12.000Z",
+    "tags": [
+      "creativity"
+    ]
+  },
+  {
+    "id": "Startups as a fertile ground for risk taking.md",
+    "url": "/Startups as a fertile ground for risk taking",
+    "title": "Startups are a fertile ground for risk taking",
+    "description": "",
+    "date": "2024-01-07T14:32:00.000Z",
+    "tags": [
+      "entrepreneurship",
+      "startups",
+      "risk-management",
+      "leadership",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Stitching React and Rails together.md",
+    "url": "/Stitching React and Rails together",
+    "title": "Stitching React and Rails together",
+    "description": "",
+    "date": "2024-12-05T14:58:46.000Z",
+    "tags": [
+      "prototypes",
+      "ai-coding"
+    ]
+  },
+  {
+    "id": "Strategic wrappers for consulting.md",
+    "url": "/Strategic wrappers for consulting",
+    "title": "Let's make every work 'strategic'",
+    "description": "",
+    "date": "2024-01-22T14:36:00.000Z",
+    "tags": [
+      "consulting",
+      "business-strategy",
+      "freelancing",
+      "pricing"
+    ]
+  },
+  {
+    "id": "Task management for product managers.md",
+    "url": "/Task management for product managers",
+    "title": "Task management for product managers",
+    "description": "",
+    "date": "2024-12-06T13:27:18.000Z",
+    "tags": [
+      "product-management",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "The role of taste in building products.md",
+    "url": "/The role of taste in building products",
+    "title": "The role of taste in building products",
+    "description": "",
+    "date": "2024-01-24T12:39:34.000Z",
+    "tags": [
+      "design",
+      "software",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "The soul searching years.md",
+    "url": "/The soul searching years",
+    "title": "The soul searching years",
+    "description": "",
+    "date": "2019-08-15T10:12:36.000Z",
+    "tags": [
+      "entrepreneurship",
+      "design",
+      "education",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Thinking like a ship.md",
+    "url": "/Thinking like a ship",
+    "title": "Thinking like a ship",
+    "description": "",
+    "date": "2025-04-05T00:00:00.000Z",
+    "tags": [
+      "rough-notes",
+      "critical-rationalism"
+    ]
+  },
+  {
+    "id": "Transfering writing styles with AI.md",
+    "url": "/Transfering writing styles with AI",
+    "title": "Style Transfer in AI writing",
+    "description": "",
+    "date": "2025-02-14T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "llm",
+      "ai-coding"
+    ]
+  },
+  {
+    "id": "Understanding codebases without using code.md",
+    "url": "/Understanding codebases without using code",
+    "title": "Understanding codebases without using code",
+    "description": "",
+    "date": "2025-02-14T00:00:00.000Z",
+    "tags": [
+      "rough-notes",
+      "ai-coding"
+    ]
+  },
+  {
+    "id": "Use code only if no code fails.md",
+    "url": "/Use code only if no code fails",
+    "title": "Use code only if no code fails",
+    "description": "",
+    "date": "2023-11-22T14:31:00.000Z",
+    "tags": [
+      "code",
+      "no-code",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Vibe coding.md",
+    "url": "/Vibe coding",
+    "title": "Vibe coding with Cursor",
+    "description": "",
+    "date": "2025-02-13T11:36:05.000Z",
+    "tags": [
+      "rough-notes",
+      "ai-coding"
+    ]
+  },
+  {
+    "id": "Vibes.md",
+    "url": "/Vibes",
+    "title": "Vibes",
+    "description": "",
+    "date": "2024-12-27T18:07:48.000Z",
+    "tags": [
+      "rough-notes",
+      "creativity"
+    ]
+  },
+  {
+    "id": "Virtual bookshelves.md",
+    "url": "/Virtual bookshelves",
+    "title": "Virtual bookshelves",
+    "description": "",
+    "date": "2025-02-22T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "aesthetics"
+    ]
+  },
+  {
+    "id": "Virtuoso Guide for Personal Memory Systems.md",
+    "url": "/Virtuoso Guide for Personal Memory Systems",
+    "title": "Virtuoso Guide for Personal Memory Systems",
+    "description": "",
+    "date": "2025-01-17T11:52:44.000Z",
+    "tags": [
+      "memory"
+    ]
+  },
+  {
+    "id": "We have been scammed by the Gaussian distribution club.md",
+    "url": "/We have been scammed by the Gaussian distribution club",
+    "title": "We have been scammed by the Gaussian distribution club",
+    "description": "",
+    "date": "2025-04-08T00:00:00.000Z",
+    "tags": [
+      "mathematics",
+      "systems-thinking",
+      "rough-notes",
+      "decision-making",
+      "probability"
+    ]
+  },
+  {
+    "id": "Why I prefer Indie softwares.md",
+    "url": "/Why I prefer Indie softwares",
+    "title": "Why I prefer indie softwares",
+    "description": "",
+    "date": "2023-12-01T14:47:00.000Z",
+    "tags": [
+      "indie-softwares",
+      "lifestyle",
+      "skin-in-the-game"
+    ]
+  },
+  {
+    "id": "Writing in Future Past.md",
+    "url": "/Writing in Future Past",
+    "title": "Writing in Future Past",
+    "description": "",
+    "date": "2025-01-17T10:41:33.000Z",
+    "tags": [
+      "writing",
+      "philosophy",
+      "rough-notes"
+    ]
+  },
+  {
+    "id": "Writing is thinking.md",
+    "url": "/Writing is thinking",
+    "title": "Writing is thinking",
+    "description": "",
+    "date": "2025-01-02T13:27:20.000Z",
+    "tags": [
+      "writing"
+    ]
+  },
+  {
+    "id": "ascii-todo-cli.md",
+    "url": "/ascii-todo-cli",
+    "title": "Weekly TODO List on CLI",
+    "description": "",
+    "date": "2025-01-05T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "cli",
+      "productivity",
+      "ascii-art"
+    ]
+  },
+  {
+    "id": "dftree.md",
+    "url": "/dftree",
+    "title": "Directory Structure Visualizer",
+    "description": "",
+    "date": "2023-07-01T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "cli",
+      "node",
+      "filesystem"
+    ]
+  },
+  {
+    "id": "financial-dashboard-couples.md",
+    "url": "/financial-dashboard-couples",
+    "title": "Financial dashboard for couples",
+    "description": "",
+    "date": "2025-02-14T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "llm",
+      "software"
+    ]
+  },
+  {
+    "id": "git-commit-summarizer.md",
+    "url": "/git-commit-summarizer",
+    "title": "AI git commits",
+    "description": "",
+    "date": "2023-07-01T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "cli",
+      "openai",
+      "git"
+    ]
+  },
+  {
+    "id": "kaomoji.md",
+    "url": "/kaomoji",
+    "title": "Kaomoji generator",
+    "description": "",
+    "date": "2025-02-14T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "llm",
+      "N=1 software"
+    ]
+  },
+  {
+    "id": "v0-rails.md",
+    "url": "/v0-rails",
+    "title": "Convert v0.dev React to Rails ViewComponents",
+    "description": "",
+    "date": "2024-03-01T00:00:00.000Z",
+    "tags": [
+      "prototypes",
+      "rails",
+      "react"
+    ]
+  },
+  {
+    "id": "booknotes/2015-01-15-algorithms.md",
+    "url": "/booknotes/2015-01-15-algorithms",
+    "title": "Algorithms to Live By",
+    "description": "",
+    "date": "2023-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2015-01-15-antifragile.md",
+    "url": "/booknotes/2015-01-15-antifragile",
+    "title": "Antifragile",
+    "description": "",
+    "date": "2015-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2015-01-15-bicameral-mind.md",
+    "url": "/booknotes/2015-01-15-bicameral-mind",
+    "title": "Origin of Consciousness in the Breakdown of the Bicameral Mind",
+    "description": "",
+    "date": "2023-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2015-01-15-guns-germs.md",
+    "url": "/booknotes/2015-01-15-guns-germs",
+    "title": "Guns, Germs, and Steel",
+    "description": "",
+    "date": "2023-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2015-01-15-randomness.md",
+    "url": "/booknotes/2015-01-15-randomness",
+    "title": "Fooled by Randomness",
+    "description": "",
+    "date": "2020-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2020-01-15-prophet.md",
+    "url": "/booknotes/2020-01-15-prophet",
+    "title": "Prophet",
+    "description": "",
+    "date": "2025-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2020-01-15-skin-in-the-game.md",
+    "url": "/booknotes/2020-01-15-skin-in-the-game",
+    "title": "Skin in the Game",
+    "description": "",
+    "date": "2015-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2023-01-15-bed-of-procrustes.md",
+    "url": "/booknotes/2023-01-15-bed-of-procrustes",
+    "title": "Bed of Procrustes",
+    "description": "",
+    "date": "2023-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-01-01-elephants.md",
+    "url": "/booknotes/2025-01-01-elephants",
+    "title": "Elephants on the Brain",
+    "description": "",
+    "date": "2023-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-01-15-happy-city copy.md",
+    "url": "/booknotes/2025-01-15-happy-city copy",
+    "title": "Happy City",
+    "description": "",
+    "date": "2025-01-15T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-02-atomic-habits.md",
+    "url": "/booknotes/2025-02-02-atomic-habits",
+    "title": "Atomic Habits",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books",
+      "productivity"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-08-beginning-of-infinity.md",
+    "url": "/booknotes/2025-02-08-beginning-of-infinity",
+    "title": "Beginning of Infinity",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-08-hilbily-elegy.md",
+    "url": "/booknotes/2025-02-08-hilbily-elegy",
+    "title": "Hilbily Elegy",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-08-threebody.md",
+    "url": "/booknotes/2025-02-08-threebody",
+    "title": "Three body problem",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-09-continuous-discovery.md",
+    "url": "/booknotes/2025-02-09-continuous-discovery",
+    "title": "Continuous Discovery",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-09-educated.md",
+    "url": "/booknotes/2025-02-09-educated",
+    "title": "Educated",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-09-feminists.md",
+    "url": "/booknotes/2025-02-09-feminists",
+    "title": "We should all be feminists",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-09-feynman.md",
+    "url": "/booknotes/2025-02-09-feynman",
+    "title": "Surely Joking, Mr. Feynman!",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-09-moonwalking.md",
+    "url": "/booknotes/2025-02-09-moonwalking",
+    "title": "Moonwalking with Einstein",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-09-outliers.md",
+    "url": "/booknotes/2025-02-09-outliers",
+    "title": "Outliers",
+    "description": "",
+    "date": "2025-02-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  },
+  {
+    "id": "booknotes/2025-02-09-righteous-mind.md",
+    "url": "/booknotes/2025-02-09-righteous-mind",
+    "title": "Righteous Mind",
+    "description": "",
+    "date": "2025-04-02T12:00:00.000Z",
+    "tags": [
+      "books"
+    ]
+  }
+]

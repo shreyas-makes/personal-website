@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { calculateReadingTime } from '../../utils/readingTime';
+import type { CollectionEntry } from 'astro:content';
+import { generateExcerpt } from '../../utils/excerptUtils';
+
+// Get all posts excluding drafts, books, and special pages
+const SPECIAL_PAGES = [
+  'Vibes.md',
+  'Now.md',
+  'About.md'
+];
+
+// Get post collection without debug logging
+const allPosts = await getCollection('posts', ({ data, id }) => {
+  return !data.draft && 
+         !data.tags?.includes('books') && 
+         !data.tags?.includes('rough-notes') &&
+         !SPECIAL_PAGES.includes(id) &&
+         !['about', 'now', 'vibes'].includes(data.slug);
+});
+
+// Filter posts to exclude video-essays, rough-notes, and prototypes
+const filteredPosts = allPosts.filter(post => {
+  if (!post.data.tags) return true;
+  return !post.data.tags.some(tag => 
+    ['rough-notes', 'prototypes'].includes(tag)
+  );
+});
+
+// Use filteredPosts instead of all posts
+const sortedPosts = filteredPosts.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+
+// Precompute formatted dates with error handling
+const formatDate = (date: string | Date): string => {
+  try {
+    return new Date(date).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    }).replace(/ /g, ' ');
+  } catch (error) {
+    console.error('Error formatting date:', error);
+    return 'Invalid date';
+  }
+};
+
+// Use the utility function for consistent excerpts
+function getPostSummary(post: CollectionEntry<'posts'>) {
+  if (post.data.summary) return post.data.summary;
+  return generateExcerpt(post.body);
+}
+
+// Get stage emoji
+function getStageEmoji(stage: string | undefined): string {
+  if (!stage) return '';
+  if (stage === 'seedling') return '🌱';
+  if (stage === 'sprout') return '🌿';
+  if (stage === 'plant') return '🌳';
+  return '';
+}
+
+// Get first tag safely (implementing the Tag Display Rules from custom instructions)
+function getFirstTag(tags: string[] | undefined): string | null {
+  if (!tags || tags.length === 0) return null;
+  // Filter out 'rough-notes' tag and only show one tag
+  const filteredTags = tags.filter(tag => tag !== 'rough-notes');
+  return filteredTags.length > 0 ? filteredTags[0] : null;
+}
+---
+
+<BaseLayout title="Essays | Shreyas Prakash">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <div class="flex items-baseline justify-between mb-12">
+      <h1 class="text-3xl font-normal text-gray-800 dark:text-gray-200">Essays</h1>
+      <span class="text-sm text-gray-500 dark:text-gray-400">
+        {sortedPosts.length} posts
+      </span>
+    </div>
+
+    <ul class="space-y-6">
+      {sortedPosts.map(post => {
+        const summary = getPostSummary(post);
+        const stageEmoji = getStageEmoji(post.data.stage);
+        // Use the getFirstTag function that follows the tag display rule
+        const displayTag = getFirstTag(post.data.tags);
+        const readingTime = calculateReadingTime(post.body);
+        const formattedDate = formatDate(post.data.date);
+        
+        return (
+          <li class="flex flex-col gap-1">
+            {displayTag && (
+              <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
+                {displayTag}
+              </span>
+            )}
+            <div class="flex flex-col space-y-1">
+              <a href={`/posts/${post.slug}`} 
+                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1">
+                <span class="block text-ellipsis overflow-hidden">
+                  {post.data.title}
+                </span>
+              </a>
+              <span class="text-gray-500 dark:text-gray-400 text-sm">
+                {stageEmoji && <span class="mr-2">{stageEmoji} — </span>}
+                {readingTime} <span class="mx-2"> — </span> {formattedDate}
+              </span>
+              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                {summary}
+              </p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div class="mt-16">
+      <a href="/" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 text-sm underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700">
+        ← Back to home
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Clean, minimal styling */
+  :root {
+    --text-primary: #333;
+    --text-secondary: #666;
+    --hover-color: #555;
+  }
+
+  main {
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+
+  /* Only apply hover effects on larger screens */
+  @media (min-width: 640px) {
+    a:hover {
+      color: var(--hover-color);
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-primary: #e1e1e1;
+      --text-secondary: #a1a1a1;
+      --hover-color: #fff;
+    }
+  }
+</style> 

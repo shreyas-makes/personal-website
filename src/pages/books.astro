@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Books from '../components/Books';
+import { getCollection } from 'astro:content';
+
+// Add prerender option to fix the warning
+export const prerender = true;
+
+const books = await getCollection('posts', ({ data }) => {
+  // Handle both array formats and ensure we check for 'books' tag inclusively
+  return !data.draft && (
+    (Array.isArray(data.tags) && data.tags.some(tag => 
+      typeof tag === 'string' && tag.toLowerCase() === 'books'
+    )) || 
+    (data.tags?.includes('books'))
+  );
+}).then(posts => {
+  // Create a copy of the array and shuffle it
+  const shuffledPosts = [...posts];
+  for (let i = shuffledPosts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledPosts[i], shuffledPosts[j]] = [shuffledPosts[j], shuffledPosts[i]];
+  }
+  return shuffledPosts;
+});
+
+// Render the content for each book
+const booksWithContent = await Promise.all(
+  books.map(async (book) => {
+    const { Content } = await book.render();
+    return {
+      ...book,
+      Content
+    };
+  })
+);
+
+const resolvedBooks = booksWithContent.map(book => ({
+  title: book.data.title,
+  slug: book.slug,
+  author: book.data.author,
+  rating: book.data.rating,
+  date: book.data.date,
+  summary: book.data.summary,
+  cover: book.data.cover ? `/images/books/${book.data.cover.split('/').pop()}` : undefined,
+  Content: book.Content
+}));
+
+// Format date like "July 29, 2023"
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+---
+
+<BaseLayout title="Books | Shreyas Prakash">
+  <main class="max-w-5xl mx-auto px-4 py-8">
+    <div class="relative w-full overflow-hidden mb-16">
+      <Books books={resolvedBooks} client:visible />
+    </div>
+
+    <div class="space-y-12">
+      {resolvedBooks.map((book) => (
+        <div class="book-container max-w-5xl mx-auto">
+          <div class="book-cover">
+            <img
+              src={book.cover || '/images/placeholder-book-cover.jpg'}
+              alt={`Cover of ${book.title}`}
+              class="h-full w-full object-cover border border-gray-200 dark:border-gray-800"
+              loading="lazy"
+              decoding="async"
+              width="200"
+              height="300"
+            />
+          </div>
+          <div class="book-content">
+            <h2 id={book.slug} class="text-xl font-medium text-gray-900 dark:text-gray-100">
+              <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="hover:underline">
+                {book.title}
+              </a>
+            </h2>
+            <p class="mt-1 text-gray-600 dark:text-gray-400">
+              {book.author}
+            </p>
+            <p class="mt-1 text-sm text-gray-500">
+              Read: {formatDate(book.date)} — Rating: {book.rating}/10
+            </p>
+            <div class="mt-6 prose dark:prose-invert prose-neutral max-w-none 
+                prose-headings:font-medium prose-headings:text-gray-900 dark:prose-headings:text-gray-100
+                prose-p:text-gray-800 dark:prose-p:text-gray-300
+                prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+                prose-strong:font-medium prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+                prose-code:text-gray-900 dark:prose-code:text-gray-100
+                prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800
+                prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-400
+                prose-hr:border-gray-200 dark:prose-hr:border-gray-800
+                prose-li:text-gray-800 dark:prose-li:text-gray-300">
+              <book.Content />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .book-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .book-container:last-child {
+    border-bottom: none;
+  }
+
+  .book-cover {
+    position: sticky;
+    top: 20vh; /* Less extreme than middle of viewport */
+    transform: none; /* Remove the transform */
+    align-self: start;
+    max-width: 200px;
+    height: auto;
+  }
+
+  .book-content {
+    padding-bottom: 2rem;
+  }
+
+  /* Add visual separation between book titles and content */
+  .book-content h2 {
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    .book-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .book-cover {
+      position: relative;
+      top: 0;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* Dark mode support for borders */
+  @media (prefers-color-scheme: dark) {
+    .book-container {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .book-content h2 {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+    }
+  }
+</style> 

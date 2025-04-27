@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { mediaList } from '../data/movies';
+import { articlesList } from '../data/articles';
+
+// Add prerender option to fix any warnings
+export const prerender = true;
+
+// Combine all media items
+const allMedia = [...mediaList, ...articlesList];
+
+// Create a type priority order (articles first, then TV shows, then movies)
+const typePriority = {
+  'Article': 1,
+  'TV Show': 2,
+  'Movie': 3
+};
+
+// Sort first by type priority, then by rating
+const sortedMedia = allMedia.sort((a, b) => {
+  // First sort by type (articles first, TV shows second, movies third)
+  const aPriority = typePriority[a.type] || 999;
+  const bPriority = typePriority[b.type] || 999;
+  
+  if (aPriority !== bPriority) {
+    return aPriority - bPriority;
+  }
+  
+  // Within the same type, sort by rating (descending)
+  return b.rating - a.rating;
+});
+
+// Configuration for "Load more"
+const itemsPerLoad = 20; 
+---
+
+<BaseLayout title="Lists | Shreyas Prakash">
+  <main class="max-w-5xl mx-auto px-4 py-6">    
+    <header class="mb-8">
+      <h1 class="text-3xl font-normal text-gray-900 dark:text-gray-200 mb-2">
+        Lists
+      </h1>
+      <p class="mt-2 text-gray-600 dark:text-gray-400">
+        A curated collection of media and articles I've enjoyed.
+      </p>
+    </header>
+
+    <!-- Updated type filter navigation -->
+    <nav class="mb-8 border-b border-gray-200 dark:border-gray-800">
+      <div class="flex space-x-8" id="type-filters">
+        <button 
+          class="py-2 text-sm font-medium border-b-2 border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100 -mb-px" 
+          data-type="Article">
+          Articles
+        </button>
+        <!-- Other filter buttons can be added here -->
+      </div>
+    </nav>
+
+    <div id="content-container" class="space-y-2">
+      <!-- Content will be populated by JavaScript -->
+    </div>
+
+    <!-- Load More Button Container -->
+    <div id="load-more-container" class="flex justify-center mt-8 mb-8">
+      <button id="load-more-button" class="px-6 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-gray-100">
+        Load More
+      </button>
+    </div>
+  </main>
+</BaseLayout>
+
+<script define:vars={{ sortedMedia, itemsPerLoad }}>
+  function initializePageContent() {
+    const contentContainer = document.getElementById('content-container');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const loadMoreButton = document.getElementById('load-more-button');
+    const typeFilters = document.getElementById('type-filters');
+    
+    let currentType = 'Article'; // Start with Articles as default
+    let filteredMedia = [];
+    let itemsToShow = itemsPerLoad; // Track number of items currently shown
+
+    // Filter and reset view
+    const filterMediaByType = (type) => {
+      currentType = type;
+      filteredMedia = sortedMedia.filter(item => item.type === type);
+      itemsToShow = itemsPerLoad; // Reset count
+      contentContainer.innerHTML = ''; // Clear existing content
+      renderItems(); // Render initial set
+      updateFilterButtons();
+      updateLoadMoreButtonVisibility(); // Check if load more button should be visible
+    };
+
+    // Update filter button styles
+    const updateFilterButtons = () => {
+      typeFilters.querySelectorAll('button').forEach(button => {
+        const isActive = button.dataset.type === currentType;
+        button.className = `py-2 text-sm font-medium border-b-2 ${
+          isActive 
+            ? 'border-gray-900 dark:border-gray-100 text-gray-900 dark:text-gray-100' 
+            : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+        } -mb-px`;
+      });
+    };
+
+    // Add click handlers to filter buttons
+    typeFilters.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', () => {
+        filterMediaByType(button.dataset.type);
+      });
+    });
+
+    // Render a batch of items
+    const renderItems = () => {
+      const startIndex = contentContainer.children.length; // Start from currently displayed items
+      const endIndex = Math.min(startIndex + itemsPerLoad, filteredMedia.length);
+      const itemsToRender = filteredMedia.slice(startIndex, endIndex);
+
+      // Remove border from previous last item before adding new ones
+      const previousLastItem = contentContainer.lastElementChild;
+      if (previousLastItem) {
+         previousLastItem.style.borderBottom = ''; // Reset border
+         previousLastItem.style.paddingBottom = ''; // Reset padding
+         previousLastItem.classList.add('border-b', 'border-gray-100', 'dark:border-gray-800', 'pb-3'); // Add back classes
+      }
+
+      itemsToRender.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        // Keep original grid structure but add border/padding back conditionally
+        itemElement.className = 'grid grid-cols-[70px_1fr] gap-3'; 
+        
+        // Only add bottom border and padding if it's not the last item overall
+        if (startIndex + index < filteredMedia.length - 1) {
+          itemElement.classList.add('border-b', 'border-gray-100', 'dark:border-gray-800', 'pb-3');
+        }
+        
+        const typeElement = document.createElement('div');
+        typeElement.className = 'text-gray-500 dark:text-gray-400 text-sm';
+        typeElement.textContent = item.type;
+        
+        const contentDiv = document.createElement('div');
+        
+        const titleElement = document.createElement('h2');
+        titleElement.className = 'text-base font-normal';
+        
+        const linkElement = document.createElement('a');
+        linkElement.href = item.url || '#';
+        if (item.url) {
+          linkElement.target = '_blank';
+          linkElement.rel = 'noopener noreferrer';
+        }
+        linkElement.className = 'underline underline-offset-4 decoration-1 text-gray-900 dark:text-gray-100';
+        linkElement.textContent = item.title;
+        
+        titleElement.appendChild(linkElement);
+        contentDiv.appendChild(titleElement);
+        
+        if (item.notes) {
+          const notesElement = document.createElement('p');
+          notesElement.className = 'mt-1 text-sm text-gray-500 dark:text-gray-400';
+          notesElement.textContent = item.notes;
+          contentDiv.appendChild(notesElement);
+        }
+        
+        itemElement.appendChild(typeElement);
+        itemElement.appendChild(contentDiv);
+        contentContainer.appendChild(itemElement);
+      });
+
+      itemsToShow = contentContainer.children.length; // Update the count of shown items
+      updateLoadMoreButtonVisibility();
+    };
+
+    // Show/hide load more button
+    const updateLoadMoreButtonVisibility = () => {
+      if (itemsToShow >= filteredMedia.length) {
+        loadMoreContainer.style.display = 'none'; // Hide button if all items shown
+      } else {
+        loadMoreContainer.style.display = 'flex'; // Show button
+      }
+    };
+
+    // Handle Load More button click
+    loadMoreButton.addEventListener('click', () => {
+      renderItems(); // Load and render next batch
+    });
+    
+    // Initial setup
+    filterMediaByType(currentType); // Filter by default type and render initial items
+  }
+
+  // Run on initial page load
+  initializePageContent();
+
+  // Run after Astro view transitions
+  document.addEventListener('astro:page-load', initializePageContent);
+</script> 

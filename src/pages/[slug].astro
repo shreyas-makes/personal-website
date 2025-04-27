@@ -1,0 +1,55 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Change to prerender = true to avoid server adapter requirement
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data, id }) => {
+    // Exclude all booknotes entries
+    return !data.draft && !id.startsWith('booknotes/');
+  });
+  
+  return posts
+    .filter(post => !post.slug.includes('/')) // Exclude any posts with nested paths
+    .map(post => ({
+      params: { slug: post.slug },
+      props: { post }
+    }));
+}
+
+const { slug } = Astro.params;
+
+// Handle missing slug first
+if (!slug) {
+  return Astro.redirect('/404');
+}
+
+const post = await getEntry('posts', slug);
+
+// Then check if post exists
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title}>
+  <ViewTransitions />
+  <!-- Add transition names to key elements -->
+  <main transition:animate="slide" class="max-w-3xl mx-auto px-4 py-8">
+    <Content />
+    <div class="mt-16">
+      <a 
+        href="/" 
+        class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 transition-colors underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700"
+        data-astro-prefetch
+      >
+        ← Back to home
+      </a>
+    </div>
+  </main>
+</BaseLayout> 

@@ -1,0 +1,47 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import type { CollectionEntry } from 'astro:content';
+import GrowthStage from '../components/GrowthStage.astro';
+
+type Props = CollectionEntry<'posts'>['data'];
+
+const { title, date, publishDate, updatedDate, heroImage, tags, stage = 'seedling' } = Astro.props;
+console.log("BlogPost layout received stage:", stage);
+---
+
+<BaseLayout title={title}>
+  <article class="max-w-5xl mx-auto px-4 py-8">
+    <header class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-normal text-gray-900 dark:text-gray-200 mb-6 sm:mb-8">{title}</h1>
+      
+      <div class="debug-box border border-red-300 p-2 mb-4 text-sm">
+        <p>Current stage value: {stage || "undefined"}</p>
+      </div>
+      
+      <GrowthStage stage={stage || "seedling"} />
+      
+      <time datetime={date.toISOString()} class="text-sm text-gray-500 dark:text-gray-400">
+        {date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </time>
+    </header>
+    <div class="prose dark:prose-invert max-w-none">
+      <slot />
+    </div>
+  </article>
+</BaseLayout> 
+
+<style>
+  :global(.prose img) {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 4px;
+    display: block;
+  }
+</style> 
+

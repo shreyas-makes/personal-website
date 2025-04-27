@@ -1,0 +1,57 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Change to prerender = true to avoid server adapter requirement
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const bookPosts = await getCollection('posts', ({ data, id }) => {
+    return !data.draft && id.startsWith('booknotes/');
+  });
+  
+  return bookPosts.map(post => {
+    // Extract the slug part after "booknotes/"
+    const bookSlug = post.slug.replace('booknotes/', '');
+    
+    return {
+      params: { slug: bookSlug },
+      props: { post }
+    };
+  });
+}
+
+const { slug } = Astro.params;
+
+// Handle missing slug
+if (!slug) {
+  return Astro.redirect('/404');
+}
+
+// Get the full path including booknotes/
+const fullSlug = `booknotes/${slug}`;
+
+// Use getEntry instead of getEntryBySlug
+const post = await getEntry('posts', fullSlug);
+
+// Check if post exists
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title}>
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <Content />
+    <div class="mt-16">
+      <a 
+        href="/books" 
+        class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 transition-colors underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700"
+      >
+        ← Back to books
+      </a>
+    </div>
+  </main>
+</BaseLayout> 

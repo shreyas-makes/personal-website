@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-system: 'Verdana', Geneva, sans-serif;
+  --font-heading: 'Verdana', Geneva, sans-serif;
+  --background: #FFFFFF;
+  --text: #000;
+  --form-input-bg: #ffffff;
+  --form-input-border: #e2e8f0;
+  --form-button-bg: #2563eb;
+  --form-button-hover: #1d4ed8;
+  font-family: 'Verdana', Geneva, sans-serif;
+}
+
+body {
+  font-family: 'Verdana', Geneva, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 29px;
+  font-size: 19px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dark mode */
+:root.dark {
+  --background: #161618;
+  --text: #e1e1e1;
+  --form-input-bg: #1f2937;
+  --form-input-border: #374151;
+  --form-button-bg: #3b82f6;
+  --form-button-hover: #2563eb;
+}
+
+/* Clean link styling */
+a {
+  color: inherit;
+}
+
+/* Simple hover effect */
+a:hover {
+  color: var(--text-hover);
+}
+
+/* Clean container */
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Feed page specific styles */
+.feed-container {
+  max-width: 64rem; /* Equivalent to max-w-5xl */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Blog feed styling */
+#feed-container .prose {
+  max-width: none !important;
+}
+
+/* Ensure content doesn't get restricted */
+.prose-content {
+  max-width: none !important;
+}
+
+/* Minimal media elements */
+img, video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+/* Blog post content styles */
+.prose {
+  font-size: 19px;
+  line-height: 29px;
+  font-family: 'Verdana', Geneva, sans-serif;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* Dark mode prose styles */
+.dark .prose {
+  color: var(--text);
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: var(--text);
+}
+
+.dark .prose p,
+.dark .prose li,
+.dark .prose strong {
+  color: var(--text);
+}
+
+.dark .prose a {
+  color: var(--text);
+}
+
+.dark .prose blockquote {
+  color: #9ca3af;
+  border-left-color: #374151;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .prose {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@layer utilities {
+  .writing-vertical-rl {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  overflow: auto;
+  text-align: center;
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Source code toggle button for Mermaid diagrams */
+.mermaid-container {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.mermaid-source-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.1);
+  color: #666;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.dark .mermaid-source-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+}
+
+.mermaid-source-toggle:hover {
+  opacity: 1;
+}
+
+.mermaid-original-code {
+  display: none;
+  margin-top: 1rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.mermaid-original-code.show {
+  display: block;
+}
+
+/* Responsive scaling for diagrams */
+@media (max-width: 768px) {
+  .mermaid svg {
+    transform-origin: left top;
+    transform: scale(0.9);
+  }
+}
+
+/* Make diagram text more readable */
+.mermaid .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px !important;
+}
+
+/* Dark mode support for diagrams */
+.dark .mermaid .label {
+  color: #e2e8f0 !important;
+}
+
+.dark .mermaid .edgeLabel {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+/* Add styles for clusters/subgraphs */
+.mermaid .cluster rect {
+  rx: 6;
+  ry: 6;
+}
+
+/* Dark mode support for diagrams */
+.dark .mermaid {
+  overflow: auto;
+  text-align: center;
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+.dark .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.dark .mermaid .label {
+  color: #e2e8f0 !important;
+}
+
+.dark .mermaid .edgeLabel {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+.dark .mermaid .cluster rect {
+  rx: 6;
+  ry: 6;
+} 

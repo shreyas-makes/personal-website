@@ -1,0 +1,184 @@
+---
+title: How I build greenfield apps with AI-assisted coding
+date: 2025-04-08
+slug: greenfield-apps
+tags:
+  - ai-coding
+  - llm
+  - ruby-on-rails
+  - prototyping
+stage: plant
+---
+Building apps with AI-assisted coding can be quite tricky if you start with a blank empty space. Previously I used to prompt the LLMs like a rookie by saying "fix this, add this, build this", and so on. And this is usually frowned upon in the developer circles, and it seems to be quite an irresponsible way to do AI-assisted programming. But "vibe coding" has so much more to offer to this world, in terms of speed and velocity, and it's important to not loose sight of the larger goal: to build the right things, and build things right. It's indeed a weird trajectory that programming has taken recently, and if this works out, why not embrace it?
+
+Any app is only as good as our ability to carefully prompt them. This could make or break the vibe-coded app. I first came across [Harper Reed's blog](https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/) talking about his own LLM-aided coding workflow, I felt like sharing something similar based on what I've learnt. Harper goes through a lot more LLM assistants, but my advice here is specific to Cursor IDE:
+
+## Prepping the boilerplate
+
+To ease things up, and to not write all the code completely, I use the [speedrails open-source rails boilerplate](https://github.com/ryanckulp/speedrail) to build my SaaS app on top of this. It provides strong conventions for a production-ready Rails 8 app. This is TBH the only Rails boilerplate you would need to get started with most of the use cases.
+## Idea Honing
+
+This is where you have a natural conversation with the latest reasoning model to think the whole design of the app with you. You want the chat assistant to find gaps, poke holes, ask carefully considered questions which you might have not considered. 
+
+The assistant is your "philosopher in residence".
+
+```
+
+Ask me one question at a time so we can develop a thorough, step-by-step spec for this idea. Each question should build on my previous answers, and our end goal is to have a detailed specification I can hand off to a developer.  
+
+This developer who I am going to hand off to is more comfortable with an approach where the core logic is built first, and then once the function is achieved, you iteratievly build the scaffolding, backend infrastructure, and finally the frontend user experience.
+
+Let's do this iteratively and dig into every relevant detail. Remember, only one question at a time.  
+  
+Here's the idea: (Idea)
+
+```
+
+Coming from a designer background, I'd previously attempted to follow frontend-first approach to building the application so that I could visualise the user experience better, but it failed badly when in one scenario, I built a perfect house, without the plumbing, electricity, and the ability to provide shelter. Form should ALWAYS follow function, and never the other way round. This was a trite passage, that i have reminded myself with, in multiple occasions, and with multiple vibe-coded apps breaking miserably when I inverted the sequence of form/function, I was humbled by the importance of this designerly quote.
+
+At the end of the question-storm, you will end with a natural conclusion, you would now need to synthesize this chat thread into something more concrete. This is where you convert this into developer-ready specification.
+
+```
+
+Now that we've wrapped up the brainstorming process, can you compile our findings into a comprehensive, developer-ready specification? Include all relevant requirements, architecture choices, data handling details, error handling strategies, and a testing plan so a developer can immediately begin implementation.
+
+```
+
+Create a /docs folder in your project directory, and add this file created under `specs.md`
+
+Once it creates this, I do another round of "poking holes" just to be sure.
+
+```
+Poke holes into this essay and find gaps wherever possible.
+```
+
+I also exhaust my Perplexity Deep research credits to make an extensive whitepaper based on the specs.md file.
+
+I then carefully examine the tech architecture defaults, and prefer to pick the ones which are LLM-friendly (for instance, as of 9 Mar, 2025, Rails 7.2 is more LLM-friendly than Rails 8.1).
+
+Once I'm confident with the `specs.md` file, I move on to the next stage.
+
+## Planning
+
+I prefer to test the specs at each stage of development, and to ensure that the tests pass as planned. Especially when non-coders (such as myself), have no idea if what's running is actually working or not, this is a great litmus test to progressively expand the scope of the app.
+
+```
+
+Draft a detailed, step-by-step blueprint for building this project. Then, once you have a solid plan, break it down into small, iterative chunks that build on each other. Look at these chunks and then go another round to break it into small steps. Review the results and make sure that the steps are small enough to be implemented safely with strong testing, but big enough to move the project forward. Iterate until you feel that the steps are right sized for this project. 
+
+From here you should have the foundation to provide a series of prompts for a code-generation LLM that will implement each step in a test-driven manner. Prioritize best practices, incremental progress, and early testing, ensuring no big jumps in complexity at any stage. Make sure that each prompt builds on the previous prompts, and ends with wiring things together. 
+
+There should be no hanging or orphaned code that isn't integrated into a previous step. Make sure and separate each prompt section. Use markdown. Each prompt should be tagged as text using code tags. The goal is to output prompts, but context, etc is important as well. 
+
+@specs.md
+```
+
+It should output a prompt plan that you can execute with aider, cursor, etc. I like to save this as docs/ `prompt_plan.md` in the repo.
+
+I then have it output a `todo.md` that can be checked off.
+
+```prompt
+Can you make a `todo.md` that I can use as a checklist? Be thorough.
+
+After each phase, ensure that you also provide the reason as to why the scope of each phase was chosen and how it's stacked.
+```
+
+I do this to also understand why each phase is written in a specific way, and why the order was chosen as such.
+
+As you continue to build the app, you can cross off items from the todo list as shown here in this example app:
+
+```
+# blogggg Implementation Checklist
+
+## Phase 1: Core Infrastructure Setup
+
+### Rails Foundation
+
+- [x] Create new Rails 8.0.1 app with PostgreSQL
+
+- [x] Configure modern components:
+
+- [x] RSpec + FactoryBot
+
+- [x] Database Cleaner
+
+- [ ] Configure Hatchbox.io deployment:
+
+- [x] Implement health check endpoint
+
+- [x] Write infrastructure tests:
+...
+...
+...
+```
+
+Now you have a robust plan and documentation that will help you execute and build your project. 
+
+The workflow looks something like this
+
+- Build the prompt-plan.md, specs.md and todo.md.
+- Set up the boilerplate
+- Set up git version control and keep pushing commits during important milestones
+- Run code phase by phase based on the prompt-plan.md document.
+- After each phase, run integration tests and ensure all of the pass successfully
+- Once successful, move on to the next phase and continue
+
+## Maxims for AI-Assisted Development
+
+Since I've been building various tiny apps, scripts, and projects with AI-assisted coding, I've developed additional maxims that have proven effective. These principles are framework-agnostic and can be applied across different projects:
+
+1. **Parallelize Your Cursor Work** - Run multiple instructions simultaneously by pressing `CMD + T`. If you're on the Pro plan and terminal commands are slowing you down, this parallel approach saves valuable time. Some developers even open Cursor for the same codebase in multiple windows to provide instructions in parallel.
+
+2. **Git-Commit Everything** - Create AI-generated commits consistently to help retrace your steps if things go wrong. I've set up a keybinding to generate commit messages and commit all changes in one keystroke:
+
+```
+{
+"key": "ctrl+enter",
+"command": "runCommands",
+"args": {
+"commands": [
+{
+"command": "git.stageAll"
+},
+{
+"command": "cursor.generateGitCommitMessage"
+},
+{
+"command": "git.commitAll"
+},
+{
+"command": "git.sync"
+}
+]
+}
+},
+```
+
+3. **Store Documentation Locally** - Following Karpathy's advice, store relevant documentation and example code in a `.cursor/documentation` directory for quick reference.
+
+4. **Handle API Integrations Carefully** - API integrations are often challenging with AI assistance due to hallucinations or outdated information. Use "@web" to fetch the most current documentation, then create dedicated markdown files for each API you're using. For services like Stripe, either include the Stripe MCP server in Cursor or add code snippets from the latest documentation.
+
+5. **Communicate Goals, Not Commands** - For simpler apps, focus on articulating your goals rather than providing precise instructions. This approach gives the AI room to suggest optimal solutions and frameworks it's confident in.
+
+6. **Goal-Oriented Prompting** - As one Reddit post wisely suggested:
+
+```
+Provide goals, not specific commands. 
+
+Unless you can code, odds are you won't know the right instruction to give the agent. Give it a problem statement and outcomes. Then ask questions: > How would you make this? > What do you need from me? > What are your blind spots?
+```
+
+7. **Sandwich Your Instructions** - According to Claude's whitepaper on agentic coding tools, positioning your most important goals at both the beginning and end of your prompts can be effective, as LLMs give more "attention" to these positions.
+
+8. **Choose the Right Model for the Task** - Use models with larger context windows (like Gemini 2.5 Pro) when starting a new codebase that needs comprehensive understanding. For smaller, well-defined tasks, Claude Sonnet 3.7 or Claude 3.5 Sonnet can be more efficient.
+
+9. **Leverage Specialized Tools for UI** - For frontend implementations, v0.dev produces high-quality React/Tailwind components. I've created an [npm library to convert these components for Rails projects]([[v0-rails]]).
+
+10. **Communicate Visually When Needed** - When words aren't enough to convey your design intent, use Frame0 for low-fidelity mockups or Figma for higher-fidelity ones. That said, I've found I rarely need Figma these days—clear verbal direction is often sufficient.
+
+11. **Follow the Explore-Plan-Code Workflow** - The TDD approach works best for side projects. Instead of jumping straight to code, have your AI assistant review the plan first, break it down into a prompt-plan.md file, and provide targeted instructions.
+
+Now you have a robust plan and documentation that will help you execute and build your project. 
+
+Surprising and scary.
+

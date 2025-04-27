@@ -1,0 +1,52 @@
+---
+import NewsletterForm from './NewsletterForm.astro';
+import { getCollection } from 'astro:content';
+
+// Get all posts including drafts
+const allPosts = await getCollection('posts');
+
+// Calculate stats
+const posts = allPosts.filter(post => !post.data.draft);
+const projects = posts.filter(post => post.data.tags?.includes('projects'));
+const books = posts.filter(post => post.data.tags?.includes('books'));
+
+// Calculate total words (assuming each post has a body)
+const totalWords = posts.reduce((acc, post) => {
+  const wordCount = post.body.split(/\s+/).length;
+  return acc + wordCount;
+}, 0);
+
+// Format numbers with commas
+const formatNumber = (num: number) => num.toLocaleString();
+---
+
+<div class="mt-12 mb-24 max-w-5xl mx-auto px-5 sm:px-6">
+  <div class="flex flex-col sm:flex-row items-center gap-4">
+    <p class="text-base text-gray-600 dark:text-gray-400 whitespace-nowrap">
+      Liked this post? Get email for new ones:
+    </p>
+    <div class="flex-1 w-full">
+      <form 
+        action="https://app.kit.com/forms/7662069/subscriptions" 
+        method="post" 
+        class="flex flex-col sm:flex-row gap-4"
+      >
+        <input
+          type="email"
+          name="email_address"
+          placeholder="you@example.com"
+          required
+          class="flex-1 px-4 py-2 rounded-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-black"
+        />
+        <button
+          type="submit"
+          class="px-6 py-2 rounded-md bg-black hover:bg-gray-700 text-white font-medium transition-colors duration-200"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script async src="https://f.convertkit.com/ckjs/ck.5.js"></script>

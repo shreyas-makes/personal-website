@@ -1,0 +1,339 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { calculateReadingTime } from '../utils/readingTime';
+import { formatDate } from '../utils/dateUtils';
+
+// Change to static rendering
+export const prerender = true;
+
+// Get posts for the feed (excluding drafts, special pages, book-notes, and posts tagged "books")
+const allPosts = await getCollection('posts', ({ data, id }) => {
+  return !data.draft && 
+         !['Vibes.md', 'Now.md', 'About.md'].includes(id) && 
+         !['about', 'now', 'vibes'].includes(data.slug) &&
+         !(data.tags && (data.tags.includes('book-notes') || data.tags.includes('books')));
+});
+
+// Sort posts by date (newest first)
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Initial batch of posts (first 10)
+const initialBatch = sortedPosts.slice(0, 10);
+const hasMore = initialBatch.length < sortedPosts.length;
+const nextOffset = initialBatch.length;
+
+// Process posts for rendering - render each post's content
+const postsWithMetadata = await Promise.all(initialBatch.map(async post => {
+  const readingTime = calculateReadingTime(post.body);
+  const { Content } = await post.render();
+  return { ...post, readingTime, Content };
+}));
+
+// Store all remaining posts (metadata + body)
+const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
+  slug: post.slug,
+  id: post.id,
+  title: post.data.title,
+  date: post.data.date,
+  tags: post.data.tags || [],
+  image: post.data.image,
+  readingTime: calculateReadingTime(post.body),
+  // Store raw body content for rendering on client
+  body: post.body
+}));
+---
+
+<BaseLayout title="Feed | Shreyas Prakash">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 feed-container">
+    <h1 class="text-3xl sm:text-3xl font-normal text-gray-900 dark:text-gray-100 mb-8">All Posts</h1>
+    
+    <!-- Feed container -->
+    <div id="feed-container" class="w-full space-y-12 sm:space-y-16 mb-16">
+      {postsWithMetadata.map((post) => (
+        <article class="post-item pb-8 border-b border-gray-200 dark:border-gray-800 w-full">
+          <div class="mb-4">
+            <div class="flex items-center gap-2 mb-2">
+              {post.data.tags && post.data.tags.length > 0 && (
+                <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
+                  {post.data.tags[0]}
+                </span>
+              )}
+            </div>
+            <a href={`/posts/${post.slug}`}>
+              <h1 class="text-3xl sm:text-2xl font-normal text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2">
+                {post.data.title}
+              </h1>
+            </a>
+            <div class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+              {formatDate(post.data.date)} — {post.readingTime}
+            </div>
+          </div>
+          
+          <!-- Full blog content -->
+          <div class="prose prose-neutral dark:prose-invert max-w-none prose-content">
+            <post.Content />
+          </div>
+          
+          <div class="mt-4">
+            <a href={`/posts/${post.slug}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+              View original post →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <!-- Loading section with load more button -->
+    <div id="loading-section" class="flex flex-col items-center py-8 space-y-4">
+      {hasMore && (
+        <button id="load-more-button" class="px-6 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+          Load More Posts
+        </button>
+      )}
+      <div id="loading-spinner" class="w-8 h-8 border-4 border-gray-300 dark:border-gray-700 border-t-gray-600 dark:border-t-gray-300 rounded-full animate-spin hidden"></div>
+      <div id="end-message" class="text-center py-4 text-gray-500 dark:text-gray-400 hidden">
+        You've reached the end of all posts
+      </div>
+    </div>
+    
+    <!-- Data for client JS -->
+    <div 
+      id="feed-data" 
+      data-has-more={hasMore.toString()} 
+      data-next-offset={nextOffset.toString()}
+      data-total-posts={sortedPosts.length.toString()}
+      data-remaining-posts={JSON.stringify(remainingPosts)}
+      class="hidden"
+    ></div>
+  </main>
+</BaseLayout>
+
+<!-- Add marked.js for client-side markdown rendering -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Wait for marked.js to load
+    let markedReady = false;
+    const checkMarked = setInterval(() => {
+      if (window.marked) {
+        markedReady = true;
+        clearInterval(checkMarked);
+      }
+    }, 100);
+    
+    // Get data elements
+    const feedData = document.getElementById('feed-data');
+    if (!feedData) return; // Only run on full page
+    
+    // Get DOM elements
+    const feedContainer = document.getElementById('feed-container');
+    const loadMoreButton = document.getElementById('load-more-button');
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const endMessage = document.getElementById('end-message');
+    
+    // Get feed data
+    let hasMorePosts = feedData.getAttribute('data-has-more') === 'true';
+    let nextOffset = parseInt(feedData.getAttribute('data-next-offset'), 10);
+    const totalPosts = parseInt(feedData.getAttribute('data-total-posts'), 10);
+    const remainingPosts = JSON.parse(feedData.getAttribute('data-remaining-posts') || '[]');
+    
+    // Keep track of loaded post slugs to prevent duplicates
+    const loadedSlugs = new Set();
+    
+    // Collect slugs of initially loaded posts
+    document.querySelectorAll('.post-item').forEach(post => {
+      const link = post.querySelector('a[href^="/posts/"]');
+      if (link) {
+        const slug = link.getAttribute('href').replace('/posts/', '');
+        loadedSlugs.add(slug);
+      }
+    });
+    
+    console.log(`Initial posts loaded: ${loadedSlugs.size}, remaining: ${remainingPosts.length}`);
+    
+    // Loading state
+    let isLoading = false;
+    
+    // Batch size for loading
+    const BATCH_SIZE = 10;
+    
+    // Function to render markdown to HTML
+    function renderMarkdown(markdown) {
+      try {
+        if (!window.marked) {
+          // Fallback if marked isn't loaded yet
+          return `<p>${markdown.substring(0, 300)}...</p>
+                 <p><a href="/posts/${post.slug}" class="inline-block mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">View Full Post</a></p>`;
+        }
+        
+        // Configure marked options
+        marked.setOptions({
+          breaks: true,
+          gfm: true,
+          headerIds: true,
+          mangle: false
+        });
+        
+        return marked.parse(markdown);
+      } catch (error) {
+        console.error('Error rendering markdown:', error);
+        return `<p>Error rendering content. <a href="/posts/${post.slug}">View the full post</a>.</p>`;
+      }
+    }
+    
+    // Function to load more posts
+    async function loadMorePosts() {
+      if (isLoading || !hasMorePosts) return;
+      
+      // Wait for marked.js to be ready
+      if (!window.marked) {
+        setTimeout(loadMorePosts, 100);
+        return;
+      }
+      
+      // Show loading state
+      isLoading = true;
+      if (loadMoreButton) loadMoreButton.disabled = true;
+      if (loadingSpinner) loadingSpinner.classList.remove('hidden');
+      
+      try {
+        // Get next batch of posts
+        const postsToLoad = remainingPosts.slice(0, BATCH_SIZE);
+        
+        if (postsToLoad.length > 0) {
+          console.log(`Loading next ${postsToLoad.length} posts...`);
+          
+          // Remove loaded posts from the array
+          remainingPosts.splice(0, postsToLoad.length);
+          
+          // Process each post
+          for (const post of postsToLoad) {
+            // Skip if already loaded
+            if (loadedSlugs.has(post.slug)) continue;
+            
+            // Create post element
+            const postElement = document.createElement('article');
+            postElement.className = 'post-item pb-8 border-b border-gray-200 dark:border-gray-800 mt-12 sm:mt-16 w-full';
+            
+            // Format date
+            const date = new Date(post.date);
+            const formattedDate = date.toLocaleDateString('en-GB', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric'
+            }).replace(/ /g, ' ');
+            
+            // Render markdown content
+            const renderedContent = renderMarkdown(post.body);
+            
+            // Create post HTML
+            postElement.innerHTML = `
+              <div class="mb-4">
+                <div class="flex items-center gap-2 mb-2">
+                  ${post.tags && post.tags.length > 0 ? 
+                    `<span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
+                      ${post.tags[0]}
+                    </span>` : ''}
+                </div>
+                <a href="/posts/${post.slug}">
+                  <h2 class="text-2xl sm:text-xl font-normal text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2">
+                    ${post.title}
+                  </h2>
+                </a>
+                <div class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                  ${formattedDate} — ${post.readingTime}
+                </div>
+              </div>
+              
+              ${post.image && post.image.src ? `
+                <div class="mb-6">
+                  <img src="${post.image.src}" alt="${post.title}" class="w-full h-auto rounded-lg">
+                </div>
+              ` : ''}
+              
+              <div class="prose prose-neutral dark:prose-invert max-w-none prose-content">
+                ${renderedContent}
+              </div>
+              
+              <div class="mt-4">
+                <a href="/posts/${post.slug}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                  View original post →
+                </a>
+              </div>
+            `;
+            
+            // Add to feed container
+            feedContainer.appendChild(postElement);
+            loadedSlugs.add(post.slug);
+          }
+          
+          // Update offset
+          nextOffset += postsToLoad.length;
+          
+          // Check if we have more posts to load
+          hasMorePosts = remainingPosts.length > 0;
+          
+          // Update UI if we're out of posts
+          if (!hasMorePosts) {
+            if (loadMoreButton) loadMoreButton.style.display = 'none';
+            if (endMessage) endMessage.classList.remove('hidden');
+          }
+        } else {
+          // No more posts to load
+          hasMorePosts = false;
+          if (loadMoreButton) loadMoreButton.style.display = 'none';
+          if (endMessage) endMessage.classList.remove('hidden');
+        }
+      } catch (error) {
+        console.error('Error loading more posts:', error);
+      } finally {
+        // Reset loading state
+        isLoading = false;
+        if (loadMoreButton) loadMoreButton.disabled = false;
+        if (loadingSpinner) loadingSpinner.classList.add('hidden');
+      }
+    }
+    
+    // Add event listener to button
+    if (loadMoreButton) {
+      loadMoreButton.addEventListener('click', loadMorePosts);
+    }
+  });
+</script>
+
+<style>
+  .post-item:last-child {
+    border-bottom: none;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .post-item {
+    animation: fadeIn 0.4s ease-out;
+  }
+  
+  /* Ensure prose content doesn't have width restrictions */
+  :global(.prose) {
+    max-width: none !important;
+    font-size: 19px;
+    line-height: 29px;
+    font-family: 'Verdana', Geneva, sans-serif;
+    font-weight: 400;
+    color: var(--text);
+  }
+  
+  /* Responsive adjustments for mobile */
+  @media (max-width: 640px) {
+    :global(.prose) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+</style> 

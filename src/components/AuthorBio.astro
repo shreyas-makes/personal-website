@@ -1,0 +1,16 @@
+---
+// Converted from partials/author-bio.hbs
+const { author } = Astro.props;
+---
+<aside class="author-bio">
+  {author.profile_image && 
+    <img 
+      src={`/images/${path.basename(author.profile_image)}`} 
+      alt={author.name}
+      width="80"
+      height="80"
+    />
+  }
+  <h2>{author.name}</h2>
+  <p>{author.bio}</p>
+</aside> 

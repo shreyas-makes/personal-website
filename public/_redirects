@@ -1,0 +1,6 @@
+# Redirect www to non-www
+https://www.shreyasprakash.com/* https://shreyasprakash.com/:splat 301!
+
+# Redirect default Netlify subdomain to primary domain
+https://astro-blog-ghost.pages.dev/* https://shreyasprakash.com/:splat 301! 
+

@@ -1,0 +1,432 @@
+---
+// Homepage equivalent of index.hbs
+import { ViewTransitions } from 'astro:transitions';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import SimpleNewsletterForm from '../components/SimpleNewsletterForm.astro';
+import { calculateReadingTime } from '../utils/readingTime';
+import { generateExcerpt } from '../utils/excerptUtils';
+
+// Add prerender option to fix the warning
+export const prerender = true;
+
+// Get all posts including drafts (for stats calculation)
+const allPostsWithDrafts = await getCollection('posts');
+
+// Calculate stats (same as NewsletterFormWithHeaders)
+const allPostsForStats = allPostsWithDrafts.filter(post => !post.data.draft);
+const projectsForStats = allPostsForStats.filter(post => post.data.tags?.includes('projects'));
+const booksForStats = allPostsForStats.filter(post => post.data.tags?.includes('books'));
+
+// Calculate total words
+const totalWords = allPostsForStats.reduce((acc, post) => {
+  const wordCount = post.body.split(/\s+/).length;
+  return acc + wordCount;
+}, 0);
+
+// Format numbers with commas
+const formatNumber = (num: number) => num.toLocaleString();
+
+// Special pages to exclude from feed
+const SPECIAL_PAGES = [
+  'Vibes.md',
+  'Now.md',
+  'About.md'
+];
+
+// Optimize data fetching with a single collection call
+const posts = await getCollection('posts').then(allPosts => {
+  const filtered = allPosts.filter(post => !post.data.draft);
+  
+  // Pre-compute all data in a single pass
+  return filtered.reduce((acc, post) => {
+    // Pre-compute reading time and excerpt
+    const readingTime = calculateReadingTime(post.body);
+    const excerpt = post.data.summary || generateExcerpt(post.body);
+
+    const tags = post.data.tags || [];
+    const isSpecialPage = SPECIAL_PAGES.includes(post.id) || 
+                         ['about', 'now', 'vibes'].includes(post.slug);
+
+    if (!isSpecialPage) {
+      if (tags.includes('rough-notes')) acc.roughNotes.push({...post, readingTime, excerpt});
+      else if (tags.includes('projects')) acc.projects.push({...post, readingTime, excerpt});
+      else if (tags.includes('books')) acc.books.push({...post, readingTime, excerpt});
+      else if (tags.includes('prototypes')) acc.prototypes.push({...post, readingTime, excerpt});
+      else acc.regular.push({...post, readingTime, excerpt});
+    }
+
+    // Track tag counts
+    tags.forEach(tag => {
+      acc.tagCounts[tag] = (acc.tagCounts[tag] || 0) + 1;
+    });
+
+    // Add to total word count
+    acc.totalWords += post.body.split(/\s+/).length;
+
+    return acc;
+  }, {
+    regular: [],
+    roughNotes: [],
+    projects: [],
+    books: [],
+    prototypes: [],
+    tagCounts: {},
+    totalWords: 0
+  });
+});
+
+// Sort posts once - ensure reverse chronological order
+posts.regular.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+posts.roughNotes.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+posts.prototypes.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Get top tags, excluding 'rough-notes'
+const topTags = Object.entries(posts.tagCounts)
+  .filter(([tag]) => tag !== 'rough-notes' && tag !== 'books')
+  .sort(([,a], [,b]) => b - a)
+  .slice(0, 20)
+  .reduce((obj, [tag, count]) => ({ ...obj, [tag]: count }), {});
+
+// Use pre-computed data
+const latestPosts = posts.regular.slice(0, 3);
+const remainingPosts = posts.regular.slice(3, 23); // Show only 10 essays after the latest posts
+
+// Precompute formatted dates during build
+const precomputedDates = new Map();
+const formatDate = (date: string | Date) => {
+  const dateStr = date.toString();
+  if (!precomputedDates.has(dateStr)) {
+    precomputedDates.set(dateStr, new Date(date).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    }).replace(/ /g, ' '));
+  }
+  return precomputedDates.get(dateStr);
+};
+
+// Function to get clean slug without date prefix
+const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
+---
+
+<BaseLayout title="Shreyas Prakash">
+  <ViewTransitions client:only />
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
+    <section class="mt-2 mb-12 max-w-5xl">
+      <div class="prose prose-neutral dark:prose-invert max-w-none text-sm"> <!-- Further reduced font size -->
+        <p>I'm a product manager, and a hobbyist design engineer. </p>
+        <p>I like creating things—essays, websites, scripts, apps and startups. Anything which is positive sum, and impactful. </p>
+
+        <p>Writing is thinking. It's something I deeply enjoy. 10 years from now, or a 100, It might probably outlive me. This is an attempt at that posterity. I write about what I'm building, what I'm learning, and the ideas I'm exploring. </p>
+
+        <p>Born in India. Currently living in London. Found a home on the internet. This is my digital garden 🌳</p>
+      </div>
+    </section>
+
+    <div class="flex flex-wrap gap-2 text-sm sm:text-base">
+        {Object.entries(topTags).map(([tag, count]) => (
+          <a 
+            href={`/tags/${tag}`} 
+            class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          >
+            <span>{tag}</span>
+            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-1.5 py-0.5 rounded-full">{count}</span>
+          </a>
+        ))}
+      </div>
+
+   
+    {/* Add visual separator */}
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    
+    {/* Professional Work Experience Section */}
+    <section class="mb-16">
+      <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-6">Work</h2>
+      
+      <div class="space-y-8">
+        {/* Row 1 */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          {/* Job 1 */}
+          <div>
+            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Product Manager | Springer Nature Group</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">September 2024 - Present</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Leading a team dedicated to realizing a future where all researchers receive funding to publish their work open access. Building products, platforms and services towards open science, open data and open everything.</p>
+          </div>
+          
+          {/* Job 2 */}
+          <div>
+            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Lead Product Manager | Noora Health</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">September 2024 - November 2021 (3 years)</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">How might patients from rural areas access health education and support? Led the concept-to-launch of four digital health products for patients and nurses in Indonesia and Bangladesh to answer this question. </p>
+          </div>
+        </div>
+        
+        
+        {/* Row 3 */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          {/* Job 5 */}
+          <div>
+            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Head of Product, Co-Founder | UVfy</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">September 2021 - March 2020 (1 year 7 months)</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Co-founded a healthcare startup focused on preventing hospital-acquired infections in hospitals. We built an IoT device that auto-sterilised high traffic areas using traditional ML/CV models.</p>
+          </div>
+          
+          {/* Job 6 */}
+          <div>
+            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Program Director | BuildSchool</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">August 2020 - March 2022 (1 year 8 months)</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Designed a cohort based course to help employees become entrepreneurs. Led the concept-to-launch of various programs such as Buildcamps, Build Cohorts and Build with AI. </p>
+          </div>
+        </div>
+        
+        {/* Row 4 */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+             
+          {/* Job 8 */}
+          <div>
+            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Head of Product, Director | Lead by Design</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">August 2018 - March 2020 (1 year 8 months)</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">As an offshoot from the rural fellowship, I led an educational non-profit to scale the 'invent for social good' curriculum for rural students. Designed curriculums, secured partnerships.</p>
+          </div>
+
+          {/* Job 10 */}
+          <div>
+            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Rural Development Fellow | SBI Youth for India</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">August 2017 - September 2018 (1 year 2 months)</p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Lived in a tribal village and established children-led makerspaces, set up libraries, and launched various programs for students from underserved communities.</p>
+          </div>
+          
+          
+        </div>
+        
+        {/* Row 5 */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          {/* Job 9 */}
+        
+       
+        </div>
+      </div>
+    </section>
+
+    {/* Add visual separator */}
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    
+    <!-- Latest section -->
+    <section class="mb-16">
+      <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-3 sm:mb-8">Recently published</h2>
+      <div class="space-y-4 sm:space-y-12">
+        {latestPosts.map((post) => (
+          <article class="group">
+            <a href={`/posts/${post.slug}`} class="block space-y-2">
+              <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
+                {post.data.title}
+              </h3>
+              <div class="text-gray-600 dark:text-gray-400 text-sm">
+                {formatDate(post.data.date)} — {post.readingTime}
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm sm:text-base">
+                {post.excerpt}
+              </p>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    
+        {/* Add visual separator */}
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <section class="mt-12">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Essays</h2>
+        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <span>{posts.regular.length} posts</span>
+          {posts.regular.length > 13 && (
+            <>
+              <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
+              <a href="/posts" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                More essays →
+              </a>
+            </>
+          )}
+        </div>
+      </div>
+      <ul class="space-y-3 sm:space-y-8">
+        {remainingPosts.map((post) => (
+          <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-12 mb-8 sm:mb-6">
+            {post.data.tags && post.data.tags.length > 0 && (
+              <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
+                {post.data.tags[0]}
+              </span>
+            )}
+            <div class="min-w-0">
+              <a href={`/posts/${post.slug}`} 
+                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
+                <span class="block text-lg sm:text-xl">
+                  {post.data.title}
+                </span>
+              </a>
+              <span class="text-gray-500 dark:text-gray-400 text-sm">
+                {calculateReadingTime(post.body)} — {formatDate(post.data.date)}
+              </span>
+              <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm sm:text-base line-clamp-2">
+                {post.excerpt}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {/* Add visual separator */}
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+
+
+    <!-- Prototypes Section -->
+    {posts.prototypes.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-baseline justify-between mb-8">
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Prototypes</h2>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <span>{posts.prototypes.length} posts</span>
+            {posts.prototypes.length > 20 && (
+              <>
+                <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
+                <a href="/tags/prototypes" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                  Read prototypes →
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+        <ul class="space-y-3 sm:space-y-4">
+          {posts.prototypes.map((post) => (
+            <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-6 mb-8 sm:mb-6">
+              <div class="min-w-0">
+                <a href={`/posts/${post.slug}`} 
+                   class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
+                  <span class="block text-lg sm:text-xl">
+                    {post.data.title}
+                  </span>
+                </a>
+                <span class="text-gray-500 dark:text-gray-400 text-sm">
+                  {calculateReadingTime(post.body)} — {formatDate(post.data.date)}
+                </span>
+              </div>
+              {post.data.tags && post.data.tags.length > 0 && (
+                <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
+                  {post.data.tags.find(tag => tag !== 'prototypes')}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+   
+    {/* Add visual separator before prototypes */}
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+
+     <!-- Rough Notes Section -->
+    {posts.roughNotes.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-baseline justify-between mb-8">
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Rough notes</h2>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <span>{posts.roughNotes.length} posts</span>
+            {posts.roughNotes.length > 20 && (
+              <>
+                <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
+                <a href="/tags/rough-notes" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                  Read notes →
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+        <ul class="space-y-6 sm:space-y-8">
+          {posts.roughNotes.slice(0, 20).map((post) => {
+            const mainTag = post.data.tags?.find(tag => tag !== 'rough-notes');
+            return (
+              <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-6 mb-8 sm:mb-6">
+                {mainTag && (
+                  <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
+                    {mainTag}
+                  </span>
+                )}
+                <div class="min-w-0">
+                  <a href={`/posts/${post.slug}`} 
+                     class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
+                    <span class="block text-lg sm:text-xl">
+                      {post.data.title}
+                    </span>
+                  </a>
+                  <span class="text-gray-500 dark:text-gray-400 text-sm">
+                    {calculateReadingTime(post.body)} — {formatDate(post.data.date)}
+                  </span>
+                  <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm sm:text-base line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )}
+
+  </main>
+</BaseLayout>
+
+<style>
+  /* Clean, minimal styling */
+  :root {
+    --text-primary: #000;
+    --text-secondary: #666;
+    --hover-color: #555;
+  }
+
+  /* Use Verdana as the font */
+  main {
+    color: var(--text-primary);
+    line-height: 1.4;
+    font-family: 'Verdana', Geneva, sans-serif;
+    font-size: 15px;
+  }
+
+  h1 {
+    font-weight: 400;
+    color: var(--text-primary);
+    font-family: 'Verdana', Geneva, sans-serif;
+  }
+
+  /* Only apply hover effects on larger screens */
+  @media (min-width: 640px) {
+    a:hover {
+      color: var(--hover-color);
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-primary: #e1e1e1;
+      --text-secondary: #a1a1a1;
+      --hover-color: #fff;
+    }
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    main {
+      font-size: 14px;
+    }
+  }
+</style> 

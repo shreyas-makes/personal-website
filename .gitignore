@@ -1,0 +1,18 @@
+# Node and build
+node_modules
+dist
+dist.tar.gz
+.env
+
+# OS files
+.DS_Store
+
+# Obsidian and templates
+.obsidian
+src/content/posts/templates/**
+src/content/posts/.obsidian/**
+
+# Data files
+src/data/read-counts.json
+.specstory
+articlehighlights.csv

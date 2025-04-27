@@ -1,0 +1,17 @@
+name = "astro-blog"
+compatibility_date = "2024-02-07"
+node_compat = true
+
+[pages]
+build_command = "npm run build"
+build_output_dir = "dist"
+pages_build_output_dir = "dist"
+
+# You need to create these KV namespaces in the Cloudflare dashboard first
+# and then replace the placeholders with the actual IDs
+[[kv_namespaces]]
+binding = "SESSION"
+id = "SESSION"
+
+[env.production]
+vars = { OPENAI_API_KEY = "" } 

@@ -1,0 +1,23 @@
+---
+// Client-side search component
+'use client';
+import { useState } from 'react';
+const posts = await Astro.glob('../content/posts/*.md');
+
+const [results, setResults] = useState([]);
+
+const search = (term) => {
+  setResults(posts.filter(post => 
+    post.frontmatter.title.toLowerCase().includes(term) ||
+    post.frontmatter.content.toLowerCase().includes(term)
+  ));
+};
+---
+<div class="search-wrapper">
+  <input type="text" onInput={(e) => search(e.target.value)} />
+  <div class="results">
+    {results.map(post => (
+      <a href={`/posts/${post.slug}`}>{post.frontmatter.title}</a>
+    ))}
+  </div>
+</div> 

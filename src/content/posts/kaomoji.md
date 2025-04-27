@@ -1,0 +1,19 @@
+---
+title: Kaomoji generator
+date: 2025-02-14
+slug: kaomoji-generator
+tags: [prototypes, llm, N=1 software]
+stage: "seedling"
+---
+
+I've been working on a kaomoji generator. It's a simple tool that allows you to generate kaomojis for instant messaging.
+
+You can find the [kaomoji-generator GitHub repository](https://github.com/shreyas-makes/kaomoji-generator) with the full source code and implementation details. The project uses Next.js with TypeScript and features:
+
+- Dynamic kaomoji generation using LLM API endpoints
+- Customizable emotion/intensity parameters (╯°□°)╯︵ ┻━┻
+- Copy-paste functionality with keyboard shortcuts
+- Dark/light mode support that respects system preferences
+- Mobile-first responsive design for messaging apps
+
+Try combining different emotional states like "excited" + "embarrassed" to get unique combinations like ₍ᐢ.ˬ.ᐢ₎♡

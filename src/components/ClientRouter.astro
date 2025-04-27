@@ -1,0 +1,12 @@
+// Safe way to check headers that works in both static and server environments
+const getHeaderValue = (headerName) => {
+  if (import.meta.env.SSR && Astro.request) {
+    return Astro.request.headers.get(headerName);
+  }
+  // Return null during static build
+  return null;
+};
+
+// Use the safe function instead of direct header access
+const userAgent = getHeaderValue("user-agent");
+const acceptLanguage = getHeaderValue("accept-language"); 

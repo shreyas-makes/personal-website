@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Chat from '../components/Chat';
+---
+
+<BaseLayout title="Chat with Shreyas" description="Ask me anything about my thoughts, writing, or projects">
+  <div class="container mx-auto max-w-4xl px-4 py-8">
+    <h1 class="text-3xl font-bold mb-2 text-gray-900 dark:text-gray-100">Chat with Shreyas</h1>
+    <p class="text-gray-600 dark:text-gray-400 mb-8">
+      This is an AI-powered chat interface that allows you to ask questions about my thoughts, opinions, and ideas based on the content from my blog. 
+      It uses the Memory and Computation Protocol (MCP) to provide relevant and contextual responses.
+    </p>
+    
+    <Chat client:load />
+    
+    <div class="mt-8 border-t border-gray-300 dark:border-gray-700 pt-6">
+      <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">About this AI Assistant</h2>
+      <div class="prose dark:prose-invert max-w-none">
+        <p>
+          This AI assistant is powered by the Memory and Computation Protocol (MCP), which allows it to retrieve and reason over 
+          the content from my blog. It has been trained on my writing style and the topics I care about, enabling it to represent 
+          my thoughts and perspectives.
+        </p>
+        <p>
+          While it strives to accurately reflect my views, please understand that it may not perfectly capture the nuance of my thinking 
+          on every topic. For the most authentic representation of my ideas, I encourage you to read my blog posts directly.
+        </p>
+        <p>
+          All responses are generated using AI and the content from my published writing. The assistant doesn't have access to 
+          personal or private information beyond what I've shared publicly.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout> 

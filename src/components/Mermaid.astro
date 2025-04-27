@@ -1,0 +1,97 @@
+---
+export interface Props {
+  title?: string;
+}
+
+const { title = "" } = Astro.props;
+---
+
+<figure class="mermaid-wrapper">
+  {title && <figcaption>{title}</figcaption>}
+  <div class="mermaid">
+    <slot />
+  </div>
+</figure>
+
+<script>
+  import 'https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize mermaid with configuration
+    window.mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+      flowchart: {
+        htmlLabels: true,
+        useMaxWidth: false
+      },
+      er: {
+        useMaxWidth: false
+      },
+      sequence: {
+        useMaxWidth: false,
+        noteFontWeight: '14px',
+        actorFontSize: '14px',
+        messageFontSize: '16px'
+      },
+      journey: {
+        useMaxWidth: false
+      },
+      gitGraph: {
+        useMaxWidth: false
+      }
+    });
+  });
+
+  // Re-render diagrams on theme change
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === 'attributes' && 
+        mutation.attributeName === 'class' &&
+        (mutation.target as Element).classList.contains('dark') !== undefined
+      ) {
+        try {
+          window.mermaid.initialize({
+            theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default'
+          });
+          window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+        } catch (error) {
+          console.error('Error re-rendering mermaid diagrams:', error);
+        }
+      }
+    });
+  });
+
+  // Watch for theme changes
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+
+  // Re-render diagrams on page transitions
+  document.addEventListener('astro:page-load', () => {
+    try {
+      window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+    } catch (error) {
+      console.error('Error initializing mermaid diagrams:', error);
+    }
+  });
+</script>
+
+<style>
+  .mermaid-wrapper {
+    margin: 2rem 0;
+    overflow-x: auto;
+  }
+
+  figcaption {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+
+  .mermaid {
+    text-align: center;
+  }
+</style> 

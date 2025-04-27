@@ -1,0 +1,685 @@
+---
+import { getCollection } from 'astro:content';
+import SearchButton from './SearchButton';
+import Search from './Search';
+// Commenting out this import until we create the file
+// import ThemeToggle from './ThemeToggle.astro';
+
+// Get all posts for search
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+// Get the specific posts for nav links
+const [nowPost, vibesPost] = await Promise.all([
+  getCollection('posts', ({ data }) => data.slug === 'now'),
+  getCollection('posts', ({ data }) => data.slug === 'vibes')
+]);
+
+const nowSlug = nowPost[0]?.slug;
+const vibesSlug = vibesPost[0]?.slug;
+
+// Get current path but make it reactive to navigation
+let pathname = new URL(Astro.request.url).pathname;
+let currentPath = pathname.slice(1);
+
+// Check if we're on the homepage
+const isHomepage = pathname === '/';
+---
+
+<header 
+  class="fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF]/100 dark:bg-[#161618] pt-2 pb-2"
+  transition:persist="header"
+  transition:animate="none"
+>
+  <!-- Add preload hints for critical pages -->
+  <link rel="preload" href="/" as="document" />
+  <link rel="preload" href="/books" as="document" />
+  <link rel="preload" href="/tags/prototypes" as="document" />
+  
+  <div class="max-w-5xl mt-4 mx-auto px-4 sm:px-6">
+    <!-- Desktop layout - unified header -->
+    <div class="hidden md:flex md:items-center md:justify-between">
+      <!-- Logo/Home link - left aligned -->
+      <a href="/" class="text-xl font-normal text-black dark:text-gray-100" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
+      
+      <!-- Unified navigation - center -->
+      <nav class="flex gap-6 text-sm" id="desktop-navigation">
+        <!-- Now Tab -->
+        <a 
+          href={`/posts/${nowSlug}`}
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === `posts/${nowSlug}` 
+              ? "nav-item-active" 
+              : "nav-item"
+          ]}
+          data-path={`posts/${nowSlug}`}
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Now</span>
+        </a>
+        
+        <!-- Chat Tab -->
+        <a 
+          href="/chat"
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === "chat" 
+              ? "nav-item-active" 
+              : "nav-item"
+          ]}
+          data-path="chat"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          <span>Chat</span>
+        </a>
+        
+        <!-- Feed Tab -->
+        <a 
+          href="/feed"
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === "feed" 
+              ? "nav-item-active" 
+              : "nav-item"
+          ]}
+          data-path="feed"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M15 14l2 2m0 0l2-2m-2 2V9"/>
+          </svg>
+          <span>Feed</span>
+        </a>
+        
+        <!-- Books Tab -->
+        <a 
+          href="/books"
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === "books" 
+              ? "nav-item-active" 
+              : "nav-item"
+          ]}
+          data-path="books"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>Books</span>
+        </a>
+        
+        <!-- Lists Tab -->
+        <a 
+          href="/lists"
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === "lists" 
+              ? "nav-item-active" 
+              : "nav-item"
+          ]}
+          data-path="lists"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          <span>Lists</span>
+        </a>
+        
+        <!-- Prototypes Tab -->
+        <a 
+          href="/tags/prototypes"
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === "tags/prototypes" 
+              ? "nav-item-active" 
+              : "nav-item"
+          ]}
+          data-path="tags/prototypes"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+          <span>Prototypes</span>
+        </a>
+      </nav>
+      
+      <!-- Desktop utility icons - right aligned -->
+      <div class="flex items-center gap-3">
+        <SearchButton client:load />
+        <button id="theme-toggle-desktop" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+          <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </button>
+        <a href="/rss.xml" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+          <span class="sr-only">RSS Feed</span>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile layout remains unchanged -->
+    <div class="md:hidden flex justify-between items-center mb-4">
+      <!-- Logo/Home link - aligned left on mobile -->
+      <a href="/" class="text-lg font-normal text-black dark:text-gray-100" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
+      
+      <!-- Mobile header controls - grouped on right -->
+      <div class="flex items-center gap-1">
+        <SearchButton client:load />
+        <button id="theme-toggle" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+          <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </button>
+        <a href="/rss.xml" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+          <span class="sr-only">RSS Feed</span>
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
+          </svg>
+        </a>
+        <button id="menu-toggle" 
+          class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+          aria-expanded="false"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div 
+    id="mobile-menu" 
+    class="hidden md:hidden fixed inset-x-0 top-[60px] bg-[#FFFFFF] dark:bg-[#161618] border-b border-gray-200/10 dark:border-gray-800/10 transition-all duration-200 ease-in-out z-40"
+  >
+    <div class="px-8 py-6 space-y-4">
+      <nav class="flex flex-col space-y-3" id="mobile-navigation">
+        <a 
+          href={`/posts/${nowSlug}`}
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === `posts/${nowSlug}` && "mobile-nav-item-active"
+          ]}
+          data-path={`posts/${nowSlug}`}
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Now</span>
+        </a>
+        
+        <!-- Chat Tab -->
+        <a 
+          href="/chat"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "chat" && "mobile-nav-item-active"
+          ]}
+          data-path="chat"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          <span>Chat</span>
+        </a>
+        
+        <!-- Feed Tab (new) -->
+        <a 
+          href="/feed"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "feed" && "mobile-nav-item-active"
+          ]}
+          data-path="feed"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M15 14l2 2m0 0l2-2m-2 2V9"/>
+          </svg>
+          <span>Feed</span>
+        </a>
+        
+        <a 
+          href="/tags/rough-notes"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "tags/rough-notes" && "mobile-nav-item-active"
+          ]}
+          data-path="tags/rough-notes"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          <span>Notes</span>
+        </a>
+        
+        <a 
+          href="/books"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "books" && "mobile-nav-item-active"
+          ]}
+          data-path="books"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>Books</span>
+        </a>
+        
+        <a 
+          href="/lists"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "lists" && "mobile-nav-item-active"
+          ]}
+          data-path="lists"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          <span>Lists</span>
+        </a>
+        
+      
+        
+        <a 
+          href="/tags/projects"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "tags/projects" && "mobile-nav-item-active"
+          ]}
+          data-path="tags/projects"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+          </svg>
+          <span>Projects</span>
+        </a>
+        
+        <a 
+          href="/tags/prototypes"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "tags/prototypes" && "mobile-nav-item-active"
+          ]}
+          data-path="tags/prototypes"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+          <span>Prototypes</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Search component - conditionally load based on page type -->
+  {isHomepage ? (
+    <Search posts={posts} client:idle />
+  ) : (
+    <Search posts={posts} client:visible />
+  )}
+</header>
+
+<!-- Spacer to prevent content from hiding under fixed header - adjust height for unified header -->
+<div class="h-24 md:h-24"></div>
+
+<script>
+  // Add a home link prefetch on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    // Prefetch the homepage content immediately on any other page
+    if (window.location.pathname !== '/') {
+      const prefetcher = document.createElement('link');
+      prefetcher.rel = 'prefetch';
+      prefetcher.href = '/';
+      prefetcher.as = 'document';
+      document.head.appendChild(prefetcher);
+    }
+  });
+
+  function setupUI() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isSearchOpen = false;
+
+    // Update navigation active state based on current URL
+    function updateNavigation() {
+      const pathname = window.location.pathname;
+      const currentPath = pathname.slice(1) || ''; // Handle home page with empty path
+      
+      // Update desktop navigation
+      const desktopNav = document.getElementById('desktop-navigation');
+      if (desktopNav) {
+        const links = desktopNav.querySelectorAll('a');
+        links.forEach(link => {
+          const path = link.getAttribute('data-path');
+          if (path) {
+            if (currentPath === path) {
+              link.classList.add('nav-item-active');
+              link.classList.remove('nav-item');
+            } else {
+              link.classList.remove('nav-item-active');
+              link.classList.add('nav-item');
+            }
+          }
+        });
+      }
+      
+      // Update mobile navigation
+      const mobileNav = document.getElementById('mobile-navigation');
+      if (mobileNav) {
+        const links = mobileNav.querySelectorAll('a');
+        links.forEach(link => {
+          const path = link.getAttribute('data-path');
+          if (path) {
+            if (currentPath === path) {
+              link.classList.add('mobile-nav-item-active');
+              link.classList.remove('mobile-nav-item');
+            } else {
+              link.classList.remove('mobile-nav-item-active');
+              link.classList.add('mobile-nav-item');
+            }
+          }
+        });
+      }
+    }
+
+    // Theme toggle function
+    function toggleTheme(e) {
+      e.preventDefault();
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      const newTheme = isCurrentlyDark ? 'light' : 'dark';
+      
+      // Update classes
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(newTheme);
+      
+      // Store preference
+      localStorage.setItem('theme', newTheme);
+      document.cookie = `theme=${newTheme};path=/;max-age=31536000`;
+    }
+
+    // Mobile menu toggle function - improved to track state with aria-expanded
+    function toggleMobileMenu(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Get current state from aria-expanded attribute
+      const isExpanded = menuToggle?.getAttribute('aria-expanded') === 'true';
+      
+      // Toggle state
+      menuToggle?.setAttribute('aria-expanded', (!isExpanded).toString());
+      
+      // Show/hide menu based on state
+      if (isExpanded) {
+        mobileMenu?.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      } else {
+        mobileMenu?.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    // Function to close the mobile menu
+    function closeMobileMenu() {
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // Close mobile menu when clicking outside
+    function handleClickOutside(e) {
+      if (
+        mobileMenu && 
+        !mobileMenu.classList.contains('hidden') && 
+        !menuToggle?.contains(e.target) && 
+        !mobileMenu?.contains(e.target)
+      ) {
+        // Update aria-expanded
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        
+        // Hide menu
+        mobileMenu.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // Add event listeners to all links in mobile menu
+    if (mobileMenu) {
+      const menuLinks = mobileMenu.querySelectorAll('a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+    }
+
+    // Add event listeners
+    themeToggle?.addEventListener('click', toggleTheme);
+    themeToggleDesktop?.addEventListener('click', toggleTheme);
+    menuToggle?.addEventListener('click', toggleMobileMenu);
+    document.addEventListener('click', handleClickOutside);
+
+    // Search functionality
+    function toggleSearch() {
+      isSearchOpen = !isSearchOpen;
+      if (isSearchOpen && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        // Close menu if opening search
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+      document.dispatchEvent(new CustomEvent('toggleSearch', { detail: isSearchOpen }));
+    }
+
+    // Keyboard shortcut for search
+    function handleKeydown(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleSearch();
+      }
+      
+      // Close menu on Escape key
+      if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    document.addEventListener('keydown', handleKeydown);
+
+    // Pre-hover logic for faster navigation
+    document.querySelectorAll('a[href="/"]').forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        // Extra prefetch on hover for even faster response
+        const prefetcher = document.createElement('link');
+        prefetcher.rel = 'prefetch';
+        prefetcher.href = '/';
+        prefetcher.as = 'document';
+        document.head.appendChild(prefetcher);
+      });
+    });
+
+    // Close menu on navigation
+    function handleAfterSwap() {
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+      
+      // Update active navigation state after page transition
+      updateNavigation();
+    }
+
+    document.addEventListener('astro:after-swap', handleAfterSwap);
+
+    // Dropdown functionality
+    const dropdownButton = document.getElementById('more-dropdown-button');
+    const dropdownMenu = document.getElementById('more-dropdown-menu');
+    const dropdownArrow = document.getElementById('more-dropdown-arrow');
+    const dropdownContainer = document.getElementById('more-dropdown-container');
+
+    function toggleDropdown(e) {
+      e?.preventDefault();
+      const isExpanded = dropdownButton?.getAttribute('aria-expanded') === 'true';
+      
+      if (dropdownButton && dropdownMenu && dropdownArrow) {
+        dropdownButton.setAttribute('aria-expanded', (!isExpanded).toString());
+        dropdownMenu.classList.toggle('hidden');
+        dropdownArrow.style.transform = isExpanded ? '' : 'rotate(180deg)';
+      }
+    }
+
+    function closeDropdown() {
+      if (dropdownButton && dropdownMenu && dropdownArrow) {
+        dropdownButton.setAttribute('aria-expanded', 'false');
+        dropdownMenu.classList.add('hidden');
+        dropdownArrow.style.transform = '';
+      }
+    }
+
+    // Close dropdown when clicking outside
+    function handleClickOutside(e) {
+      if (dropdownContainer && !dropdownContainer.contains(e.target)) {
+        closeDropdown();
+      }
+    }
+
+    // Add event listeners for dropdown
+    dropdownButton?.addEventListener('click', toggleDropdown);
+    document.addEventListener('click', handleClickOutside);
+    
+    // Close dropdown on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDropdown();
+      }
+    });
+
+    // Close dropdown on page navigation
+    document.addEventListener('astro:after-swap', closeDropdown);
+    
+    // Initialize navigation state
+    updateNavigation();
+
+    // Cleanup function
+    return function cleanup() {
+      dropdownButton?.removeEventListener('click', toggleDropdown);
+      document.removeEventListener('click', handleClickOutside);
+      themeToggle?.removeEventListener('click', toggleTheme);
+      themeToggleDesktop?.removeEventListener('click', toggleTheme);
+      menuToggle?.removeEventListener('click', toggleMobileMenu);
+      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('astro:after-swap', handleAfterSwap);
+    }
+  }
+
+  // Setup on initial load
+  let cleanup = setupUI();
+
+  // Handle Astro view transitions
+  document.addEventListener('astro:page-load', () => {
+    // Clean up old listeners
+    if (cleanup) cleanup();
+    // Setup new listeners
+    cleanup = setupUI();
+  });
+
+  // Cleanup before page transitions
+  document.addEventListener('astro:before-swap', () => {
+    if (cleanup) cleanup();
+  });
+
+  // Make toggleSearch available globally
+  window.toggleSearch = function() {
+    const event = new CustomEvent('toggleSearch', { detail: true });
+    document.dispatchEvent(event);
+  };
+</script> 
+
+<style>
+  /* Navigation styles */
+  .nav-item {
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    color: var(--text-nav);
+  }
+  
+  .nav-item:hover {
+    color: var(--text-nav-hover);
+  }
+  
+  .nav-item-active {
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    background-color: var(--bg-nav-active);
+    color: var(--text-nav-active);
+    font-weight: 500;
+  }
+  
+  .mobile-nav-item {
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    color: var(--text-nav);
+  }
+  
+  .mobile-nav-item:hover {
+    color: var(--text-nav-hover);
+  }
+  
+  .mobile-nav-item-active {
+    padding: 0.375rem 0.75rem;
+    border-radius: 9999px;
+    background-color: var(--bg-nav-active);
+    color: var(--text-nav-active);
+    font-weight: 500;
+  }
+  
+  /* CSS Variables for theming */
+  :root {
+    --text-nav: rgb(75, 85, 99);
+    --text-nav-hover: rgb(0, 0, 0);
+    --text-nav-active: rgb(0, 0, 0);
+    --bg-nav-active: rgb(243, 244, 246);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-nav: rgb(156, 163, 175);
+      --text-nav-hover: rgb(255, 255, 255);
+      --text-nav-active: rgb(255, 255, 255);
+      --bg-nav-active: rgb(55, 65, 81);
+    }
+  }
+</style>

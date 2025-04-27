@@ -1,0 +1,5 @@
+.obsidian/**
+node_modules/**
+.git/** 
+src/content/posts/templates/**
+src/content/posts/.obsidian/**

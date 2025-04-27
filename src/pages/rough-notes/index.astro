@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { calculateReadingTime } from '../../utils/readingTime';
+import type { CollectionEntry } from 'astro:content';
+import { generateExcerpt } from '../../utils/excerptUtils';
+
+// Get all rough notes excluding drafts
+const roughNotes = (await getCollection('posts', ({ data }) => {
+  return !data.draft && data.tags?.includes('rough-notes');
+})).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Helper function to get post summary
+function getPostSummary(post: CollectionEntry<'posts'>): string {
+  if (post.data.summary) return post.data.summary;
+  return generateExcerpt(post.body);
+}
+
+// Helper function to get stage emoji
+function getStageEmoji(stage: string | undefined): string {
+  if (!stage) return '';
+  if (stage === 'seedling') return '🌱';
+  if (stage === 'sprout') return '🌿';
+  if (stage === 'plant') return '🌳';
+  return '';
+}
+
+// Format date helper
+const formatDate = (date: string | Date): string => {
+  try {
+    return new Date(date).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    }).replace(/ /g, ' ');
+  } catch (error) {
+    console.error('Error formatting date:', error);
+    return 'Invalid date';
+  }
+};
+---
+
+<BaseLayout title="Rough notes | Shreyas">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <div class="flex items-baseline justify-between mb-12">
+      <h1 class="text-3xl font-normal text-gray-800 dark:text-gray-200">Rough Notes</h1>
+      <span class="text-sm text-gray-500 dark:text-gray-400">
+        {roughNotes.length} notes
+      </span>
+    </div>
+
+    <div class="prose prose-neutral dark:prose-invert max-w-none mb-12">
+      <p>
+        These are quick, unpolished thoughts. Think of them as seedlings in my digital garden - they might grow into fully-formed essays over time.
+      </p>
+    </div>
+
+    <ul class="space-y-12">
+      {roughNotes.map(post => {
+        const mainTag = post.data.tags?.find(tag => tag !== 'rough-notes');
+        const summary = getPostSummary(post);
+        const stageEmoji = getStageEmoji(post.data.stage);
+        const readingTime = calculateReadingTime(post.body);
+        const formattedDate = formatDate(post.data.date);
+        
+        return (
+          <li class="group">
+            <div class="mb-1 flex items-center space-x-2">
+              {mainTag && (
+                <a href={`/tags/${mainTag}`} class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight hover:text-gray-800 dark:hover:text-gray-200">
+                  {mainTag}
+                </a>
+              )}
+              <span class="text-xs text-gray-500 dark:text-gray-400">
+                {stageEmoji && <span class="mr-1">{stageEmoji}</span>}
+                {readingTime} — {formattedDate}
+              </span>
+            </div>
+            <div class="mb-2">
+              <a 
+                href={`/posts/${post.slug}`} 
+                class="text-xl font-normal text-gray-800 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400"
+              >
+                {post.data.title}
+              </a>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">
+              {summary}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div class="mt-16">
+      <a href="/" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 text-sm underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700">
+        ← Back to home
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Clean, minimal styling */
+  :root {
+    --text-primary: #333;
+    --text-secondary: #666;
+    --hover-color: #555;
+  }
+
+  main {
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+
+  /* Only apply hover effects on larger screens */
+  @media (min-width: 640px) {
+    a:hover {
+      color: var(--hover-color);
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-primary: #e1e1e1;
+      --text-secondary: #a1a1a1;
+      --hover-color: #fff;
+    }
+  }
+</style> 

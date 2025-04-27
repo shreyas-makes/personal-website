@@ -1,0 +1,40 @@
+---
+import { getCollection, getEntryBySlug } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import { formatDate } from '../../utils/date';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Since we're not using any server-side features, we can keep prerendering enabled
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data, id }) => {
+    return !data.draft && !id.startsWith('booknotes/');
+  });
+  
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { slug } = Astro.params;
+
+// Handle missing slug first
+if (!slug) {
+  return Astro.redirect('/404');
+}
+
+const post = await getEntryBySlug('posts', slug);
+
+// Then check if post exists
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await post.render();
+---
+
+<PostLayout post={post} formattedDate={formatDate(post.data.date)}>
+  <Content />
+</PostLayout> 
