@@ -1,7 +1,4 @@
 import { OpenAI } from 'openai';
-import { HNSWLib } from '@langchain/community/vectorstores/hnswlib';
-import { OpenAIEmbeddings } from '@langchain/openai';
-import { join } from 'path';
 
 // Define the system message with persona information
 const SYSTEM_MESSAGE = `You are an AI assistant representing Shreyas Prakash, speaking in his voice and with his perspective.
@@ -23,6 +20,10 @@ export async function onRequest(context) {
   const openai = new OpenAI({
     apiKey: env.OPENAI_API_KEY,
   });
+  
+  // Log API key format (first 10 chars) for debugging
+  const apiKeyPrefix = env.OPENAI_API_KEY ? env.OPENAI_API_KEY.substring(0, 10) + '...' : 'undefined';
+  console.log('Using API key starting with:', apiKeyPrefix);
   
   // Handle OPTIONS request for CORS
   if (request.method === "OPTIONS") {
@@ -61,52 +62,27 @@ export async function onRequest(context) {
       });
     }
     
-    // Load the vector store
-    const vectorStorePath = join(process.cwd(), 'data', 'vector-store');
-    const embeddings = new OpenAIEmbeddings({
-      apiKey: env.OPENAI_API_KEY
-    });
-    
     try {
-      const vectorStore = await HNSWLib.load(vectorStorePath, embeddings);
+      console.log('Sending request to OpenAI API with message:', message.substring(0, 50) + '...');
       
-      // Search for relevant content
-      const results = await vectorStore.similaritySearch(message, 5);
-      
-      // Prepare context from relevant documents
-      const context = results.map(doc => {
-        const { pageContent, metadata } = doc;
-        return `
-Title: ${metadata.title}
-URL: ${metadata.url}
-Content: ${pageContent}
-        `;
-      }).join('\n\n');
-      
-      // Prepare messages for OpenAI
-      const messages = [
-        { role: 'system', content: SYSTEM_MESSAGE },
-        { role: 'system', content: `Here is relevant content from Shreyas's blog to help with your response:\n\n${context}` },
-        { role: 'user', content: message },
-      ];
-      
-      // Generate a response
+      // Direct OpenAI call without vector search
       const completion = await openai.chat.completions.create({
-        model: 'gpt-4-turbo',
-        messages: messages,
+        model: 'gpt-4o',  // Try using a different model
+        messages: [
+          { role: 'system', content: SYSTEM_MESSAGE },
+          { role: 'user', content: message },
+        ],
         temperature: 0.7,
         max_tokens: 1000,
       });
       
       // Extract and return the assistant's message
       const response = completion.choices[0].message.content;
+      console.log('Received response from OpenAI API');
       
       return new Response(JSON.stringify({ 
-        response, 
-        sources: results.map(doc => ({
-          title: doc.metadata.title,
-          url: doc.metadata.url
-        })) 
+        response,
+        sources: [] 
       }), {
         status: 200,
         headers: {
@@ -114,11 +90,11 @@ Content: ${pageContent}
           'Access-Control-Allow-Origin': '*',
         },
       });
-    } catch (loadError) {
-      console.error('Error loading vector store:', loadError);
+    } catch (apiError) {
+      console.error('Error with OpenAI API:', apiError.message);
       return new Response(JSON.stringify({ 
-        error: 'Failed to load vector store', 
-        details: loadError.message 
+        error: 'Failed to generate response', 
+        details: apiError.message 
       }), {
         status: 500,
         headers: {
@@ -128,7 +104,7 @@ Content: ${pageContent}
       });
     }
   } catch (error) {
-    console.error('Error in chat endpoint:', error);
+    console.error('Error in chat endpoint:', error.message);
     
     return new Response(JSON.stringify({ 
       error: 'An error occurred processing your request',
