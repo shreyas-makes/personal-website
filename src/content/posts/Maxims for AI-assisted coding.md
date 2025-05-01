@@ -7,9 +7,14 @@ tags:
 stage: seedling
 ---
 
-Since I've been building various tiny apps, scripts, and projects with AI-assisted coding, I've developed additional maxims that have proven effective. These principles are framework-agnostic and can be applied across different projects:
+I've been building various tiny apps, scripts, and projects with AI-assisted coding. 
+
+I've developed maxims that have proven effective in 'taming the dragon'. 
+
+These principles are framework-agnostic and can be applied across different projects:
 
 - Run multiple instructions simultaneously by pressing `CMD + T`. If you're on the Pro plan and terminal commands are slowing you down, this parallel approach saves valuable time. Some developers even open Cursor for the same codebase in multiple windows to provide instructions in parallel.
+- When you're new to an existing codebase, ask Cursor to create mermaid diagrams of the codebase and chat with it. [This helps you get familiar with the structure.](https://x.com/kregenrek/status/1889065839200174435) If you have a github repo which you want to understand, replace 'hub' with 'diagram' to get a mermaid visualisation.`
 - Create AI-generated commits consistently to help retrace your steps if things go wrong. I've set up a keybinding to generate commit messages and commit all changes in one keystroke:
 
 ```
