@@ -640,6 +640,84 @@ const isHomepage = pathname === '/';
     --bg-nav-active: rgb(243, 244, 246);
   }
   
+  .dark {
+    --text-nav: rgb(156, 163, 175);
+    --text-nav-hover: rgb(255, 255, 255);
+    --text-nav-active: rgb(255, 255, 255);
+    --bg-nav-active: rgb(55, 65, 81);
+  }
+  
+  /* Direct dark mode overrides with super high specificity */
+  html.dark body header nav a.nav-item {
+    color: rgb(156, 163, 175) !important;
+  }
+  
+  html.dark body header nav a.nav-item:hover {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark body header nav a.nav-item-active {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(55, 65, 81) !important;
+  }
+  
+  html.dark body header nav a.mobile-nav-item {
+    color: rgb(156, 163, 175) !important;
+  }
+  
+  html.dark body header nav a.mobile-nav-item:hover {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark body header nav a.mobile-nav-item-active {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(55, 65, 81) !important;
+  }
+  
+  /* Style all children of navigation items */
+  html.dark body header #desktop-navigation a {
+    color: rgb(156, 163, 175) !important;
+  }
+  
+  html.dark body header #desktop-navigation a:hover {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark body header #desktop-navigation a.nav-item-active {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark body header #desktop-navigation a span {
+    color: inherit !important;
+  }
+  
+  html.dark body header #desktop-navigation a svg {
+    color: inherit !important;
+    stroke: currentColor !important;
+  }
+  
+  /* Super direct selector for desktop nav items - maximum specificity */
+  html.dark body header .max-w-5xl nav#desktop-navigation a {
+    color: rgb(156, 163, 175) !important;
+  }
+  
+  html.dark body header .max-w-5xl nav#desktop-navigation a:hover {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark body header .max-w-5xl nav#desktop-navigation a.nav-item-active {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark body header .max-w-5xl nav#desktop-navigation a span {
+    color: inherit !important;
+  }
+  
+  html.dark body header .max-w-5xl nav#desktop-navigation a svg {
+    color: inherit !important;
+    stroke: currentColor !important;
+  }
+  
   @media (prefers-color-scheme: dark) {
     :root {
       --text-nav: rgb(156, 163, 175);
