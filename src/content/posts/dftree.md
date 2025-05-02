@@ -3,10 +3,10 @@ title: Directory Structure Visualizer
 date: 2023-07-01
 slug: dftree
 tags:
-  - prototypes
   - cli
   - node
   - filesystem
+  - curiosities
 stage: seedling
 ---
 I wanted an easy way in which I could visualise any directory that i'm navigating on the CLI. Yes, you did have standard npm packages such as "tree" for example, but those were not very helpful for me to understand the overall size of the files. I wanted a more "detailed" tree that could help me gauge how the codebase looks like.

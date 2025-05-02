@@ -3,9 +3,9 @@ title: Financial dashboard for couples
 date: 2025-02-14
 slug: financial-dashboard-for-couples
 tags:
-  - prototypes
   - llm
   - software
+  - curiosities
 stage: plant
 ---
 

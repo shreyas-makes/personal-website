@@ -3,8 +3,8 @@ title: Virtual bookshelves
 date: 2025-02-22
 slug: virtual-bookshelf
 tags:
-  - prototypes
   - aesthetics
+  - curiosities
 stage: plant
 ---
 A memory I’ve been longing to create virtually — is this experience of inviting your guests home, and showing them your bookshelf. The guests then come across a book of common interest and we end up sprawling other adjacent topics while I try my best to connect them with the books on my bookshelf. 

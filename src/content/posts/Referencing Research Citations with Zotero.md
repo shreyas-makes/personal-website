@@ -3,8 +3,8 @@ title: Referencing Research Citations with Zotero
 date: 2025-02-14
 slug: raycast-plugin-zotero
 tags:
-  - prototypes
   - llm
+  - curiosities
 stage: seedling
 ---
 

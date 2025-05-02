@@ -3,10 +3,10 @@ title: AI git commits
 date: 2023-07-01
 slug: git-commit-summarizer
 tags:
-  - prototypes
   - cli
   - openai
   - git
+  - curiosities
 stage: seedling
 ---
 I built a CLI tool that leverages OpenAI to automatically generate concise summaries of git commit changes.

@@ -3,8 +3,8 @@ title: Simple Personal Websites
 date: 2025-03-14
 slug: simple-astrojs-website
 tags:
-  - prototypes
   - ai-coding
+  - curiosities
 stage: plant
 ---
 

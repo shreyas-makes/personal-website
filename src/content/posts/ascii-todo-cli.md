@@ -3,10 +3,10 @@ title: Weekly TODO List on CLI
 date: 2025-01-05
 slug: ascii-todo-cli
 tags:
-  - prototypes
   - cli
   - productivity
   - ascii-art
+  - curiosities
 stage: seedling
 ---
 I built a command line tool as a simple TODO list. I've always enjoyed the elegance of the CLI for various purposes, and have sometimes preferred doing tasks directly on CLI instead of resorting to any GUI for these needs.

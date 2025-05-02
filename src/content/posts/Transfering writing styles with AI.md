@@ -3,9 +3,9 @@ title: Style Transfer in AI writing
 date: 2025-02-14
 slug: style-transfer
 tags:
-  - prototypes
   - llm
   - ai-coding
+  - curiosities
 stage: seedling
 ---
 

@@ -2,8 +2,11 @@
 title: Kaomoji generator
 date: 2025-02-14
 slug: kaomoji-generator
-tags: [prototypes, llm, N=1 software]
-stage: "seedling"
+tags:
+  - llm
+  - software
+  - curiosities
+stage: seedling
 ---
 I've been working on a kaomoji generator. It's a simple tool that allows you to generate kaomojis for instant messaging.
 

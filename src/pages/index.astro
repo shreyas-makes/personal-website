@@ -52,7 +52,7 @@ const posts = await getCollection('posts').then(allPosts => {
       if (tags.includes('rough-notes')) acc.roughNotes.push({...post, readingTime, excerpt});
       else if (tags.includes('projects')) acc.projects.push({...post, readingTime, excerpt});
       else if (tags.includes('books')) acc.books.push({...post, readingTime, excerpt});
-      else if (tags.includes('prototypes')) acc.prototypes.push({...post, readingTime, excerpt});
+      else if (tags.includes('curiosities')) acc.prototypes.push({...post, readingTime, excerpt});
       else acc.regular.push({...post, readingTime, excerpt});
     }
 
@@ -287,14 +287,14 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     {posts.prototypes.length > 0 && (
       <section class="mb-16">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Prototypes</h2>
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Curiosities</h2>
           <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
             <span>{posts.prototypes.length} posts</span>
             {posts.prototypes.length > 20 && (
               <>
                 <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
-                <a href="/tags/prototypes" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
-                  Read prototypes →
+                <a href="/tags/curiosities" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                  Read curiosities →
                 </a>
               </>
             )}
@@ -316,7 +316,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
               </div>
               {post.data.tags && post.data.tags.length > 0 && (
                 <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
-                  {post.data.tags.find(tag => tag !== 'prototypes')}
+                  {post.data.tags.find(tag => tag !== 'curiosities')}
                 </span>
               )}
             </li>

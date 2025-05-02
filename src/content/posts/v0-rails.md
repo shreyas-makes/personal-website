@@ -3,9 +3,9 @@ title: Convert v0.dev React to Rails ViewComponents
 date: 2024-03-01
 slug: v0-rails
 tags:
-  - prototypes
   - rails
   - react
+  - curiosities
 stage: seedling
 ---
 As a Rails developer who builds passion projects solo with this framework, i find myself blessed with an array of well-thought defaults for each specific utility. These vetted defaults make it really convenient to think more of the actual modelling of the business, and the core value proposition instead of having to think about the right package that's well maintained and that which is compatible with what we're doing. From my limited knowledge developing projects in Javascript Land, as well as in the Rails land, I find that most time spent in Javascript Land is in choosing the right library or a package or a dependency. That's not what i imagined software building to be like. It is supposed to be fun and imaginative and creative and so many other things.
