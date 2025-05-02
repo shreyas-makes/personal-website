@@ -1,6 +1,6 @@
 ---
 title: Maxims for AI assisted coding
-date: 2025-04-15
+date: 2025-03-15
 slug: maxims-ai-assisted-coding-cursor
 tags:
   - ai-coding

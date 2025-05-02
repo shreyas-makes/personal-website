@@ -5,7 +5,6 @@ import { formatDate } from '../../utils/date';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Since we're not using any server-side features, we can keep prerendering enabled
-export const prerender = true;
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data, id }) => {
