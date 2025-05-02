@@ -4,6 +4,7 @@ date: 2025-04-15
 slug: maxims-ai-assisted-coding-cursor
 tags:
   - ai-coding
+  - rough-notes
 stage: seedling
 ---
 AI-assisted coding has this strange phenomenon of making the 10x developer, a 100x one. For the rookie, it's either a hit-or-miss, and you usually end up with a lot more slop and hallucinations. I've been building various tiny apps, scripts, and projects by vibe-coding it, and I seem to have got marginally better at it. I've developed maxims that have proven effective in 'taming the dragon':
