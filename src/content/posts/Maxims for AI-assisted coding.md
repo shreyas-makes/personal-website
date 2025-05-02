@@ -11,7 +11,7 @@ AI-assisted coding has this strange phenomenon of making the 10x developer, a 10
 These principles are framework-agnostic and can be applied across different projects:
 
 - Run multiple instructions simultaneously by pressing `CMD + T`. If you're on the Pro plan and terminal commands are slowing you down, this parallel approach saves valuable time. Some developers even open Cursor for the same codebase in multiple windows to provide instructions in parallel.
-- When you're new to an existing codebase, ask Cursor to create mermaid diagrams of the codebase and chat with it. [This helps you get familiar with the structure.](https://x.com/kregenrek/status/1889065839200174435) If you have a github repo which you want to understand, replace 'hub' with 'diagram' to get a mermaid visualisation.`
+- When you're new to an existing codebase, ask Cursor to create mermaid diagrams of the codebase and chat with it. [This helps you get familiar with the structure.](https://x.com/kregenrek/status/1889065839200174435) If you have a github repo which you want to understand, replace 'hub' with 'diagram' to get a mermaid visualisation.
 - Create AI-generated commits consistently to help retrace your steps if things go wrong. I've set up a keybinding to generate commit messages and commit all changes in one keystroke:
 
 ```
@@ -131,7 +131,7 @@ When you are using compact - please focus on test output and code changes. Inclu
 ```
 - According to Claude's whitepaper on agentic coding tools, positioning your most important goals at both the beginning and end of your prompts can be effective, as LLMs give more "attention" to these positions.
 - Use models with larger context windows (like Gemini 2.5 Pro, o3) when starting a new codebase that needs comprehensive understanding. For smaller, well-defined tasks, Claude Sonnet 3.7 or Claude 3.5 Sonnet can be more efficient. 
-- For frontend implementations, v0.dev produces high-quality React/Tailwind components. I've created an [npm library to convert these components for Rails projects]([[v0-rails]]).
+- For frontend implementations, v0.dev produces high-quality React/Tailwind components.
 - When words aren't enough to convey your design intent, use Frame0 for low-fidelity mockups or Figma for higher-fidelity ones. That said, I've found I rarely need Figma these days—clear verbal direction is often sufficient.
 - Follow the Explore-Plan-Code Workflow: The TDD approach works best for side projects. Instead of jumping straight to code, have your AI assistant review the plan first, break it down into a prompt-plan.md file, and provide targeted instructions. Once the code generated for each section is done, run rigorous tests to check if everything is working as planned, move forward, only after successful completion of tests.
 - In case through iterative prompting, if I was able to fix a key issue, I do want to store the learning in the memory in the format of a Cursor rule. To do this, I add this to the end of the chat conversation:

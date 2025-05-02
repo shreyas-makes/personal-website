@@ -1,6 +1,6 @@
 ---
 title: Vibe coding with Cursor
-date: 2025-02-13T11:36:05.000Z
+date: 2025-02-13
 slug: vibe-coding-with-cursor
 tags:
   - rough-notes
