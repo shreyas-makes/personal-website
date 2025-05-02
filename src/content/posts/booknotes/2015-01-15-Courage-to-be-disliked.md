@@ -1,10 +1,10 @@
 ---
 title: Courage to be disliked
-date: 2025-05-02
-author: 
+date: 2023-05-02
+author: Shreyas Prakash
 rating: 6
 summary: Move away from reasoning in terms of past actions, but in terms of your current goals
-cover: 
+cover: /images/books/courage-to-be-disliked.jpg
 tags:
   - books
 draft: false
