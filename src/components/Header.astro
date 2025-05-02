@@ -25,6 +25,49 @@ let currentPath = pathname.slice(1);
 const isHomepage = pathname === '/';
 ---
 
+<!-- Force dark mode styles with higher priority -->
+<style is:global>
+  /* Critical dark mode fixes for navigation */
+  html.dark #desktop-navigation a,
+  html.dark #mobile-navigation a,
+  html.dark #desktop-navigation a span,
+  html.dark #mobile-navigation a span {
+    color: rgb(209, 213, 219) !important;
+  }
+  
+  html.dark #desktop-navigation a:hover,
+  html.dark #mobile-navigation a:hover,
+  html.dark #desktop-navigation a:hover span,
+  html.dark #mobile-navigation a:hover span {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark #desktop-navigation a.nav-item-active,
+  html.dark #mobile-navigation a.mobile-nav-item-active,
+  html.dark #desktop-navigation a.nav-item-active span,
+  html.dark #mobile-navigation a.mobile-nav-item-active span {
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark #desktop-navigation svg,
+  html.dark #mobile-navigation svg {
+    color: rgb(209, 213, 219) !important;
+    stroke: rgb(209, 213, 219) !important;
+  }
+  
+  html.dark #desktop-navigation a:hover svg,
+  html.dark #mobile-navigation a:hover svg {
+    color: rgb(255, 255, 255) !important;
+    stroke: rgb(255, 255, 255) !important;
+  }
+  
+  html.dark #desktop-navigation a.nav-item-active svg,
+  html.dark #mobile-navigation a.mobile-nav-item-active svg {
+    color: rgb(255, 255, 255) !important;
+    stroke: rgb(255, 255, 255) !important;
+  }
+</style>
+
 <header 
   class="fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF]/100 dark:bg-[#161618] pt-2 pb-2"
   transition:persist="header"
@@ -39,7 +82,7 @@ const isHomepage = pathname === '/';
     <!-- Desktop layout - unified header -->
     <div class="hidden md:flex md:items-center md:justify-between">
       <!-- Logo/Home link - left aligned -->
-      <a href="/" class="text-xl font-normal text-black dark:text-gray-100" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
+      <a href="/" class="text-xl font-normal text-black dark:text-white" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
       
       <!-- Unified navigation - center -->
       <nav class="flex gap-6 text-sm" id="desktop-navigation">
@@ -55,10 +98,10 @@ const isHomepage = pathname === '/';
           data-path={`posts/${nowSlug}`}
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>Now</span>
+          <span class="dark:text-gray-300">Now</span>
         </a>
         
         <!-- Feed Tab -->
@@ -73,10 +116,10 @@ const isHomepage = pathname === '/';
           data-path="feed"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
           </svg>
-          <span>Feed</span>
+          <span class="dark:text-gray-300">Feed</span>
         </a>
         
         <!-- Books Tab -->
@@ -91,10 +134,10 @@ const isHomepage = pathname === '/';
           data-path="books"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
-          <span>Books</span>
+          <span class="dark:text-gray-300">Books</span>
         </a>
         
         <!-- Lists Tab -->
@@ -109,10 +152,10 @@ const isHomepage = pathname === '/';
           data-path="lists"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
-          <span>Lists</span>
+          <span class="dark:text-gray-300">Lists</span>
         </a>
         
         <!-- Prototypes Tab -->
@@ -127,10 +170,10 @@ const isHomepage = pathname === '/';
           data-path="tags/prototypes"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
           </svg>
-          <span>Prototypes</span>
+          <span class="dark:text-gray-300">Prototypes</span>
         </a>
       </nav>
       
@@ -157,7 +200,7 @@ const isHomepage = pathname === '/';
     <!-- Mobile layout remains unchanged -->
     <div class="md:hidden flex justify-between items-center mb-4">
       <!-- Logo/Home link - aligned left on mobile -->
-      <a href="/" class="text-lg font-normal text-black dark:text-gray-100" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
+      <a href="/" class="text-lg font-normal text-black dark:text-white" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
       
       <!-- Mobile header controls - grouped on right -->
       <div class="flex items-center gap-1">
@@ -204,10 +247,10 @@ const isHomepage = pathname === '/';
           data-path={`posts/${nowSlug}`}
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>Now</span>
+          <span class="dark:text-gray-300">Now</span>
         </a>
         
         <!-- Feed Tab (new) -->
@@ -220,10 +263,10 @@ const isHomepage = pathname === '/';
           data-path="feed"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
           </svg>
-          <span>Feed</span>
+          <span class="dark:text-gray-300">Feed</span>
         </a>
         
         <a 
@@ -235,10 +278,10 @@ const isHomepage = pathname === '/';
           data-path="tags/rough-notes"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
-          <span>Notes</span>
+          <span class="dark:text-gray-300">Notes</span>
         </a>
         
         <a 
@@ -250,10 +293,10 @@ const isHomepage = pathname === '/';
           data-path="books"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
-          <span>Books</span>
+          <span class="dark:text-gray-300">Books</span>
         </a>
         
         <a 
@@ -265,10 +308,10 @@ const isHomepage = pathname === '/';
           data-path="lists"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
-          <span>Lists</span>
+          <span class="dark:text-gray-300">Lists</span>
         </a>
         
       
@@ -282,10 +325,10 @@ const isHomepage = pathname === '/';
           data-path="tags/projects"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
           </svg>
-          <span>Projects</span>
+          <span class="dark:text-gray-300">Projects</span>
         </a>
         
         <a 
@@ -297,10 +340,10 @@ const isHomepage = pathname === '/';
           data-path="tags/prototypes"
           data-astro-prefetch="hover"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg class="w-4 h-4 dark:text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
           </svg>
-          <span>Prototypes</span>
+          <span class="dark:text-gray-300">Prototypes</span>
         </a>
       </nav>
     </div>
