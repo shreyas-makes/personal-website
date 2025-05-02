@@ -4,8 +4,8 @@ import { getCollection } from 'astro:content';
 import { calculateReadingTime } from '../utils/readingTime';
 import { formatDate } from '../utils/dateUtils';
 
-// Change to static rendering
-export const prerender = true;
+// Change to server rendering
+export const prerender = false;
 
 // Get posts for the feed (excluding drafts, special pages, book-notes, and posts tagged "books")
 const allPosts = await getCollection('posts', ({ data, id }) => {
@@ -116,18 +116,24 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    console.log('Feed page initialized');
+    
     // Wait for marked.js to load
     let markedReady = false;
     const checkMarked = setInterval(() => {
       if (window.marked) {
         markedReady = true;
+        console.log('marked.js loaded');
         clearInterval(checkMarked);
       }
     }, 100);
     
     // Get data elements
     const feedData = document.getElementById('feed-data');
-    if (!feedData) return; // Only run on full page
+    if (!feedData) {
+      console.error('Feed data element not found');
+      return;
+    }
     
     // Get DOM elements
     const feedContainer = document.getElementById('feed-container');
@@ -135,11 +141,25 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     const loadingSpinner = document.getElementById('loading-spinner');
     const endMessage = document.getElementById('end-message');
     
+    console.log('Feed elements:', {
+      feedContainer: !!feedContainer,
+      loadMoreButton: !!loadMoreButton,
+      loadingSpinner: !!loadingSpinner,
+      endMessage: !!endMessage
+    });
+    
     // Get feed data
     let hasMorePosts = feedData.getAttribute('data-has-more') === 'true';
     let nextOffset = parseInt(feedData.getAttribute('data-next-offset'), 10);
     const totalPosts = parseInt(feedData.getAttribute('data-total-posts'), 10);
-    const remainingPosts = JSON.parse(feedData.getAttribute('data-remaining-posts') || '[]');
+    
+    let remainingPosts = [];
+    try {
+      remainingPosts = JSON.parse(feedData.getAttribute('data-remaining-posts') || '[]');
+      console.log(`Parsed ${remainingPosts.length} remaining posts successfully`);
+    } catch (error) {
+      console.error('Error parsing remaining posts:', error);
+    }
     
     // Keep track of loaded post slugs to prevent duplicates
     const loadedSlugs = new Set();
@@ -167,7 +187,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
         if (!window.marked) {
           // Fallback if marked isn't loaded yet
           return `<p>${markdown.substring(0, 300)}...</p>
-                 <p><a href="/posts/${post.slug}" class="inline-block mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">View Full Post</a></p>`;
+                 <p><a href="#" class="inline-block mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">View Full Post</a></p>`;
         }
         
         // Configure marked options
@@ -181,16 +201,25 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
         return marked.parse(markdown);
       } catch (error) {
         console.error('Error rendering markdown:', error);
-        return `<p>Error rendering content. <a href="/posts/${post.slug}">View the full post</a>.</p>`;
+        return `<p>Error rendering content.</p>`;
       }
     }
     
     // Function to load more posts
     async function loadMorePosts() {
-      if (isLoading || !hasMorePosts) return;
+      console.log('loadMorePosts called');
+      console.log('isLoading:', isLoading);
+      console.log('hasMorePosts:', hasMorePosts);
+      console.log('remainingPosts:', remainingPosts.length);
+      
+      if (isLoading || !hasMorePosts) {
+        console.log('Exiting early - already loading or no more posts');
+        return;
+      }
       
       // Wait for marked.js to be ready
       if (!window.marked) {
+        console.log('marked.js not loaded yet, waiting...');
         setTimeout(loadMorePosts, 100);
         return;
       }
@@ -213,7 +242,12 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
           // Process each post
           for (const post of postsToLoad) {
             // Skip if already loaded
-            if (loadedSlugs.has(post.slug)) continue;
+            if (loadedSlugs.has(post.slug)) {
+              console.log(`Skipping already loaded post: ${post.slug}`);
+              continue;
+            }
+            
+            console.log(`Processing post: ${post.slug}`);
             
             // Create post element
             const postElement = document.createElement('article');
@@ -269,6 +303,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
             // Add to feed container
             feedContainer.appendChild(postElement);
             loadedSlugs.add(post.slug);
+            console.log(`Added post ${post.slug} to feed`);
           }
           
           // Update offset
@@ -279,11 +314,13 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
           
           // Update UI if we're out of posts
           if (!hasMorePosts) {
+            console.log('No more posts to load');
             if (loadMoreButton) loadMoreButton.style.display = 'none';
             if (endMessage) endMessage.classList.remove('hidden');
           }
         } else {
           // No more posts to load
+          console.log('No posts were loaded in this batch');
           hasMorePosts = false;
           if (loadMoreButton) loadMoreButton.style.display = 'none';
           if (endMessage) endMessage.classList.remove('hidden');
@@ -300,7 +337,33 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     
     // Add event listener to button
     if (loadMoreButton) {
+      console.log('Adding click event listener to Load More button');
+      // Remove any existing event listeners
+      loadMoreButton.removeEventListener('click', loadMorePosts);
+      // Add new event listener
       loadMoreButton.addEventListener('click', loadMorePosts);
+      // Also add a direct inline click handler as a backup
+      loadMoreButton.onclick = (e) => {
+        console.log('Button clicked via onclick');
+        loadMorePosts();
+      };
+    } else {
+      console.error('Load more button not found');
+    }
+  });
+  
+  // Also add a listener for Astro page-load event as a backup
+  document.addEventListener('astro:page-load', () => {
+    console.log('astro:page-load fired, checking for load more button');
+    const loadMoreButton = document.getElementById('load-more-button');
+    if (loadMoreButton) {
+      console.log('Found load more button after page load');
+      loadMoreButton.onclick = function(e) {
+        console.log('Button clicked after page load');
+        // Trigger the click event directly
+        const clickEvent = new Event('click');
+        loadMoreButton.dispatchEvent(clickEvent);
+      };
     }
   });
 </script>

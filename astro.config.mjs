@@ -36,7 +36,7 @@ export default defineConfig({
     remarkPlugins: [],
     rehypePlugins: []
   },
-  viewTransitions: true,
+  viewTransitions: false,
   headers: {
     '/*.{js,css,jpg,jpeg,png,gif,svg}': [
       {
@@ -53,7 +53,6 @@ export default defineConfig({
             'vendor': ['astro:content', 'astro:assets'],
             'utils': ['/src/utils/'],
             'markdown': ['marked', 'prismjs'],
-            'transitions': ['astro:transitions']
           }
         }
       },

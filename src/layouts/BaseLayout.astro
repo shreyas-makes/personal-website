@@ -3,7 +3,6 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import { ViewTransitions } from 'astro:transitions';
 
 // Destructure title from Astro.props and provide a default if not passed
 const { title = 'Default Title' } = Astro.props;
@@ -185,7 +184,8 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
       border: 1px solid #2d3748 !important;
     }
   </style>
-  <ViewTransitions />
+  <!-- Add transitions directly via directive -->
+  <meta name="astro:transition" content="persist" />
   <!-- Add preconnect for external resources -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="preconnect" href="https://www.youtube.com">
@@ -225,8 +225,10 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
       }
     });
   </script>
-  <!-- Add preload directives -->
-  <link rel="preload" href="/fonts/your-main-font.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Add favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Remove non-existent font preload -->
   <link rel="modulepreload" href="/src/components/Header.astro">
 </head>
 <body class="min-h-screen flex flex-col bg-[#FFFFFF] dark:bg-[#161618] text-gray-900 dark:text-gray-100 transition-colors duration-300 overflow-x-hidden">
