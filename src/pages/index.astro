@@ -140,78 +140,6 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     {/* Add visual separator */}
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
     
-    {/* Professional Work Experience Section */}
-    <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-6">Work</h2>
-      
-      <div class="space-y-8">
-        {/* Row 1 */}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-          {/* Job 1 */}
-          <div>
-            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Product Manager | Springer Nature Group</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">September 2024 - Present</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">Leading a team dedicated to realizing a future where all researchers receive funding to publish their work open access. Building products, platforms and services towards open science, open data and open everything.</p>
-          </div>
-          
-          {/* Job 2 */}
-          <div>
-            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Lead Product Manager | Noora Health</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">September 2024 - November 2021 (3 years)</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">How might patients from rural areas access health education and support? Led the concept-to-launch of four digital health products for patients and nurses in Indonesia and Bangladesh to answer this question. </p>
-          </div>
-        </div>
-        
-        
-        {/* Row 3 */}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-          {/* Job 5 */}
-          <div>
-            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Head of Product, Co-Founder | UVfy</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">September 2021 - March 2020 (1 year 7 months)</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">Co-founded a healthcare startup focused on preventing hospital-acquired infections in hospitals. We built an IoT device that auto-sterilised high traffic areas using traditional ML/CV models.</p>
-          </div>
-          
-          {/* Job 6 */}
-          <div>
-            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Program Director | BuildSchool</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">August 2020 - March 2022 (1 year 8 months)</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">Designed a cohort based course to help employees become entrepreneurs. Led the concept-to-launch of various programs such as Buildcamps, Build Cohorts and Build with AI. </p>
-          </div>
-        </div>
-        
-        {/* Row 4 */}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-             
-          {/* Job 8 */}
-          <div>
-            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Head of Product, Director | Lead by Design</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">August 2018 - March 2020 (1 year 8 months)</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">As an offshoot from the rural fellowship, I led an educational non-profit to scale the 'invent for social good' curriculum for rural students. Designed curriculums, secured partnerships.</p>
-          </div>
-
-          {/* Job 10 */}
-          <div>
-            <h3 class="text-lg font-normal text-gray-900 dark:text-gray-100">Rural Development Fellow | SBI Youth for India</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">August 2017 - September 2018 (1 year 2 months)</p>
-            <p class="text-gray-600 dark:text-gray-400 text-sm">Lived in a tribal village and established children-led makerspaces, set up libraries, and launched various programs for students from underserved communities.</p>
-          </div>
-          
-          
-        </div>
-        
-        {/* Row 5 */}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-          {/* Job 9 */}
-        
-       
-        </div>
-      </div>
-    </section>
-
-    {/* Add visual separator */}
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
-    
     <!-- Latest section -->
     <section class="mb-16">
       <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-3 sm:mb-8">Recently published</h2>
@@ -234,54 +162,8 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       </div>
     </section>
 
-    
-        {/* Add visual separator */}
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
-    <section class="mt-12">
-      <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Essays</h2>
-        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-          <span>{posts.regular.length} posts</span>
-          {posts.regular.length > 13 && (
-            <>
-              <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
-              <a href="/posts" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
-                More essays →
-              </a>
-            </>
-          )}
-        </div>
-      </div>
-      <ul class="space-y-3 sm:space-y-8">
-        {remainingPosts.map((post) => (
-          <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-12 mb-8 sm:mb-6">
-            {post.data.tags && post.data.tags.length > 0 && (
-              <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
-                {post.data.tags[0]}
-              </span>
-            )}
-            <div class="min-w-0">
-              <a href={`/posts/${post.slug}`} 
-                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
-                <span class="block text-lg sm:text-xl">
-                  {post.data.title}
-                </span>
-              </a>
-              <span class="text-gray-500 dark:text-gray-400 text-sm">
-                {calculateReadingTime(post.body)} — {formatDate(post.data.date)}
-              </span>
-              <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm sm:text-base line-clamp-4">
-                {post.excerpt}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
-
     {/* Add visual separator */}
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
-
 
     <!-- Prototypes Section -->
     {posts.prototypes.length > 0 && (
@@ -325,8 +207,52 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       </section>
     )}
 
-   
-    {/* Add visual separator before prototypes */}
+    {/* Add visual separator */}
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+
+    <section class="mt-12">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Essays</h2>
+        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <span>{posts.regular.length} posts</span>
+          {posts.regular.length > 13 && (
+            <>
+              <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
+              <a href="/posts" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                More essays →
+              </a>
+            </>
+          )}
+        </div>
+      </div>
+      <ul class="space-y-3 sm:space-y-8">
+        {remainingPosts.map((post) => (
+          <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-12 mb-8 sm:mb-6">
+            {post.data.tags && post.data.tags.length > 0 && (
+              <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
+                {post.data.tags[0]}
+              </span>
+            )}
+            <div class="min-w-0">
+              <a href={`/posts/${post.slug}`} 
+                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
+                <span class="block text-lg sm:text-xl">
+                  {post.data.title}
+                </span>
+              </a>
+              <span class="text-gray-500 dark:text-gray-400 text-sm">
+                {calculateReadingTime(post.body)} — {formatDate(post.data.date)}
+              </span>
+              <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm sm:text-base line-clamp-4">
+                {post.excerpt}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {/* Add visual separator before rough notes */}
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
 
      <!-- Rough Notes Section -->
