@@ -1,11 +1,13 @@
 ---
-title: "Thorough reference checks"
-date: "2024-12-06T13:32:54.000Z"
-slug: "thorough-reference-checks"
-tags: [leadership, rough-notes]
-stage: "seedling"
+title: Gauging previous work of new joinees to the team
+date: 2024-12-06T13:32:54.000Z
+slug: thorough-reference-checks
+tags:
+  - leadership
+  - rough-notes
+stage: seedling
 ---
-I've been hiring people (and conducting more thorough reference checks) more recently now, and I've learned something important: most reference checks are useless. They're like those mandatory training videos you have to watch at big companies. Everyone goes through the motions, but nobody really learns anything.
+I've been hiring people (and conducting more thorough reference checks) more recently now, and I've learned something important: **most reference checks are useless.** They're like those mandatory training videos you have to watch at big companies. Everyone goes through the motions, but nobody really learns anything.
 
 But it doesn't have to be this way. Reference checks can be incredibly valuable if you do them right. Here's how I do it.
 

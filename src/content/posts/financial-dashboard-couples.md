@@ -40,16 +40,4 @@ The dashboard prevents lifestyle creep by:
 To experiment with different scenarios:
 1. Clone the [financial-dashboard GitHub repo](https://github.com/shreyas-makes-financial-dashboard-couples)
 2. Adjust income inputs in `InteractiveFinancialDashboard.tsx`
-3. Modify phase allocations in the `husband`/`wife` objects
-4. Test debt payoff strategies using the education loan calculator:
-
-```jsx
-// Education loan logic
-const calculateEducationLoanDetails = (total, payment) => {
-  const annualRate = 0.07;
-  const interest = total * annualRate;
-  const months = Math.ceil((total + interest) / payment);
-  return { total, payment, interest, months };
-};
-```
-
+3. Modify phase allocations in the `husband`/`wife` objects to see how the output looks like.

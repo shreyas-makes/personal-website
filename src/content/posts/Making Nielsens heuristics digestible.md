@@ -5,7 +5,6 @@ slug: "making-nielsens-heuristics-more-digestible"
 tags: [design, usability, ux, user-experience, design-principles, rough-notes]
 stage: "seedling"
 ---
-
 Jakob Nielsen's heuristics are probably the most-used usability heuristics for the design of interfaces.
 
 If you go to their website, you might encounter these dry prescriptive statements as shown in the image.

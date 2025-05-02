@@ -1,9 +1,11 @@
 ---
-title: "Everything is a prioritisation problem"
-date: "2024-07-29T05:47:29.000Z"
-slug: "prioritisation-problem"
-tags: [product-management]
-stage: "plant"
+title: Everything is a prioritisation problem
+date: 2024-07-29T05:47:29.000Z
+slug: prioritisation-problem
+tags:
+  - product-management
+  - product
+stage: plant
 ---
 
 When it comes to building a product, everything is a prioritisation problem.

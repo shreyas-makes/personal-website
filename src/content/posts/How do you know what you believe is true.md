@@ -3,20 +3,19 @@ title: How do you know what you believe is true?
 date: 2025-02-21
 slug: what-you-believe-true
 tags:
-  - rough-notes
   - epistemology
-  - product-management
+  - product
 stage: seedling
 ---
 My attempt towards discovering epistemology, as a philosophy discipline initially started with a benign question — *How do I know with certainty what I believe is true?* 
 
 In this attempt, I had to meander around various schools of thought that discussed this topic in depth — from dogmatism, skepticism, empiricism, relativism and finally, critical rationalism. I wanted to know the truth about truth, and yet the path to that was not very straightforward.
 
-I've come across epistemology as a discipline before, but I've often mocked with all seriousness  — *why on earth would someone discuss this 'boring' concept in a bar?* 
+I've come across epistemology as a discipline before, but I've often mocked with all seriousness  — *why on earth would someone discuss this 'boring' concept in a bar?* I thought this had nothing to do with our day to day life, and it's a topic often taken up by philosophers more seriously without any practical implications. 
 
-I thought this had nothing to do with our day to day life, and it's a topic often taken up by philosophers more seriously without any practical implications. 
+But I was entirely wrong. 
 
-But I was entirely wrong. Epistemology is so important for leaders/managers who are in the business of taking good decisions. Every day in our work lives, we deal with the same question which epistemology talks about — *What is true? why should we believe with certainty that a certain narrative is true? What is a better explanation of a fact? is it even a fact or an assumption?*
+**Epistemology is so important for leaders/managers who are in the business of taking good decisions.** Every day in our work lives, we deal with the same question which epistemology talks about — *What is true? why should we believe with certainty that a certain narrative is true? What is a better explanation of a fact? is it even a fact or an assumption?*
 
 I'll start unpacking all the 'isms', with a heavily loaded caveat that I'm no philosopher. Heck, I haven't even researched this enough, and I would certainly be treated with great scorn by the practitioners, but what I would like to present is a small story that weaves together the 'isms'
 

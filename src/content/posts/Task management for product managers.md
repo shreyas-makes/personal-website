@@ -1,9 +1,11 @@
 ---
-title: "Task management for product managers"
-date: "2024-12-06T13:27:18.000Z"
-slug: "task-management-for-product-managers"
-tags: [product-management, rough-notes]
-stage: "seedling"
+title: Task management for product managers
+date: 2024-12-06T13:27:18.000Z
+slug: task-management-for-product-managers
+tags:
+  - rough-notes
+  - product
+stage: seedling
 ---
 
 In the book **Inspired**, Marty Cagan talks about dividing one's day-to-day tasks into three major buckets: people, process and product. I'd experimented with categorising my tasks into similar such buckets based on the framework by [Shreyas Doshi](https://shreyasdoshi.com/):

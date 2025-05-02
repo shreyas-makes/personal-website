@@ -7,8 +7,6 @@ tags:
   - rough-notes
 stage: sprout
 ---
-Have you head of the Eudaimonia machine?
-
 Imagine a one-story, narrow structure, a straightforward rectangle divided into five rooms, in succession. There's no quick escape route here. This design insists that as you move through, you're plunging deeper into the world of intense productivity.
 
 You start in the gallery, the first room as you enter from the street. Inside, you'll find examples of remarkable work created within the building. It's a place meant to ignite your inspiration, setting the stage for a culture of constructive stress and peer pressure. It's a room that raises the bar, motivating you to bring your absolute best.

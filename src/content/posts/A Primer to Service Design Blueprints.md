@@ -5,6 +5,9 @@ slug: "mapping-interconnections-through-service-design-blueprinting"
 tags: [design, rough-notes]
 stage: "seedling"
 ---
+When someone asks me what is service design? I usually explain them what this means with an example: 
+
+Let's say you're heading to the airport to catch your next flight. You head to the entrance, show your passport, enter the hallway, are guided to the service kiosk, you get your boarding pass, check your luggage weight, and then all you know, you've reached the gate for boarding your flight. Don't you see that the journey is almost magical? It's because there is a lot of invisible "design" work in making this journey magical, especially in the form of service blueprints (more on that later). Service design is just that, it's the design of the invisible. More specifically, you're not just looking at the frontstage, but also the backstage, the back of the backstage (even). All the invisible missing pieces, that you might just forget, or ignore, the service designers pay attention.
 
 I’ve found this exercise very valuable when it comes to mapping both the frontstage and backstage of any product/service.
 

@@ -3,10 +3,10 @@ title: ProductCon 2025 washup
 date: 2025-02-19
 slug: notes-from-productcon-2025
 tags:
-  - product-management
   - llm
   - prototyping
   - rough-notes
+  - product
 stage: seedling
 ---
 Here are some notes from attending ProductCon 2025,  "the bleeding edge of product management" as described by the panelists and experts. There were some interesting ideas, and here are some raw bullet points, in no particular order:

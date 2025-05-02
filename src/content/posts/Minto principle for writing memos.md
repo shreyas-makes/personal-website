@@ -5,7 +5,6 @@ slug: "minto-principle-for-writing-memos"
 tags: [writing, communication, rough-notes]
 stage: "seedling"
 ---
-
 Initially popularised by McKinsey consultants to draft internal reports, this became quite widespread as a global standard for business writing.
 
 Start with the main statement, draw some conclusions and provide some data/facts and figures for further understanding.
@@ -42,4 +41,6 @@ Benefits: State the benefits the position/action delivers. Quantify the gains. I
   
 I write a memo using SCIPAB and send it as a pre-read before the meeting so that the execs are primed to listen to what we have to discuss. The best part is they share their POV and questions ahead of the conversation, which helps you address for the rest of the audience as well.  
   
-I use SCIPAB as a through-line for all communications. Sometimes I don't call it out as situation complication etc but sometimes I do. It has helped me deliver important information quickly to people who don't have much time for the conversation._
+I use SCIPAB as a through-line for all communications. Sometimes I don't call it out as situation complication etc but sometimes I do. It has helped me deliver important information quickly to people who don't have much time for the conversation.
+
+The general thumb-rule I currently follow is to use the Minto pyramid principle for one-paragraph explainers, and SCIPAB for three paragraph explainers. Anything above and beyond three paragraphs would be politely marked under the 'TL;DR' category, never to be read again by anyone.

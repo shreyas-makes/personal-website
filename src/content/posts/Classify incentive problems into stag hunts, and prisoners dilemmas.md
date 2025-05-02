@@ -4,10 +4,12 @@ date: 2025-04-07
 slug: stag-hunt-prisoners-dilemma
 tags:
   - game-theory
-  - product-strategy
+  - product
 stage: plant
 ---
-In the limited time I've spent learning about game theory, these are some of the core ideas I've absorbed: 
+In some product-related decisions, we deal especially with the problem of incentives. In a more crude way, we can treat incentive problems as either zero-sum games, or positive-sum games. I thought that was a great framing, and went on with my worldview, and my life, and my regular product-work, until I found a better framing, a better explanation!
+
+I've dived into game theory more recently, and have absorbed some core ideas that help explain situations that deal with people-related incentives better:
 
 (a) to look at every encounter as a game with upsides and downsides due to various actions. 
 
@@ -59,11 +61,13 @@ Both firms can either be aligned on a unified blockchain safety protocol (which 
 
 The stag hunt framing applies **if both parties benefit most from mutual cooperation**, but suffer **only minor losses if they act alone**. The prisoner's dilemma framing applies **if defection yields a significant individual advantage**, and mutual defection is **net worse** than cooperation.
 
-So which is true? is it a stag's hunt or a prisoner's dilemma?
+So which is true? is it a stag's hunt or a prisoner's dilemma? Reality could be far more complex, and in this case, it could probably alternate between stag's hunt and prisoner's dilemma. And this could be based on, (a) number of players, more actors —> more defective incentives. (b) if one company has more compute/data, it can afford to defect.
 
-Reality could be far more complex, and in this case, it could probably alternate between stag's hunt and prisoner's dilemma. 
+A simple thumb rule to distinguish situations into either stag hunt, or prisoner dilemma:
 
-And this could be based on, (a) number of players, more actors —> more defective incentives. (b) if one company has more compute/data, it can afford to defect.
+**If defecting is always individually better, regardless of what the other person does, it's a prisoner's dilemma (closer to a zero sum game). If co-operating is best only if others also cooperate, it's a stag hunt (closer to a positive sum game).**
+
+
 
 
 

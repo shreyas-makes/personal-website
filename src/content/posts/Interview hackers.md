@@ -1,9 +1,12 @@
 ---
-title: "Breaking the fourth wall of an interview"
-date: "2024-05-15T12:56:00.000Z"
-slug: "the-interview-hackers"
-tags: [interviewing, product-management, rough-notes]
-stage: "seedling"
+title: Breaking the fourth wall of an interview
+date: 2024-05-15T12:56:00.000Z
+slug: the-interview-hackers
+tags:
+  - interviewing
+  - rough-notes
+  - product
+stage: seedling
 ---
 
 ****Intended audience:**** For leaders interviewing candidates for product or other tech leadership roles

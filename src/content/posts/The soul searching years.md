@@ -7,6 +7,7 @@ tags:
   - design
   - education
   - rough-notes
+  - journalling
 stage: plant
 ---
 There are choices we make because we desire them deeply, and there are choices we make because the inertia of the world carries us into them.

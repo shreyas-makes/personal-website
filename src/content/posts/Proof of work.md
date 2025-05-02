@@ -1,9 +1,11 @@
 ---
-title: "Proof of work"
-date: "2024-12-06T13:41:29.000Z"
-slug: "proof-of-work"
-tags: [product-management, rough-notes]
-stage: "seedling"
+title: Proof of work
+date: 2024-12-06T13:41:29.000Z
+slug: proof-of-work
+tags:
+  - rough-notes
+  - product
+stage: seedling
 ---
 
 Showing proof-of-work as a designer is quite simple. You made an app, you communicated the output product and exhibit how the product evolved over time ranging from the paper napkin sketch, low fidelity, high fidelity prototypes and finally a fully fledged product. The iterations need not just be tangible, but can be verbal too. Similarly, for an engineer the proof of work is also quite solid. You can mention how you helped improve the efficiency of X from 70% to 80%.

@@ -1,9 +1,11 @@
 ---
-title: "In-person vision transmission"
-date: "2024-06-18T05:58:16.000Z"
-slug: "in-person-vision"
-tags: [product-management, rough-notes]
-stage: "seedling"
+title: In-person vision transmission
+date: 2024-06-18T05:58:16.000Z
+slug: in-person-vision
+tags:
+  - rough-notes
+  - product
+stage: seedling
 ---
 
 I recently transitioned from leading a product team in a region to a more centralised role overseeing products across multiple geographies. As part of that transition, I needed to onboard the new product lead of that region, ensuring they were fully briefed

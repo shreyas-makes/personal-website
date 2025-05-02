@@ -7,7 +7,6 @@ tags:
   - ai-coding
 stage: plant
 ---
-
 In this tutorial, I will take you through my current process of deploying a Rails 8 app with some careful design choices:
 
 1.  React: Best design engineering stack for those itching to add some front end flair. React is also very LLM-friendly since it's trained on vast amounts of WWW data, making it a popular choice for building front end using text prompts. I replaced the 'V' in the 'MVC' using the [inertia-on-rails library](https://evilmartians.com/chronicles/inertiajs-in-rails-a-new-era-of-effortless-integration) to use React instead of Hotwire (I was earlier skeptical about going the React route, and was learning Hotwire initially for the frontend. [This podcast by Vercel's former lead design engineer, Mariana Castilho convinced me otherwise](https://open.spotify.com/episode/2M7D5umsCGpBeo2fbLnw8P))

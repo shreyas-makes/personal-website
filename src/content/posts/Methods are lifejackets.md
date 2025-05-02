@@ -1,9 +1,13 @@
 ---
-title: "Methods are lifejackets not straight jackets"
-date: "2023-12-27T14:39:00.000Z"
-slug: "methods-are-lifejackets-not-straight-jackets"
-tags: [methodology, product-management, frameworks, design-thinking]
-stage: "seedling"
+title: Methods are lifejackets not straight jackets
+date: 2023-12-27T14:39:00.000Z
+slug: methods-are-lifejackets-not-straight-jackets
+tags:
+  - methodology
+  - frameworks
+  - design-thinking
+  - product
+stage: seedling
 ---
 
 Design methods are life jackets. Not straight jackets.
