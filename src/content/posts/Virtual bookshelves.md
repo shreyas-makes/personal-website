@@ -7,24 +7,17 @@ tags:
   - curiosities
 stage: plant
 ---
-A memory I’ve been longing to create virtually — is this experience of inviting your guests home, and showing them your bookshelf. The guests then come across a book of common interest and we end up sprawling other adjacent topics while I try my best to connect them with the books on my bookshelf. 
+There's something special about the moment when a guest visits your home, browses your bookshelf, and discovers a book you both cherish. That spark of connection often leads to meandering conversations that weave through shared interests and unexpected topics. It's an experience that became harder to recreate after moving between continents and various work locations.
 
-After moving across a couple of continents, and work locations, the longing for recreating this experience has remained unchanged.  
+This desire to preserve this simple joy of connection through books led me to explore the concept of virtual bookshelves. I first stumbled upon [Derek Sivers' implementation](https://sive.rs/book) and was drawn to his thoughtful collection of over 400 book notes and meta-commentaries spanning diverse themes. What stood out was how these notes went beyond standard reviews found on Goodreads or Amazon—they contained personal insights and deeper reflections that sparked genuine curiosity.
 
-The first encounter with a [virtual bookshelf has been from Derek Sivers’ site](https://sive.rs/book).
-Sivers has a profilic collection of 400+ book notes, meta-notes that span various themes, and I usually prefer more such recommendations from virtual bookshelves of other’s personal sites, rather than the slug you find on Goodreads or Amazon reviews. 
+The appeal of these personal digital bookshelves over commercial platforms became clear: they offered authentic perspectives rather than algorithm-driven recommendations or surface-level summaries. They invite a more meaningful exploration of ideas.
 
-These were not the usual goodreads summaries you find, but more of meta-notes and side threads (which go atleast some layers deeper than the surface level conversations)
+When considering how to create my own virtual bookshelf, certain design elements felt essential to capture the essence of physical book browsing. The shelf needed a visual, interactive overview that would mimic the experience of scanning book spines and pulling interesting titles from the shelf. It also needed space for personal ratings and brief descriptions that might capture why each book held significance, much like the comments you might share when pointing out a favorite volume to a friend. Most importantly, there needed to be pathways for serendipitous discovery—connections between related books and themes that might lead a visitor down unexpected intellectual paths, just as conversations around physical bookshelves often do.
 
-Inspired by these, I wanted to have these set of design choices for my virtual bookshelf:
+After exploring various approaches, I found a promising starting point in [Adammaj's bookshelf.tsx component](https://github.com/adam-maj) that aligned with these aspirations. With some adjustments in Cursor IDE, the virtual bookshelf began taking shape.
 
-1. You need to have a visual overview of books which you can interact with
-2. Possibility to add book ratings, one-line descriptions
-3. Adding some scope for serendipity by having an option to discover other book notes, based on previous reads
-
-After spending some careful time in identifying a GitHub repository that matched most of my very particular needs ([Adammaj’s bookshelf.tsx component](https://github.com/adam-maj)), I then fired up my Cursor IDE window to do some vibe-coding and finally got the integration on my site right. 
-
-I wanted the shadows that the books leave behind to be just right. I wanted the way you flip the book towards yourself to be the right micro-interaction. All those little details.
+The details mattered—the subtle shadows cast by digital books, the gentle animation when "picking up" a title for closer inspection. These small touches help recreate that tactile quality of physical book browsing that makes the experience feel more authentic.
 
 ![](Attachments/IMG_5786.png)
 

@@ -13,7 +13,7 @@ It was a Sunday evening when I found myself staring at yet another productivity 
 
 As a designer transitioning into what I now call my "vibe-coder" phase, I've developed a particular appreciation for the elegant simplicity of command-line interfaces. Something about the monospaced font, the focused input, and the absence of distractions always felt right. Why couldn't my todo list feel the same way?
 
-That night, fueled by coffee and nostalgia for ASCII art from the BBS days, I started coding. By morning, my ASCII-TODO-CLI was born—a simple command-line tool that would display my weekly tasks with visual flair but without the bloat.
+That night, I started coding. By morning, my ASCII-TODO-CLI was born—a simple command-line tool that would display my weekly tasks with visual flair but without the bloat.
 
 The tool renders your weekly schedule with creative ASCII borders, transforming the mundane task list into something that feels both functional and delightfully retro:
 
