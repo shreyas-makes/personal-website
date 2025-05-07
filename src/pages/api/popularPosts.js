@@ -4,7 +4,7 @@
 import { db } from '../../utils/database';
 import { getCollection } from 'astro:content';
 
-export async function get({ url }) {
+export async function GET({ url }) {
   try {
     const limit = parseInt(url.searchParams.get('limit') || '5', 10);
     

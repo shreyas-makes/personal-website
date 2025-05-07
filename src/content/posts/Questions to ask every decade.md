@@ -8,9 +8,9 @@ tags:
 stage: seedling
 ---
 
-This is a list inspired by [Kepano in his blog:](https://stephanango.com/40-questions)
+This is a list inspired by Kepano in his blog:
 
-1.  What would you do if you had [6 months to live?](app://obsidian.md/HARVARD%20mens-health-50-and-forward.pdf#page=3&selection=27,0,30,39)
+1.  What would you do if you had 6 months to live?
 2.  What would you do if you had a billion dollars?
 3.  What advice would you give yourself 10 years ago?
 4.  What do you hope will be the same 10 years from now?

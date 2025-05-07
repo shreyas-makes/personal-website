@@ -10,6 +10,40 @@ const projects = posts.filter(post => post.data.tags?.includes('projects'));
 const books = posts.filter(post => post.data.tags?.includes('books'));
 const prototypes = posts.filter(post => post.data.tags?.includes('prototypes'));
 
+// Get recent posts (excluding rough-notes and curiosities)
+const recentPosts = [...posts]
+  .filter(post => 
+    !post.data.tags?.includes('rough-notes') && 
+    !post.data.tags?.includes('curiosities')
+  )
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .slice(0, 10);
+
+// Get rough notes posts
+const roughNotesPosts = [...posts]
+  .filter(post => post.data.tags?.includes('rough-notes'))
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+  .slice(0, 10);
+
+// For popular posts, import the existing view tracking system
+import { getPopularPosts } from '../utils/pageViews';
+
+// Get most visited posts (or use fallback if not available)
+let popularPosts;
+try {
+  popularPosts = await getPopularPosts(10);
+} catch (error) {
+  // Fallback if pageViews utility is not available or fails
+  popularPosts = [...posts]
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 10)
+    .map(post => ({
+      slug: post.slug,
+      title: post.data.title,
+      views: Math.floor(Math.random() * 100)
+    }));
+}
+
 // Calculate total words (assuming each post has a body)
 const totalWords = posts.reduce((acc, post) => {
   const wordCount = post.body.split(/\s+/).length;
@@ -18,35 +52,125 @@ const totalWords = posts.reduce((acc, post) => {
 
 // Format numbers with commas
 const formatNumber = (num: number) => num.toLocaleString();
+
+// Get current year for copyright
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="max-w-3xl mx-auto px-4 py-12 text-center">
+<footer class="max-w-6xl mx-auto px-4 py-12 relative">
+  <!-- Main footer content in columns -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+    <!-- Column 1: Rough Notes -->
+    <div class="p-4 border-b md:border-b-0 md:border-r border-gray-200/30 dark:border-gray-800/30">
+      <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Rough Notes</h2>
+      <ul class="space-y-2">
+        {roughNotesPosts.map(post => (
+          <li>
+            <a href={`/${post.slug}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">
+              {post.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Column 2: Recent Book Notes -->
+    <div class="p-4 border-b md:border-b-0 md:border-r border-gray-200/30 dark:border-gray-800/30">
+      <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Recent Book Notes</h2>
+      <ul class="space-y-2">
+        {books.slice(0, 8).map(book => (
+          <li>
+            <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">
+              {book.data.title}
+            </a>
+          </li>
+        ))}
+        <li class="mt-4">
+          <a href="/books" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
+            View all book notes →
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Recent essays -->
+    <div class="p-4">
+      <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Recent essays</h2>
+      <ul class="space-y-2">
+        {recentPosts.map(post => (
+          <li>
+            <a href={`/${post.slug}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">
+              {post.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom footer section with stats and links -->
   <div class="border-t border-gray-200/30 dark:border-gray-800/30 pt-8">
     <div class="text-sm text-gray-500 dark:text-gray-400 space-y-4">
-      <div class="mb-4">
-        <p class="mb-4">
-          This digital garden contains 
-          <a href="/posts" class="hover:text-gray-700 dark:hover:text-gray-300 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
-          <a href="/tags/projects" class="hover:text-gray-700 dark:hover:text-gray-300 underline underline-offset-4 decoration-[0.1em]">{projects.length} projects</a>, 
-          <a href="/tag/curiosities" class="hover:text-gray-700 dark:hover:text-gray-300 underline underline-offset-4 decoration-[0.1em]">{posts.filter(post => post.data.tags?.includes('curiosities')).length} prototypes</a>, 
-          <a href="/tags/books" class="hover:text-gray-700 dark:hover:text-gray-300 underline underline-offset-4 decoration-[0.1em]">{books.length} book reviews</a> 
-          and {formatNumber(totalWords)} words.
+      <!-- Site statistics -->
+      <div class="mb-6 max-w-3xl mx-auto">
+        <p class="mb-4 text-center font-medium text-gray-700 dark:text-gray-300">
+          This digital garden contains {formatNumber(totalWords)} words in total, spread across:
         </p>
-        
-
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
+            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{posts.length}</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">
+              <a href="/posts" class="hover:text-gray-700 dark:hover:text-gray-300">essays and concepts</a>
+            </div>
+          </div>
+          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
+            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{projects.length}</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">
+              <a href="/tags/projects" class="hover:text-gray-700 dark:hover:text-gray-300">work related case studies</a>
+            </div>
+          </div>
+          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
+            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{posts.filter(post => post.data.tags?.includes('curiosities')).length}</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">
+              <a href="/tags/curiosities" class="hover:text-gray-700 dark:hover:text-gray-300">experiments</a>
+            </div>
+          </div>
+          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
+            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{books.length}</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">
+              <a href="/tags/books" class="hover:text-gray-700 dark:hover:text-gray-300">book reviews</a>
+            </div>
+          </div>
+        </div>
       </div>
+      
       <div class="flex items-center justify-center my-6">
         <div class="w-full max-w-xs mx-auto border-t border-gray-200/30 dark:border-gray-800/30 border-[1px]"></div>
       </div>
-      <div>
-        <a href="https://twitter.com/shreyasprakash" class="hover:text-gray-700 dark:hover:text-gray-300 mx-4">Twitter</a>
-        <a href="https://linkedin.com/in/shreyasprakash" class="hover:text-gray-700 dark:hover:text-gray-300 mx-4">LinkedIn</a>
-        <a href="https://youtube.com/@shreyasprakash" class="hover:text-gray-700 dark:hover:text-gray-300 mx-4">YouTube</a>
-        </div>
-          <p class="mb-4 max-w-3xl">
-            This website is built in a way the internet was meant to be. This means a simple, content-first website, sharing thoughts and knowledge for free.
-          </p>
+      
+      <div class="text-center">
+        <a href="https://twitter.com/shreyasprakash" class="hover:text-gray-700 dark:hover:text-gray-300 mx-4 underline underline-offset-4 decoration-[0.1em]">Twitter</a>
+        <a href="https://linkedin.com/in/shreyasprakash" class="hover:text-gray-700 dark:hover:text-gray-300 mx-4 underline underline-offset-4 decoration-[0.1em]">LinkedIn</a>
+        <a href="https://youtube.com/@shreyasprakash" class="hover:text-gray-700 dark:hover:text-gray-300 mx-4 underline underline-offset-4 decoration-[0.1em]">YouTube</a>
+      </div>
+      
+      <p class="mb-4 max-w-3xl mx-auto text-center">
+        This website is built in a way the internet was meant to be. This means a simple, content-first website, sharing thoughts and knowledge for free.
+      </p>
+      
+      <div class="mt-8 text-center">
+        <p>©{currentYear} Shreyas Prakash</p>
+      </div>
     </div>
+  </div>
+  
+  <!-- Back to top button -->
+  <div class="flex justify-center">
+    <a href="#top" class="inline-block mt-6 mb-4 border border-gray-200/50 dark:border-gray-700/50 rounded-full p-2 hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </a>
   </div>
 </footer>
 

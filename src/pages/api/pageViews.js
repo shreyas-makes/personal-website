@@ -3,7 +3,7 @@
 
 import { db } from '../../utils/database';
 
-export async function post({ request }) {
+export async function POST({ request }) {
   try {
     const { slug } = await request.json();
     
