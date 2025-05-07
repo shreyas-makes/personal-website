@@ -23,10 +23,6 @@ My world view has also changed after reading Nassim Taleb's Fooled by Randomness
 
 Most of the non-deterministic random events can be classified as either a thin-tail, or a fat-tailed in nature. 
 
-![[Pasted image 20250425133800.png]]
-
-Source: **Shaw Talebi, Medium**
-
 If we take the example of the average height of human population, it's a thin-tailed event, especially since there is a strict upper bound (ceiling) to what the tallest person could be. There are also no complex interdynamic feedback loops that reinforce each other, and therefore, it's possible to estimate with certain confidence, what the "average height" could be. It can certainly (NEVER) be the equivalent of Burj Khalifa no matter what edge case we might consider for modelling this distribution.
 
 Mandelbrot builds on this idea, and explains that most natural phenomena dont follow such normalised thin-tail gaussian distributions. Instead, they exhibit more "wild randomness". Mandelbrot's early work was on cotton price fluctuations, and how he demonstrated this to be incongruous with the Gaussian models.
