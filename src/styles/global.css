@@ -96,7 +96,7 @@ video {
 
 /* Add paragraph spacing */
 .prose p {
-  margin-bottom: 1.75em; /* Increased from default */
+  margin-bottom: 2.5em; /* Increased from 1.75em for more spacing between paragraphs */
 }
 
 /* Dark mode prose styles */
@@ -208,6 +208,10 @@ video {
   .prose {
     font-size: 16px;
     line-height: 24px;
+  }
+  
+  .prose p {
+    margin-bottom: 2.5em; /* Maintain consistent spacing on mobile */
   }
   
   .prose table {

@@ -59,7 +59,7 @@ const currentYear = new Date().getFullYear();
 
 <footer class="max-w-6xl mx-auto px-4 py-12 relative">
   <!-- Main footer content in columns -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 hidden md:grid">
     <!-- Column 1: Rough Notes -->
     <div class="p-4 border-b md:border-b-0 md:border-r border-gray-200/30 dark:border-gray-800/30">
       <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Recent concepts</h2>
@@ -109,7 +109,7 @@ const currentYear = new Date().getFullYear();
     <div class="text-sm text-gray-500 dark:text-gray-400 space-y-4">
       <!-- Site statistics -->
       <div class="mb-6 max-w-3xl mx-auto">
-        <p class="mb-4 text-center text-gray-700 dark:text-gray-300">
+        <p class="mb-4 text-center">
           This digital garden contains {formatNumber(totalWords)} words in total, spread across
           <a href="/posts" class="font-medium hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
           <a href="/tags/projects" class="font-medium hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">{projects.length} work related case studies</a>, 
@@ -119,7 +119,7 @@ const currentYear = new Date().getFullYear();
       </div>
       
       <div class="flex items-center justify-center my-6">
-        <div class="w-full max-w-xs mx-auto border-t border-gray-200/30 dark:border-gray-800/30 border-[1px]"></div>
+        <div class="w-full max-w-xs mx-auto"></div>
       </div>
       
       <div class="text-center">

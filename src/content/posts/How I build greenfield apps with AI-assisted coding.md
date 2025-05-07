@@ -12,10 +12,7 @@ Building apps with AI-assisted coding can be quite tricky if you start with a bl
 
 Any app is only as good as our ability to carefully prompt them. This could make or break the vibe-coded app. I first came across [Harper Reed's blog](https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/) talking about his own LLM-aided coding workflow, I felt like sharing something similar based on what I've learnt. Harper goes through a lot more LLM assistants, but my advice here is specific to Cursor IDE:
 
-## Prepping the boilerplate
-
 To ease things up, and to not write all the code completely, I use the [speedrails open-source rails boilerplate](https://github.com/ryanckulp/speedrail) to build my SaaS app on top of this. It provides strong conventions for a production-ready Rails 8 app. This is TBH the only Rails boilerplate you would need to get started with most of the use cases.
-## Idea Honing
 
 This is where you have a natural conversation with the latest reasoning model to think the whole design of the app with you. You want the chat assistant to find gaps, poke holes, ask carefully considered questions which you might have not considered. 
 
@@ -56,8 +53,6 @@ I also exhaust my Perplexity Deep research credits to make an extensive whitepap
 I then carefully examine the tech architecture defaults, and prefer to pick the ones which are LLM-friendly (for instance, as of 9 Mar, 2025, Rails 7.2 is more LLM-friendly than Rails 8.1).
 
 Once I'm confident with the `specs.md` file, I move on to the next stage.
-
-## Planning
 
 I prefer to test the specs at each stage of development, and to ensure that the tests pass as planned. Especially when non-coders (such as myself), have no idea if what's running is actually working or not, this is a great litmus test to progressively expand the scope of the app.
 
