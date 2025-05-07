@@ -17,7 +17,7 @@ const recentPosts = [...posts]
     !post.data.tags?.includes('curiosities')
   )
   .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-  .slice(0, 10);
+  .slice(0, 12);
 
 // Get rough notes posts
 const roughNotesPosts = [...posts]
@@ -62,7 +62,7 @@ const currentYear = new Date().getFullYear();
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
     <!-- Column 1: Rough Notes -->
     <div class="p-4 border-b md:border-b-0 md:border-r border-gray-200/30 dark:border-gray-800/30">
-      <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Rough Notes</h2>
+      <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Recent concepts</h2>
       <ul class="space-y-2">
         {roughNotesPosts.map(post => (
           <li>
@@ -76,20 +76,16 @@ const currentYear = new Date().getFullYear();
 
     <!-- Column 2: Recent Book Notes -->
     <div class="p-4 border-b md:border-b-0 md:border-r border-gray-200/30 dark:border-gray-800/30">
-      <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Recent Book Notes</h2>
+      <h2 class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">Recent book notes</h2>
       <ul class="space-y-2">
-        {books.slice(0, 8).map(book => (
+        {books.slice(0, 12).map(book => (
           <li>
             <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">
               {book.data.title}
             </a>
           </li>
         ))}
-        <li class="mt-4">
-          <a href="/books" class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
-            View all book notes →
-          </a>
-        </li>
+      
       </ul>
     </div>
 
@@ -113,35 +109,13 @@ const currentYear = new Date().getFullYear();
     <div class="text-sm text-gray-500 dark:text-gray-400 space-y-4">
       <!-- Site statistics -->
       <div class="mb-6 max-w-3xl mx-auto">
-        <p class="mb-4 text-center font-medium text-gray-700 dark:text-gray-300">
-          This digital garden contains {formatNumber(totalWords)} words in total, spread across:
+        <p class="mb-4 text-center text-gray-700 dark:text-gray-300">
+          This digital garden contains {formatNumber(totalWords)} words in total, spread across
+          <a href="/posts" class="font-medium hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
+          <a href="/tags/projects" class="font-medium hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">{projects.length} work related case studies</a>, 
+          <a href="/tags/curiosities" class="font-medium hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">{posts.filter(post => post.data.tags?.includes('curiosities')).length} experiments</a>, and
+          <a href="/tags/books" class="font-medium hover:text-gray-800 dark:hover:text-gray-200 underline underline-offset-4 decoration-[0.1em]">{books.length} book reviews</a>.
         </p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
-          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
-            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{posts.length}</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">
-              <a href="/posts" class="hover:text-gray-700 dark:hover:text-gray-300">essays and concepts</a>
-            </div>
-          </div>
-          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
-            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{projects.length}</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">
-              <a href="/tags/projects" class="hover:text-gray-700 dark:hover:text-gray-300">work related case studies</a>
-            </div>
-          </div>
-          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
-            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{posts.filter(post => post.data.tags?.includes('curiosities')).length}</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">
-              <a href="/tags/curiosities" class="hover:text-gray-700 dark:hover:text-gray-300">experiments</a>
-            </div>
-          </div>
-          <div class="text-center p-3 border border-gray-200/50 dark:border-gray-700/50 rounded-lg">
-            <div class="font-medium text-lg text-gray-800 dark:text-gray-200">{books.length}</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">
-              <a href="/tags/books" class="hover:text-gray-700 dark:hover:text-gray-300">book reviews</a>
-            </div>
-          </div>
-        </div>
       </div>
       
       <div class="flex items-center justify-center my-6">
