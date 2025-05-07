@@ -48,7 +48,16 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            // Typography styles from the newspaper theme...
+            // Disable default table styles from @tailwindcss/typography
+            // These will be replaced by our custom styles in global.css
+            table: false,
+            thead: false,
+            'thead th': false,
+            'tbody tr': false,
+            'tbody td': false,
+            'tbody tr:last-child': false,
+            'tbody tr:nth-child(odd)': false,
+            'tbody tr:nth-child(even)': false
           }
         },
         newspaper: {

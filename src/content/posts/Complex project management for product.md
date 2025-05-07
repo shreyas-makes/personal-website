@@ -28,7 +28,7 @@ I'll share a few examples from crisis projects, non-profits, startups, and large
     
 - Track inter-team work in a shared Jira/Linear board or equivalent. Don’t rely on memory or goodwill.
 
-- Visually demarcate meetings into high, neutral and low leverage with colors such as green, amber and red. ([Read more about this essay on this approach]([[Task management for product managers]]))
+- Visually demarcate meetings into high, neutral and low leverage with colors such as green, amber and red. 
     
 - Conduct quarterly strategy syncs with senior stakeholders. These aren’t status updates—they’re about resetting shared context, confirming priorities, and preempting surprises.
     

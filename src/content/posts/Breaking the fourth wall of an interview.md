@@ -1,19 +1,16 @@
 ---
 title: Breaking the fourth wall of an interview
 date: 2024-05-15T12:56:00.000Z
-slug: the-interview-hackers
+slug: breaking-the-fourth-wall-interview
 tags:
   - interviewing
   - rough-notes
   - product
 stage: seedling
 ---
-
-****Intended audience:**** For leaders interviewing candidates for product or other tech leadership roles
-
 A group of men eating ice cream during peak London summer started drowning in large numbers.
 
-As there was a huge number of men eating ice cream who drowned, it was concluded that eating ice cream led to drowning 🤷🏼‍♀️
+As there was a huge number of men eating ice cream who drowned, it was concluded that eating ice cream led to drowning.
 
 This did sound absurd to the researchers investigating this curious case of the missing link between ice cream and men drowning. However, upon closer investigation, it became evident that this was a classic case of a **confounding variable** at play. The actual factor influencing both the increased ice cream consumption and the rise in drowning incidents was the hot summer weather.
 

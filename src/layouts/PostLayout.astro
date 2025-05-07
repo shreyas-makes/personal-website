@@ -142,7 +142,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     
     {/* Updated Title and Metadata Section - Restructured */}
     <div class="mb-6 sm:mb-2"> {/* Container for all header elements */}
-      <h1 class="text-2xl sm:text-3xl md:text-4xl font-normal text-gray-900 dark:text-gray-100 mb-3 sm:mb-2 leading-tight">
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-normal text-gray-900 dark:text-gray-100 mb-5 sm:mb-4 leading-relaxed">
         {post.data.title}
       </h1>
 
@@ -177,6 +177,11 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     
     <div class="mt-2 prose prose-neutral dark:prose-invert max-w-none">
       <slot />
+    </div>
+    
+    <!-- Post End Divider -->
+    <div class="my-12 flex justify-center" aria-hidden="true">
+      <img src="/images/page-divider.png" alt="" class="h-8 w-auto opacity-70 dark:opacity-60" />
     </div>
   </article>
 
@@ -245,6 +250,13 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     word-wrap: break-word;
   }
   
+  :global(.prose h1) {
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    line-height: 1.5;
+  }
+  
   :global(.prose h2) {
     font-size: 1.3em;
     margin-top: 1.75em;
@@ -261,6 +273,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     color: var(--text);
     overflow-wrap: break-word;
     word-wrap: break-word;
+    margin-bottom: 1.75em;
   }
 
   :global(.prose blockquote) {
@@ -351,15 +364,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     box-sizing: border-box;
   }
 
-  /* Ensure tables don't overflow */
-  :global(.prose table) {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    box-sizing: border-box;
-  }
+  /* Table styles are now in global.css */
 
   /* Add responsive styles for related posts section */
   @media (max-width: 640px) {
@@ -374,7 +379,14 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     }
     
     :global(.prose p) {
-      margin-bottom: 1.25em;
+      margin-bottom: 1.75em; /* Keep the same spacing on mobile */
+    }
+    
+    :global(.prose h1) {
+      font-size: 1.3em;
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      line-height: 1.4;
     }
     
     :global(.prose h2) {
