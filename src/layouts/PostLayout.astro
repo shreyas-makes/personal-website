@@ -295,11 +295,18 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     margin-bottom: 0.75em;
   }
   
-  :global(.prose p, .prose li) {
+  :global(.prose p) {
     color: var(--text);
     overflow-wrap: break-word;
     word-wrap: break-word;
     margin-bottom: 2.5em;
+  }
+
+  :global(.prose li) {
+    color: var(--text);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-bottom: 0.5em;
   }
 
   :global(.prose blockquote) {
@@ -406,6 +413,10 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     
     :global(.prose p) {
       margin-bottom: 2.5em; /* Keep the same increased spacing on mobile */
+    }
+    
+    :global(.prose li) {
+      margin-bottom: 0.5em; /* Keep the reduced spacing for list items on mobile */
     }
     
     :global(.prose h1) {
