@@ -18,6 +18,16 @@ const { post } = Astro.props;
 const readingTime = calculateReadingTime(post.body);
 const formattedDate = formatDate(post.data.date);
 
+// Function to get the GitHub edit URL for the post
+const getGitHubEditUrl = (post: CollectionEntry<'posts'>) => {
+  // Use post.data.title if available (assuming title matches filename), otherwise use post.id
+  const filename = post.data.title ? 
+    `${post.data.title}.md` : 
+    `${post.id}.md`;
+  
+  return `https://github.com/shreyas-makes/astro-blog-ghost/edit/main/src/content/posts/${encodeURIComponent(filename)}`;
+};
+
 // Track page view for this post
 if (Astro.request.method === 'GET') {
   // Only track views on actual page loads, not during SSR
@@ -184,6 +194,22 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
       <img src="/images/page-divider.png" alt="" class="h-8 w-auto opacity-70 dark:opacity-60" />
     </div>
   </article>
+  <!-- GitHub Pull Request Byline -->
+  <div class="max-w-4xl mx-auto px-5 sm:px-6 mb-12 text-center">
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50 dark:bg-gray-900">
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Found a typo or want to suggest changes? 
+        <a 
+          href={getGitHubEditUrl(post)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+        >
+         Send a PR on GitHub
+        </a>
+      </p>
+    </div>
+  </div>
 
   <!-- Newsletter Form -->
   <NewsletterFormWithHeaders />
