@@ -5,9 +5,7 @@ slug: "idea-in-the-shower-testing-before-breakfast"
 tags: [software, ai, rough-notes]
 stage: "sprout"
 ---
-Imagine having an idea in the shower and testing it before breakfast? It's highly plausible now as AI lets you **prototype at the speed of thought**.
-
-Currently, I use Claude Projects and Cursor to build what I call **disposable apps** - quick prototypes that prove a point (read more in [this essay about vibe coding]([[Vibe coding]])). The magic? No sunk costs. I can write 5,000 lines of code in ten minutes, test it, and throw it away if it doesn't work. This freedom to experiment has transformed how I solve problems.
+Imagine having an idea in the shower and testing it before breakfast? It's highly plausible now as AI lets you prototype at the speed of thought. Currently, I use Claude Projects and Cursor to build what I call disposable apps: quick prototypes that prove a point (read more in [this essay about vibe coding]([[Vibe coding]])). The magic? No sunk costs. I can write 5,000 lines of code in ten minutes, test it, and throw it away if it doesn't work. This freedom to experiment has transformed how I solve problems.
 
 Sharing the AI tools I'm currently using (dated 11 Jan, 2025). I have to 'explicitly' mention the timestamp as everything, everywhere might change soon, and that's a big caveat before I share this:
 

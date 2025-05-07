@@ -68,7 +68,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
 ---
 
 <BaseLayout title={`${post.data.title} | Shreyas`}>
-  <article class="max-w-5xl mx-auto px-5 sm:px-6 py-6">
+  <article class="max-w-4xl mx-auto px-5 sm:px-6 py-6">
     {post.data.image && (
       <Image
         src={post.data.image}
@@ -114,7 +114,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   <NewsletterFormWithHeaders />
 
   <!-- Related Posts Section -->
-  <section class="max-w-5xl mx-auto px-5 sm:px-6 mb-12">
+  <section class="max-w-4xl mx-auto px-5 sm:px-6 mb-12">
     <h2 class="text-xl sm:text-xl font-normal text-gray-800 dark:text-gray-300 mb-8">Here are some other posts you might enjoy</h2>
     <div class="space-y-8">
       {relatedPosts.map((relatedPost) => {
@@ -329,7 +329,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     }
     
     /* Adjust article padding on mobile */
-    article.max-w-5xl {
+    article.max-w-4xl {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
     }

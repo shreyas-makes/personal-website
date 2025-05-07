@@ -8,11 +8,9 @@ stage: "plant"
 
 Intended Audience—Indie no-code developers, digital marketers and other non-tech professionals working in tech
 
-I made a resolution for 2024 to learn [Ruby on Rails](https://rubyonrails.org/), a controversial web development framework famous for maximising developer productivity. In the business of building and growing products, I wanted to be a self-taught developer
+I made a resolution for 2024 to learn Ruby on Rails, a controversial web development framework famous for maximising developer productivity. In the business of building and growing products, I wanted to be a self-taught developer
 
 ![](/images/2024/02/Untitled_Artwork-6-3.jpg)
-
-Sketch inspired by [Henrik Kniberg](https://www.google.com/search?q=henrik+kniberg&sca_esv=d25cc1ac68398341&source=hp&ei=nv3QZeXBN8G5hbIPx5SLuA4&iflsig=ANes7DEAAAAAZdELrnf6n5ZQpYrcOxHUjAi0tkpMqRwc&gs_ssp=eJzj4tVP1zc0TDOyjE83yMkwYPTiy0jNK8rMVsjOy0xKLUoHAJDoCeY&oq=henrik+kniberg&gs_lp=Egdnd3Mtd2l6Ig5oZW5yaWsga25pYmVyZyoCCAAyBRAuGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESMsSUABYnQ1wAHgAkAEAmAFqoAGiCKoBBDEzLjG4AQHIAQD4AQHCAgsQABiABBixAxiDAcICDhAuGMcBGLEDGNEDGIAEwgIREC4YgAQYsQMYgwEYxwEY0QPCAg4QLhiABBiKBRixAxiDAcICDhAuGIAEGLEDGMcBGNEDwgIOEAAYgAQYigUYsQMYgwHCAhQQLhiABBixAxiDARjHARivARiOBcICCxAuGIAEGLEDGIMBwgIIEAAYgAQYsQPCAgsQLhiDARixAxiABMICCBAuGIAEGLEDwgIOEC4YgAQYsQMYgwEY1ALCAhQQLhiABBjHARivARiYBRiZBRiOBcICCBAuGLEDGIAEwgIHEAAYgAQYCg&sclient=gws-wiz)'s presentation on cursor.sh
 
 The goal behind my trite, cliched new-year resolution was to get to a point where I could build apps in a weekend. I have been day-dreaming about a state where—I get a shower-thought, I write code, and in 2-3 hours, I have a production-grade software that’s ready to roll. An end goal of shower-thought driven software engineering was my final objective.
 

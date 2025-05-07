@@ -53,7 +53,7 @@ a:hover {
 
 /* Feed page specific styles */
 .feed-container {
-  max-width: 64rem; /* Equivalent to max-w-5xl */
+  max-width: 56rem; /* Equivalent to max-w-4xl */
   width: 100%;
   margin-left: auto;
   margin-right: auto;

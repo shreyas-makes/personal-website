@@ -57,14 +57,14 @@ const formatDate = (date: string) => {
 ---
 
 <BaseLayout title="Books | Shreyas Prakash">
-  <main class="max-w-5xl mx-auto px-4 py-8">
+  <main class="max-w-4xl mx-auto px-4 py-8">
     <div class="relative w-full overflow-hidden mb-16">
       <Books books={resolvedBooks} client:visible />
     </div>
 
     <div class="space-y-12">
       {resolvedBooks.map((book) => (
-        <div class="book-container max-w-5xl mx-auto">
+        <div class="book-container max-w-4xl mx-auto">
           <div class="book-cover">
             <img
               src={book.cover || '/images/placeholder-book-cover.jpg'}
