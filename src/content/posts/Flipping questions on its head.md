@@ -1,5 +1,5 @@
 ---
-title: Non leading leading questions
+title: Flipping questions on its head
 date: 2025-05-02
 slug: non-leading-leading-questions
 tags:
