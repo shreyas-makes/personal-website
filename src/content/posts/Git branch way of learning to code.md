@@ -20,17 +20,13 @@ The problem with AI coding is that it's non-deterministic; you might not know wh
 
 Sometimes it works, and sometimes it doesn’t, making it hard to predict when it breaks. As a learner, I wanted to figure out the strengths of both traditional coding and AI-assisted coding. Right now, everyone is excited about AI-assisted coding, but as a learner, I have a hunch that it won’t serve all our needs which made me explore both.
 
-### Learning Loop 1
-In my first attempt, I started watching building videos passively, similar to watching TV. It was very passive, and I forgot most of what I listened to. I had to rewatch various videos again and again, but it never stuck with me.
+Learning Loop 1 — In my first attempt, I started watching building videos passively, similar to watching TV. It was very passive, and I forgot most of what I listened to. I had to rewatch various videos again and again, but it never stuck with me.
 
-### Learning Loop 2
-Realizing that coding videos are better learned by practicing directly, I started watching videos and then pausing them to try the concepts in my local environment. This worked fine for a while, until something broke. It was hard to rewind without using Git, and when I had a small gap in my learning and wanted to dive deep into the coding lectures, I didn’t quite know where to start.
+Learning Loop 2 — Realizing that coding videos are better learned by practicing directly, I started watching videos and then pausing them to try the concepts in my local environment. This worked fine for a while, until something broke. It was hard to rewind without using Git, and when I had a small gap in my learning and wanted to dive deep into the coding lectures, I didn’t quite know where to start.
 
-### Learning Loop 3
-Having learned the ability to do versioning with Git the hard way, I started making extensive Git commits based on what I changed while building the app. This allowed me to solve the cold start problem, especially when I had to start again after a long break. The Git commits helped me keep track of my progress.
+Learning Loop 3 — Having learned the ability to do versioning with Git the hard way, I started making extensive Git commits based on what I changed while building the app. This allowed me to solve the cold start problem, especially when I had to start again after a long break. The Git commits helped me keep track of my progress.
 
-### Learning Loop 4
-With the latest AI coding paradigms evolving, I wanted to incorporate both approaches into my learning practice. I did this by using two specific branch names in Git. This was the methodology I followed for Git versioning:
+Learning Loop 4 — With the latest AI coding paradigms evolving, I wanted to incorporate both approaches into my learning practice. I did this by using two specific branch names in Git. This was the methodology I followed for Git versioning:
 
 #### Workflow for Both Approaches
 1. **Create Separate Branches:**
