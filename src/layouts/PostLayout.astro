@@ -7,6 +7,7 @@ import { calculateReadingTime } from '../utils/readingTime';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import GrowthStage from '../components/GrowthStage.astro';
+import { incrementPageView, getPopularPosts } from '../utils/pageViews';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -16,17 +17,50 @@ const { post } = Astro.props;
 const readingTime = calculateReadingTime(post.body);
 const formattedDate = formatDate(post.data.date);
 
-// Get related posts
+// Track page view for this post
+if (Astro.request.method === 'GET') {
+  // Only track views on actual page loads, not during SSR
+  // This is a client-side operation that will be handled by the script below
+}
+
+// Get popular posts
 const allPosts = await getCollection('posts', ({ id, data }) => !data.draft);
-const relatedPosts = allPosts
-  .filter(p => 
-    p.id !== post.id && // Exclude current post
-    !p.data.tags?.includes('books') && // Exclude books
-    !p.data.tags?.includes('projects') && // Exclude projects
-    !['about', 'now', 'vibes'].includes(p.slug) // Exclude specific pages
-  )
-  .sort(() => Math.random() - 0.5) // Randomize order
-  .slice(0, 20); // Take 20 posts
+
+// Fallback to random posts if we can't get popular posts
+let popularPosts = [];
+try {
+  // Attempt to get popular posts from the API
+  popularPosts = await getPopularPosts(5);
+  
+  // If we don't have enough popular posts, supplement with random ones
+  if (popularPosts.length < 5) {
+    const randomPosts = allPosts
+      .filter(p => 
+        p.id !== post.id && // Exclude current post
+        !p.data.tags?.includes('books') && // Exclude books
+        !p.data.tags?.includes('projects') && // Exclude projects
+        !['about', 'now', 'vibes'].includes(p.slug) && // Exclude specific pages
+        !popularPosts.some(pp => pp.id === p.id) // Exclude posts already in popular list
+      )
+      .sort(() => Math.random() - 0.5) // Randomize order
+      .slice(0, 5 - popularPosts.length); // Take enough to reach 5 total
+    
+    popularPosts = [...popularPosts, ...randomPosts];
+  }
+} catch (error) {
+  console.error('Error fetching popular posts:', error);
+  
+  // Fallback to random posts
+  popularPosts = allPosts
+    .filter(p => 
+      p.id !== post.id && // Exclude current post
+      !p.data.tags?.includes('books') && // Exclude books
+      !p.data.tags?.includes('projects') && // Exclude projects
+      !['about', 'now', 'vibes'].includes(p.slug) // Exclude specific pages
+    )
+    .sort(() => Math.random() - 0.5) // Randomize order
+    .slice(0, 5); // Take 5 posts
+}
 
 // Add Prism.js copy button functionality
 const prismCopyButtonScript = `
@@ -60,6 +94,22 @@ const prismCopyButtonScript = `
         }
       });
     });
+    
+    // Track page view
+    try {
+      const slug = window.location.pathname.replace(/^\/posts\//, '').replace(/\/$/, '');
+      if (slug) {
+        fetch('/api/pageViews', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ slug }),
+        });
+      }
+    } catch (error) {
+      console.error('Error tracking page view:', error);
+    }
   });
 `;
 
@@ -113,27 +163,40 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   <!-- Newsletter Form -->
   <NewsletterFormWithHeaders />
 
-  <!-- Related Posts Section -->
+  <!-- Popular Posts Section -->
   <section class="max-w-4xl mx-auto px-5 sm:px-6 mb-12">
-    <h2 class="text-xl sm:text-xl font-normal text-gray-800 dark:text-gray-300 mb-8">Here are some other posts you might enjoy</h2>
+    <h2 class="text-xl sm:text-xl font-normal text-gray-800 dark:text-gray-300 mb-8">
+      Here are some popular posts you might like
+    </h2>
     <div class="space-y-8">
-      {relatedPosts.map((relatedPost) => {
+      {popularPosts.map((popularPost) => {
         // Get first three lines as excerpt
-        const lines = relatedPost.body.split('\n').slice(0,3);
+        const lines = popularPost.body.split('\n').slice(0,3);
         const excerpt = lines.join('\n') + '...';
         
         return (
           <div class="flex flex-col">
-            <a href={`/posts/${relatedPost.slug}`} 
+            <a href={`/posts/${popularPost.slug}`} 
                class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 text-base sm:text-lg font-normal underline underline-offset-4 decoration-1 mb-2">
-              {relatedPost.data.title}
+              {popularPost.data.title}
             </a>
             <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-3 line-clamp-2">
               {excerpt}
             </p>
-            <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
-              {relatedPost.data.tags && relatedPost.data.tags.length > 0 ? relatedPost.data.tags[0] : 'post'}
-            </span>
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
+                {popularPost.data.tags && popularPost.data.tags.length > 0 ? popularPost.data.tags[0] : 'post'}
+              </span>
+              {popularPost.views && (
+                <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  {popularPost.views}
+                </span>
+              )}
+            </div>
           </div>
         );
       })}

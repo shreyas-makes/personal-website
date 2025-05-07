@@ -39,5 +39,3 @@ npm install -g ascii-todo-cli
 
 Sometimes the best tools aren't the ones with the most features, but the ones that feel right to use. I quite like it.
 
-How do you use it?
-

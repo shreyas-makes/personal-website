@@ -6,7 +6,7 @@ tags: [writing, ai, rough-notes]
 stage: "seedling"
 ---
 
-While designing health campaigns for [Noora Health](app://obsidian.md/Noora%20Health)'s work in Indonesia and Bangladesh, I was overseeing the health communications strategy for pregnant and newly-delivered mothers. There were messages in a specific format that needed to be rewritten in a more easy to digest Whatsapp format appealing to the people of Bangladesh. My usual default response to such tasks would be to open a tab on ChatGPT and get to promptcrafting until I was able to achieve the best output.
+While designing health campaigns for Noora health's work in Indonesia and Bangladesh, I was overseeing the health communications strategy for pregnant and newly-delivered mothers. There were messages in a specific format that needed to be rewritten in a more easy to digest Whatsapp format appealing to the people of Bangladesh. My usual default response to such tasks would be to open a tab on ChatGPT and get to promptcrafting until I was able to achieve the best output.
 
 This was the prompt I'd used to do the same:
 
