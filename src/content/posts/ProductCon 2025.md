@@ -4,7 +4,6 @@ date: 2025-02-19
 slug: notes-from-productcon-2025
 tags:
   - llm
-  - prototyping
   - rough-notes
   - product
 stage: seedling

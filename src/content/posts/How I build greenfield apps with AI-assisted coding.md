@@ -6,7 +6,6 @@ tags:
   - ai-coding
   - llm
   - ruby-on-rails
-  - prototyping
 stage: plant
 ---
 Building apps with AI-assisted coding can be quite tricky if you start with a blank empty space. Previously I used to prompt the LLMs like a rookie by saying "fix this, add this, build this", and so on. And this is usually frowned upon in the developer circles, and it seems to be quite an irresponsible way to do AI-assisted programming. But "vibe coding" has so much more to offer to this world, in terms of speed and velocity, and it's important to not loose sight of the larger goal: to build the right things, and build things right. It's indeed a weird trajectory that programming has taken recently, and if this works out, why not embrace it?
