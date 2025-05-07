@@ -140,29 +140,33 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
       />
     )}
     
-    {/* Updated Title and Metadata Section */}
-    <div class="mb-8"> {/* Increased bottom margin for better separation */}
-      <h1 class="text-2xl sm:text-3xl md:text-4xl font-normal text-gray-900 dark:text-gray-100 mb-4 leading-tight"> {/* Responsive title size, respected font-normal */}
+    {/* Updated Title and Metadata Section - Restructured */}
+    <div class="mb-6 sm:mb-2"> {/* Container for all header elements */}
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-normal text-gray-900 dark:text-gray-100 mb-3 sm:mb-2 leading-tight">
         {post.data.title}
       </h1>
 
-      <div class="mb-2"> {/* Adjusted margin for GrowthStage, slightly more than mb-0 for breathing room */}
-        {/* Ensure stage is being passed correctly */}
+      {/* Growth Stage - Separate placement */}
+      <div class="mb-2">
         <GrowthStage stage={post.data.stage || 'seedling'} />
       </div>
       
-      <div class="flex flex-col space-y-1 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-3 text-sm text-gray-600 dark:text-gray-400 font-['Verdana',_Geneva,_sans-serif]"> {/* Stacked on mobile, row on sm+ */}
+      {/* All metadata in one structured line */}
+      <div class="flex flex-wrap items-center gap-x-2 text-sm text-gray-600 dark:text-gray-400 font-['Verdana',_Geneva,_sans-serif]">
+        {/* Tag if available */}
         {post.data.tags && post.data.tags.length > 0 && (
-          <a 
-            href={`/tags/${post.data.tags[0]}`} 
-            class="hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
-          >
-            #{post.data.tags[0]} {/* Added '#' for tag visual */}
-          </a>
+          <>
+            <a 
+              href={`/tags/${post.data.tags[0]}`} 
+              class="hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
+            >
+              #{post.data.tags[0]}
+            </a>
+            <span class="text-gray-400 dark:text-gray-600">&bull;</span>
+          </>
         )}
-        {post.data.tags && post.data.tags.length > 0 && <span class="hidden sm:inline text-gray-400 dark:text-gray-600">&bull;</span>} {/* Separator hidden on mobile */}
         <span>{readingTime}</span>
-        <span class="hidden sm:inline text-gray-400 dark:text-gray-600">&bull;</span> {/* Separator hidden on mobile */}
+        <span class="text-gray-400 dark:text-gray-600">&bull;</span>
         <span>{formattedDate}</span>
       </div>
     </div>
