@@ -52,7 +52,18 @@ const posts = await getCollection('posts').then(allPosts => {
       if (tags.includes('rough-notes')) acc.roughNotes.push({...post, readingTime, excerpt});
       else if (tags.includes('projects')) acc.projects.push({...post, readingTime, excerpt});
       else if (tags.includes('books')) acc.books.push({...post, readingTime, excerpt});
-      else if (tags.includes('curiosities')) acc.prototypes.push({...post, readingTime, excerpt});
+      else if (tags.includes('curiosities')) {
+        // Ensure URL is explicitly included
+        acc.prototypes.push({
+          ...post, 
+          readingTime, 
+          excerpt,
+          data: {
+            ...post.data,
+            url: post.data.url || null
+          }
+        });
+      }
       else acc.regular.push({...post, readingTime, excerpt});
     }
 
@@ -114,9 +125,9 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
   <ViewTransitions client:only />
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
     <section class="mt-2 mb-12 max-w-4xl">
-      <div class="prose prose-neutral dark:prose-invert max-w-none text-sm"> <!-- Further reduced font size -->
+      <div class="prose prose-neutral dark:prose-invert max-w-none text-[8px]"> <!-- Reduced font size to 10px -->
         <p>I'm a product manager, infovore and a hobbyist design engineer. </p>
-        <p>I like creating things—essays, websites, scripts, apps and startups. Anything which is positive sum, and impactful. </p>
+        <p>I like creating things—essays, websites, scripts, products, tiny-apps and startups. Anything which is positive sum, and impactful. </p>
 
         <p>Writing is thinking. It's something I deeply enjoy. 10 years from now, or a 100, It might probably outlive me. This is an attempt at that posterity. I write about what I'm building, what I'm learning, and the ideas I'm exploring. </p>
 
@@ -137,10 +148,65 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       </div>
 
    
-    {/* Add visual separator */}
+    <!-- Add visual separator -->
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
     
-    <!-- Latest section -->
+       <!-- Prototypes Section -->
+    {posts.prototypes.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-baseline justify-between mb-8">
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Here is what I've shipped recently</h2>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <span>{posts.prototypes.length} experiments</span>
+            {posts.prototypes.length > 20 && (
+              <>
+                <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
+                <a href="/tags/curiosities" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                  Read curiosities →
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+        <ul class="space-y-3 sm:space-y-4">
+          {posts.prototypes.map((post) => {
+            console.log(`Post ${post.data.title} URL:`, post.data.url);
+            return (
+            <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-6 mb-8 sm:mb-6">
+              <div class="min-w-0">
+                <a href={`/posts/${post.slug}`} 
+                   class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
+                  <span class="block text-lg sm:text-xl">
+                    {post.data.title}
+                  </span>
+                </a>
+                <span class="text-gray-500 dark:text-gray-400 text-sm">
+                  {post.data.description}
+                </span>
+              </div>
+              {post.data.url && (
+                <a href={post.data.url} target="_blank" rel="noopener noreferrer" class="text-xs text-blue-500 dark:text-blue-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap hover:text-blue-700 dark:hover:text-blue-300 underline underline-offset-2">
+                  ↗ GitHub
+                </a>
+              )}
+              {!post.data.url && post.data.tags && post.data.tags.length > 0 && (
+                <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
+                  {post.data.tags.find(tag => tag !== 'curiosities')}
+                </span>
+              )}
+            </li>
+            );
+          })}
+        </ul>
+      </section>
+    )}
+
+
+
+    <!-- Add visual separator -->
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+
+        <!-- Latest section -->
     <section class="mb-16">
       <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-3 sm:mb-8">Recently published</h2>
       <div class="space-y-4 sm:space-y-12">
@@ -162,52 +228,8 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       </div>
     </section>
 
-    {/* Add visual separator */}
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
 
-    <!-- Prototypes Section -->
-    {posts.prototypes.length > 0 && (
-      <section class="mb-16">
-        <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Experiments</h2>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <span>{posts.prototypes.length} posts</span>
-            {posts.prototypes.length > 20 && (
-              <>
-                <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
-                <a href="/tags/curiosities" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
-                  Read curiosities →
-                </a>
-              </>
-            )}
-          </div>
-        </div>
-        <ul class="space-y-3 sm:space-y-4">
-          {posts.prototypes.map((post) => (
-            <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-6 mb-8 sm:mb-6">
-              <div class="min-w-0">
-                <a href={`/posts/${post.slug}`} 
-                   class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
-                  <span class="block text-lg sm:text-xl">
-                    {post.data.title}
-                  </span>
-                </a>
-                <span class="text-gray-500 dark:text-gray-400 text-sm">
-                  {calculateReadingTime(post.body)} — {formatDate(post.data.date)}
-                </span>
-              </div>
-              {post.data.tags && post.data.tags.length > 0 && (
-                <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
-                  {post.data.tags.find(tag => tag !== 'curiosities')}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    {/* Add visual separator */}
+    <!-- Add visual separator -->
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
 
     <section class="mt-12">
@@ -252,7 +274,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       </ul>
     </section>
 
-    {/* Add visual separator before rough notes */}
+    <!-- Add visual separator before rough notes -->
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
 
      <!-- Rough Notes Section -->

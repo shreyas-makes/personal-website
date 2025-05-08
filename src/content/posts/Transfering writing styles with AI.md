@@ -5,7 +5,7 @@ slug: style-transfer
 tags:
   - llm
   - ai-coding
-  - curiosities
+  - rough-notes
 stage: seedling
 ---
 

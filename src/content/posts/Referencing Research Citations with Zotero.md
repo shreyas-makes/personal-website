@@ -1,7 +1,7 @@
 ---
-title: Referencing Research Citations with Zotero
+title: Copy, Paste and Cite
 date: 2025-02-14
-slug: raycast-plugin-zotero
+slug: copy-paste-and-cite
 tags:
   - llm
   - curiosities

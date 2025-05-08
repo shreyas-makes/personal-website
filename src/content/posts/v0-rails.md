@@ -5,8 +5,9 @@ slug: v0-rails
 tags:
   - rails
   - react
-  - curiosities
+  - rough-notes
 stage: seedling
+description: A simple utility to convert v0.dev React components to Rails ViewComponents
 ---
 One of the delights of building solo projects with Ruby on Rails is the framework's thoughtfully chosen defaults. These carefully selected conventions allow developers to focus more on modeling business logic and core value propositions rather than evaluating endless package options. While exploring development across both Rails and JavaScript ecosystems, it's become apparent how much time in JavaScript development can be consumed by dependency selection and configuration—a process that often feels at odds with the creative joy that drew many of us to programming in the first place.
 

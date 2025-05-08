@@ -125,6 +125,7 @@ console.log("Sorted posts titles:", sortedPosts.map(p => p.data.title));
 // Determine if this is the projects tag
 const isProjectsTag = tag === 'projects';
 const isRoughNotesTag = tag === 'rough-notes';
+const isCuriositiesTag = tag === 'curiosities';
 ---
 
 <BaseLayout title={`${formatTag(tag as string)} | Shreyas Prakash`}>
@@ -209,6 +210,38 @@ const isRoughNotesTag = tag === 'rough-notes';
                 <p class="text-gray-600 dark:text-gray-400 text-sm">
                   {summary}
                 </p>
+              </li>
+            );
+          })}
+        </ul>
+      ) : isCuriositiesTag ? (
+        <ul class="space-y-12">
+          {sortedPosts.map(post => {
+            const summary = getPostSummary(post);
+            const stageEmoji = getStageEmoji(post.data.stage);
+            
+            return (
+              <li class="group grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-6">
+                <div class="min-w-0">
+                  <a 
+                    href={`/posts/${post.slug}`} 
+                    class="text-xl font-normal text-gray-800 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700"
+                  >
+                    {post.data.title}
+                  </a>
+                  <div class="text-gray-600 dark:text-gray-400 text-sm mt-2">
+                    {post.data.description || summary}
+                  </div>
+                </div>
+                {post.data.url ? (
+                  <a href={post.data.url} target="_blank" rel="noopener noreferrer" class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight hover:text-gray-800 dark:hover:text-gray-200 sm:whitespace-nowrap">
+                    ↗ GitHub
+                  </a>
+                ) : post.data.tags && post.data.tags.length > 0 && post.data.tags.find(t => t !== 'curiosities') && (
+                  <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight sm:whitespace-nowrap">
+                    {post.data.tags.find(t => t !== 'curiosities')}
+                  </span>
+                )}
               </li>
             );
           })}
