@@ -9,7 +9,7 @@ stage: plant
 ---
 It took me a long time to realize that arguments we argue about — aren’t always about facts. They are about values. 
 
-Reading [Jonathan Haidt's _The Righteous Mind_](https://www.amazon.co.uk/Righteous-Mind-Divided-Politics-Religion/dp/0141039167) made this clearer that: **be it liberals or conservatives, or activists or traditionalists — they’re all wired with different moral priorities—care, fairness, loyalty, authority, sanctity**. 
+Reading Jonathan Haidt's The Righteous Mind made this clear, that: **be it liberals or conservatives, or activists or traditionalists — they’re all wired with different moral priorities—care, fairness, loyalty, authority, sanctity**. 
 
 They feel different things are sacred. What seems obviously right to one clan feels intuitively wrong to another.
 
