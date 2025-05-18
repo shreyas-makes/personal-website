@@ -2,7 +2,7 @@
 title: "How might we help children invent for social good?"
 date: "2024-06-16T15:29:06.000Z"
 slug: "dhive"
-tags: [social-design, rough-notes, projects]
+tags: [social-design, projects]
 stage: "plant"
 ---
 

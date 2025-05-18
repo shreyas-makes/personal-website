@@ -1,5 +1,5 @@
 ---
-title: "Preventing hospital acquired infections"
+title: "How might we prevent acquired infections in hospitals?"
 date: "2020-01-16T15:31:40.000Z"
 slug: "uvfy"
 tags: [health, digital-health, projects]

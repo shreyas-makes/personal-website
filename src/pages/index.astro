@@ -54,7 +54,7 @@ const posts = await getCollection('posts').then(allPosts => {
       else if (tags.includes('books')) acc.books.push({...post, readingTime, excerpt});
       else if (tags.includes('curiosities')) {
         // Ensure URL is explicitly included
-        acc.prototypes.push({
+        acc.curiosities.push({
           ...post, 
           readingTime, 
           excerpt,
@@ -81,7 +81,7 @@ const posts = await getCollection('posts').then(allPosts => {
     roughNotes: [],
     projects: [],
     books: [],
-    prototypes: [],
+    curiosities: [],
     tagCounts: {},
     totalWords: 0
   });
@@ -90,7 +90,7 @@ const posts = await getCollection('posts').then(allPosts => {
 // Sort posts once - ensure reverse chronological order
 posts.regular.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 posts.roughNotes.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-posts.prototypes.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+posts.curiosities.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
 // Get top tags, excluding 'rough-notes'
 const topTags = Object.entries(posts.tagCounts)
@@ -151,54 +151,41 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
     
        <!-- Prototypes Section -->
-    {posts.prototypes.length > 0 && (
-      <section class="mb-16">
-        <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Here is what I've shipped recently</h2>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <span>{posts.prototypes.length} experiments</span>
-            {posts.prototypes.length > 20 && (
-              <>
-                <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
-                <a href="/tags/curiosities" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
-                  Read curiosities →
+    
+
+    <section class="mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Work Experience Column -->
+        <div>
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-2">Product roles in the industry</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Work related initiatives across scientific publishing, healthcare, assistive-tech and edutech</p>
+          <ul class="space-y-3">
+            {posts.projects?.map((post) => (
+              <li>
+                <a href={`/posts/${post.slug}`} class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1">
+                  {post.data.title}
                 </a>
-              </>
-            )}
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul class="space-y-3 sm:space-y-4">
-          {posts.prototypes.map((post) => {
-            console.log(`Post ${post.data.title} URL:`, post.data.url);
-            return (
-            <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-6 mb-8 sm:mb-6">
-              <div class="min-w-0">
-                <a href={`/posts/${post.slug}`} 
-                   class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 min-w-0 underline underline-offset-4 decoration-1">
-                  <span class="block text-lg sm:text-xl">
-                    {post.data.title}
-                  </span>
+
+        <!-- Dialogue Engineering Column -->
+        <div>
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-2">Dialogue engineering</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Side quests experimenting with Gemini 2.5 Pro and Cursor IDE</p>
+          <ul class="space-y-3">
+            {posts.curiosities?.map((post) => (
+              <li>
+                <a href={`/posts/${post.slug}`} class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1">
+                  {post.data.title}
                 </a>
-                <span class="text-gray-500 dark:text-gray-400 text-sm">
-                  {post.data.description}
-                </span>
-              </div>
-              {post.data.url && (
-                <a href={post.data.url} target="_blank" rel="noopener noreferrer" class="text-xs text-blue-500 dark:text-blue-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap hover:text-blue-700 dark:hover:text-blue-300 underline underline-offset-2">
-                  ↗ GitHub
-                </a>
-              )}
-              {!post.data.url && post.data.tags && post.data.tags.length > 0 && (
-                <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight order-first sm:order-last sm:whitespace-nowrap">
-                  {post.data.tags.find(tag => tag !== 'curiosities')}
-                </span>
-              )}
-            </li>
-            );
-          })}
-        </ul>
-      </section>
-    )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
 
 
 
