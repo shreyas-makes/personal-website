@@ -8,6 +8,7 @@ tags:
   - ai
   - writing
   - curiosities
+  - curated
 stage: seedling
 description: An CLI script that ranks your markdown files based on how much editing they need.
 ---

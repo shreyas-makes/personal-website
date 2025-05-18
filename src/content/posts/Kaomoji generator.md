@@ -6,6 +6,7 @@ tags:
   - llm
   - software
   - curiosities
+  - curated
 stage: plant
 ---
 I've been working on a kaomoji generator. It's a simple tool that allows you to generate kaomojis for instant messaging.

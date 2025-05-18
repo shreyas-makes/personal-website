@@ -5,6 +5,7 @@ slug: copy-paste-and-cite
 tags:
   - llm
   - curiosities
+  - curated
 stage: seedling
 ---
 

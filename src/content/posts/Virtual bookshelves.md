@@ -5,6 +5,7 @@ slug: virtual-bookshelf
 tags:
   - aesthetics
   - curiosities
+  - curated
 stage: plant
 ---
 There's something special about the moment when a guest visits your home, browses your bookshelf, and discovers a book you both cherish. That spark of connection often leads to meandering conversations that weave through shared interests and unexpected topics. It's an experience that became harder to recreate after moving between continents and various work locations.
