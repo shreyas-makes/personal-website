@@ -32,47 +32,48 @@ const isHomepage = pathname === '/';
   html.dark #mobile-navigation a,
   html.dark #desktop-navigation a span,
   html.dark #mobile-navigation a span {
-    color: rgb(209, 213, 219) !important;
+    color: rgb(0, 0, 0) !important;
   }
   
   html.dark #desktop-navigation a:hover,
   html.dark #mobile-navigation a:hover,
   html.dark #desktop-navigation a:hover span,
   html.dark #mobile-navigation a:hover span {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(75, 85, 99) !important;
   }
   
   html.dark #desktop-navigation a.nav-item-active,
   html.dark #mobile-navigation a.mobile-nav-item-active,
   html.dark #desktop-navigation a.nav-item-active span,
   html.dark #mobile-navigation a.mobile-nav-item-active span {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
   }
   
   html.dark #desktop-navigation svg,
   html.dark #mobile-navigation svg {
-    color: rgb(209, 213, 219) !important;
-    stroke: rgb(209, 213, 219) !important;
+    color: rgb(0, 0, 0) !important;
+    stroke: rgb(0, 0, 0) !important;
   }
   
   html.dark #desktop-navigation a:hover svg,
   html.dark #mobile-navigation a:hover svg {
-    color: rgb(255, 255, 255) !important;
-    stroke: rgb(255, 255, 255) !important;
+    color: rgb(75, 85, 99) !important;
+    stroke: rgb(75, 85, 99) !important;
   }
   
   html.dark #desktop-navigation a.nav-item-active svg,
   html.dark #mobile-navigation a.mobile-nav-item-active svg {
-    color: rgb(255, 255, 255) !important;
-    stroke: rgb(255, 255, 255) !important;
+    color: rgb(0, 0, 0) !important;
+    stroke: rgb(0, 0, 0) !important;
   }
 </style>
 
-<header 
-  class="fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF]/100 dark:bg-[#161618] pb-4 border-b border-gray-200 dark:border-gray-800"
-  transition:persist="header"
-  transition:animate="none"
->
+  <header 
+    id="main-header"
+    class="fixed top-0 left-0 right-0 z-50 bg-gray-800 dark:bg-[#FFFFFF]/100 pb-4 border-b border-gray-600 dark:border-gray-200 transition-transform duration-300 ease-in-out -translate-y-full"
+    transition:persist="header"
+    transition:animate="none"
+  >
   <!-- Add preload hints for critical pages -->
   <link rel="preload" href="/" as="document" />
   <link rel="preload" href="/books" as="document" />
@@ -82,7 +83,7 @@ const isHomepage = pathname === '/';
     <!-- Desktop layout - unified header -->
     <div class="hidden md:flex md:items-center md:justify-between">
       <!-- Logo/Home link - left aligned -->
-      <a href="/" class="text-xl font-normal text-black dark:text-white" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
+      <a href="/" class="text-xl font-normal text-white dark:text-black hover:text-gray-300 dark:hover:text-gray-700" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
       
       <!-- Unified navigation - center -->
       <nav class="flex gap-6 text-sm" id="desktop-navigation">
@@ -181,7 +182,7 @@ const isHomepage = pathname === '/';
       <!-- Desktop utility icons - right aligned -->
       <div class="flex items-center gap-3">
         <SearchButton client:load />
-        <button id="theme-toggle-desktop" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+        <button id="theme-toggle-desktop" class="p-1 text-gray-400 hover:text-gray-200 dark:text-gray-500 dark:hover:text-gray-800">
           <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
           </svg>
@@ -189,7 +190,7 @@ const isHomepage = pathname === '/';
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
           </svg>
         </button>
-        <a href="/rss.xml" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+        <a href="/rss.xml" class="p-1 text-gray-400 hover:text-gray-200 dark:text-gray-500 dark:hover:text-gray-800">
           <span class="sr-only">RSS Feed</span>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
@@ -201,12 +202,12 @@ const isHomepage = pathname === '/';
     <!-- Mobile layout remains unchanged -->
     <div class="md:hidden flex justify-between items-center mb-0">
       <!-- Logo/Home link - aligned left on mobile -->
-      <a href="/" class="text-lg font-normal text-black dark:text-white" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
+      <a href="/" class="text-lg font-normal text-white dark:text-black hover:text-gray-300 dark:hover:text-gray-700" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
       
       <!-- Mobile header controls - grouped on right -->
       <div class="flex items-center gap-1">
         <SearchButton client:load />
-        <button id="theme-toggle" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+        <button id="theme-toggle" class="p-2 text-gray-400 hover:text-gray-200 dark:text-gray-500 dark:hover:text-gray-800">
           <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
           </svg>
@@ -214,14 +215,14 @@ const isHomepage = pathname === '/';
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
           </svg>
         </button>
-        <a href="/rss.xml" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+        <a href="/rss.xml" class="p-2 text-gray-400 hover:text-gray-200 dark:text-gray-500 dark:hover:text-gray-800">
           <span class="sr-only">RSS Feed</span>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
           </svg>
         </a>
         <button id="menu-toggle" 
-          class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+          class="p-2 text-gray-400 hover:text-gray-200 dark:text-gray-500 dark:hover:text-gray-800"
           aria-expanded="false"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -235,7 +236,7 @@ const isHomepage = pathname === '/';
   <!-- Mobile menu -->
   <div 
     id="mobile-menu" 
-    class="hidden md:hidden fixed inset-x-0 top-[60px] bg-[#FFFFFF] dark:bg-[#161618] border-b border-gray-200/10 dark:border-gray-800/10 transition-all duration-200 ease-in-out z-40"
+    class="hidden md:hidden fixed inset-x-0 top-[60px] bg-gray-800 dark:bg-[#FFFFFF] border-b border-gray-600/10 dark:border-gray-200/10 transition-all duration-200 ease-in-out z-40"
   >
     <div class="px-8 py-6 space-y-4">
       <nav class="flex flex-col space-y-3" id="mobile-navigation">
@@ -359,10 +360,81 @@ const isHomepage = pathname === '/';
   )}
 </header>
 
-<!-- Spacer to prevent content from hiding under fixed header - adjust height for unified header -->
-<div class="h-24 md:h-24"></div>
+<!-- Header is now auto-hiding, so no spacer needed -->
 
 <script>
+  // Auto-hide header functionality
+  function setupAutoHideHeader() {
+    const header = document.getElementById('main-header');
+    if (!header) return;
+
+    let hideTimeout = null;
+    const HOVER_THRESHOLD = 80; // Distance from top to trigger header appearance
+    const HIDE_DELAY = 500; // Delay before hiding header when mouse moves away
+
+    function showHeader() {
+      header.classList.remove('-translate-y-full');
+      header.classList.add('translate-y-0');
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+    }
+
+    function hideHeader() {
+      header.classList.remove('translate-y-0');
+      header.classList.add('-translate-y-full');
+    }
+
+    function scheduleHide() {
+      if (hideTimeout) clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(hideHeader, HIDE_DELAY);
+    }
+
+    // Track mouse movement
+    function handleMouseMove(e) {
+      const mouseY = e.clientY;
+      
+      if (mouseY <= HOVER_THRESHOLD) {
+        showHeader();
+      } else {
+        // Check if mouse is over the header itself
+        const headerRect = header.getBoundingClientRect();
+        const isOverHeader = mouseY <= headerRect.bottom && mouseY >= headerRect.top;
+        
+        if (!isOverHeader) {
+          scheduleHide();
+        }
+      }
+    }
+
+    // Keep header visible when hovering over it
+    function handleHeaderMouseEnter() {
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+    }
+
+    function handleHeaderMouseLeave() {
+      scheduleHide();
+    }
+
+    // Add event listeners
+    document.addEventListener('mousemove', handleMouseMove);
+    header.addEventListener('mouseenter', handleHeaderMouseEnter);
+    header.addEventListener('mouseleave', handleHeaderMouseLeave);
+
+    // Cleanup function
+    return function cleanup() {
+      document.removeEventListener('mousemove', handleMouseMove);
+      header.removeEventListener('mouseenter', handleHeaderMouseEnter);
+      header.removeEventListener('mouseleave', handleHeaderMouseLeave);
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+      }
+    };
+  }
   // Add a home link prefetch on page load
   document.addEventListener('DOMContentLoaded', () => {
     // Prefetch the homepage content immediately on any other page
@@ -618,18 +690,22 @@ const isHomepage = pathname === '/';
 
   // Setup on initial load
   let cleanup = setupUI();
+  let autoHideCleanup = setupAutoHideHeader();
 
   // Handle Astro view transitions
   document.addEventListener('astro:page-load', () => {
     // Clean up old listeners
     if (cleanup) cleanup();
+    if (autoHideCleanup) autoHideCleanup();
     // Setup new listeners
     cleanup = setupUI();
+    autoHideCleanup = setupAutoHideHeader();
   });
 
   // Cleanup before page transitions
   document.addEventListener('astro:before-swap', () => {
     if (cleanup) cleanup();
+    if (autoHideCleanup) autoHideCleanup();
   });
 
   // Make toggleSearch available globally
@@ -679,57 +755,57 @@ const isHomepage = pathname === '/';
   
   /* CSS Variables for theming */
   :root {
-    --text-nav: rgb(0, 0, 0);
-    --text-nav-hover: rgb(0, 0, 0);
-    --text-nav-active: rgb(0, 0, 0);
-    --bg-nav-active: rgb(243, 244, 246);
-  }
-  
-  .dark {
     --text-nav: rgb(156, 163, 175);
     --text-nav-hover: rgb(255, 255, 255);
     --text-nav-active: rgb(255, 255, 255);
     --bg-nav-active: rgb(55, 65, 81);
   }
   
+  .dark {
+    --text-nav: rgb(75, 85, 99);
+    --text-nav-hover: rgb(55, 65, 81);
+    --text-nav-active: rgb(17, 24, 39);
+    --bg-nav-active: rgb(243, 244, 246);
+  }
+  
   /* Direct dark mode overrides with super high specificity */
   html.dark body header nav a.nav-item {
-    color: rgb(156, 163, 175) !important;
+    color: rgb(75, 85, 99) !important;
   }
   
   html.dark body header nav a.nav-item:hover {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(55, 65, 81) !important;
   }
   
   html.dark body header nav a.nav-item-active {
-    color: rgb(255, 255, 255) !important;
-    background-color: rgb(55, 65, 81) !important;
+    color: rgb(17, 24, 39) !important;
+    background-color: rgb(243, 244, 246) !important;
   }
   
   html.dark body header nav a.mobile-nav-item {
-    color: rgb(156, 163, 175) !important;
+    color: rgb(75, 85, 99) !important;
   }
   
   html.dark body header nav a.mobile-nav-item:hover {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(55, 65, 81) !important;
   }
   
   html.dark body header nav a.mobile-nav-item-active {
-    color: rgb(255, 255, 255) !important;
-    background-color: rgb(55, 65, 81) !important;
+    color: rgb(17, 24, 39) !important;
+    background-color: rgb(243, 244, 246) !important;
   }
   
   /* Style all children of navigation items */
   html.dark body header #desktop-navigation a {
-    color: rgb(156, 163, 175) !important;
+    color: rgb(75, 85, 99) !important;
   }
   
   html.dark body header #desktop-navigation a:hover {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(55, 65, 81) !important;
   }
   
   html.dark body header #desktop-navigation a.nav-item-active {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(17, 24, 39) !important;
   }
   
   html.dark body header #desktop-navigation a span {
@@ -743,15 +819,15 @@ const isHomepage = pathname === '/';
   
   /* Super direct selector for desktop nav items - maximum specificity */
   html.dark body header .max-w-4xl nav#desktop-navigation a {
-    color: rgb(156, 163, 175) !important;
+    color: rgb(75, 85, 99) !important;
   }
   
   html.dark body header .max-w-4xl nav#desktop-navigation a:hover {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(55, 65, 81) !important;
   }
   
   html.dark body header .max-w-4xl nav#desktop-navigation a.nav-item-active {
-    color: rgb(255, 255, 255) !important;
+    color: rgb(17, 24, 39) !important;
   }
   
   html.dark body header .max-w-4xl nav#desktop-navigation a span {
@@ -765,10 +841,10 @@ const isHomepage = pathname === '/';
   
   @media (prefers-color-scheme: dark) {
     :root {
-      --text-nav: rgb(156, 163, 175);
-      --text-nav-hover: rgb(255, 255, 255);
-      --text-nav-active: rgb(255, 255, 255);
-      --bg-nav-active: rgb(55, 65, 81);
+      --text-nav: rgb(75, 85, 99);
+      --text-nav-hover: rgb(55, 65, 81);
+      --text-nav-active: rgb(17, 24, 39);
+      --bg-nav-active: rgb(243, 244, 246);
     }
   }
 </style>

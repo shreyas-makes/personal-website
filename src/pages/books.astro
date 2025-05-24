@@ -88,16 +88,7 @@ const formatDate = (date: string) => {
             <p class="mt-1 text-sm text-gray-500">
               Read: {formatDate(book.date)} — Rating: {book.rating}/10
             </p>
-            <div class="mt-6 prose prose-sm dark:prose-invert prose-neutral max-w-none 
-                prose-headings:font-medium prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-                prose-p:text-gray-800 dark:prose-p:text-gray-300 prose-p:text-sm
-                prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
-                prose-strong:font-medium prose-strong:text-gray-900 dark:prose-strong:text-gray-100
-                prose-code:text-gray-900 dark:prose-code:text-gray-100
-                prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800
-                prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-400
-                prose-hr:border-gray-200 dark:prose-hr:border-gray-800
-                prose-li:text-gray-800 dark:prose-li:text-gray-300 prose-li:text-sm">
+            <div class="mt-6 prose prose-sm dark:prose-invert max-w-none book-prose">
               <book.Content />
             </div>
           </div>
@@ -133,6 +124,33 @@ const formatDate = (date: string) => {
 
   .book-content {
     padding-bottom: 2rem;
+  }
+
+  /* Make book content font size more consistent with other sections */
+  .book-prose {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .book-prose p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  
+  .book-prose h1, .book-prose h2, .book-prose h3, .book-prose h4, .book-prose h5, .book-prose h6 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .book-prose ul, .book-prose ol {
+    font-size: 0.95rem;
+  }
+  
+  .book-prose blockquote {
+    font-size: 0.95rem;
+    font-style: italic;
   }
 
   /* Add visual separation between book titles and content */

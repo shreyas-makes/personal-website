@@ -57,7 +57,7 @@ const formatNumber = (num: number) => num.toLocaleString();
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-950 dark:bg-gray-100 text-gray-100 dark:text-gray-900">
+<footer class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900">
   <div class="max-w-6xl mx-auto px-4 py-12 relative">
     <!-- Main footer content in columns -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 hidden md:grid">
@@ -67,7 +67,7 @@ const currentYear = new Date().getFullYear();
         <ul class="space-y-2">
           {roughNotesPosts.map(post => (
             <li>
-              <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-900 underline underline-offset-4 decoration-[0.1em]">
+              <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                 {post.data.title}
               </a>
             </li>
@@ -81,7 +81,7 @@ const currentYear = new Date().getFullYear();
         <ul class="space-y-2">
           {books.slice(0, 12).map(book => (
             <li>
-              <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-900 underline underline-offset-4 decoration-[0.1em]">
+              <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                 {book.data.title}
               </a>
             </li>
@@ -96,7 +96,7 @@ const currentYear = new Date().getFullYear();
         <ul class="space-y-2">
           {recentPosts.map(post => (
             <li>
-              <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-900 underline underline-offset-4 decoration-[0.1em]">
+              <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                 {post.data.title}
               </a>
             </li>
@@ -112,10 +112,10 @@ const currentYear = new Date().getFullYear();
         <div class="mb-6 max-w-3xl mx-auto">
           <p class="mb-4 text-center">
             This digital garden contains {formatNumber(totalWords)} words in total, spread across
-            <a href="/posts" class="font-medium hover:text-gray-100 dark:hover:text-gray-900 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
-            <a href="/tags/projects" class="font-medium hover:text-gray-100 dark:hover:text-gray-900 underline underline-offset-4 decoration-[0.1em]">{projects.length} work related case studies</a>, 
-            <a href="/tags/curiosities" class="font-medium hover:text-gray-100 dark:hover:text-gray-900 underline underline-offset-4 decoration-[0.1em]">{posts.filter(post => post.data.tags?.includes('curiosities')).length} experiments</a>, and
-            <a href="/tags/books" class="font-medium hover:text-gray-100 dark:hover:text-gray-900 underline underline-offset-4 decoration-[0.1em]">{books.length} book reviews</a>.
+            <a href="/posts" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
+            <a href="/tags/projects" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{projects.length} work related case studies</a>, 
+            <a href="/tags/curiosities" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.filter(post => post.data.tags?.includes('curiosities')).length} experiments</a>, and
+            <a href="/tags/books" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{books.length} book reviews</a>.
           </p>
         </div>
         
