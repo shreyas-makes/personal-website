@@ -137,65 +137,104 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
 ---
 
 <BaseLayout title={`${post.data.title} | Shreyas`}>
-  <article class="mt-12 max-w-3xl mx-auto px-4 sm:px-6 py-6">
-    {post.data.image && (
-      <Image
-        src={post.data.image}
-        alt={post.data.title}
-        width={1200}
-        height={630}
-        format="webp"
-        loading="eager"
-        class="rounded-lg mb-8"
-      />
-    )}
-    
-    {/* Updated Title and Metadata Section - Restructured */}
-    <div class="mb-6 sm:mb-2"> {/* Container for all header elements */}
-      <h1 class="text-sm sm:text-2xl md:text-3xl font-normal text-gray-900 dark:text-gray-100 mb-5 sm:mb-4 leading-relaxed">
-        {post.data.title}
-      </h1>
-
-      {/* Growth Stage - Separate placement */}
-      <div class="mb-2">
-        <GrowthStage stage={post.data.stage || 'seedling'} />
-      </div>
-      
-      {/* All metadata in one structured line */}
-      <div class="flex flex-wrap items-center gap-x-2 text-sm text-gray-600 dark:text-gray-400 font-['Verdana',_Geneva,_sans-serif]">
-        {/* Tag if available */}
-        {post.data.tags && post.data.tags.length > 0 && (
-          <>
-            <a 
-              href={`/tags/${post.data.tags[0]}`} 
-              class="hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
-            >
-              #{post.data.tags[0]}
-            </a>
-            <span class="text-gray-400 dark:text-gray-600">&bull;</span>
-          </>
+  <div class="mt-12 max-w-4xl mx-auto px-4 sm:px-6 py-6">
+    <!-- Two Column Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
+      <!-- Main Content Column -->
+      <article class="min-w-0">
+        {post.data.image && (
+          <Image
+            src={post.data.image}
+            alt={post.data.title}
+            width={1200}
+            height={630}
+            format="webp"
+            loading="eager"
+            class="rounded-lg mb-8"
+          />
         )}
-        <span>{readingTime}</span>
-        <span class="text-gray-400 dark:text-gray-600">&bull;</span>
-        <span>{formattedDate}</span>
-      </div>
+        
+        {/* Updated Title and Metadata Section - Restructured */}
+        <div class="mb-6 sm:mb-2"> {/* Container for all header elements */}
+          <h1 class="text-sm sm:text-2xl md:text-3xl font-normal text-gray-900 dark:text-gray-100 mb-5 sm:mb-4 leading-relaxed">
+            {post.data.title}
+          </h1>
+
+          {/* Growth Stage - Separate placement */}
+          <div class="mb-2">
+            <GrowthStage stage={post.data.stage || 'seedling'} />
+          </div>
+     
+        </div>
+        
+        {/* Add debug info */}
+        <!-- {JSON.stringify(post.data)} -->
+        
+        
+        <div class="mt-2 prose prose-neutral dark:prose-invert max-w-none">
+          <slot />
+        </div>
+        
+        <!-- Post End Divider -->
+        <div class="my-12 flex justify-center" aria-hidden="true">
+          <img src="/images/page-divider.png" alt="" class="h-8 w-auto opacity-70 dark:opacity-60" />
+        </div>
+      </article>
+
+      <!-- Author Picture Column -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-8">
+          <img 
+            src="/images/shreyas.jpeg" 
+            alt="Shreyas" 
+            class="w-48 h-48 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mb-6 object-cover"
+          />
+          
+          <!-- Navigation Links -->
+          <nav class="space-y-3">
+            <div class="text-sm">
+              <a href="/posts" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
+                Essays & Concepts
+              </a>
+            </div>
+            <div class="text-sm">
+              <a href="/tags/projects" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
+                Case Studies
+              </a>
+            </div>
+            <div class="text-sm">
+              <a href="/tags/curiosities" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
+                Experiments
+              </a>
+            </div>
+            <div class="text-sm">
+              <a href="/tags/books" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
+                Book Reviews
+              </a>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
+            
+            <!-- Social Links -->
+            <div class="text-sm space-y-2">
+              <a href="https://twitter.com/shreyasprakash" target="_blank" rel="noopener noreferrer" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
+                Twitter
+              </a>
+              <a href="https://linkedin.com/in/shreyasprakash" target="_blank" rel="noopener noreferrer" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
+                LinkedIn
+              </a>
+              <a href="https://youtube.com/@shreyasprakash" target="_blank" rel="noopener noreferrer" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
+                YouTube
+              </a>
+            </div>
+          </nav>
+        </div>
+      </aside>
     </div>
-    
-    {/* Add debug info */}
-    <!-- {JSON.stringify(post.data)} -->
-    
-    
-    <div class="mt-2 prose prose-neutral dark:prose-invert max-w-none">
-      <slot />
-    </div>
-    
-    <!-- Post End Divider -->
-    <div class="my-12 flex justify-center" aria-hidden="true">
-      <img src="/images/page-divider.png" alt="" class="h-8 w-auto opacity-70 dark:opacity-60" />
-    </div>
-  </article>
+  </div>
   <!-- GitHub Pull Request Byline -->
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 mb-12 text-center">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-12 text-center">
     <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50 dark:bg-gray-900">
       <p class="text-sm text-gray-600 dark:text-gray-400">
         Found a typo or want to suggest changes? 
@@ -215,7 +254,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   <NewsletterFormWithHeaders />
 
   <!-- Popular Posts Section -->
-  <section class="max-w-3xl mx-auto px-4 sm:px-6 mb-12">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
     <h2 class="text-xl sm:text-xl font-normal text-gray-800 dark:text-gray-300 mb-8">
       Here are some popular posts you might like
     </h2>
@@ -462,8 +501,8 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
       padding-left: 1rem;
     }
     
-    /* Adjust article padding on mobile */
-    article.max-w-3xl {
+    /* Adjust container padding on mobile */
+    .max-w-4xl {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
     }
