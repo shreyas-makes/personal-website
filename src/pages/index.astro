@@ -386,22 +386,62 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
-    padding: 0.4em 1.1em 0.4em 0.9em;
+    padding: 0.32em 1em 0.32em 0.8em;
     border-radius: 9999px;
-    background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
+    background: #fff;
     color: #374151;
     font-weight: 500;
-    font-size: 1em;
-    box-shadow: 0 1px 4px 0 rgba(60,60,60,0.06);
+    font-size: 0.98em;
     border: 1px solid #e5e7eb;
-    transition: background 0.2s, box
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+  }
+
+  .tag-badge:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    color: #111827;
   }
 
   .tag-label {
     font-weight: 500;
+    letter-spacing: 0.01em;
+    font-size: 1em;
   }
 
   .tag-count {
     font-weight: 500;
+    background: #f3f4f6;
+    color: #64748b;
+    border-radius: 9999px;
+    padding: 0.1em 0.7em;
+    font-size: 0.95em;
+    margin-left: 0.2em;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .tag-badge:hover .tag-count {
+    background: #e5e7eb;
+    color: #374151;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tag-badge {
+      background: #181a1b;
+      color: #e1e1e1;
+      border: 1px solid #333a41;
+    }
+    .tag-badge:hover {
+      background: #23272b;
+      border-color: #444950;
+      color: #fff;
+    }
+    .tag-count {
+      background: #23272b;
+      color: #a1a1aa;
+    }
+    .tag-badge:hover .tag-count {
+      background: #181a1b;
+      color: #e1e1e1;
+    }
   }
 </style> 
