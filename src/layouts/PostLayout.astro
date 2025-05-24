@@ -269,47 +269,44 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
           <div class="text-sm">
             <h3 class="font-medium text-gray-900 dark:text-gray-200 mb-3">Popular Posts</h3>
             <ul class="space-y-2">
-              {popularPosts.length < 10 ? (
-                // If we have less than 10 popular posts, supplement with random posts
-                [...popularPosts.filter(p => !p.data.tags?.includes('curiosities')), 
-                ...allPosts
-                  .filter(p => 
-                    !popularPosts.includes(p) && 
-                    p.id !== post.id &&
-                    !p.data.tags?.includes('books') &&
-                    !p.data.tags?.includes('curiosities')
-                  )
-                  .sort(() => Math.random() - 0.5)
-                  .slice(0, 10 - popularPosts.filter(p => !p.data.tags?.includes('curiosities')).length)
-                ].map((post) => (
+              {(() => {
+                // Get popular posts first, excluding certain tags
+                const filteredPopularPosts = popularPosts.filter(p => 
+                  !p.data.tags?.includes('books') &&
+                  !p.data.tags?.includes('curiosities') &&
+                  p.id !== post.id
+                );
+                
+                // If we need more posts to reach 20, add random ones
+                const postsToShow = [];
+                postsToShow.push(...filteredPopularPosts);
+                
+                if (postsToShow.length < 20) {
+                  const popularPostIds = new Set(filteredPopularPosts.map(p => p.id));
+                  const additionalPosts = allPosts
+                    .filter(p => 
+                      !popularPostIds.has(p.id) && // Exclude posts already in popular list
+                      p.id !== post.id && // Exclude current post
+                      !p.data.tags?.includes('books') &&
+                      !p.data.tags?.includes('curiosities')
+                    )
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 20 - postsToShow.length);
+                  
+                  postsToShow.push(...additionalPosts);
+                }
+                
+                return postsToShow.slice(0, 20).map((postItem) => (
                   <li>
                     <a 
-                      href={`/posts/${post.slug}`}
-                      class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
+                      href={`/posts/${postItem.slug}`}
+                      class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200 underline underline-offset-2 decoration-1 hover:decoration-2"
                     >
-                      {post.data.title}
+                      {postItem.data.title}
                     </a>
                   </li>
-                ))
-              ) : (
-                // If we have 10 or more popular posts, just show those
-                popularPosts
-                  .filter(p => 
-                    !p.data.tags?.includes('books') &&
-                    !p.data.tags?.includes('curiosities')
-                  )
-                  .slice(0, 10)
-                  .map((popularPost) => (
-                    <li>
-                      <a 
-                        href={`/posts/${popularPost.slug}`}
-                        class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
-                      >
-                        {popularPost.data.title}
-                      </a>
-                    </li>
-                  ))
-              )}
+                ));
+              })()}
             </ul>
              
             <!-- Divider -->
