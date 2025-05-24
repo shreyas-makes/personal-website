@@ -136,17 +136,18 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       </div>
     </section>
 
-    <div class="flex flex-wrap gap-2 text-sm sm:text-base">
-        {Object.entries(topTags).map(([tag, count]) => (
-          <a 
-            href={`/tags/${tag}`} 
-            class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-          >
-            <span>{tag}</span>
-            <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 px-1.5 py-0.5 rounded-full">{count}</span>
-          </a>
-        ))}
-      </div>
+    <div class="flex flex-wrap gap-3 my-6">
+      {Object.entries(topTags).map(([tag, count]) => (
+        <a 
+          href={`/tags/${tag}`} 
+          class="tag-badge group"
+          title={`View posts tagged "${tag}"`}
+        >
+          <span class="tag-label">{tag}</span>
+          <span class="tag-count group-hover:bg-blue-600 group-hover:text-white">{count}</span>
+        </a>
+      ))}
+    </div>
 
    
     <!-- Add visual separator -->
@@ -168,6 +169,9 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
                   <a href={`/posts/${post.slug}`} class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1">
                     {post.data.title}
                   </a>
+                  {/* Temporary display for debugging */}  
+                  <span>{post.data.period}</span>
+                  <span>{post.data.company}</span>
                 </div>
                 {
                   // Assuming post.data has `period` and `company` fields
@@ -376,5 +380,28 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     main {
       font-size: 14px;
     }
+  }
+
+  .tag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.4em 1.1em 0.4em 0.9em;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
+    color: #374151;
+    font-weight: 500;
+    font-size: 1em;
+    box-shadow: 0 1px 4px 0 rgba(60,60,60,0.06);
+    border: 1px solid #e5e7eb;
+    transition: background 0.2s, box
+  }
+
+  .tag-label {
+    font-weight: 500;
+  }
+
+  .tag-count {
+    font-weight: 500;
   }
 </style> 

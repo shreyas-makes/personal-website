@@ -28,21 +28,15 @@ The plugin analyzes your documents using a combination of AI evaluation, grammar
 
 Example output:
 
-```
-📊 EditNext Analysis Results:
-┌─────────────────────────┬──────────────┬─────────────┬────────────────┬───────────────┬───────────────────────────────────┐
-│ Document                │ Editing Score │ LLM Score   │ Grammar Score  │ Readability   │ Notes                             │
-├─────────────────────────┼──────────────┼─────────────┼────────────────┼───────────────┼───────────────────────────────────┤
-│ draft-essay-1.md        │ 87           │ 92          │ 76             │ 64            │ Needs structural work, unclear    │
-│                         │              │             │                │               │ thesis, many grammar issues       │
-├─────────────────────────┼──────────────┼─────────────┼────────────────┼───────────────┼───────────────────────────────────┤
-│ almost-there.md         │ 42           │ 35          │ 58             │ 42            │ Minor flow issues, a few awkward  │
-│                         │              │             │                │               │ transitions                       │
-├─────────────────────────┼──────────────┼─────────────┼────────────────┼───────────────┼───────────────────────────────────┤
-│ ready-to-publish.md     │ 18           │ 12          │ 22             │ 31            │ Polished, minor proofreading      │
-│                         │              │             │                │               │ needed                            │
-└─────────────────────────┴──────────────┴─────────────┴────────────────┴───────────────┴───────────────────────────────────┘
-```
+| File                                                                                         | Score | LLM | Grammar | Readability | Notes                                                                                                                           |
+| -------------------------------------------------------------------------------------------- | ----- | --- | ------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| [[Virtual bookshelves.md]]                                                                   | 46.8  | 40  | 56.2    | 57.9        | The draft lacks a clear conclusion and could benefit from a more cohesive structure.                                            |
+| [[How I blog blog with Obsidian, Cloudflare, AstroJS, Github.md]]                            | 50.2  | 40  | 100.0   | 31.1        | The draft is generally well-structured but could benefit from clearer transitions between sections.                             |
+| [[Conceptual Compression for LLMs.md]]                                                       | 51.0  | 70  | 32.2    | 12.9        | The draft lacks a clear thesis and cohesive flow, making it difficult for readers to follow the main argument.                  |
+| [[chatsnip.md]]                                                                              | 51.0  | 30  | 100.0   | 65.1        | The draft is generally clear but could benefit from more detailed explanations of features and user benefits.                   |
+| [[ascii-todo-cli.md]]                                                                        | 54.7  | 40  | 100.0   | 53.6        | The draft lacks a clear introduction and conclusion, making it feel somewhat disjointed.                                        |
+| [[posts/Essay Quality Ranker]]                                                               | 54.8  | 40  | 100.0   | 53.8        | The draft is generally clear but could benefit from improved organization and more detailed examples.                           |
+
 
 Install it from Obsidian's Community Plugins:
 
