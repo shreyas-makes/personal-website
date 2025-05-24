@@ -90,17 +90,20 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Column 3: Recent essays -->
+      <!-- Column 3: Recent curiosities -->
       <div class="p-4">
-        <h2 class="text-lg font-medium mb-4 text-gray-100 dark:text-gray-900">Recent essays</h2>
+        <h2 class="text-lg font-medium mb-4 text-gray-100 dark:text-gray-900">Recent experiments</h2>
         <ul class="space-y-2">
-          {recentPosts.map(post => (
-            <li>
-              <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
-                {post.data.title}
-              </a>
-            </li>
-          ))}
+          {posts
+            .filter(post => post.data.tags?.includes('curiosities'))
+            .slice(0, 12)
+            .map(post => (
+              <li>
+                <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                  {post.data.title}
+                </a>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

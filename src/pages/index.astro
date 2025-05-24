@@ -134,13 +134,13 @@ const formatDate = (date: string | Date) => {
 const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 ---
 
-<BaseLayout title="Shreyas Prakash">
+<BaseLayout title="Shreyas">
   <ViewTransitions client:only />
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
     <section class="mt-24 mb-12 max-w-4xl">
       <div class="prose prose-neutral dark:prose-invert max-w-none text-[8px]"> <!-- Reduced font size to 10px -->
-        <p>I'm a London based product manager and a hobbyist design engineer. My interests include programming, philosophy, design, internet and startups.</p>
-        <p>I like creating things—essays, websites, scripts, products. Anything which is positive sum, and impactful. </p>
+        <p>Hi! I'm Shreyas. I like trying to understand the world, building things that improve it, and talking about it on the Internet. </p>
+        <p>I like creating things—essays, websites, scripts, products. Anything which is positive sum, and impactful.</p>
 
         <p>Writing is thinking. It's something I deeply enjoy. 10 years from now, or a 100, It might probably outlive me. This is an attempt at that posterity. I write about what I'm building, what I'm learning, and the ideas I'm exploring:</p>
 
@@ -227,17 +227,46 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
         <div>
           <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-2">Dialogue engineering</h2>
           <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Side quests experimenting with Gemini 2.5 Pro and Cursor IDE</p>
-          <ul class="space-y-3">
-            {posts.curiosities?.filter(post => post.data.tags?.includes('curated')).map((post) => (
-              <li>
-                <a href={post.data.url || `/posts/${post.slug}`} class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1">
-                  {post.data.title}
-                </a>
-              </li>
-            ))}
+          <ul class="space-y-8">
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="/posts/code-gen" class="hover:text-gray-900 dark:hover:text-gray-100">Natural Language Code Generation</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Gemini Pro API (2024)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="/posts/code-gen" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we convert natural language to production-ready code?</a>
+              </div>
+            </li>
+
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="/posts/cursor-extensions" class="hover:text-gray-900 dark:hover:text-gray-100">IDE Extensions</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Cursor IDE (2024)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="/posts/cursor-extensions" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we enhance code completion and refactoring?</a>
+              </div>
+            </li>
+
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="/posts/chat-ui" class="hover:text-gray-900 dark:hover:text-gray-100">Chat Interface Components</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                React & TailwindCSS (2024)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="/posts/chat-ui" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we build reusable components for conversational UIs?</a>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
+    </section>
     </section>
 
 

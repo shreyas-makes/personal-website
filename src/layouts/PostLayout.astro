@@ -137,7 +137,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
 ---
 
 <BaseLayout title={`${post.data.title} | Shreyas`}>
-  <div class="mt-12 max-w-4xl mx-auto px-4 sm:px-6 py-6">
+  <div class="mt-36 max-w-4xl mx-auto px-4 sm:px-6 py-6">
     <!-- Two Column Layout -->
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
       <!-- Main Content Column -->
@@ -155,14 +155,56 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
         )}
         
         {/* Updated Title and Metadata Section - Restructured */}
-        <div class="mb-6 sm:mb-2"> {/* Container for all header elements */}
-          <h1 class="text-sm sm:text-2xl md:text-3xl font-normal text-gray-900 dark:text-gray-100 mb-5 sm:mb-4 leading-relaxed">
+        <div class="mb-8">
+          <h1 class="text-lg sm:text-xl md:text-2xl font-normal text-gray-900 dark:text-gray-100 mb-4 leading-relaxed">
             {post.data.title}
           </h1>
+          {/* Author, Date, Reading Time, and Tags Section */}
+          <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+            {/* Author with circular image */}
+            <div class="flex items-center gap-2">
+              <img 
+                src="/images/shreyas.jpeg"
+                alt="Shreyas Prakash"
+                class="w-8 h-8 rounded-full object-cover"
+              />
+           
+            </div>
+            {/* Date */}
+            <div class="flex items-center gap-1">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <time datetime={post.data.date.toISOString()} class="text-xs">
+                {new Date(post.data.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+            </div>
 
-          {/* Growth Stage - Separate placement */}
-          <div class="mb-2">
-            <GrowthStage stage={post.data.stage || 'seedling'} />
+            {/* Reading Time */}
+            <div class="flex items-center gap-1">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-xs">{Math.ceil(post.body.split(/\s+/).length / 200)} min read</span>
+            </div>
+
+            {/* Tags */}
+            {post.data.tags && (
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map((tag: string) => (
+                  <a
+                    href={`/tags/${tag}`}
+                    class="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    #{tag}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
      
         </div>
@@ -174,24 +216,39 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
         <div class="mt-2 prose prose-neutral dark:prose-invert max-w-none">
           <slot />
         </div>
-         <!-- GitHub Pull Request Byline -->
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-12 text-center">
-    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50 dark:bg-gray-900">
-      <p class="text-sm text-gray-600 dark:text-gray-400">
-        Found a typo or want to suggest changes? 
-        <a 
-          href={getGitHubEditUrl(post)}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
-        >
-         Send a PR on GitHub
-        </a>
-      </p>
-    </div>
-    <!-- Newsletter Form -->
-  <NewsletterFormWithHeaders />
-  </div>
+        <!-- Post Footer Section -->
+        <div class="mt-2 mb-12">
+          <div class="max-w-2xl mx-auto">
+            <!-- GitHub PR Section -->
+            <div class="text-center py-6">
+              <p class="text-sm text-gray-500 dark:text-gray-500">
+                Found a typo or want to suggest changes? 
+                <a 
+                  href={getGitHubEditUrl(post)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-2 decoration-1 transition-colors"
+                >
+                  Send a PR on GitHub
+                </a>
+              </p>
+            </div>
+            
+            <!-- Subtle Divider -->
+            <div class="flex items-center justify-center py-8">
+              <div class="flex-1 border-t border-gray-200 dark:border-gray-800"></div>
+              <div class="px-4">
+                <svg class="w-4 h-4 text-gray-300 dark:text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="flex-1 border-t border-gray-200 dark:border-gray-800"></div>
+            </div>
+          </div>
+          
+          <!-- Newsletter Form -->
+          <NewsletterFormWithHeaders />
+        </div>
         
         
       </article>
@@ -199,52 +256,64 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
       <!-- Author Picture Column -->
       <aside class="hidden lg:block">
         <div class="sticky top-8">
-          <img 
-            src="/images/shreyas.jpeg" 
-            alt="Shreyas" 
-            class="rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mb-6 w-full] aspect-[120/132.95] object-cover"
-          />
+         
           
           <!-- Navigation Links -->
           <nav class="space-y-3">
-            <div class="text-sm">
-              <a href="/posts" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
-                Essays & Concepts
-              </a>
-            </div>
-            <div class="text-sm">
-              <a href="/tags/projects" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
-                Case Studies
-              </a>
-            </div>
-            <div class="text-sm">
-              <a href="/tags/curiosities" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
-                Experiments
-              </a>
-            </div>
-            <div class="text-sm">
-              <a href="/tags/books" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
-                Book Reviews
-              </a>
-            </div>
+           
+          
             
             <!-- Divider -->
             <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
             
           <div class="text-sm">
-            <h3 class="font-medium text-gray-800 dark:text-gray-200 mb-3">Popular Posts</h3>
+            <h3 class="font-medium text-gray-900 dark:text-gray-200 mb-3">Popular Posts</h3>
             <ul class="space-y-2">
-              {popularPosts.slice(0, 10).map((popularPost) => (
-                <li>
-                  <a 
-                    href={`/posts/${popularPost.slug}`}
-                    class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
-                  >
-                    {popularPost.data.title}
-                  </a>
-                </li>
-              ))}
+              {popularPosts.length < 10 ? (
+                // If we have less than 10 popular posts, supplement with random posts
+                [...popularPosts.filter(p => !p.data.tags?.includes('curiosities')), 
+                ...allPosts
+                  .filter(p => 
+                    !popularPosts.includes(p) && 
+                    p.id !== post.id &&
+                    !p.data.tags?.includes('books') &&
+                    !p.data.tags?.includes('curiosities')
+                  )
+                  .sort(() => Math.random() - 0.5)
+                  .slice(0, 10 - popularPosts.filter(p => !p.data.tags?.includes('curiosities')).length)
+                ].map((post) => (
+                  <li>
+                    <a 
+                      href={`/posts/${post.slug}`}
+                      class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
+                    >
+                      {post.data.title}
+                    </a>
+                  </li>
+                ))
+              ) : (
+                // If we have 10 or more popular posts, just show those
+                popularPosts
+                  .filter(p => 
+                    !p.data.tags?.includes('books') &&
+                    !p.data.tags?.includes('curiosities')
+                  )
+                  .slice(0, 10)
+                  .map((popularPost) => (
+                    <li>
+                      <a 
+                        href={`/posts/${popularPost.slug}`}
+                        class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
+                      >
+                        {popularPost.data.title}
+                      </a>
+                    </li>
+                  ))
+              )}
             </ul>
+             
+            <!-- Divider -->
+            <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
           </div>
           </nav>
         </div>

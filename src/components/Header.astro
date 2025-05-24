@@ -70,7 +70,7 @@ const isHomepage = pathname === '/';
 
   <header 
     id="main-header"
-    class="fixed top-0 left-0 right-0 z-50 bg-gray-800 dark:bg-[#FFFFFF]/100 pb-4 border-b border-gray-600 dark:border-gray-200 transition-transform duration-300 ease-in-out -translate-y-full"
+    class="fixed top-0 left-0 right-0 z-50 bg-gray-800 dark:bg-[#FFFFFF]/100 pb-4 border-b border-gray-600 dark:border-gray-200 transition-transform duration-300 ease-in-out translate-y-0"
     transition:persist="header"
     transition:animate="none"
   >
@@ -360,7 +360,8 @@ const isHomepage = pathname === '/';
   )}
 </header>
 
-<!-- Header is now auto-hiding, so no spacer needed -->
+<!-- Spacer to prevent content from hiding under header when in first fold -->
+<div class="h-24 md:h-0"></div>
 
 <script>
   // Auto-hide header functionality
@@ -369,7 +370,9 @@ const isHomepage = pathname === '/';
     if (!header) return;
 
     let hideTimeout = null;
-    const HOVER_THRESHOLD = 80; // Distance from top to trigger header appearance
+    let isScrolledDown = false;
+    const SCROLL_THRESHOLD = window.innerHeight * 0.8; // Hide after 80% of viewport height
+    const HOVER_THRESHOLD = 80; // Distance from top to trigger header appearance when scrolled
     const HIDE_DELAY = 500; // Delay before hiding header when mouse moves away
 
     function showHeader() {
@@ -391,8 +394,25 @@ const isHomepage = pathname === '/';
       hideTimeout = setTimeout(hideHeader, HIDE_DELAY);
     }
 
-    // Track mouse movement
+    // Handle scroll events
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      const wasScrolledDown = isScrolledDown;
+      isScrolledDown = scrollY > SCROLL_THRESHOLD;
+
+      if (isScrolledDown && !wasScrolledDown) {
+        // Just scrolled past threshold - hide header
+        hideHeader();
+      } else if (!isScrolledDown && wasScrolledDown) {
+        // Scrolled back to top - show header
+        showHeader();
+      }
+    }
+
+    // Track mouse movement (only when scrolled down)
     function handleMouseMove(e) {
+      if (!isScrolledDown) return; // Only use hover when scrolled down
+      
       const mouseY = e.clientY;
       
       if (mouseY <= HOVER_THRESHOLD) {
@@ -408,8 +428,9 @@ const isHomepage = pathname === '/';
       }
     }
 
-    // Keep header visible when hovering over it
+    // Keep header visible when hovering over it (only when scrolled down)
     function handleHeaderMouseEnter() {
+      if (!isScrolledDown) return;
       if (hideTimeout) {
         clearTimeout(hideTimeout);
         hideTimeout = null;
@@ -417,16 +438,22 @@ const isHomepage = pathname === '/';
     }
 
     function handleHeaderMouseLeave() {
+      if (!isScrolledDown) return;
       scheduleHide();
     }
 
+    // Initialize scroll state
+    handleScroll();
+
     // Add event listeners
+    document.addEventListener('scroll', handleScroll, { passive: true });
     document.addEventListener('mousemove', handleMouseMove);
     header.addEventListener('mouseenter', handleHeaderMouseEnter);
     header.addEventListener('mouseleave', handleHeaderMouseLeave);
 
     // Cleanup function
     return function cleanup() {
+      document.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mousemove', handleMouseMove);
       header.removeEventListener('mouseenter', handleHeaderMouseEnter);
       header.removeEventListener('mouseleave', handleHeaderMouseLeave);

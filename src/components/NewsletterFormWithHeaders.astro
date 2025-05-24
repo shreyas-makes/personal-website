@@ -1,46 +1,38 @@
 ---
-import NewsletterForm from './NewsletterForm.astro';
-import { getCollection } from 'astro:content';
-
-// Get all posts including drafts
-const allPosts = await getCollection('posts');
-
-// Calculate stats
-const posts = allPosts.filter(post => !post.data.draft);
-const projects = posts.filter(post => post.data.tags?.includes('projects'));
-const books = posts.filter(post => post.data.tags?.includes('books'));
-
-// Calculate total words (assuming each post has a body)
-const totalWords = posts.reduce((acc, post) => {
-  const wordCount = post.body.split(/\s+/).length;
-  return acc + wordCount;
-}, 0);
-
-// Format numbers with commas
-const formatNumber = (num: number) => num.toLocaleString();
 ---
 
-<div class="mt-12 mb-24 max-w-2xl mx-auto px-5 sm:px-6">
-  <div class="flex flex-col sm:flex-row items-center gap-4">
-    <p class="text-base text-gray-800 dark:text-gray-200 whitespace-nowrap">
-      Liked this post? Get email for new ones:
-    </p>
-    <div class="flex-1 w-full">
+<div class="mt-12 mb-24 max-w-3xl mx-auto px-4">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <!-- Left column with text -->
+    <div class="text-center lg:text-left">
+      <h2 class="text-xl lg:text-2xl font-normal text-gray-900 dark:text-gray-100 mb-3">
+        Invite me to your inbox?
+      </h2>
+      <p class="text-base lg:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        2-3 ideas every month across design and tech
+      </p>
+    </div>
+
+    <!-- Right column with form -->
+    <div class="w-full">
       <form 
-        action="https://app.kit.com/forms/7662069/subscriptions" 
+        action="https://app.kit.com/forms/7662069/subscriptions"
         method="post" 
-        class="flex flex-col sm:flex-row gap-4"
+        class="flex flex-col gap-3"
       >
-        <input
-          type="email"
-          name="email_address"
-          placeholder="you@example.com"
-          required
-          class="flex-1 px-4 py-2 rounded-md border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-black"
+        <label for="email-address" class="sr-only">Email address</label>
+        <input 
+          id="email-address" 
+          name="email_address" 
+          type="email" 
+          autocomplete="email" 
+          required 
+          class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3.5 text-base text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-gray-400 dark:focus:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-500 transition-all duration-200"
+          placeholder="Enter your email address"
         />
-        <button
-          type="submit"
-          class="px-6 py-2 rounded-md bg-black hover:bg-gray-700 text-white font-medium transition-colors duration-200"
+        <button 
+          type="submit" 
+          class="w-full rounded-lg bg-gray-900 dark:bg-gray-800 px-6 py-3.5 text-base font-medium text-white hover:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-all duration-200 transform hover:scale-[1.02]"
         >
           Subscribe
         </button>
