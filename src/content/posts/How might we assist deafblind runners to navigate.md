@@ -6,6 +6,7 @@ tags: [social-design, projects]
 stage: "plant"
 period: "2015"
 company: "Running Blind Foundation"
+role: "Design Engineer"
 ---
 
 Equarun is used to help deafblind people (especially those suffering from Usher Syndrome, a progressive disorder affecting more than 400,000 people worldwide) and their guides engage in safe and comfortable long-distance running.

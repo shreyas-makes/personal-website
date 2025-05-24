@@ -4,9 +4,12 @@ date: "2022-06-16T15:27:02.000Z"
 slug: "bdres"
 tags: [health, digital-health, projects]
 stage: "plant"
+period: "2021-2024"
+company: "Noora Health"
+role: "Product Lead"
 ---
 
-For MCH, a study we conducted in 2021 observed strong evidence that the health messaging service (RES) improved maternal knowledge and infant care. It observed significantly higher rates of breastfeeding, safe infant-feeding practices, and skin-to-skin care among the intervention group, as well as greater knowledge of maternal nutrition, breastfeeding, and cord care best practices.
+For MCH, a study we conducted in 2021 observed strong evidence that the health messaging service (RES) improved maternal knowledge and infant care. It observed significantly higher rates of breastfeeding, safe infwhyant-feeding practices, and skin-to-skin care among the intervention group, as well as greater knowledge of maternal nutrition, breastfeeding, and cord care best practices.
 
 
 ![](/images/2024/04/image-31-3.jpg)

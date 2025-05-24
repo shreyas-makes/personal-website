@@ -49,9 +49,17 @@ const posts = await getCollection('posts').then(allPosts => {
                          ['about', 'now', 'vibes'].includes(post.slug);
 
     if (!isSpecialPage) {
-      if (tags.includes('rough-notes')) acc.roughNotes.push({...post, readingTime, excerpt});
-      else if (tags.includes('projects')) acc.projects.push({...post, readingTime, excerpt});
-      else if (tags.includes('books')) acc.books.push({...post, readingTime, excerpt});
+      // Check for projects first as it's a priority category
+      if (tags.includes('projects')) {
+        acc.projects.push({...post, readingTime, excerpt});
+      }
+      // Check for other categories (can be multiple)
+      else if (tags.includes('rough-notes')) {
+        acc.roughNotes.push({...post, readingTime, excerpt});
+      }
+      else if (tags.includes('books')) {
+        acc.books.push({...post, readingTime, excerpt});
+      }
       else if (tags.includes('curiosities')) {
         // Ensure URL is explicitly included
         acc.curiosities.push({
@@ -64,7 +72,9 @@ const posts = await getCollection('posts').then(allPosts => {
           }
         });
       }
-      else acc.regular.push({...post, readingTime, excerpt});
+      else {
+        acc.regular.push({...post, readingTime, excerpt});
+      }
     }
 
     // Track tag counts
@@ -87,12 +97,13 @@ const posts = await getCollection('posts').then(allPosts => {
   });
 });
 
-console.log('Projects data:', posts.projects);
-
 // Sort posts once - ensure reverse chronological order
 posts.regular.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 posts.roughNotes.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 posts.curiosities.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+posts.projects.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+// Projects found successfully
 
 // Get top tags, excluding 'rough-notes'
 const topTags = Object.entries(posts.tagCounts)
@@ -162,29 +173,53 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
         <div>
           <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-2">Product roles in the industry</h2>
           <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Work related initiatives across scientific publishing, healthcare, assistive-tech and edutech</p>
-          <ul class="space-y-3">
-            {posts.projects?.map((post) => (
-              <li>
-                <div>
-                  <a href={`/posts/${post.slug}`} class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1">
-                    {post.data.title}
-                  </a>
-                  {/* Temporary display for debugging */}  
-                  <span>{post.data.period}</span>
-                  <span>{post.data.company}</span>
-                </div>
-                {
-                  // Assuming post.data has `period` and `company` fields
-                  post.data.period && post.data.company && (
-                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-1">
-                      <span>{post.data.period}</span>
-                      <span class="mx-2 text-gray-400 dark:text-gray-500">|</span>
-                      <span>{post.data.company}</span>
-                    </div>
-                  )
-                }
-              </li>
-            ))}
+          <ul class="space-y-8">
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a class="hover:text-gray-900 dark:hover:text-gray-100">Product Lead</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Noora Health (2021-2024)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.shreyasprakash.com/posts/bdres/" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we enable patients and caregivers to overcome preventable health conditions?</a>
+              </div>
+            </li>
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="https://www.shreyasprakash.com/posts/uvfy" class="hover:text-gray-900 dark:hover:text-gray-100">Co founder, Product</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                UVfy (2020-2021)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.shreyasprakash.com/posts/uvfy" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we prevent acquired infections in hospitals?</a>
+              </div>
+            </li>
+               
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="https://www.shreyasprakash.com/posts/dhive/" class="hover:text-gray-900 dark:hover:text-gray-100">Founding Director, Product</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Lead by Design Foundation, Product (2017-2020)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.shreyasprakash.com/posts/dhive/" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we help children invent for social good?</a>
+              </div>
+            </li>
+             <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                  Industrial Designer 
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Running Blind Foundation (2015)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.shreyasprakash.com/posts/equarun" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we assist deafblind runners to navigate?</a>
+              </div>
+            </li>
+           
           </ul>
         </div>
 

@@ -4,6 +4,9 @@ date: "2024-06-16T15:29:06.000Z"
 slug: "dhive"
 tags: [social-design, projects]
 stage: "plant"
+period: "2017-2020"
+company: "Lead by Design Foundation"
+role: "Founding Director, Product"
 ---
 
 I stayed in a tribal village in India for a year teaching children leadership skills through design thinking. Here's a story behind my non-profit initiative and how we've impacted 1200+ children from 3 rural areas (also a short segway in which I was chased by a man-eating tiger)
