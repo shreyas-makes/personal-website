@@ -174,11 +174,26 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
         <div class="mt-2 prose prose-neutral dark:prose-invert max-w-none">
           <slot />
         </div>
+         <!-- GitHub Pull Request Byline -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-12 text-center">
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50 dark:bg-gray-900">
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Found a typo or want to suggest changes? 
+        <a 
+          href={getGitHubEditUrl(post)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+        >
+         Send a PR on GitHub
+        </a>
+      </p>
+    </div>
+    <!-- Newsletter Form -->
+  <NewsletterFormWithHeaders />
+  </div>
         
-        <!-- Post End Divider -->
-        <div class="my-12 flex justify-center" aria-hidden="true">
-          <img src="/images/page-divider.png" alt="" class="h-8 w-auto opacity-70 dark:opacity-60" />
-        </div>
+        
       </article>
 
       <!-- Author Picture Column -->
@@ -187,7 +202,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
           <img 
             src="/images/shreyas.jpeg" 
             alt="Shreyas" 
-            class="w-48 h-48 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mb-6 object-cover"
+            class="rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mb-6 w-full] aspect-[120/132.95] object-cover"
           />
           
           <!-- Navigation Links -->
@@ -216,82 +231,30 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
             <!-- Divider -->
             <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
             
-            <!-- Social Links -->
-            <div class="text-sm space-y-2">
-              <a href="https://twitter.com/shreyasprakash" target="_blank" rel="noopener noreferrer" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
-                Twitter
-              </a>
-              <a href="https://linkedin.com/in/shreyasprakash" target="_blank" rel="noopener noreferrer" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
-                LinkedIn
-              </a>
-              <a href="https://youtube.com/@shreyasprakash" target="_blank" rel="noopener noreferrer" class="block text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200">
-                YouTube
-              </a>
-            </div>
+          <div class="text-sm">
+            <h3 class="font-medium text-gray-800 dark:text-gray-200 mb-3">Popular Posts</h3>
+            <ul class="space-y-2">
+              {popularPosts.slice(0, 10).map((popularPost) => (
+                <li>
+                  <a 
+                    href={`/posts/${popularPost.slug}`}
+                    class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200"
+                  >
+                    {popularPost.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
           </nav>
         </div>
       </aside>
     </div>
   </div>
-  <!-- GitHub Pull Request Byline -->
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-12 text-center">
-    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50 dark:bg-gray-900">
-      <p class="text-sm text-gray-600 dark:text-gray-400">
-        Found a typo or want to suggest changes? 
-        <a 
-          href={getGitHubEditUrl(post)}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
-        >
-         Send a PR on GitHub
-        </a>
-      </p>
-    </div>
-  </div>
+ 
 
-  <!-- Newsletter Form -->
-  <NewsletterFormWithHeaders />
+ 
 
-  <!-- Popular Posts Section -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
-    <h2 class="text-xl sm:text-xl font-normal text-gray-800 dark:text-gray-300 mb-8">
-      Here are some popular posts you might like
-    </h2>
-    <div class="space-y-8">
-      {popularPosts.map((popularPost) => {
-        // Get first three lines as excerpt
-        const lines = popularPost.body.split('\n').slice(0,3);
-        const excerpt = lines.join('\n') + '...';
-        
-        return (
-          <div class="flex flex-col">
-            <a href={`/posts/${popularPost.slug}`} 
-               class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 text-base sm:text-lg font-normal underline underline-offset-4 decoration-1 mb-2">
-              {popularPost.data.title}
-            </a>
-            <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-3 line-clamp-2">
-              {excerpt}
-            </p>
-            <div class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">
-                {popularPost.data.tags && popularPost.data.tags.length > 0 ? popularPost.data.tags[0] : 'post'}
-              </span>
-              {popularPost.views && (
-                <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                  {popularPost.views}
-                </span>
-              )}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  </section>
 </BaseLayout>
 
 <style>
