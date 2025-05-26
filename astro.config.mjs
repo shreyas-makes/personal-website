@@ -10,6 +10,11 @@ export default defineConfig({
   site: 'https://shreyasprakash.com',
   output: 'server',
   adapter: cloudflare(),
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/compile'
+    }
+  },
   experimental: {
     session: true
   },
