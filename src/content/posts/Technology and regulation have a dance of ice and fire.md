@@ -1,9 +1,11 @@
 ---
-title: "Frightening Tech versus Big Daddy Regulators"
-date: "2025-01-12T11:47:44.000Z"
-slug: "frightening-tech-versus-big-daddy-regulators"
-tags: [technology, rough-notes]
-stage: "seedling"
+title: Technology and regulation have a dance of ice and fire
+date: 2025-01-12T11:47:44.000Z
+slug: frightening-tech-versus-big-daddy-regulators
+tags:
+  - technology
+  - rough-notes
+stage: seedling
 ---
 
 Let's take a clear pond flourishing with various aquatic plants — water lilies, duckweeds, water milfoils, you name it. The variety of these plants provide a delicate balance, feeding the pond with nutrients, and this very natural filtration system. The algae still tries to outcompete the aquatic plants, but these plants still have an edge (at least for now). The microbial balance ensures the pond stays in a stable state with manageable algae levels. It's in **stable equilibrium**.
