@@ -326,7 +326,6 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   
   :global(.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6) {
     font-weight: 400;
-    color: var(--text);
     overflow-wrap: break-word;
     word-wrap: break-word;
     font-family: 'Verdana', Geneva, sans-serif;
@@ -352,21 +351,18 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   }
   
   :global(.prose p) {
-    color: var(--text);
     overflow-wrap: break-word;
     word-wrap: break-word;
     margin-bottom: 1.5em;
   }
 
   :global(.prose li) {
-    color: var(--text);
     overflow-wrap: break-word;
     word-wrap: break-word;
     margin-bottom: 0.5em;
   }
 
   :global(.prose blockquote) {
-    color: var(--text);
     border-left: 4px solid #e5e7eb;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -374,7 +370,6 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   }
 
   :global(.prose a) {
-    color: var(--text);
     text-decoration-line: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 1px;
@@ -539,12 +534,12 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   :global(html.dark .prose h4),
   :global(html.dark .prose h5),
   :global(html.dark .prose h6) {
-    color: var(--text);
+    /* Color will be handled by Tailwind's prose-invert class */
   }
 
   :global(html.dark .prose p),
   :global(html.dark .prose li) {
-    color: var(--text);
+    /* Color will be handled by Tailwind's prose-invert class */
   }
 
   :global(html.dark .prose blockquote) {
@@ -553,11 +548,11 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   }
 
   :global(html.dark .prose strong) {
-    color: var(--text);
+    /* Color will be handled by Tailwind's prose-invert class */
   }
 
   :global(html.dark .prose a) {
-    color: var(--text);
+    /* Color will be handled by Tailwind's prose-invert class */
   }
 
   /* Copy button styles */

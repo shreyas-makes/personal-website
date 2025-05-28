@@ -229,13 +229,12 @@ To collect more insights from the field and from our users themselves using our 
 
 Key initiatives that I spearheaded to deepen our user-feedback loops included:
 
-**Mid-campaign support calls—**These calls not only built trust with caregivers but also served as vital two-way communication channels. For instance, we discovered that 96% of our Whatsapp users read our messages, but struggled with literacy, impacting their understanding of the health-related content.
+**Mid-campaign support calls** -These calls not only built trust with caregivers but also served as vital two-way communication channels. For instance, we discovered that 96% of our Whatsapp users read our messages, but struggled with literacy, impacting their understanding of the health-related content.
 
-**End-campaign surveys and feedback—**Responses to our messages and updates from the delivery and implementation teams were crucial in synthesizing insights. On one occasion, we learned that users were sharing the RES contact number using takeaway cards among family members. This observation prompted us to redesign these cards to facilitate easier dissemination among patients and caregivers.
+**End-campaign surveys and feedback** - Responses to our messages and updates from the delivery and implementation teams were crucial in synthesizing insights. On one occasion, we learned that users were sharing the RES contact number using takeaway cards among family members. This observation prompted us to redesign these cards to facilitate easier dissemination among patients and caregivers.
 
-![Video thumbnail](/media/2024/04/video--1-_thumb.jpg)
 
-**Taking effective decisions**—A good decision was a mix of taste, data and insights. After having set up systems to process data, systems for gaining user feedback, it became relatively easier to take crucial decisions. Taking both data and insights into the decision making process was quite crucial. In some cases, we had contradictory user viewpoints. Or in other cases, the data was quite contradictory to the user narrative.
+**Taking effective decisions** — A good decision was a mix of taste, data and insights. After having set up systems to process data, systems for gaining user feedback, it became relatively easier to take crucial decisions. Taking both data and insights into the decision making process was quite crucial. In some cases, we had contradictory user viewpoints. Or in other cases, the data was quite contradictory to the user narrative.
 
 _What people say, is different from what people do, is different from what people think._
 
