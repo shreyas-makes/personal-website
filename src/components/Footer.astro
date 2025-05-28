@@ -58,43 +58,14 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900">
-  <div class="max-w-6xl mx-auto px-4 py-12 relative">
-   
-
-    <!-- Bottom footer section with stats and links -->
-    <div class="border-t border-gray-700/30 dark:border-gray-300/30 pt-8">
-      <div class="text-sm text-gray-400 dark:text-gray-500 space-y-4">
-        <!-- Site statistics -->
-        <div class="mb-6 max-w-3xl mx-auto">
-          <p class="mb-4 text-center">
-            This digital garden contains {formatNumber(totalWords)} words in total, spread across
-            <a href="/posts" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
-            <a href="/tags/projects" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{projects.length} work related case studies</a>, 
-            <a href="/tags/curiosities" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.filter(post => post.data.tags?.includes('curiosities')).length} experiments</a>, and
-            <a href="/tags/books" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{books.length} book reviews</a>.
-          </p>
-        </div>
-        
-        <div class="flex items-center justify-center my-6">
-          <div class="w-full max-w-xs mx-auto"></div>
-        </div>
-        
-        <div class="text-center">
-          <a href="https://twitter.com/shreyasprakash" class="hover:text-gray-200 dark:hover:text-gray-700 mx-4 underline underline-offset-4 decoration-[0.1em]">Twitter</a>
-          <a href="https://linkedin.com/in/shreyasprakash" class="hover:text-gray-200 dark:hover:text-gray-700 mx-4 underline underline-offset-4 decoration-[0.1em]">LinkedIn</a>
-          <a href="https://youtube.com/@shreyasprakash" class="hover:text-gray-200 dark:hover:text-gray-700 mx-4 underline underline-offset-4 decoration-[0.1em]">YouTube</a>
-        </div>
-
-      </div>
-    </div>
-
-     <!-- Main footer content in columns -->
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 hidden md:grid">
+  <div class="max-w-6xl mx-auto px-4 py-6 md:py-12 relative">
+    <!-- Main footer content in columns -->
+    <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12">
       <!-- Column 1: Rough Notes -->
-      <div class="p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
-        <h2 class="text-lg font-medium mb-4 text-gray-100 dark:text-gray-900">Recent concepts</h2>
-        <ul class="space-y-2">
-          {roughNotesPosts.map(post => (
+      <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
+        <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent concepts</h2>
+        <ul class="space-y-1.5 md:space-y-2">
+          {roughNotesPosts.slice(0, 6).map(post => (
             <li>
               <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                 {post.data.title}
@@ -105,27 +76,26 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <!-- Column 2: Recent Book Notes -->
-      <div class="p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
-        <h2 class="text-lg font-medium mb-4 text-gray-100 dark:text-gray-900">Recent book notes</h2>
-        <ul class="space-y-2">
-          {books.slice(0, 12).map(book => (
+      <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
+        <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent book notes</h2>
+        <ul class="space-y-1.5 md:space-y-2">
+          {books.slice(0, 6).map(book => (
             <li>
               <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                 {book.data.title}
               </a>
             </li>
           ))}
-        
         </ul>
       </div>
 
       <!-- Column 3: Recent curiosities -->
-      <div class="p-4">
-        <h2 class="text-lg font-medium mb-4 text-gray-100 dark:text-gray-900">Recent experiments</h2>
-        <ul class="space-y-2">
+      <div class="p-3 md:p-4">
+        <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent experiments</h2>
+        <ul class="space-y-1.5 md:space-y-2">
           {posts
             .filter(post => post.data.tags?.includes('curiosities'))
-            .slice(0, 12)
+            .slice(0, 6)
             .map(post => (
               <li>
                 <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
@@ -136,28 +106,48 @@ const currentYear = new Date().getFullYear();
         </ul>
       </div>
     </div>
-   
-    
-    <div class="text-sm text-gray-400 dark:text-gray-500 space-y-4">
-        <p class="mb-4 max-w-3xl mx-auto text-center">
-          This website is built in a way the internet was meant to be. This means a simple, content-first website, sharing thoughts and knowledge for free.
-        </p>
+
+    <!-- Bottom footer section with stats and links -->
+    <div class="border-t border-gray-700/30 dark:border-gray-300/30 pt-6 md:pt-8">
+      <div class="text-sm text-gray-400 dark:text-gray-500 space-y-4">
+        <!-- Site statistics -->
+        <div class="mb-4 md:mb-6 max-w-3xl mx-auto">
+          <p class="mb-4 text-center leading-relaxed">
+            This digital garden contains {formatNumber(totalWords)} words in total, spread across
+            <a href="/posts" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
+            <a href="/tags/projects" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{projects.length} work related case studies</a>, 
+            <a href="/tags/curiosities" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.filter(post => post.data.tags?.includes('curiosities')).length} experiments</a>, and
+            <a href="/tags/books" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{books.length} book reviews</a>.
+          </p>
+        </div>
         
-        <div class="mt-8 text-center">
+        <div class="text-center">
+          <a href="https://twitter.com/shreyasprakash" class="hover:text-gray-200 dark:hover:text-gray-700 mx-2 md:mx-4 underline underline-offset-4 decoration-[0.1em]">Twitter</a>
+          <a href="https://linkedin.com/in/shreyasprakash" class="hover:text-gray-200 dark:hover:text-gray-700 mx-2 md:mx-4 underline underline-offset-4 decoration-[0.1em]">LinkedIn</a>
+          <a href="https://youtube.com/@shreyasprakash" class="hover:text-gray-200 dark:hover:text-gray-700 mx-2 md:mx-4 underline underline-offset-4 decoration-[0.1em]">YouTube</a>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <p class="mb-4 text-center leading-relaxed">
+            This website is built in a way the internet was meant to be. This means a simple, content-first website, sharing thoughts and knowledge for free.
+          </p>
+        </div>
+        
+        <div class="text-center">
           <p>©{currentYear} Shreyas Prakash</p>
         </div>
+      </div>
     </div>
-  </div>
 
-   
     <!-- Back to top button -->
-    <div class="flex justify-center">
-      <a href="#top" class="inline-block mt-6 mb-2 border-2 border-gray-700/50 dark:border-gray-300/50 rounded-full p-4 hover:border-gray-600 dark:hover:border-gray-400 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <div class="flex justify-center mt-6 md:mt-8">
+      <a href="#top" class="inline-block border-2 border-gray-700/50 dark:border-gray-300/50 rounded-full p-3 md:p-4 hover:border-gray-600 dark:hover:border-gray-400 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8 text-gray-400 dark:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
         </svg>
       </a>
     </div>
+  </div>
 </footer>
 
 <style>
