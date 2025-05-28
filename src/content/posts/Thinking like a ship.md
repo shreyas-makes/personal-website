@@ -4,7 +4,6 @@ date: 2025-04-05
 slug: thinking-like-a-ship
 tags:
   - rough-notes
-  - critical-rationalism
 stage: plant
 ---
 It took me a long time to realize that arguments we argue about — aren’t always about facts. They are about values. 
