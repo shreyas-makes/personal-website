@@ -65,11 +65,7 @@ _As she starts learning about various key topics, she starts asking questions su
 
 _In this way, she receives health support from clinical experts such as nurses and doctor as and when needed from the comfort of her home._
 
-![upload in progress, 0](https://lex-img-p.s3.us-west-2.amazonaws.com/img/721194cc-0244-4437-924a-d3db84fdc2d5-RackMultipart20240427-185-ulnp8y.jpg)
 
-An example of a health response provided by the medical team
-
-![Video thumbnail](/media/2024/04/video--2-_thumb.jpg)
 
 Rich media is used liberally to reinforce key health topics and to aid in retention
 
@@ -163,9 +159,9 @@ Some key directions from our discovery phase:
 
 **Voice calls as a primary medium**—During our discovery phase, we analyzed the overall usage of smartphones among the rural populations in Bangladesh. As of last year, **41% of mobile phone users** in the country had smartphones. With low WhatsApp penetration and internet usage being distributed among various platforms like Facebook and Emo, Interactive Voice Response (IVR) was chosen as the primary medium for our RES service. This decision was supported by our field observations and corroborated by reports, which indicated that often only one smartphone is available per family in rural areas​ ([The Business Standard](https://www.tbsnews.net/tech/62-bangladeshi-users-have-smartphones-2025-report-294121))​​ ([GSMA](https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/gsma_resources/country-report-bangladesh/))​.
 
-**Timing our service around date of discharge**—We designed our RES service to start immediately after a high-risk baby is discharged from the hospital, typically after 7-9 days. This timing aligns with one of our core design principles: to provide the right information at the right time. We adopted a similar strategy of timing our service while designing for diabetes patients, surgical care, newly delivered mothers etc.
+**Timing our service around date of discharge** — We designed our RES service to start immediately after a high-risk baby is discharged from the hospital, typically after 7-9 days. This timing aligns with one of our core design principles: to provide the right information at the right time. We adopted a similar strategy of timing our service while designing for diabetes patients, surgical care, newly delivered mothers etc.
 
-**Contextualisation and personalisation of the messages—**RES campaigns were made more personalised to the geography they served. We adopted a more conversational format mixing curative, and promotive themes for behaviour change. We went on to also hire country specific teams across the Health Communications, Medical Strategy as well as Media/Film to ensure the content was adapted to the context.
+**Contextualisation and personalisation of the messages** — RES campaigns were made more personalised to the geography they served. We adopted a more conversational format mixing curative, and promotive themes for behaviour change. We went on to also hire country specific teams across the Health Communications, Medical Strategy as well as Media/Film to ensure the content was adapted to the context.
 
 ![upload in progress, 0](/images/2024/04/104.jpg)
 
@@ -272,7 +268,6 @@ To bring more structure in the type of responses provided, as well as ensure tha
 
 **Incorporating Feedback**—Aligning stakeholders along the whole process was the most challenging part of this process. To solicit timely and relevant input from stakeholders, it was crucial to present them with the appropriate artefacts at the right level of fidelity. Overly detailed artefacts might deter critical feedback, while overly vague ones might not provide enough substance for meaningful commentary. We used one pagers, concept notes, mockups, and sometimes even service prototypes to gather feedback
 
-![Video thumbnail](/media/2024/04/video_thumb.jpg)
 
 Beyond simple concept notes, we often found it more effective to simulate the entire user journey through a walkthrough. This approach transformed the experience into an interactive role-play rather than just a static document, making the feedback process more engaging and insightful.
 
