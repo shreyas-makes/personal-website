@@ -296,7 +296,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
         <!-- Latest section -->
     <section class="mb-16">
       <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-3 sm:mb-8">Recently published</h2>
-      <div class="space-y-4 sm:space-y-12">
+      <div class="space-y-8 sm:space-y-12">
         {latestPosts.map((post) => (
           <article class="group">
             <a href={`/posts/${post.slug}`} class="block space-y-2">
@@ -334,7 +334,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
           )}
         </div>
       </div>
-      <ul class="space-y-3 sm:space-y-8">
+      <ul class="space-y-8 sm:space-y-8">
         {remainingPosts.map((post) => (
           <li class="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-start sm:items-baseline gap-1 sm:gap-12 mb-8 sm:mb-6">
             {post.data.tags && post.data.tags.length > 0 && (
@@ -381,7 +381,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             )}
           </div>
         </div>
-        <ul class="space-y-6 sm:space-y-8">
+        <ul class="space-y-8 sm:space-y-8">
           {posts.roughNotes.slice(0, 20).map((post) => {
             const mainTag = post.data.tags?.find(tag => tag !== 'rough-notes');
             return (
