@@ -1,4 +1,8 @@
 ---
+import { formatDate } from '../utils/formatDate';
+import { calculateReadingTime } from '../utils/readingTime';
+import { generateExcerpt } from '../utils/excerptUtils';
+
 const { posts } = Astro.props;
 
 // Add validation helper
@@ -10,38 +14,63 @@ const getSafeTitle = (post) => {
 const getSafeDate = (post) => {
   try {
     if (!post.data?.date) return 'No date available';
-    const date = new Date(post.data.date);
-    return isNaN(date) ? 'Invalid date' : date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
+    return formatDate(post.data.date);
   } catch {
     return 'Invalid date';
+  }
+};
+
+const getReadingTime = (post) => {
+  try {
+    return calculateReadingTime(post.body || '');
+  } catch {
+    return '1 min read';
+  }
+};
+
+const getExcerpt = (post) => {
+  try {
+    return generateExcerpt(post.body || '');
+  } catch {
+    return '';
   }
 };
 ---
 
 <div class="post-grid">
-  {posts.map(post => (
-    <article class="post-card">
-      <a href={`${import.meta.env.BASE_URL}posts/${post.data.slug}`}>
-        <div class="post-content">
-          <h2 class="text-base sm:text-lg font-normal text-gray-900 dark:text-gray-200">{getSafeTitle(post)}</h2>
-          <time datetime={post.data.date || ''} class="text-xs text-gray-500 dark:text-gray-400">
-            {getSafeDate(post)}
-          </time>
-          {post.data.tags.length > 0 && (
-            <div class="tags">
-              {post.data.tags.map(tag => (
-                <span class="tag text-xs">{tag}</span>
-              ))}
+  {posts.map(post => {
+    const visibleTags = post.data.tags?.filter(tag => tag !== 'rough-notes').slice(0, 1) || [];
+    
+    return (
+      <article class="post-card group">
+        <a href={`${import.meta.env.BASE_URL}posts/${post.slug}`} class="block h-full">
+          <div class="post-content">
+            <h2 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400 leading-snug transition-colors mb-3">
+              {getSafeTitle(post)}
+            </h2>
+            
+            <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-3">
+              <time datetime={post.data.date || ''}>
+                {getSafeDate(post)}
+              </time>
+              <span>·</span>
+              <span>{getReadingTime(post)}</span>
+              {visibleTags.length > 0 && (
+                <>
+                  <span>·</span>
+                  <span>#{visibleTags[0]}</span>
+                </>
+              )}
             </div>
-          )}
-        </div>
-      </a>
-    </article>
-  ))}
+            
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm line-clamp-3">
+              {getExcerpt(post)}
+            </p>
+          </div>
+        </a>
+      </article>
+    );
+  })}
 </div>
 
 <style>
@@ -53,60 +82,56 @@ const getSafeDate = (post) => {
 
   .post-card {
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.2s;
-    padding: 1.5rem;
+    transition: all 0.2s ease;
+    background: #ffffff;
+    height: 100%;
   }
 
   .post-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .post-content {
     padding: 1.5rem;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  .post-content h2 {
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .post-content time {
-    display: block;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-  }
-
-  .tags {
-    margin-top: 1rem;
+    height: 100%;
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 
-  .tag {
-    background: #f3f4f6;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
+  .post-content p {
+    flex: 1;
+    margin: 0;
+  }
+
+  /* Line clamping for excerpt */
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 
   /* Dark mode adjustments */
   :global(.dark) .post-card {
-    border-color: #2d3748;
+    border-color: #374151;
+    background: #1f2937;
   }
 
-  :global(.dark) .tag {
-    background: #2d3748;
+  :global(.dark) .post-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
   /* Mobile adjustments */
   @media (max-width: 640px) {
+    .post-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
     .post-content {
-      font-size: 14px;
       padding: 1.25rem;
     }
   }

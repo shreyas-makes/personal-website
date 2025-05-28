@@ -1,19 +1,45 @@
+import { formatDate } from '../utils/formatDate';
+import { calculateReadingTime } from '../utils/readingTime';
 import { generateExcerpt } from '../utils/excerptUtils';
 
 const { post } = Astro.props;
 const readingTime = calculateReadingTime(post.body);
 const excerpt = generateExcerpt(post.body);
+const formattedDate = formatDate(post.data.date);
+
+// Get first tag excluding rough-notes
+const visibleTags = post.data.tags?.filter(tag => tag !== 'rough-notes').slice(0, 1) || [];
 
 <article class="group">
-  <a href={`/posts/${post.slug}`} class="block space-y-1">
-    <h3 class="text-base sm:text-lg font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400">
+  <a href={`/posts/${post.slug}`} class="block space-y-3">
+    <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 leading-snug transition-colors">
       {post.data.title}
     </h3>
-    <div class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
-      {formatDate(post.data.date)} · {readingTime}
+    
+    <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+      <span>{formattedDate}</span>
+      <span>·</span>
+      <span>{readingTime}</span>
+      {visibleTags.length > 0 && (
+        <>
+          <span>·</span>
+          <span>#{visibleTags[0]}</span>
+        </>
+      )}
     </div>
-    <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
+    
+    <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm line-clamp-2">
       {excerpt}
     </p>
   </a>
-</article> 
+</article>
+
+<style>
+  /* Ensure consistent line clamping */
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+</style> 
