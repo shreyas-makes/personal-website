@@ -6,21 +6,29 @@ tags:
   - product
 stage: plant
 ---
-Some of the "blockbuster" softwares should just gracefully end the never-ending iterative cycle of continuous development. The dialogue around product development should also explore the idea of (A) "finished" software in the same vein as (B) "software is never perfect and needs improvement". Both are different schools of thought, and I obviously side with (B), but I also wish that there were more attempts to explore (A), and it's variants.
+Some blockbuster software products should just end the cycle of endless iteration. 
 
-I see three side variants in total:
+The conversation around product development needs to take seriously the idea of “finished” software, alongside the more common belief that “software is never perfect and always needs improvement.” 
 
-- A freeze model, where a 'clean' version is frozen and maintained by the community.
-- Modular code: offer a stable 'core' with optional plugins that allow any format of customisation (eg. Obsidian, Figma plugins)
-- Dynamic software: this is the usual version, where we keep adding new features in the garb of continuous software development.
+These are two different schools of thought and have a lot of friction to coexist with each other. I lean toward the second, but I still wish more people explored the first.
 
-That being said, no software should end up like JIRA. My hunch is that this might have got formed on the basis of a more sales driven approach where, every new HIPPO from a prospective large enterprise client might ask for one additional feature to be added to JIRA, for it to become a deal. 
+I see three variations of the “finished software” idea:
 
-And all you know, at the end of all this, you will have your death by thousand cuts. This is a version of Ashby's Law: more complexity in a system requires more control, and eventually, the system itself collapses under its own weight.
+- **Freeze model**: a clean, final version is frozen and maintained by the community.
+    
+- **Modular architecture**: a stable core with optional plugins, like Obsidian or Figma, allows for open-ended customization without bloating the base.
+    
+- **Dynamic software**: the standard model, where new features are added continuously under the banner of ongoing development.
+    
 
-One product cannot serve all use cases forever, but when the same product serves entirely different set of audiences (startups, and let's say Fortune 500 companies), you end up making it a feature bloat for one, and alienate them altogether.
+My guess is that it evolved through sales-driven development: Every time a potential enterprise client would have asked the JIRA team for one more additional feature, the team would have been a "yes man", to close the deal. Over time, everything would have added up to become what it's today. Personally, using JIRA feels like there are 10 different traffic lights across 10 different roads with cars honking at each other, and you're exactly at the inter-intersection.
 
-Instead, to keep software “finished,” you need a *philosophy of refusal*. You need to say no to new features — even if it costs money. Yes, there is an optimal stopping point to software. And saying no to new features is not easy, as 'addition' symbolizes growth, much more than subtraction or deletion. Subtraction or deletion, is anti-growth unfortunately. And almost nobody wants to stop at it, because growth economics? customer segmentation? sales strategies? All of these don't reward stasis.
+It's a get death by a thousand cuts. My sincere hope in writing this, was a public plea that no software should end up like JIRA. It’s a version of Ashby’s Law: increased complexity demands more control, and eventually the system collapses under its own weight.
 
-I wish Slack just froze. And did no further improvements by trying to add agents into every nook and corner they could find in their application. I highly doubt this would happen.
+One product can’t serve all use cases forever. When you try to make the same software work for startups _and_ Fortune 500s, you end up bloating it for one group and alienating the other.
 
+To keep software “finished,” you need a philosophy of refusal. You need to say no — even when it costs you. There _is_ an optimal stopping point. 
+
+But saying no is hard. Additions look like growth. Subtraction doesn’t. And almost no one wants to stop, because the economics of growth, customer segmentation, and sales strategies reward motion, not stasis.
+
+I wish Slack, Gmail and Google had just frozen. Instead, it kept going, adding agents and LLMs into every nook and corner of the app it could find. I doubt that will stop.
