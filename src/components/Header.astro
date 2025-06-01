@@ -29,7 +29,7 @@ const isHomepage = pathname === '/';
 
   <header 
     id="main-header"
-    class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 pb-4 border-b border-gray-200 dark:border-gray-600 transition-transform duration-300 ease-in-out translate-y-0"
+    class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 pb-2 sm:pb-4 border-b border-gray-200 dark:border-gray-600 transition-transform duration-300 ease-in-out translate-y-0"
     transition:persist="header"
     transition:animate="none"
   >
@@ -38,7 +38,7 @@ const isHomepage = pathname === '/';
   <link rel="preload" href="/books" as="document" />
   <link rel="preload" href="/tags/prototypes" as="document" />
   
-  <div class="max-w-4xl mt-4 mx-auto px-4 sm:px-6">
+  <div class="max-w-4xl mt-2 sm:mt-4 mx-auto px-4 sm:px-6">
     <!-- Desktop layout - unified header -->
     <div class="hidden md:flex md:items-center md:justify-between">
       <!-- Logo/Home link - left aligned -->

@@ -8,9 +8,6 @@ stage: plant
 ---
 For decades, formal education has resembled a Procrustean bed—a system that stretches or cuts students to fit a rigid mold, regardless of their needs, talents, or pace.
 
-![](https://miro.medium.com/v2/resize:fit:1400/1*02A1LwPs4q0tADh15OGpPA.jpeg)
-
-
 Every child is expected to learn the same material in the same way, at the same time, and at the same speed, in lockstep with their peers. Struggle too long with a concept, and you're left behind. Master it too quickly, and you're bored and disengaged (likened again to the Procrustean bed). 
 
 Either way, the system moves on without you. This design flaw isn't just a pedagogical inconvenience—it’s a systemic failure. One of the most interesting ideas that tries to update our model of learning which has remained fairly consistent for over a 100 years has been the Bloom 2 Sigma problem. I first encountered this as a neatly positioned question in Patrick Collinson's blog—
