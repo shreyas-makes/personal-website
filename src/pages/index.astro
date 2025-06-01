@@ -172,61 +172,104 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     <!-- Add visual separator -->
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
     
-       <!-- Prototypes Section -->
-    
-
+    <!-- Two Column Section: Product Roles & Open Source -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-2">Product roles in the industry</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Work related initiatives across scientific publishing, healthcare, assistive-tech and edutech</p>
-      <ul class="space-y-8">
-        <li>
-          <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
-            <a class="hover:text-gray-900 dark:hover:text-gray-100">Product Manager</a>
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            Springer Nature (2024-Present)
-          </div>
-          <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
-            <a href="https://www.springernature.com/gp" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">Improving author experience in their submissions and open access publication journey</a>
-          </div>
-        </li>
-        <li>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Left Column: Product Roles -->
+        <div>
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-2">Product roles in the industry</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Work related initiatives across scientific publishing, healthcare, assistive-tech and edutech</p>
+          <ul class="space-y-8">
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a class="hover:text-gray-900 dark:hover:text-gray-100">Product Manager</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Springer Nature (2024-Present)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.springernature.com/gp" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">Improving author experience in their submissions and open access publication journey</a>
+              </div>
+            </li>
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a class="hover:text-gray-900 dark:hover:text-gray-100">Product Lead</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Noora Health (2021-2024)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.shreyasprakash.com/posts/bdres/" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">Enabling patients to prevent high-risk health conditions?</a>
+              </div>
+            </li>
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="https://www.shreyasprakash.com/posts/uvfy" class="hover:text-gray-900 dark:hover:text-gray-100">Co founder, Product</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                UVfy (2020-2021)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.shreyasprakash.com/posts/uvfy" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we prevent acquired infections in hospitals?</a>
+              </div>
+            </li>
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="https://www.shreyasprakash.com/posts/dhive/" class="hover:text-gray-900 dark:hover:text-gray-100">Founding Director, Product</a>
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Lead by Design Foundation, Product (2017-2020)
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://www.shreyasprakash.com/posts/dhive/" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we help children invent for social good?</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
         
-          <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
-            <a class="hover:text-gray-900 dark:hover:text-gray-100">Product Lead</a>
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            Noora Health (2021-2024)
-          </div>
-          <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
-            <a href="https://www.shreyasprakash.com/posts/bdres/" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">Enabling patients to prevent high-risk health conditions?</a>
-          </div>
-        </li>
-        <li>
-          <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
-            <a href="https://www.shreyasprakash.com/posts/uvfy" class="hover:text-gray-900 dark:hover:text-gray-100">Co founder, Product</a>
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            UVfy (2020-2021)
-          </div>
-          <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
-            <a href="https://www.shreyasprakash.com/posts/uvfy" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we prevent acquired infections in hospitals?</a>
-          </div>
-        </li>
-           
-        <li>
-          <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
-            <a href="https://www.shreyasprakash.com/posts/dhive/" class="hover:text-gray-900 dark:hover:text-gray-100">Founding Director, Product</a>
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-300 mb-2">
-            Lead by Design Foundation, Product (2017-2020)
-          </div>
-          <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
-            <a href="https://www.shreyasprakash.com/posts/dhive/" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">How might we help children invent for social good?</a>
-          </div>
-        </li>
-   
-             </ul>
+
+        <!-- Right Column: Open Source Contributions -->
+        <div>
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-2">Open source contributions</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 decoration-1">AI-assisted coding with Gemini 2.5 and Cursor IDE</p>
+          <ul class="space-y-6">
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="https://github.com/shreyas-makes/writing.humans" class="hover:text-gray-900 dark:hover:text-gray-100">Chess coach</a>
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100">
+                <a href="https://chesscoach-one.vercel.app/" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">AI chess coach to improve chess gameplay</a>
+              </div>
+            </li>
+            
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a class="hover:text-gray-900 dark:hover:text-gray-100">writing.humans</a>
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100 underline underline-offset-4 decoration-1">
+                AI writing tool for 100% human writing
+              </div>
+            </li>
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a class="hover:text-gray-900 dark:hover:text-gray-100">Edit next</a>
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100 underline underline-offset-4 decoration-1">
+                <a href="https://github.com/shreyas-makes/editnext-plugin" class="hover:text-gray-900 dark:hover:text-gray-100">Edit your worst writing drafts first</a>
+              </div>
+            </li>
+            <li>
+              <div class="text-base text-gray-700 dark:text-gray-300 mb-1">
+                <a href="https://github.com/shreyas-makes/zotero-raycast" class="hover:text-gray-900 dark:hover:text-gray-100">Zotero Raycast</a>
+              </div>
+              <div class="mt-2 text-sm text-gray-600 dark:text-gray-100 underline underline-offset-4 decoration-1">
+                <a href="https://github.com/shreyas-makes/zotero-raycast" class="hover:text-gray-900 dark:hover:text-gray-100">Cite your research references super fast</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
 
