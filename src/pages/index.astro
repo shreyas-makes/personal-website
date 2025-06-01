@@ -159,11 +159,11 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       {Object.entries(topTags).map(([tag, count]) => (
         <a 
           href={`/tags/${tag}`} 
-          class="tag-badge group"
+          class="tag-badge group bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-gray-100"
           title={`View posts tagged "${tag}"`}
         >
           <span class="tag-label">{tag}</span>
-          <span class="tag-count group-hover:bg-blue-600 group-hover:text-white">{count}</span>
+          <span class="tag-count bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:bg-gray-200 dark:group-hover:bg-gray-700 group-hover:text-gray-700 dark:group-hover:text-gray-300">{count}</span>
         </a>
       ))}
     </div>
@@ -436,18 +436,9 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     gap: 0.5em;
     padding: 0.32em 1em 0.32em 0.8em;
     border-radius: 9999px;
-    background: #fff;
-    color: #374151;
     font-weight: 500;
     font-size: 0.98em;
-    border: 1px solid #e5e7eb;
     transition: background 0.18s, border-color 0.18s, color 0.18s;
-  }
-
-  .tag-badge:hover {
-    background: #f3f4f6;
-    border-color: #d1d5db;
-    color: #111827;
   }
 
   .tag-label {
@@ -458,38 +449,10 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
   .tag-count {
     font-weight: 500;
-    background: #f3f4f6;
-    color: #64748b;
     border-radius: 9999px;
     padding: 0.1em 0.7em;
     font-size: 0.95em;
     margin-left: 0.2em;
     transition: background 0.18s, color 0.18s;
-  }
-
-  .tag-badge:hover .tag-count {
-    background: #e5e7eb;
-    color: #374151;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .tag-badge {
-      background: #181a1b;
-      color: #e1e1e1;
-      border: 1px solid #333a41;
-    }
-    .tag-badge:hover {
-      background: #23272b;
-      border-color: #444950;
-      color: #fff;
-    }
-    .tag-count {
-      background: #23272b;
-      color: #a1a1aa;
-    }
-    .tag-badge:hover .tag-count {
-      background: #181a1b;
-      color: #e1e1e1;
-    }
   }
 </style> 
