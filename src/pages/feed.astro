@@ -370,6 +370,21 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
 </script>
 
 <style>
+  /* Color variables similar to index.astro */
+  :root {
+    --text-primary: #000;
+    --text-secondary: #444;
+    --hover-color: #555;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text-primary: #e1e1e1;
+      --text-secondary: #d1d5db;
+      --hover-color: #fff;
+    }
+  }
+
   .post-item:last-child {
     border-bottom: none;
   }
@@ -390,7 +405,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     line-height: 27px;
     font-family: 'Verdana', Geneva, sans-serif;
     font-weight: 400;
-    color: var(--text);
+    color: var(--text-secondary);
   }
   
   /* Responsive adjustments for mobile */
