@@ -5,7 +5,7 @@ slug: before-building-a-product-hunt-a-purpose
 tags:
   - health
   - rough-notes
-  - indie-softwares
+  - software
 stage: sprout
 ---
 

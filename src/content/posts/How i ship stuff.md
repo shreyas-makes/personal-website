@@ -4,7 +4,7 @@ date: 2025-01-11T19:46:34.000Z
 slug: how-i-ship
 tags:
   - rough-notes
-  - indie-softwares
+  - software
 stage: sprout
 ---
 

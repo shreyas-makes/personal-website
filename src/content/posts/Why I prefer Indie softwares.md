@@ -3,9 +3,9 @@ title: Why I prefer indie softwares
 date: 2023-12-01T14:47:00.000Z
 slug: why-i-prefer-indie-softwares
 tags:
-  - indie-softwares
   - lifestyle
   - skin-in-the-game
+  - software
 stage: plant
 ---
 The greatest consumer software tools that exist out there are built by hobbyists and indie makers.
