@@ -42,7 +42,7 @@ if (!post) {
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={post.data.title}>
+<BaseLayout title={post.data.title} showMainFooterSection={true}>
   <main class="max-w-3xl mx-auto px-4 py-8">
     <Content />
     <div class="mt-16">

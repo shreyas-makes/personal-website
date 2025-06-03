@@ -37,7 +37,7 @@ if (!post) {
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={post.data.title}>
+<BaseLayout title={post.data.title} showMainFooterSection={true}>
   <ViewTransitions />
   <!-- Add transition names to key elements -->
   <main transition:animate="slide" class="max-w-3xl mx-auto px-4 pt-16 sm:pt-32 pb-8">

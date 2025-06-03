@@ -4,8 +4,13 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
+export interface Props {
+  title?: string;
+  showMainFooterSection?: boolean;
+}
+
 // Destructure title from Astro.props and provide a default if not passed
-const { title = 'Default Title' } = Astro.props;
+const { title = 'Default Title', showMainFooterSection = true } = Astro.props;
 
 // Remove the prefersDarkMode function and simplify theme handling
 const theme = Astro.cookies.get('theme')?.value || 'light';
@@ -237,7 +242,7 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
     <slot />
   </main>
   <div class="w-full border-t border-gray-300 dark:border-gray-800"></div>
-  <Footer />
+  <Footer showMainSection={showMainFooterSection} />
 
   <!-- Prism.js Script - Load deferred -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>

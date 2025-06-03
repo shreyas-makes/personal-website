@@ -136,7 +136,7 @@ console.log("Post data in PostLayout:", post.data); // Debug log
 console.log("Stage value in PostLayout:", post.data.stage); // Debug log
 ---
 
-<BaseLayout title={`${post.data.title} | Shreyas`}>
+<BaseLayout title={`${post.data.title} | Shreyas`} showMainFooterSection={true}>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-6 sm:pt-32 pb-6">
     <!-- Two Column Layout -->
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">
@@ -207,7 +207,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
         <div class="mt-16 mb-12">
           <div class="max-w-2xl mx-auto">
             <!-- GitHub PR Section -->
-            <div class="text-center py-6">
+            <div class="text-center py-2">
               <p class="text-sm text-gray-500 dark:text-gray-500">
                 Found a typo or want to suggest changes? 
                 <a 
@@ -222,7 +222,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
             </div>
             
             <!-- Subtle Divider -->
-            <div class="flex items-center justify-center py-8">
+            <div class="flex items-center justify-center py-2">
               <div class="flex-1 border-t border-gray-200 dark:border-gray-800"></div>
               <div class="px-4">
                 <svg class="w-4 h-4 text-gray-300 dark:text-gray-700" fill="currentColor" viewBox="0 0 20 20">

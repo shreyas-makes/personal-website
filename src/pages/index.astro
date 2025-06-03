@@ -134,7 +134,7 @@ const formatDate = (date: string | Date) => {
 const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 ---
 
-<BaseLayout title="Shreyas">
+<BaseLayout title="Shreyas" showMainFooterSection={false}>
   <ViewTransitions client:only />
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
     <section class="mt-2 sm:mt-12 md:mt-20 mb-12 max-w-4xl">

@@ -1,6 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 
+export interface Props {
+  showMainSection?: boolean;
+}
+
+const { showMainSection = true } = Astro.props;
+
 // Get all posts including drafts
 const allPosts = await getCollection('posts');
 
@@ -59,53 +65,55 @@ const currentYear = new Date().getFullYear();
 
 <footer class="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-900">
   <div class="max-w-6xl mx-auto px-4 py-6 md:py-12 relative">
-    <!-- Main footer content in columns -->
-    <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12">
-      <!-- Column 1: Rough Notes -->
-      <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
-        <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent concepts</h2>
-        <ul class="space-y-1.5 md:space-y-2">
-          {roughNotesPosts.slice(0, 6).map(post => (
-            <li>
-              <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
-                {post.data.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Column 2: Recent Book Notes -->
-      <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
-        <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent book notes</h2>
-        <ul class="space-y-1.5 md:space-y-2">
-          {books.slice(0, 6).map(book => (
-            <li>
-              <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
-                {book.data.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Column 3: Recent curiosities -->
-      <div class="p-3 md:p-4">
-        <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent experiments</h2>
-        <ul class="space-y-1.5 md:space-y-2">
-          {posts
-            .filter(post => post.data.tags?.includes('curiosities'))
-            .slice(0, 6)
-            .map(post => (
+    {showMainSection && (
+      <!-- Main footer content in columns -->
+      <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12">
+        <!-- Column 1: Rough Notes -->
+        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
+          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent concepts</h2>
+          <ul class="space-y-1.5 md:space-y-2">
+            {roughNotesPosts.slice(0, 6).map(post => (
               <li>
                 <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                   {post.data.title}
                 </a>
               </li>
             ))}
-        </ul>
+          </ul>
+        </div>
+
+        <!-- Column 2: Recent Book Notes -->
+        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
+          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent book notes</h2>
+          <ul class="space-y-1.5 md:space-y-2">
+            {books.slice(0, 6).map(book => (
+              <li>
+                <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                  {book.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Column 3: Recent curiosities -->
+        <div class="p-3 md:p-4">
+          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent experiments</h2>
+          <ul class="space-y-1.5 md:space-y-2">
+            {posts
+              .filter(post => post.data.tags?.includes('curiosities'))
+              .slice(0, 6)
+              .map(post => (
+                <li>
+                  <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                    {post.data.title}
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    )}
 
     <!-- Bottom footer section with stats and links -->
     <div class="border-t border-gray-700/30 dark:border-gray-300/30 pt-6 md:pt-8">
