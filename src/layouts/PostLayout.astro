@@ -155,10 +155,10 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
         )}
         
         {/* Updated Header Section - Consistent with BlogPost layout */}
-        <div class="mb-12 text-center">
+        <div class="mb-6 text-center">
           
              {/* Author Image */}
-          <div class="flex justify-center mb-4">
+          <div class="flex justify-center mb-2">
             <img 
               src="https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256"
               alt="Shreyas Prakash"
@@ -180,21 +180,21 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
               <span>{readingTime}</span>
             </div>
             
-            {/* Tags - Only show first tag excluding rough-notes */}
+            {/* Tags - Only show first tag excluding rough-notes - Hidden on mobile */}
             {post.data.tags && (
               (() => {
                 const visibleTags = post.data.tags.filter(tag => tag !== 'rough-notes').slice(0, 1);
                 return visibleTags.length > 0 ? (
                   <a
                     href={`/tags/${visibleTags[0]}`}
-                    class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    class="hidden sm:block px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                   >
                     #{visibleTags[0]}
                   </a>
                 ) : null;
               })()
             )}
-            <time datetime={post.data.date.toISOString()} class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full">
+            <time datetime={post.data.date.toISOString()} class="hidden sm:block px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full">
               {formattedDate}
             </time>
           </div>

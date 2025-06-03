@@ -1,0 +1,96 @@
+{
+  "name": "ai-documentation-exporter",
+  "displayName": "AI Documentation Exporter",
+  "description": "Export AI-assisted development prompts and code changes as readable markdown documentation",
+  "version": "0.0.1",
+  "publisher": "shreyas-prakash",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-docs.startSession",
+        "title": "Start AI Documentation Session",
+        "category": "AI Docs"
+      },
+      {
+        "command": "ai-docs.endSession",
+        "title": "End AI Documentation Session",
+        "category": "AI Docs"
+      },
+      {
+        "command": "ai-docs.addPrompt",
+        "title": "Add Prompt to Documentation",
+        "category": "AI Docs"
+      },
+      {
+        "command": "ai-docs.exportMarkdown",
+        "title": "Export Documentation as Markdown",
+        "category": "AI Docs"
+      },
+      {
+        "command": "ai-docs.viewSession",
+        "title": "View Current Session",
+        "category": "AI Docs"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ai-docs.addPrompt",
+        "key": "ctrl+shift+p",
+        "mac": "cmd+shift+p",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "AI Documentation Exporter",
+      "properties": {
+        "ai-docs.autoTrackChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically track file changes during documentation session"
+        },
+        "ai-docs.maxDiffLines": {
+          "type": "number",
+          "default": 10,
+          "description": "Maximum number of lines to show in code diffs"
+        },
+        "ai-docs.exportFormat": {
+          "type": "string",
+          "enum": [
+            "markdown",
+            "html"
+          ],
+          "default": "markdown",
+          "description": "Export format for documentation"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@vscode/test-electron": "^2.3.0",
+    "@vscode/vsce": "^3.4.2",
+    "typescript": "^4.9.4",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "diff": "^5.2.0"
+  }
+}
