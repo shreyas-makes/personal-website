@@ -110,7 +110,7 @@ export default function Search({ posts }: { posts: CollectionEntry<'posts'>[] })
       // Always remove 'booknotes/' from the slug for books
       return `/books/${result.slug.replace('booknotes/', '')}`;
     }
-    return `/posts/${result.slug}`;
+    return `/${result.slug}`;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

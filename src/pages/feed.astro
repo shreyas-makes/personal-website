@@ -63,7 +63,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
                 </span>
               )}
             </div>
-            <a href={`/posts/${post.slug}`}>
+            <a href={`/${post.slug}`}>
               <h1 class="text-3xl sm:text-2xl font-normal text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2">
                 {post.data.title}
               </h1>
@@ -79,7 +79,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
           </div>
           
           <div class="mt-4">
-            <a href={`/posts/${post.slug}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+            <a href={`/${post.slug}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
               View original post →
             </a>
           </div>
@@ -167,9 +167,9 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     
     // Collect slugs of initially loaded posts
     document.querySelectorAll('.post-item').forEach(post => {
-      const link = post.querySelector('a[href^="/posts/"]');
+      const link = post.querySelector('a[href^="/"]');
       if (link) {
-        const slug = link.getAttribute('href').replace('/posts/', '');
+        const slug = link.getAttribute('href').replace('/', '');
         loadedSlugs.add(slug);
       }
     });
@@ -274,7 +274,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
                       ${post.tags[0]}
                     </span>` : ''}
                 </div>
-                <a href="/posts/${post.slug}">
+                <a href="/${post.slug}">
                   <h2 class="text-2xl sm:text-xl font-normal text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2">
                     ${post.title}
                   </h2>
@@ -295,7 +295,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
               </div>
               
               <div class="mt-4">
-                <a href="/posts/${post.slug}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                <a href="/${post.slug}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
                   View original post →
                 </a>
               </div>

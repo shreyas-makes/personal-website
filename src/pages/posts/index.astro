@@ -1,4 +1,14 @@
 ---
+// This page now handles redirects from old /posts/* URLs to new root URLs
+const currentUrl = new URL(Astro.request.url);
+const pathname = currentUrl.pathname;
+
+// If this is a request to /posts/something (not just /posts/), redirect to root
+if (pathname.startsWith('/posts/') && pathname !== '/posts/' && pathname !== '/posts') {
+  const slug = pathname.replace('/posts/', '');
+  return Astro.redirect(`/${slug}`, 301);
+}
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { calculateReadingTime } from '../../utils/readingTime';
@@ -98,7 +108,7 @@ function getFirstTag(tags: string[] | undefined): string | null {
               </span>
             )}
             <div class="flex flex-col space-y-1">
-              <a href={`/posts/${post.slug}`} 
+              <a href={`/${post.slug}`} 
                  class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1">
                 <span class="block text-ellipsis overflow-hidden">
                   {post.data.title}

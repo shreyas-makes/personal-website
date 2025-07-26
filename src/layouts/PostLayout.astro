@@ -111,7 +111,7 @@ const prismCopyButtonScript = `
     
     // Track page view
     try {
-      const slug = window.location.pathname.replace(/^\/posts\//, '').replace(/\/$/, '');
+      const slug = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
       if (slug) {
         // Get the base URL and construct the API URL
         const baseUrl = window.location.origin;
@@ -286,7 +286,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
                 return postsToShow.slice(0, 20).map((postItem) => (
                   <li>
                     <a 
-                      href={`/posts/${postItem.slug}`}
+                      href={`/${postItem.slug}`}
                       class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200 underline underline-offset-2 decoration-1 hover:decoration-2"
                     >
                       {postItem.data.title}

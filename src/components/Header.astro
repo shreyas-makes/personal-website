@@ -48,14 +48,14 @@ const isHomepage = pathname === '/';
       <nav class="flex gap-6 text-sm" id="desktop-navigation">
         <!-- Now Tab -->
         <a 
-          href={`/posts/${nowSlug}`}
+          href={`/${nowSlug}`}
           class:list={[
             "flex items-center gap-2 transition-colors",
-            currentPath === `posts/${nowSlug}` 
+            currentPath === `${nowSlug}` 
               ? "nav-item-active" 
               : "nav-item"
           ]}
-          data-path={`posts/${nowSlug}`}
+          data-path={`${nowSlug}`}
           data-astro-prefetch="hover"
         >
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -183,12 +183,12 @@ const isHomepage = pathname === '/';
     <div class="px-8 py-6 space-y-4">
       <nav class="flex flex-col space-y-3" id="mobile-navigation">
         <a 
-          href={`/posts/${nowSlug}`}
+          href={`/${nowSlug}`}
           class:list={[
             "flex items-center gap-2 transition-colors mobile-nav-item",
-            currentPath === `posts/${nowSlug}` && "mobile-nav-item-active"
+            currentPath === `${nowSlug}` && "mobile-nav-item-active"
           ]}
-          data-path={`posts/${nowSlug}`}
+          data-path={`${nowSlug}`}
           data-astro-prefetch="hover"
         >
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">

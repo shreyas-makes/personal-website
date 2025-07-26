@@ -19,7 +19,7 @@ export async function GET(context: APIContext) {
       title: post.data.title,
       pubDate: new Date(post.data.date),
       description: post.data.summary || '',
-      link: `/posts/${post.slug}/`,
+      link: `/${post.slug}/`,
       // Include tags as categories for better RSS reader support
       customData: post.data.tags ? `<category>${post.data.tags.join('</category><category>')}</category>` : ''
     })),
