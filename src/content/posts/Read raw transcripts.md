@@ -22,18 +22,18 @@ I'll give another example: More recently, a few team members picked up on the Mi
 
 It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on Dostoevsky's Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time. 
 
-If we offload the insight generation process to the LLMs, we might run into the error of mistaking compression for distillation; they're not the same.
+**We can't just offload the insight generation process to the LLMs; they're not the same.**
 
-Compare the copilot gibberish to actual humans instead. 
+Compare the copilot gibberish to actual humans instead. Let's have 10 humans in a room, who read through the same set of 10 interview transcripts, synthesize them together with a facilitator in charge, and come up with a list, and then compare the result with the copilot gibberish, you will see what I mean. What this might generate, might actually make more "sense". It could provocate, titilate, or make you do a deeper "hmmmm..." when you read it.
 
-Let's have 10 humans in a room, who read through the same set of 10 interview transcripts, synthesize them together with a facilitator in charge, and come up with a list, and then compare the result with the copilot gibberish, you will see what I mean. What this might generate, might actually make more "sense". It could provocate, titilate, or make you do a deeper "hmmmm..." when you read it.
+We, as humans might be limited in computation, limited in memory, as well as limited in certain types of intelligence that the LLMs possess, and yet, because of these very limitations, we have the potency to generate unique insights. 
 
-We, as humans might be limited in computation, limited in memory, as well as limited in certain types of intelligence that the LLMs possess, and yet, because of these very limitations, we have the potency to generate unique insights. The way each of us distill the raw transcripts might be totally different. When we read, something unique happens in our funny little brains, it connects with all our key memories and gets situated in a way, that in total, we might have an unique interpretation.
+The way each of us distill the raw transcripts might be totally different. When we read, something unique happens in our funny little brains, it connects with all our key memories and gets situated in a way, that in total, we might have an unique interpretation.
 
 **Which is why, I see high value in reading through raw transcripts.** 
 
- And for these reasons, whenever I see these up-and-coming apps/startups talking about "killing books", "killing meeting notes", "killing note taking" "killing podcasts" by summarising everything into a few paragraphs, or even a few sentences. I truly mock at them. These "AI is taking over your jobs" propogandists run into the **mistake of confusing distillation with compression**. It's not the same.
+ And for these reasons, whenever I see these up-and-coming apps/startups talking about "killing books", "killing meeting notes", "killing note taking" "killing podcasts" by summarising everything into a few paragraphs, or even a few sentences. I truly mock at them. These "AI is taking over your jobs" propogandists run into the **mistake of confusing compression with distillation**. It's not the same.
 
 Let the LLMs do the grunt work of compression; we can safely delegate them at this task.
 
-And we should continue reading more raw transcripts; reading footnotes; reading meta-commentaries; the "devil lies in the details", and how our brain interprets them. **Distillation is our only true moat.** 
+And we should continue reading more raw transcripts; reading footnotes; reading meta-commentaries; the "devil lies in the details", and how our brain interprets them. **Distillation might be the only remaining moat for us.** 
