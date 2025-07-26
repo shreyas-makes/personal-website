@@ -109,7 +109,7 @@ posts.projects.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.
 const topTags = Object.entries(posts.tagCounts)
   .filter(([tag]) => tag !== 'rough-notes' && tag !== 'books')
   .sort(([,a], [,b]) => b - a)
-  .slice(0, 20)
+  .slice(0, 50)
   .reduce((obj, [tag, count]) => ({ ...obj, [tag]: count }), {});
 
 // Use pre-computed data
@@ -156,19 +156,17 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     </section>
 
     <section class="my-8">
-      <h2 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">Topics</h2>
+      <h2 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">Themes</h2>
       <div class="text-gray-800 dark:text-gray-200 leading-relaxed">
         {Object.keys(topTags).map((tag, index) => (
-          <>
+          <span>
             <a 
               href={`/tags/${tag}`} 
-              class="underline hover:no-underline text-gray-800 dark:text-gray-200"
+              class="underline hover:no-underline text-gray-800 dark:text-gray-200 inline-block"
+              style="text-decoration-skip-ink: auto; text-underline-position: under;"
               title={`View posts tagged "${tag}"`}
-            >
-              {tag}
-            </a>
-            {index < Object.keys(topTags).length - 1 && <span>, </span>}
-          </>
+            >{tag}</a>{index < Object.keys(topTags).length - 1 && <span>, </span>}
+          </span>
         ))}
       </div>
     </section>

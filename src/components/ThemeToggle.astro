@@ -14,33 +14,36 @@
 </button>
 
 <script>
-  // Handle theme toggle click
-  document.getElementById('theme-toggle-component')?.addEventListener('click', (e) => {
-    e.preventDefault();
+  function toggleTheme() {
     const isCurrentlyDark = document.documentElement.classList.contains('dark');
     const newTheme = isCurrentlyDark ? 'light' : 'dark';
     
-    // Update classes
+    // Update classes immediately
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
     
     // Store preference
     localStorage.setItem('theme', newTheme);
     document.cookie = `theme=${newTheme};path=/;max-age=31536000`;
-  });
+  }
 
-  // Ensure this script runs after view transitions
-  document.addEventListener('astro:page-load', () => {
-    document.getElementById('theme-toggle-component')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      const isCurrentlyDark = document.documentElement.classList.contains('dark');
-      const newTheme = isCurrentlyDark ? 'light' : 'dark';
-      
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(newTheme);
-      
-      localStorage.setItem('theme', newTheme);
-      document.cookie = `theme=${newTheme};path=/;max-age=31536000`;
-    });
-  });
+  function attachToggleListener() {
+    const toggleButton = document.getElementById('theme-toggle-component');
+    if (toggleButton) {
+      // Remove any existing listeners to prevent duplicates
+      toggleButton.removeEventListener('click', toggleTheme);
+      toggleButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleTheme();
+      });
+    }
+  }
+
+  // Initial attachment
+  attachToggleListener();
+
+  // Reattach after view transitions
+  document.addEventListener('astro:page-load', attachToggleListener);
+  document.addEventListener('astro:after-swap', attachToggleListener);
 </script> 
