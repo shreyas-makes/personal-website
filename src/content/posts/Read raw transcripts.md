@@ -16,9 +16,7 @@ A young, impoverished ex-student named Raskolnikov murders an elderly pawnbroker
 
 Would this mean that I've saved 20 hours of reading, 30 days of thinking about the plotline twists, and 5 years of reflecting on the storyline to finally "get" what Raskolnikov did in this book? 
 
-No, absolutely not.
-
-I don't think this tight compressed sentence is even a cheap substitute for what I've read.
+No, absolutely not. I don't think this tight compressed sentence is even a cheap substitute for what I've read.
 
 I'll give another example: More recently, a few team members picked up on the Microsoft copilot usage; and have been using it to process raw transcripts from interviews by asking the agents to ; `"summarise all the transcripts, and then come up with 10 key insights you've identified.."`
 
