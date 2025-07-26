@@ -47,29 +47,41 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
 ---
 
 <BaseLayout title="Feed | Shreyas Prakash" showMainFooterSection={true}>
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 sm:pt-32 pb-8 feed-container">
-    <h1 class="text-3xl sm:text-3xl font-normal text-gray-900 dark:text-gray-100 mb-8">All Posts</h1>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-6 sm:pt-32 pb-6">
+    <!-- Header Section with more breathing space -->
+    <div class="mb-12 text-center">
+      <!-- Author Image -->
+      <div class="flex justify-center mb-8">
+        <img 
+          src="https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256"
+          alt="Shreyas Prakash"
+          class="w-16 h-16 rounded-full object-cover border-2 border-black dark:border-white"
+        />
+      </div>
+    </div>
+
+    <main class="feed-container">
     
     
     <!-- Feed container -->
     <div id="feed-container" class="w-full space-y-12 sm:space-y-16 mb-16">
       {postsWithMetadata.map((post) => (
         <article class="post-item pb-8 border-b border-gray-200 dark:border-gray-800 w-full">
-          <div class="mb-4">
-            <div class="flex items-center gap-2 mb-2">
+          <div class="mb-4 text-center">
+            <a href={`/${post.slug}`}>
+              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2 leading-tight">
+                {post.data.title}
+              </h2>
+            </a>
+            <div class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+              {post.readingTime}
+            </div>
+            <div class="flex items-center justify-center gap-2 mb-4">
               {post.data.tags && post.data.tags.length > 0 && (
                 <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
                   {post.data.tags[0]}
                 </span>
               )}
-            </div>
-            <a href={`/${post.slug}`}>
-              <h1 class="text-3xl sm:text-2xl font-normal text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2">
-                {post.data.title}
-              </h1>
-            </a>
-            <div class="text-gray-600 dark:text-gray-400 text-sm mb-4">
-              {formatDate(post.data.date)} — {post.readingTime}
             </div>
           </div>
           
@@ -109,7 +121,8 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
       data-remaining-posts={JSON.stringify(remainingPosts)}
       class="hidden"
     ></div>
-  </main>
+    </main>
+  </div>
 </BaseLayout>
 
 <!-- Add marked.js for client-side markdown rendering -->
@@ -267,20 +280,20 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
             
             // Create post HTML
             postElement.innerHTML = `
-              <div class="mb-4">
-                <div class="flex items-center gap-2 mb-2">
-                  ${post.tags && post.tags.length > 0 ? 
-                    `<span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
-                      ${post.tags[0]}
-                    </span>` : ''}
-                </div>
+              <div class="mb-4 text-center">
                 <a href="/${post.slug}">
-                  <h2 class="text-2xl sm:text-xl font-normal text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2">
+                  <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2 leading-tight">
                     ${post.title}
                   </h2>
                 </a>
                 <div class="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                  ${formattedDate} — ${post.readingTime}
+                  ${post.readingTime}
+                </div>
+                <div class="flex items-center justify-center gap-2 mb-4">
+                  ${post.tags && post.tags.length > 0 ? 
+                    `<span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
+                      ${post.tags[0]}
+                    </span>` : ''}
                 </div>
               </div>
               
@@ -398,21 +411,141 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     animation: fadeIn 0.4s ease-out;
   }
   
-  /* Ensure prose content doesn't have width restrictions */
+  /* Consistent prose styling matching PostLayout */
   :global(.prose) {
     max-width: none !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
     font-size: 16px;
-    line-height: 27px;
+    line-height: 1.7;
     font-family: 'Verdana', Geneva, sans-serif;
     font-weight: 400;
-    color: var(--text-secondary);
+    overflow-x: hidden;
   }
   
+  /* Additional prose styling matching PostLayout */
+  :global(.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6) {
+    font-weight: 400;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    font-family: 'Verdana', Geneva, sans-serif;
+  }
+  
+  :global(.prose h1) {
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    line-height: 1.4;
+  }
+  
+  :global(.prose h2) {
+    font-size: 1.3em;
+    margin-top: 1.75em;
+    margin-bottom: 0.75em;
+  }
+  
+  :global(.prose h3) {
+    font-size: 1.1em;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+  
+  :global(.prose p) {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-bottom: 1.5em;
+  }
+
+  :global(.prose li) {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-bottom: 0.5em;
+  }
+
+  :global(.prose blockquote) {
+    border-left: 4px solid #e5e7eb;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    padding-right: 1rem;
+  }
+
+  :global(.prose a) {
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Make sure images stay within container */
+  :global(.prose img) {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 2rem auto;
+  }
+
   /* Responsive adjustments for mobile */
   @media (max-width: 640px) {
     :global(.prose) {
       font-size: 15px;
-      line-height: 24px;
+      line-height: 1.6;
     }
+    
+    :global(.prose p) {
+      margin-bottom: 1.5em;
+    }
+    
+    :global(.prose li) {
+      margin-bottom: 0.5em;
+    }
+    
+    :global(.prose h1) {
+      font-size: 1.3em;
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      line-height: 1.4;
+    }
+    
+    :global(.prose h2) {
+      font-size: 1.2em;
+      margin-top: 1.5em;
+      margin-bottom: 0.75em;
+    }
+    
+    :global(.prose h3) {
+      font-size: 1.1em;
+      margin-top: 1.3em;
+      margin-bottom: 0.75em;
+    }
+    
+    :global(.prose blockquote) {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 1rem;
+    }
+    
+    /* Adjust container padding on mobile */
+    .max-w-4xl {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    
+    /* Adjust link behavior on mobile */
+    :global(.prose a) {
+      word-break: break-word;
+      display: inline-block;
+      max-width: 100%;
+    }
+  }
+
+  /* Dark mode overrides with higher specificity */
+  :global(html.dark .prose blockquote) {
+    color: #9ca3af;
+    border-left-color: #374151;
   }
 </style> 
