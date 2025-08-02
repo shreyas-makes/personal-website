@@ -74,7 +74,7 @@ const currentYear = new Date().getFullYear();
           <ul class="space-y-1.5 md:space-y-2">
             {roughNotesPosts.slice(0, 6).map(post => (
               <li>
-                <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                <a href={`/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                   {post.data.title}
                 </a>
               </li>
@@ -105,7 +105,7 @@ const currentYear = new Date().getFullYear();
               .slice(0, 6)
               .map(post => (
                 <li>
-                  <a href={`/posts/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                  <a href={`/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
                     {post.data.title}
                   </a>
                 </li>
@@ -121,11 +121,7 @@ const currentYear = new Date().getFullYear();
         <!-- Site statistics -->
         <div class="mb-4 md:mb-6 max-w-3xl mx-auto">
           <p class="mb-4 text-center leading-relaxed">
-            This digital garden contains {formatNumber(totalWords)} words in total, spread across
-            <a href="/posts" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.length} essays and concepts</a>, 
-            <a href="/tags/projects" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{projects.length} work related case studies</a>, 
-            <a href="/tags/curiosities" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{posts.filter(post => post.data.tags?.includes('curiosities')).length} experiments</a>, and
-            <a href="/tags/books" class="font-medium hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">{books.length} book reviews</a>.
+            This digital garden contains {formatNumber(totalWords)} words written.
           </p>
         </div>
         
