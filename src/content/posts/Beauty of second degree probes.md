@@ -1,5 +1,5 @@
 ---
-title: No lie can overcome a second degree probe
+title: Beauty of second degree probes
 date: 2025-08-09
 slug: second-degree-probe
 tags:
