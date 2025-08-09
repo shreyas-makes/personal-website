@@ -54,6 +54,4 @@ Second probe: "But what about Japan from 1990-2010, or specific regions during e
 
 *Response: "Umm....well..."*
 
-The second-degree probe is not a magic wand on to shatter inherentassumptions, what it does tell us is that we don't question our assumptions deeply enough. 
-
-Sometimes it's just a castle of glass, waiting for the right question to act as a pickaxe to shatter this whole foundation based on a false premise.
+The second-degree probe is not a magic wand to shatter inherent assumptions, what it does tell us is that we don't question our assumptions deeply enough. Sometimes it's just a castle of glass, waiting for the right question to act as a pickaxe to shatter this whole foundation based on a false premise.
