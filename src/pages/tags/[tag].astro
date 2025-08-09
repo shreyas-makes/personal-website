@@ -138,29 +138,32 @@ const isCuriositiesTag = tag === 'curiosities';
           <span>{posts.length} post{posts.length === 1 ? '' : 's'}</span>
         </div>
       </div>
-      <div class="space-y-8 sm:space-y-12">
+      <ul class="space-y-12">
         {sortedPosts.map((post) => {
           const summary = getPostSummary(post);
           const readingTime = calculateReadingTime(post.body);
           const formattedDate = formatDate(post.data.date);
           
           return (
-            <article class="group">
-              <a href={`/${post.slug}`} class="block space-y-2">
-                <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
-                  {post.data.title}
-                </h3>
-                <div class="text-gray-600 dark:text-gray-400 text-sm">
-                  {formattedDate} — {readingTime}
-                </div>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
+            <li class="flex flex-col gap-1">
+              <div class="flex flex-col space-y-1">
+                <a href={`/${post.slug}`} 
+                   class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1">
+                  <span class="block text-ellipsis overflow-hidden">
+                    {post.data.title}
+                  </span>
+                </a>
+                <span class="text-gray-500 dark:text-gray-400 text-xs">
+                  {readingTime} <span class="mx-2"> — </span> {formattedDate}
+                </span>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                   {summary}
                 </p>
-              </a>
-            </article>
+              </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </section>
 
     <div class="mt-16 pb-8">

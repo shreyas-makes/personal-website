@@ -215,22 +215,25 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
           )}
         </div>
       </div>
-      <div class="space-y-8 sm:space-y-12">
-        {remainingPosts.map((post) => (
-          <article class="group">
-            <a href={`/${post.slug}`} class="block space-y-2">
-              <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
+      <div class="space-y-2">
+        {posts.regular.slice(3).map((post) => {
+          const postDate = new Date(post.data.date);
+          const year = postDate.getFullYear();
+          
+          return (
+            <div class="flex items-baseline gap-4">
+              <span class="text-gray-500 dark:text-gray-400 text-sm font-mono tabular-nums min-w-fit">
+                {year}
+              </span>
+              <a 
+                href={`/${post.slug}`} 
+                class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+              >
                 {post.data.title}
-              </h3>
-              <div class="text-gray-600 dark:text-gray-400 text-sm">
-                {formatDate(post.data.date)} — {post.readingTime}
-              </div>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
-                {post.excerpt}
-              </p>
-            </a>
-          </article>
-        ))}
+              </a>
+            </div>
+          );
+        })}
       </div>
     </section>
 
@@ -254,22 +257,25 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             )}
           </div>
         </div>
-        <div class="space-y-8 sm:space-y-12">
-          {posts.roughNotes.slice(0, 20).map((post) => (
-            <article class="group">
-              <a href={`/${post.slug}`} class="block space-y-2">
-                <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
+        <div class="space-y-2">
+          {posts.roughNotes.map((post) => {
+            const postDate = new Date(post.data.date);
+            const year = postDate.getFullYear();
+            
+            return (
+              <div class="flex items-baseline gap-4">
+                <span class="text-gray-500 dark:text-gray-400 text-sm font-mono tabular-nums min-w-fit">
+                  {year}
+                </span>
+                <a 
+                  href={`/${post.slug}`} 
+                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                >
                   {post.data.title}
-                </h3>
-                <div class="text-gray-600 dark:text-gray-400 text-sm">
-                  {formatDate(post.data.date)} — {post.readingTime}
-                </div>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
-                  {post.excerpt}
-                </p>
-              </a>
-            </article>
-          ))}
+                </a>
+              </div>
+            );
+          })}
         </div>
       </section>
     )}
