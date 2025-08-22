@@ -281,7 +281,6 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
   <main class="flex-grow w-full overflow-x-hidden">
     <slot />
   </main>
-  <div class="w-full border-t border-gray-300 dark:border-gray-800"></div>
   <Footer showMainSection={showMainFooterSection} />
 
   <!-- Prism.js Script - Load deferred -->
