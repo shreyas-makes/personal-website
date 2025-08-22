@@ -70,11 +70,11 @@ const currentYear = new Date().getFullYear();
       <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12">
         <!-- Column 1: Rough Notes -->
         <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
-          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent concepts</h2>
+          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent concepts</h2>
           <ul class="space-y-1.5 md:space-y-2">
             {roughNotesPosts.slice(0, 6).map(post => (
               <li>
-                <a href={`/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                <a href={`/${post.slug}`} class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-[0.1em]">
                   {post.data.title}
                 </a>
               </li>
@@ -84,11 +84,11 @@ const currentYear = new Date().getFullYear();
 
         <!-- Column 2: Recent Book Notes -->
         <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
-          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent book notes</h2>
+          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent book notes</h2>
           <ul class="space-y-1.5 md:space-y-2">
             {books.slice(0, 6).map(book => (
               <li>
-                <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-[0.1em]">
                   {book.data.title}
                 </a>
               </li>
@@ -98,14 +98,14 @@ const currentYear = new Date().getFullYear();
 
         <!-- Column 3: Recent curiosities -->
         <div class="p-3 md:p-4">
-          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-100 dark:text-gray-900">Recent experiments</h2>
+          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent experiments</h2>
           <ul class="space-y-1.5 md:space-y-2">
             {posts
               .filter(post => post.data.tags?.includes('curiosities'))
               .slice(0, 6)
               .map(post => (
                 <li>
-                  <a href={`/${post.slug}`} class="text-sm text-gray-300 dark:text-gray-600 hover:text-gray-100 dark:hover:text-gray-800 underline underline-offset-4 decoration-[0.1em]">
+                  <a href={`/${post.slug}`} class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-[0.1em]">
                     {post.data.title}
                   </a>
                 </li>
