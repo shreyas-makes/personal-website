@@ -17,7 +17,7 @@ const { title, date, publishDate, updatedDate, heroImage, tags, stage = 'seedlin
 const readingTime = body ? calculateReadingTime(body) : null;
 
 // Generate OG image URL for this post
-const ogImageUrl = `${Astro.site}og/${slug}.svg`;
+const ogImageUrl = `https://www.shreyasprakash.com/og/${slug}.svg`;
 
 // Post description - could come from frontmatter or generated
 const postDescription = `${title} - ${readingTime} read on Shreyas Prakash's blog`;
