@@ -55,6 +55,11 @@ console.log('- readingTime:', readingTime);
           {title}
         </h1>
         
+        {/* DEBUG: Temporary visible debug info */}
+        <div class="bg-yellow-100 border border-yellow-400 rounded p-2 mb-4 text-sm">
+          <strong>DEBUG INFO:</strong> BlogPost layout active | OG URL: {ogImageUrl} | Layout: BlogPost.astro
+        </div>
+        
         {/* Metadata - Only reading time */}
         {readingTime && (
           <div class="flex justify-center items-center text-xs text-gray-500 dark:text-gray-400">
