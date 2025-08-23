@@ -206,7 +206,7 @@ export const GET: APIRoute = async ({ params }) => {
 
     const excerpt = generateExcerpt(post.body);
 
-    console.log('OG Image: Preparing data for generation...');
+    console.log('OG Image: Preparing modern design generation...');
     console.log('- Title:', post.data.title);
     console.log('- Reading time:', readingTime);
     console.log('- Date:', formattedDate);
