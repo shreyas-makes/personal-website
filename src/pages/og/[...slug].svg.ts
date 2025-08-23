@@ -129,7 +129,7 @@ function OGImageTemplate({
                     color: '#888892',
                     fontWeight: '500'
                   },
-                  children: 'shreyas.blog'
+                  children: 'shreyasprakash.com'
                 }
               }
             ]
@@ -309,7 +309,7 @@ export const GET: APIRoute = async ({ params }) => {
           ${readingTime}
         </text>
         <text x="1080" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892" text-anchor="end">
-          shreyas.blog
+          shreyasprakash.com
         </text>
       </svg>
     `.trim();
