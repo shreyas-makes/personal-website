@@ -5,7 +5,6 @@ slug: git-way-learning-to-code
 tags:
   - rough-notes
   - ai-coding
-  - llm
 stage: plant
 ---
 My last year's resolution was to learn how to build on Rails. I taught myself the basics by following some courses, but nothing really stuck with me. I wasn’t building apps; I was getting into a tutorial rut. I needed a better way to learn, akin to being pushed into the river with a swimming instructor. 

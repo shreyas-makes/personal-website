@@ -5,7 +5,6 @@ slug: read-raw-transcripts
 tags:
   - knowledge
   - writing
-  - ai
 stage: plant
 ---
 I opened up Claude one day, and asked to summarise Dostoevsky's Crime and Punishment into one sentence; and it said:

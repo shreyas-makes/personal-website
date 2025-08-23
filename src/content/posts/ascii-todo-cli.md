@@ -5,7 +5,6 @@ slug: ascii-todo-cli
 tags:
   - cli
   - productivity
-  - ascii-art
   - curiosities
 stage: seedling
 ---

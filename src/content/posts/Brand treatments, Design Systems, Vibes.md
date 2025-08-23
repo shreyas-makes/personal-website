@@ -1,9 +1,11 @@
 ---
-title: "Brand treatments, Design Systems, Vibes"
-date: "2024-09-20T08:04:38.000Z"
-slug: "brand-treatments"
-tags: [design, software, brand]
-stage: "plant" 
+title: Brand treatments, Design Systems, Vibes
+date: 2024-09-20T08:04:38.000Z
+slug: brand-treatments
+tags:
+  - design
+  - software
+stage: plant
 ---
 The usual approach to building a design system often involves compiling a list of font families, typography guidelines, color palettes, patterns, and similar visual elements.
 

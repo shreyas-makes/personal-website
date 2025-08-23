@@ -3,8 +3,6 @@ title: Beauty of Zettels
 date: 2024-12-06T14:11:48.000Z
 slug: beauty-of-zettels
 tags:
-  - knowledge
-  - zettelkasten
   - writing
 stage: plant
 ---

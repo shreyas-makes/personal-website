@@ -5,7 +5,6 @@ slug: breaking-the-fourth-wall-interview
 tags:
   - interviewing
   - rough-notes
-  - product
 stage: seedling
 ---
 A group of men eating ice cream during peak London summer started drowning in large numbers.

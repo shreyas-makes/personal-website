@@ -1,9 +1,11 @@
 ---
-title: "Meta-analysis for contradictory research findings"
-date: "2024-12-06T15:07:31.000Z"
-slug: "meta-analysis-for-contradictory-research-findings"
-tags: [health, digital-health, rough-notes]
-stage: "seedling"
+title: Meta-analysis for contradictory research findings
+date: 2024-12-06T15:07:31.000Z
+slug: meta-analysis-for-contradictory-research-findings
+tags:
+  - digital-health
+  - rough-notes
+stage: seedling
 ---
 
 In the world of nutrition research, contradictory findings are as common as fad diets.

@@ -1,12 +1,14 @@
 ---
-title: "How might we prevent acquired infections in hospitals?"
-date: "2020-01-16T15:31:40.000Z"
-slug: "uvfy"
-tags: [health, digital-health, projects]
-stage: "seedling"
-period: "2020-2021"
-company: "UVfy"
-role: "Co-founder, Product"
+title: How might we prevent acquired infections in hospitals?
+date: 2020-01-16T15:31:40.000Z
+slug: uvfy
+tags:
+  - digital-health
+  - projects
+stage: seedling
+period: 2020-2021
+company: UVfy
+role: Co-founder, Product
 ---
 
 What if you visited the hospital for a routine health checkup and ended up contracting an infection that required hospitalization?

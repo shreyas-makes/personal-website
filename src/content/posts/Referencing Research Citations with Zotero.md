@@ -3,8 +3,8 @@ title: Copy, Paste and Cite
 date: 2025-02-14
 slug: copy-paste-and-cite
 tags:
-  - llm
   - curiosities
+  - ai-coding
 stage: seedling
 ---
 

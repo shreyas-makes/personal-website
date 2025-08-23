@@ -3,9 +3,7 @@ title: Can a thought be an algorithm?
 date: 2024-08-17T12:57:11.000Z
 slug: algorithms-of-thought
 tags:
-  - knowledge
   - product
-  - first-principles
 stage: plant
 ---
 When you actively hold a question in your mind, you start seeing potential answers and questions related to it pop up in your radar. The question and the answer co-evolve in a gracious dance enriching our understanding of the world and space around us. Questions act as your personal radar.

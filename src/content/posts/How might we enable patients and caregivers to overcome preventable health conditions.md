@@ -1,12 +1,14 @@
 ---
-title: "How might we enable patients and caregivers to overcome preventable health conditions?"
-date: "2022-06-16T15:27:02.000Z"
-slug: "bdres"
-tags: [health, digital-health, projects]
-stage: "plant"
-period: "2021-2024"
-company: "Noora Health"
-role: "Product Lead"
+title: How might we enable patients and caregivers to overcome preventable health conditions?
+date: 2022-06-16T15:27:02.000Z
+slug: bdres
+tags:
+  - digital-health
+  - projects
+stage: plant
+period: 2021-2024
+company: Noora Health
+role: Product Lead
 ---
 
 For MCH, a study we conducted in 2021 observed strong evidence that the health messaging service (RES) improved maternal knowledge and infant care. It observed significantly higher rates of breastfeeding, safe infwhyant-feeding practices, and skin-to-skin care among the intervention group, as well as greater knowledge of maternal nutrition, breastfeeding, and cord care best practices.

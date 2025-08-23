@@ -1,9 +1,11 @@
 ---
-title: "Better way to think about conflicts"
-date: "2024-02-06"
-slug: "biceps-for-conflict-management"
-tags: [conflict-management, rough-notes, leadership]
-stage: "sprout" 
+title: Better way to think about conflicts
+date: 2024-02-06
+slug: biceps-for-conflict-management
+tags:
+  - conflict-management
+  - rough-notes
+stage: sprout
 ---
 What's the hardest conflict you've ever encountered at your work?
 

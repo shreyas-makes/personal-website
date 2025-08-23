@@ -169,7 +169,7 @@ export const GET: APIRoute = async ({ params }) => {
     const authorImageUrl = 'https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256';
 
     // Generate excerpt from post content
-    const generateExcerpt = (content: string, maxLength: number = 150): string => {
+    const generateExcerpt = (content: string, maxLength: number = 280): string => {
       // Remove markdown formatting and HTML
       const cleanContent = content
         .replace(/---[\s\S]*?---/, '') // Remove frontmatter
@@ -183,17 +183,9 @@ export const GET: APIRoute = async ({ params }) => {
         .replace(/\n/g, ' ') // Replace single newlines with space
         .trim();
       
-      // Take first sentence or up to maxLength characters
-      const sentences = cleanContent.split(/[.!?]+/);
-      const firstSentence = sentences[0]?.trim();
-      
-      if (firstSentence && firstSentence.length <= maxLength) {
-        return firstSentence;
-      }
-      
-      // If first sentence is too long, truncate at word boundary
+      // Always truncate to maxLength with ellipsis for consistent formatting
       if (cleanContent.length <= maxLength) {
-        return cleanContent;
+        return cleanContent + '...';
       }
       
       const truncated = cleanContent.substring(0, maxLength);

@@ -4,7 +4,6 @@ date: 2025-04-08
 slug: greenfield-apps
 tags:
   - ai-coding
-  - llm
   - ruby-on-rails
 stage: plant
 ---

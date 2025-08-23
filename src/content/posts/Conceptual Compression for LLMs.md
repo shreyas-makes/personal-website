@@ -1,9 +1,10 @@
 ---
-title: "Conceptual Compression for LLMs"
-date: "2024-12-07T17:48:08.000Z"
-slug: "conceptual-compression-for-llms"
-tags: [software, ai]
-stage: "sprout" 
+title: Conceptual Compression for LLMs
+date: 2024-12-07T17:48:08.000Z
+slug: conceptual-compression-for-llms
+tags:
+  - ai-coding
+stage: sprout
 ---
 Imagine you're building a house. You could break down the act of building into various steps: first comes the foundation, then the framing, then the roofing, and the plumbing, and the wiring, and so on.
 

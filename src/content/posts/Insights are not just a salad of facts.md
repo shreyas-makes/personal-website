@@ -1,9 +1,14 @@
 ---
-title: "Insights are not just a salad of facts"
-date: "2024-01-06T14:39:00.000Z"
-slug: "insights-are-not-just-a-salad-of-facts"
-tags: [design, research, user-research, insights, methodology, rough-notes]
-stage: "seedling"
+title: Insights are not just a salad of facts
+date: 2024-01-06T14:39:00.000Z
+slug: insights-are-not-just-a-salad-of-facts
+tags:
+  - design
+  - user-research
+  - insights
+  - methodology
+  - rough-notes
+stage: seedling
 ---
 
 What is an insight?

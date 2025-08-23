@@ -1,9 +1,10 @@
 ---
-title: "Brew your ideas lazily"
-date: "2024-12-28T13:03:59.000Z"
-slug: "brew-your-ideas-lazily"
-tags: [ideas, procrastination]
-stage: "plant" 
+title: Brew your ideas lazily
+date: 2024-12-28T13:03:59.000Z
+slug: brew-your-ideas-lazily
+tags:
+  - ideas
+stage: plant
 ---
 
 Leonardo da Vinci's masterpiece, the Mona Lisa achieved through the painstaking application of countless gossamer-thin layers of oil paint over the course of many years, many months. The _sfumato_ technique which Da Vinci popularised, involved applying more than 40 layers of paint, each only 10 to 50 micrometers thick, using fingers to blend the colors and create the depth of illusion. The creation process was "perpetually unfinished" — He began the portrait around 1503, but didn't complete it till his death in 1519. And it would be foolish to dismiss him as a 'master procrastinator' — _What if the attribute of delayed procrastination in itself had some merit?_ I'm beginning to suspect that this was the hidden reason behind the genius of Mona Lisa. The art of brewing ideas lazily.

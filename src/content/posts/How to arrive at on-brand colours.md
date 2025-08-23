@@ -1,9 +1,11 @@
 ---
-title: "How to arrive at on-brand colours?"
-date: "2023-12-14T14:43:00.000Z"
-slug: "how-to-arrive-at-on-brand-colours"
-tags: [design, branding]
-stage: "plant"
+title: How to arrive at on-brand colours?
+date: 2023-12-14T14:43:00.000Z
+slug: how-to-arrive-at-on-brand-colours
+tags:
+  - design
+  - branding
+stage: plant
 ---
 
 While creating a brand, one of the hardest things to do is to arrive at the right set of colors. Colors are a tricky subject—when done incorrectly, the emotions get mismatched, and in the worst of situations, the brand might just seem all over the place.

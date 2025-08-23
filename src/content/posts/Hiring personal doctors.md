@@ -1,9 +1,10 @@
 ---
-title: "How to hire a personal doctor"
-date: "2023-12-06T00:00:00.000Z"
-slug: "hire-personal-doctor"
-tags: [health, rough-notes]
-stage: "seedling"
+title: How to hire a personal doctor
+date: 2023-12-06T00:00:00.000Z
+slug: hire-personal-doctor
+tags:
+  - rough-notes
+stage: seedling
 ---
 
 Imagine you're about to make a decision that could profoundly impact your health, potentially for years to come. You're not choosing a new diet or exercise routine - you're selecting a personal doctor.

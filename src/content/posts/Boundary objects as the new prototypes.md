@@ -3,7 +3,6 @@ title: Boundary objects as the new prototypes
 date: 2025-07-25
 slug: boundary-objects
 tags:
-  - writing
   - prototyping
 stage: plant
 ---

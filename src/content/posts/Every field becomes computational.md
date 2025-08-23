@@ -4,7 +4,6 @@ date: 2025-02-21
 slug: computational-everything
 tags:
   - rough-notes
-  - llm
   - trends
 ---
 I was listening to a talk by [Debbie Mcmahon from Financial Times recently at Productcon](Notes%20from%20ProductCon%202025.md) recently and I was surprised by the fact that even in journalism we're seeing tailwind trends more and more computational skills required — genAI is now used to spot stories, and to spin up newsworthy headlines and narratives around these stories. 

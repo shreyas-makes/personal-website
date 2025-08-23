@@ -3,7 +3,6 @@ title: World's most ancient public health problem
 date: 2024-01-23T18:00:00.000Z
 slug: before-building-a-product-hunt-a-purpose
 tags:
-  - health
   - rough-notes
   - software
 stage: sprout

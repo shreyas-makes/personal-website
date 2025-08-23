@@ -3,7 +3,6 @@ title: Style Transfer in AI writing
 date: 2025-02-14
 slug: style-transfer
 tags:
-  - llm
   - ai-coding
   - rough-notes
 stage: seedling

@@ -4,7 +4,6 @@ date: 2023-04-29
 slug: complex-project-management
 tags:
   - products
-  - advice
   - productivity
 stage: plant
 ---

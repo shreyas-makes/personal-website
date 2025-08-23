@@ -4,9 +4,9 @@ date: 2025-05-05
 slug: chatsnip
 tags:
   - browser-extension
-  - ai
   - tools
   - curiosities
+  - ai-coding
 stage: seedling
 description: A browser extension that lets you export AI chat conversations as beautifully styled HTML snippets or well-formatted Markdown.
 url: https://github.com/shreyas-makes/chatsnip
