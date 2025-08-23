@@ -338,7 +338,7 @@ export const GET: APIRoute = async ({ params }) => {
           Blog Post
         </text>
         <text x="100" y="450" font-family="system-ui, sans-serif" font-size="24" fill="#9CA3AF">
-          shreyas.blog
+          shreyasprakash.com
         </text>
       </svg>
     `;
