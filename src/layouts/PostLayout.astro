@@ -18,6 +18,12 @@ const { post } = Astro.props;
 const readingTime = calculateReadingTime(post.body);
 const formattedDate = formatDate(post.data.date);
 
+// Generate OG image URL for this post
+const ogImageUrl = `${Astro.site}og/${post.slug}.svg`;
+
+// Post description - use summary if available, otherwise truncate title
+const postDescription = post.data.summary || `${post.data.title} - ${readingTime} read on Shreyas Prakash's blog`;
+
 // Function to get the GitHub edit URL for the post
 const getGitHubEditUrl = (post: CollectionEntry<'posts'>) => {
   // Use post.data.title if available (assuming title matches filename), otherwise use post.id
@@ -136,7 +142,13 @@ console.log("Post data in PostLayout:", post.data); // Debug log
 console.log("Stage value in PostLayout:", post.data.stage); // Debug log
 ---
 
-<BaseLayout title={`${post.data.title} | Shreyas`} showMainFooterSection={true}>
+<BaseLayout 
+  title={`${post.data.title} | Shreyas`} 
+  description={postDescription}
+  ogImage={ogImageUrl}
+  ogType="article"
+  showMainFooterSection={true}
+>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-6 sm:pt-32 pb-6">
     <!-- Two Column Layout -->
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8 lg:gap-12">

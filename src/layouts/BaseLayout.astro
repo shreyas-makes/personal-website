@@ -7,10 +7,26 @@ import '../styles/global.css';
 export interface Props {
   title?: string;
   showMainFooterSection?: boolean;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
 }
 
-// Destructure title from Astro.props and provide a default if not passed
-const { title = 'Default Title', showMainFooterSection = true } = Astro.props;
+// Destructure props and provide defaults
+const { 
+  title = 'Default Title', 
+  showMainFooterSection = true,
+  description = 'Shreyas Prakash - Product, Design, and Technology',
+  ogImage,
+  ogType = 'website'
+} = Astro.props;
+
+// Generate the full URL for the current page
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Default OG image if none provided
+const defaultOGImage = `${Astro.site}images/shreyas-24-04-2025 at 23.43.32.jpg`;
+const finalOGImage = ogImage || defaultOGImage;
 
 // Remove the prefersDarkMode function and simplify theme handling
 const theme = Astro.cookies.get('theme')?.value || 'light';
@@ -21,7 +37,31 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
   <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={finalOGImage} />
+  <meta property="og:site_name" content="Shreyas Prakash" />
+  {ogType === 'article' && (
+    <>
+      <meta property="article:author" content="Shreyas Prakash" />
+      <meta property="article:section" content="Blog" />
+    </>
+  )}
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={finalOGImage} />
+  <meta name="twitter:creator" content="@shreyas_makes" />
   
   <!-- Add Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
