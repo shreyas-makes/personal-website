@@ -10,21 +10,16 @@ function OGImageTemplate({
   readingTime, 
   date, 
   stage,
-  authorImage 
+  authorImage,
+  excerpt
 }: {
   title: string;
   readingTime: string;
   date: string;
   stage?: string;
   authorImage: string;
+  excerpt: string;
 }) {
-  // Map stage to emoji
-  const stageEmoji = {
-    seedling: '🌱',
-    sprout: '🌿', 
-    plant: '🌳'
-  };
-
   return {
     type: 'div',
     props: {
@@ -33,94 +28,75 @@ function OGImageTemplate({
         width: '1200px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
         justifyContent: 'space-between',
-        backgroundColor: '#ffffff',
-        padding: '80px',
+        backgroundColor: '#0f0f10',
+        padding: '60px',
         fontFamily: 'system-ui, -apple-system, sans-serif',
-        position: 'relative'
+        position: 'relative',
+        background: 'linear-gradient(135deg, #0f0f10 0%, #1a1a1c 100%)'
       },
       children: [
-        // Header with author info
+        // Header with date
         {
           type: 'div',
           props: {
             style: {
+              fontSize: '18px',
+              color: '#888892',
+              marginBottom: '40px',
+              fontWeight: '400'
+            },
+            children: date
+          }
+        },
+        
+        // Main content area
+        {
+          type: 'div',
+          props: {
+            style: {
+              flex: '1',
               display: 'flex',
-              alignItems: 'center',
-              marginBottom: '40px'
+              flexDirection: 'column',
+              justifyContent: 'center',
+              gap: '32px'
             },
             children: [
-              // Author image
-              {
-                type: 'img',
-                props: {
-                  src: authorImage,
-                  style: {
-                    width: '80px',
-                    height: '80px',
-                    borderRadius: '50%',
-                    marginRight: '24px',
-                    border: '3px solid #000'
-                  }
-                }
-              },
-              // Author name and site
+              // Main title
               {
                 type: 'div',
                 props: {
                   style: {
-                    display: 'flex',
-                    flexDirection: 'column'
+                    fontSize: title.length > 50 ? '48px' : title.length > 30 ? '56px' : '64px',
+                    fontWeight: '700',
+                    color: '#ffffff',
+                    lineHeight: '1.1',
+                    letterSpacing: '-0.02em',
+                    maxWidth: '1000px'
                   },
-                  children: [
-                    {
-                      type: 'div',
-                      props: {
-                        style: {
-                          fontSize: '28px',
-                          fontWeight: '600',
-                          color: '#111827',
-                          marginBottom: '4px'
-                        },
-                        children: 'Shreyas Prakash'
-                      }
-                    },
-                    {
-                      type: 'div',
-                      props: {
-                        style: {
-                          fontSize: '20px',
-                          color: '#6B7280'
-                        },
-                        children: 'shreyas.blog'
-                      }
-                    }
-                  ]
+                  children: title
+                }
+              },
+
+              // Excerpt
+              {
+                type: 'div',
+                props: {
+                  style: {
+                    fontSize: '24px',
+                    color: '#a1a1aa',
+                    lineHeight: '1.4',
+                    maxWidth: '900px',
+                    fontWeight: '400'
+                  },
+                  children: excerpt
                 }
               }
             ]
           }
         },
-        
-        // Main title
-        {
-          type: 'div',
-          props: {
-            style: {
-              fontSize: title.length > 60 ? '48px' : title.length > 40 ? '56px' : '64px',
-              fontWeight: '400',
-              color: '#111827',
-              lineHeight: '1.2',
-              marginBottom: '40px',
-              maxWidth: '1000px',
-              wordWrap: 'break-word'
-            },
-            children: title
-          }
-        },
 
-        // Footer with metadata
+        // Footer with metadata and site info
         {
           type: 'div',
           props: {
@@ -128,78 +104,35 @@ function OGImageTemplate({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              width: '100%',
-              marginTop: 'auto'
+              marginTop: '40px'
             },
             children: [
-              // Left side - reading time and date
+              // Left side - reading time
               {
                 type: 'div',
                 props: {
                   style: {
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '32px'
+                    fontSize: '18px',
+                    color: '#888892',
+                    fontWeight: '500'
                   },
-                  children: [
-                    {
-                      type: 'div',
-                      props: {
-                        style: {
-                          fontSize: '20px',
-                          color: '#6B7280',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px'
-                        },
-                        children: [
-                          '⏱️',
-                          readingTime
-                        ]
-                      }
-                    },
-                    {
-                      type: 'div',
-                      props: {
-                        style: {
-                          fontSize: '20px',
-                          color: '#6B7280',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px'
-                        },
-                        children: [
-                          '📅',
-                          date
-                        ]
-                      }
-                    }
-                  ]
+                  children: readingTime
                 }
               },
 
-              // Right side - growth stage
-              stage && {
+              // Right side - site name
+              {
                 type: 'div',
                 props: {
                   style: {
-                    fontSize: '24px',
-                    color: '#374151',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    backgroundColor: '#F9FAFB',
-                    padding: '12px 24px',
-                    borderRadius: '12px',
-                    border: '1px solid #E5E7EB'
+                    fontSize: '18px',
+                    color: '#888892',
+                    fontWeight: '500'
                   },
-                  children: [
-                    stageEmoji[stage as keyof typeof stageEmoji] || '🌱',
-                    stage
-                  ]
+                  children: 'shreyas.blog'
                 }
               }
-            ].filter(Boolean)
+            ]
           }
         }
       ]
@@ -235,12 +168,51 @@ export const GET: APIRoute = async ({ params }) => {
     // Author image URL - using your Gravatar
     const authorImageUrl = 'https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256';
 
+    // Generate excerpt from post content
+    const generateExcerpt = (content: string, maxLength: number = 150): string => {
+      // Remove markdown formatting and HTML
+      const cleanContent = content
+        .replace(/---[\s\S]*?---/, '') // Remove frontmatter
+        .replace(/#{1,6}\s+/g, '') // Remove headings
+        .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold
+        .replace(/\*(.*?)\*/g, '$1') // Remove italic
+        .replace(/\[(.*?)\]\(.*?\)/g, '$1') // Remove links
+        .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+        .replace(/`(.*?)`/g, '$1') // Remove inline code
+        .replace(/\n{2,}/g, ' ') // Replace multiple newlines with space
+        .replace(/\n/g, ' ') // Replace single newlines with space
+        .trim();
+      
+      // Take first sentence or up to maxLength characters
+      const sentences = cleanContent.split(/[.!?]+/);
+      const firstSentence = sentences[0]?.trim();
+      
+      if (firstSentence && firstSentence.length <= maxLength) {
+        return firstSentence;
+      }
+      
+      // If first sentence is too long, truncate at word boundary
+      if (cleanContent.length <= maxLength) {
+        return cleanContent;
+      }
+      
+      const truncated = cleanContent.substring(0, maxLength);
+      const lastSpaceIndex = truncated.lastIndexOf(' ');
+      
+      return lastSpaceIndex > 0 
+        ? truncated.substring(0, lastSpaceIndex) + '...'
+        : truncated + '...';
+    };
+
+    const excerpt = generateExcerpt(post.body);
+
     console.log('OG Image: Preparing data for generation...');
     console.log('- Title:', post.data.title);
     console.log('- Reading time:', readingTime);
     console.log('- Date:', formattedDate);
     console.log('- Stage:', post.data.stage);
     console.log('- Author image URL:', authorImageUrl);
+    console.log('- Excerpt:', excerpt);
 
     try {
       console.log('OG Image: Generating SVG with Satori...');
@@ -251,7 +223,8 @@ export const GET: APIRoute = async ({ params }) => {
           readingTime,
           date: formattedDate,
           stage: post.data.stage,
-          authorImage: authorImageUrl
+          authorImage: authorImageUrl,
+          excerpt
         }) as any,
         {
           width: 1200,
@@ -275,11 +248,11 @@ export const GET: APIRoute = async ({ params }) => {
       console.log('OG Image: Falling back to manual SVG generation');
     }
 
-    // If Satori fails, create a personalized SVG manually
-    console.log('OG Image: Creating personalized fallback SVG...');
+    // If Satori fails, create a modern personalized SVG manually
+    console.log('OG Image: Creating modern fallback SVG...');
     
     // Helper function to wrap text
-    const wrapText = (text: string, maxLength: number = 50) => {
+    const wrapText = (text: string, maxLength: number = 40) => {
       const words = text.split(' ');
       const lines: string[] = [];
       let currentLine = '';
@@ -294,48 +267,50 @@ export const GET: APIRoute = async ({ params }) => {
       });
       
       if (currentLine) lines.push(currentLine.trim());
-      return lines.slice(0, 3); // Max 3 lines
+      return lines.slice(0, 2); // Max 2 lines for title
     };
     
     const titleLines = wrapText(post.data.title, 35);
-    const stageEmoji = {
-      seedling: '🌱',
-      sprout: '🌿',
-      plant: '🌳'
-    };
+    const excerptLines = wrapText(excerpt, 50);
     
     const personalizedSvg = `
       <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-        <rect width="1200" height="630" fill="#ffffff"/>
+        <!-- Background gradient -->
+        <defs>
+          <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0f0f10;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1a1a1c;stop-opacity:1" />
+          </linearGradient>
+        </defs>
         
-        <!-- Author section -->
-        <circle cx="150" cy="120" r="40" fill="#e5e7eb"/>
-        <text x="220" y="110" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#111827">
-          Shreyas Prakash
-        </text>
-        <text x="220" y="135" font-family="system-ui, sans-serif" font-size="20" fill="#6B7280">
-          shreyas.blog
+        <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+        
+        <!-- Date header -->
+        <text x="60" y="110" font-family="system-ui, sans-serif" font-size="18" font-weight="400" fill="#888892">
+          ${formattedDate}
         </text>
         
         <!-- Title section -->
         ${titleLines.map((line, index) => `
-          <text x="100" y="${240 + (index * 60)}" font-family="system-ui, sans-serif" font-size="${titleLines.length === 1 ? '64' : titleLines.length === 2 ? '56' : '48'}" font-weight="400" fill="#111827">
+          <text x="60" y="${220 + (index * 70)}" font-family="system-ui, sans-serif" font-size="${titleLines.length === 1 ? '64' : '56'}" font-weight="700" fill="#ffffff" letter-spacing="-0.02em">
+            ${line}
+          </text>
+        `).join('')}
+        
+        <!-- Excerpt section -->
+        ${excerptLines.slice(0, 2).map((line, index) => `
+          <text x="60" y="${350 + (index * 35)}" font-family="system-ui, sans-serif" font-size="24" font-weight="400" fill="#a1a1aa">
             ${line}
           </text>
         `).join('')}
         
         <!-- Footer section -->
-        <text x="100" y="${Math.max(400, 240 + titleLines.length * 60 + 40)}" font-family="system-ui, sans-serif" font-size="20" fill="#6B7280">
-          ⏱️ ${readingTime}
+        <text x="60" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892">
+          ${readingTime}
         </text>
-        <text x="300" y="${Math.max(400, 240 + titleLines.length * 60 + 40)}" font-family="system-ui, sans-serif" font-size="20" fill="#6B7280">
-          📅 ${formattedDate}
+        <text x="1080" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892" text-anchor="end">
+          shreyas.blog
         </text>
-        ${post.data.stage ? `
-          <text x="600" y="${Math.max(400, 240 + titleLines.length * 60 + 40)}" font-family="system-ui, sans-serif" font-size="24" fill="#374151">
-            ${stageEmoji[post.data.stage as keyof typeof stageEmoji] || '🌱'} ${post.data.stage}
-          </text>
-        ` : ''}
       </svg>
     `.trim();
 
