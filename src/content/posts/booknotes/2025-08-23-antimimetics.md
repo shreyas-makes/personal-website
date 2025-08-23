@@ -1,0 +1,37 @@
+---
+title: Antimimetics
+date: 2025-08-23T12:00:00.000Z
+author: Nadia Asparouhova
+rating: 6
+summary: ideas that spread slow, that spread fast and those that spread fast but are difficult to get infected with a host
+cover: antimimetics.png
+isbn: "9781473537803"
+tags:
+  - books
+draft: false
+---
+- Not all viral ideas are good, and not all good ideas are viral. All good ideas go viral eventually, and the most important ideas seem to be hidden in plain sight, tunnelling downwards towards the earth's crust.
+
+"But the most valuable ideas did seem to wend their way out of the dirt, however slowly, propelled by their ability to captivate people’s attention. Not all viral ideas were good, but all good ideas seemed to go viral eventually. Now, though, the most important ideas seemed to be tunneling downwards, deeper into the Earth’s crust, like a rare and precious diamond, where no one could find them – and this was by intention. How was it possible that the most bespoke ideas had become resistant to memetic spread? And how did they still manage to spread between groups, while also avoiding public channels?"
+
+- Certain class of ideas that are resistant to spread are called as anti-mimetic ideas. A better analogy to explain how antimimetic ideas are hidden in plain sight is through the story of China Mieville's The City and the City chronicles. In this fictional story, there exists two cities in the same location; those who are trained to see one city, are bound to ignore the other.
+
+"CHINA MIÉVILLE’S THE CITY & THE CITY chronicles the fictional story of two cities, Besźel and Ul Qoma, which exist in the same physical location. Their citizens live in a state of perpetual cognitive dissonance, having been trained from birth to "unsee," or ignore, the people, buildings, and events in the other city. They live, eat, work, and sleep in parallel societies, never noticing that the other exists. This tacit social agreement is enforced by a shadowy organization, known as Breach, whose members are permitted to perceive both cities and watch for transgressions. For all other residents, acknowledging the other city is considered a serious crime."
+
+- Group chats are incubation centres for antimimetic ideas. Once they are incubated, and get transmitted within this in-group, they slowly trickle upwards into the larger discourse of the internet (social media). The mass-scale internet (such as Facebook, Instagram etc) can be considered as the national highway/expressway, whereas the group chats on Telegram/whatsapp can be considered as the suburbs with less connectivity. Controversial ideas are first introduced in such digital suburbs to ensure they survive, and then slowly, they can be introduced to the public squares where they have higher chances of getting cancelled.
+
+"We read links that are too fiery to discuss on public feeds, so we share them in our group chats instead. We tumble down YouTube rabbit holes, peering deeper into the abyss, until we find ourselves caught in the crosshairs of a stranger who is ranting and raving about frogs or tankies or the longhouse or nazbols – obscure online microtrends that never quite break into the mainstream. We subscribe to newsletters about things we’re too embarrassed to tell others we want to know about: COVID conspiracy theories, what women really think, my self-help journey to eternal bliss. It’s tempting to classify some of these ideas as memetic, given how they transfix certain, smaller communities. But what makes these ideas antimemetic is how they propagate: in semi-private settings. You don’t bring these ideas up at work, or at the family dinner table."
+
+"And yet, as journalist Sophie Haigney writes in The New York Times, group chats have clearly replaced “backroom meetings among powerful media figures” as the modern successor to “the proverbial smoke-filled room."
+
+"Group chats are like social islands. As fast as the internet’s public highways might be, ideas evolve even more rapidly in private online environments. Ideas are tested, iterated upon, and refined, with little outside influence to temper the process, as they adapt to the unique dynamics of their members – much like Darwin’s finches."
+
+- Came across this activist group drawing their attention towards attention (as ironic as it sounds)
+
+“OUR ATTENTION IS BORN FREE, but is, increasingly, everywhere in chains,” declared a trio of activists in a New York Times op-ed.[39] Graham Burnett, Alyssa Loh, and Peter Schmidt are members of the Friends of Attention collective, a network of “collaborators, colleagues, and actual friends” that formed in 2018 due to shared concerns that our attention is being hijacked for others’ private gain."
+
+"I first encountered attention activism when I read Jenny Odell’s book, How to Do Nothing, less than a year before the COVID-19 pandemic began. Odell, an artist and activist based in Oakland, California, frames “doing nothing” as an act of political resistance to what’s often called the attention economy, or the buying and selling of attention in a market, like that between advertisers and media properties.”"
+
+- The importance of a "truth-teller" for exposing anti-mimetic ideas, and bringing it to the status of a "supermeme". No one wants to be the first-person to do this, as there is a significant risk in "revealing your hand" when it comes to such exposure. Therefore, the truth-teller holds a significant position that they bring it forward, and it carries more weight when done by a respectful outsider who has no personal agenda to do the same.
+
+"A respectful outsider – someone who is perceived as lacking a personal agenda – often carries special gravity. Consider Jane Jacobs, who criticized top-down urban planning approaches in the 1950s, claiming that they were unnatural to how people really lived and operated in cities. Jane Jacobs explicitly lacked formal credentials: she did not have a college degree, and she was often derided by her opponents as a housewife. But it was her lack of credentials that paradoxically made her critiques ring more true. The experts claimed they had studied urban planning and therefore knew what was best for city-dwellers. Jacobs, by contrast, simply used her eyes to look around and describe what she saw, and found that reality was quite different. While both the urban planners and Jacobs could be classified as outsiders, those who push their own agenda – as Jacobs argued the urban planners were doing – often face resistance. They are seen as acting in their own interest, rather than the group’s. In order to play the role of truth-teller, an outsider must reflect the community’s values. This purity of intent is not always confined to the childlike or feminine. In Liu Cixin’s The Dark Forest, humans are trying to find a way to survive an impending invasion from Trisolaris, an alien civilization. Because the Trisolarans can read all human communication, but not private thoughts, the United Nations appoints four individuals to be “Wallfacers,” whom they task with each devising a strategy in their minds to defeat the Trisolarans. While three of the Wallfacers have prestigious political and scientific backgrounds, the fourth Wallfacer, Luo Ji, is a lazy, degenerate professor with no obvious accolades. At first, Luo rejects his responsibilities, using his new role selfishly to acquire status and power. But in the end, it is Luo who uncovers an insight that everyone else has overlooked, which leads him to devise the eponymous “dark forest” strategy."
