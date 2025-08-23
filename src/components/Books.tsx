@@ -35,6 +35,12 @@ export default function Books({ books }: BooksProps) {
   
   // Add this state to track the maximum scroll value
   const [maxScroll, setMaxScroll] = useState(0);
+  
+  // Create infinite repeating books array
+  const createInfiniteBooks = (books: Book[]) => {
+    // Repeat the books array 3 times to create an infinite effect
+    return [...books, ...books, ...books];
+  };
 
   const getRandomSpineColor = () => {
     const colors = [
@@ -49,7 +55,8 @@ export default function Books({ books }: BooksProps) {
       ...book,
       spineColor: getRandomSpineColor()
     }));
-    setBooksWithCovers(booksWithStyles);
+    const infiniteBooks = createInfiniteBooks(booksWithStyles);
+    setBooksWithCovers(infiniteBooks);
   }, [books]);
 
   // Add this useEffect to calculate maxScroll when books or viewport changes
@@ -76,9 +83,22 @@ export default function Books({ books }: BooksProps) {
     
     if (selectedIndex !== -1) {
       // If a book is selected, move to next/previous book
-      const newIndex = direction === 'left' 
-        ? Math.max(0, selectedIndex - 1)
-        : Math.min(booksWithCovers.length - 1, selectedIndex + 1);
+      const originalBooksLength = books.length;
+      let newIndex;
+      
+      if (direction === 'left') {
+        newIndex = selectedIndex - 1;
+        // If we go below 0, wrap to the end of the middle section
+        if (newIndex < originalBooksLength) {
+          newIndex = originalBooksLength * 2 - 1;
+        }
+      } else {
+        newIndex = selectedIndex + 1;
+        // If we go above the end, wrap to the beginning of the middle section
+        if (newIndex >= originalBooksLength * 2) {
+          newIndex = originalBooksLength;
+        }
+      }
       
       setSelectedIndex(newIndex);
       
@@ -86,18 +106,19 @@ export default function Books({ books }: BooksProps) {
       if (viewportRef.current) {
         const viewportWidth = viewportRef.current.clientWidth;
         const bookPosition = newIndex * width;
-        const targetScroll = Math.max(0, 
-          bookPosition - (viewportWidth / 2) + (width * 2)
-        );
-        setScroll(Math.min(targetScroll, maxScroll));
+        const expandedBookWidth = width * 4 + 48; // spine + cover + margin
+        
+        // Calculate the center position for infinite scroll
+        const targetScroll = bookPosition - (viewportWidth / 2) + (expandedBookWidth / 2);
+        setScroll(targetScroll);
       }
     } else {
       // If no book is selected, just scroll
       const scrollAmount = width * 4;
       setScroll(prevScroll => {
         const newScroll = direction === 'left' 
-          ? Math.max(0, prevScroll - scrollAmount)
-          : Math.min(maxScroll, prevScroll + scrollAmount);
+          ? prevScroll - scrollAmount
+          : prevScroll + scrollAmount;
         return newScroll;
       });
     }
@@ -115,26 +136,66 @@ export default function Books({ books }: BooksProps) {
       // Center the selected book in the viewport
       const bookPosition = selectedIndex * width;
       const viewportWidth = viewportRef.current.clientWidth;
-      const targetScroll = Math.max(0, 
-        bookPosition - (viewportWidth / 2) + (width / 2)
-      );
+      const expandedBookWidth = width * 4 + 48; // spine + cover + margin
       
-      setScroll(Math.min(targetScroll, maxScroll));
+      // Calculate the center position for infinite scroll
+      const targetScroll = bookPosition - (viewportWidth / 2) + (expandedBookWidth / 2);
+      
+      // For infinite scroll, we don't need to worry about boundaries
+      // The books repeat, so we can always center any book
+      setScroll(targetScroll);
     }
-  }, [selectedIndex, maxScroll]);
+  }, [selectedIndex]);
 
   const handleBookClick = (index: number, slug: string) => {
     if (index === selectedIndex) {
       // If clicking the same book again, navigate to its page
-      window.location.href = `/books/${slug.replace('booknotes/', '')}`;
+      // For infinite scroll, we need to get the original slug from the middle section
+      const originalBooksLength = books.length;
+      const originalIndex = index % originalBooksLength;
+      const originalSlug = books[originalIndex].slug;
+      window.location.href = `/books/${originalSlug.replace('booknotes/', '')}`;
     } else {
-      // If clicking a different book, just open it
+      // If clicking a different book, expand it in the bookshelf
       setSelectedIndex(index);
+      
+      // Add a delay to ensure the expansion animation completes, then scroll to center both
+      setTimeout(() => {
+        // First, ensure the bookshelf is positioned correctly
+        if (viewportRef.current) {
+          const viewportWidth = viewportRef.current.clientWidth;
+          const bookPosition = index * width;
+          const expandedBookWidth = width * 4 + 48;
+          
+          // Calculate the center position for infinite scroll
+          const targetScroll = bookPosition - (viewportWidth / 2) + (expandedBookWidth / 2);
+          setScroll(targetScroll);
+        }
+        
+        // Then scroll to the detailed section below, but keep the bookshelf visible and centered
+        // For infinite scroll, we need to get the original slug from the middle section
+        const originalBooksLength = books.length;
+        const originalIndex = index % originalBooksLength;
+        const originalSlug = books[originalIndex].slug;
+        const element = document.getElementById(originalSlug);
+        if (element) {
+          // Calculate position to show both bookshelf and details
+          const bookshelfHeight = 250; // Approximate height of bookshelf
+          const elementTop = element.offsetTop;
+          
+          // Scroll to position the details section below the bookshelf
+          // This keeps the bookshelf visible at the top with the expanded book centered
+          window.scrollTo({
+            top: Math.max(0, elementTop - bookshelfHeight - 100), // More buffer to keep bookshelf visible
+            behavior: 'smooth'
+          });
+        }
+      }, 600);
     }
   };
 
   return (
-    <div className="relative w-full">
+    <div className={`relative w-full ${selectedIndex !== -1 ? 'ring-2 ring-blue-500 ring-opacity-25 p-2' : ''}`}>
       <div 
         ref={viewportRef}
         className="overflow-hidden"
@@ -155,18 +216,19 @@ export default function Books({ books }: BooksProps) {
               onClick={() => handleBookClick(index, book.slug)}
               className="flex-shrink-0 flex items-center relative"
               style={{
-                width: index === selectedIndex ? `calc(${bookWidth} + 24px)` : spineWidth,
+                width: index === selectedIndex ? `calc(${bookWidth} + 48px)` : spineWidth,
                 height: `${height}px`,
                 transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
                 transformStyle: 'preserve-3d',
                 marginRight: '0px',
                 perspective: '1000px',
-                padding: index === selectedIndex ? '4px 0' : '0',
+                padding: index === selectedIndex ? '8px 0' : '0',
+                zIndex: index === selectedIndex ? 10 : 1,
               }}
             >
               {/* Book spine */}
               <div
-                className={`h-full flex items-start justify-center ${book.spineColor}`}
+                className={`h-full flex items-start justify-center ${book.spineColor} ${index === selectedIndex ? 'ring-2 ring-blue-500 ring-opacity-75' : ''}`}
                 style={{
                   width: spineWidth,
                   transformOrigin: 'right',
@@ -178,6 +240,7 @@ export default function Books({ books }: BooksProps) {
                   position: 'absolute',
                   left: '0',
                   zIndex: 2,
+                  backgroundColor: index === selectedIndex ? 'rgba(59, 130, 246, 0.1)' : undefined,
                 }}
               >
                 <span 
@@ -209,7 +272,7 @@ export default function Books({ books }: BooksProps) {
                     ? '4px 4px 8px rgba(0,0,0,0.2), 0 0 4px rgba(0,0,0,0.1)' 
                     : 'none',
                   zIndex: 1,
-                  marginRight: index === selectedIndex ? '24px' : '0',
+                  marginRight: index === selectedIndex ? '48px' : '0',
                 }}
               >
                 <img
