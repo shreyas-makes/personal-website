@@ -22,13 +22,6 @@ const ogImageUrl = `https://www.shreyasprakash.com/og/${slug}.svg`;
 // Post description - could come from frontmatter or generated
 const postDescription = `${title} - ${readingTime} read on Shreyas Prakash's blog`;
 
-// Debug logging for BlogPost props
-console.log('BlogPost Debug - Data:');
-console.log('- title:', title);
-console.log('- slug:', slug);
-console.log('- ogImageUrl:', ogImageUrl);
-console.log('- postDescription:', postDescription);
-console.log('- readingTime:', readingTime);
 ---
 
 <BaseLayout 
@@ -54,11 +47,6 @@ console.log('- readingTime:', readingTime);
         <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-6">
           {title}
         </h1>
-        
-        {/* DEBUG: Temporary visible debug info */}
-        <div class="bg-yellow-100 border border-yellow-400 rounded p-2 mb-4 text-sm">
-          <strong>DEBUG INFO:</strong> BlogPost layout active | OG URL: {ogImageUrl} | Layout: BlogPost.astro
-        </div>
         
         {/* Metadata - Only reading time */}
         {readingTime && (
