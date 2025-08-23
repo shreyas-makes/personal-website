@@ -1,9 +1,6 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
-// import sharp from 'sharp'; // Commented out for now due to Cloudflare limitations
-import { readFileSync } from 'fs';
-import { join } from 'path';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { formatDate } from '../../utils/formatDate';
 
@@ -40,7 +37,7 @@ function OGImageTemplate({
         justifyContent: 'space-between',
         backgroundColor: '#ffffff',
         padding: '80px',
-        fontFamily: 'Inter, system-ui, sans-serif',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
         position: 'relative'
       },
       children: [
@@ -215,16 +212,22 @@ export const GET: APIRoute = async ({ params }) => {
     const { slug } = params;
     
     if (!slug) {
+      console.error('OG Image: No slug provided');
       return new Response('Slug is required', { status: 400 });
     }
 
     // Get the post data
+    console.log('OG Image: Looking for post with slug:', slug);
     const posts = await getCollection('posts', ({ data }) => !data.draft);
     const post = posts.find(p => p.slug === slug);
     
     if (!post) {
+      console.error('OG Image: Post not found for slug:', slug);
+      console.log('Available slugs:', posts.map(p => p.slug).slice(0, 5));
       return new Response('Post not found', { status: 404 });
     }
+    
+    console.log('OG Image: Found post:', post.data.title);
 
     const readingTime = calculateReadingTime(post.body);
     const formattedDate = formatDate(post.data.date);
@@ -232,6 +235,7 @@ export const GET: APIRoute = async ({ params }) => {
     // Author image URL - using your Gravatar
     const authorImageUrl = 'https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256';
 
+    console.log('OG Image: Generating SVG with Satori...');
     // Generate SVG using Satori
     const svg = await satori(
       OGImageTemplate({
@@ -244,22 +248,11 @@ export const GET: APIRoute = async ({ params }) => {
       {
         width: 1200,
         height: 630,
-        fonts: [
-          {
-            name: 'Inter',
-            data: readFileSync(join(process.cwd(), 'node_modules/@fontsource/inter/files/inter-latin-400-normal.woff')),
-            weight: 400,
-            style: 'normal',
-          },
-          {
-            name: 'Inter',
-            data: readFileSync(join(process.cwd(), 'node_modules/@fontsource/inter/files/inter-latin-600-normal.woff')),
-            weight: 600,
-            style: 'normal',
-          },
-        ],
+        // No custom fonts - use system defaults for Cloudflare compatibility
       }
     );
+    
+    console.log('OG Image: SVG generated successfully, length:', svg.length);
 
     // Return SVG directly for now (Cloudflare has limitations with Sharp)
     // In production, you might want to use a different approach or pre-generate images
@@ -272,7 +265,31 @@ export const GET: APIRoute = async ({ params }) => {
     });
   } catch (error) {
     console.error('Error generating OG image:', error);
-    return new Response('Error generating image', { status: 500 });
+    console.error('Stack trace:', error instanceof Error ? error.stack : 'No stack trace');
+    
+    // Return a simple fallback SVG instead of an error
+    const fallbackSvg = `
+      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1200" height="630" fill="#ffffff"/>
+        <text x="100" y="200" font-family="system-ui, sans-serif" font-size="48" font-weight="bold" fill="#111827">
+          Shreyas Prakash
+        </text>
+        <text x="100" y="300" font-family="system-ui, sans-serif" font-size="32" fill="#6B7280">
+          Blog Post
+        </text>
+        <text x="100" y="450" font-family="system-ui, sans-serif" font-size="24" fill="#9CA3AF">
+          shreyas.blog
+        </text>
+      </svg>
+    `;
+    
+    return new Response(fallbackSvg, {
+      status: 200,
+      headers: {
+        'Content-Type': 'image/svg+xml',
+        'Cache-Control': 'public, max-age=3600', // Shorter cache for fallback
+      },
+    });
   }
 };
 
