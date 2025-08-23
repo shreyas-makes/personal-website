@@ -28,6 +28,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const defaultOGImage = `${Astro.site}images/shreyas-24-04-2025 at 23.43.32.jpg`;
 const finalOGImage = ogImage || defaultOGImage;
 
+// Debug logging for OG image props
+console.log('BaseLayout Debug - Props received:');
+console.log('- ogImage:', ogImage);
+console.log('- ogType:', ogType);  
+console.log('- finalOGImage:', finalOGImage);
+console.log('- title:', title);
+console.log('- description:', description);
+
 // Remove the prefersDarkMode function and simplify theme handling
 const theme = Astro.cookies.get('theme')?.value || 'light';
 ---

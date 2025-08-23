@@ -21,6 +21,14 @@ const ogImageUrl = `${Astro.site}og/${slug}.svg`;
 
 // Post description - could come from frontmatter or generated
 const postDescription = `${title} - ${readingTime} read on Shreyas Prakash's blog`;
+
+// Debug logging for BlogPost props
+console.log('BlogPost Debug - Data:');
+console.log('- title:', title);
+console.log('- slug:', slug);
+console.log('- ogImageUrl:', ogImageUrl);
+console.log('- postDescription:', postDescription);
+console.log('- readingTime:', readingTime);
 ---
 
 <BaseLayout 
