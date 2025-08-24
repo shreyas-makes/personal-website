@@ -28,7 +28,7 @@ And when you're truly spiky, it clicks. Instead of 10,000 people saying *meh..ok
 
 ---
 
-[^1]: Some say that this might not be the case, and might cite the existence of AI-girlfriends as proof that AI has cracked the human-ness problem of writing. For this, I would argue that a chat response is different from a meaty essay. A chat response resembles more of a next-word prediction, which AI is better adapted at.
+[^1]: Some say that this might not be the case, and might [cite the existence of AI-girlfriends as proof that AI has cracked the human-ness problem of writing](https://www.theguardian.com/commentisfree/2024/jan/13/ai-girlfriend-chatbots). For this, I would argue that a chat response is different from a meaty essay. A chat response resembles more of a next-word prediction, which AI is better adapted at.
 
 
-[^2]: As Alex Guzey puts it, there are various such out-distribution pieces of work, which includes research, learning deeply, real writing etc..
+[^2]: As [Alex Guzey](https://guzey.com/) puts it, there are various such out-distribution pieces of work, which includes research, learning deeply, real writing etc..
