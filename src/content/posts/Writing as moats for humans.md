@@ -1,6 +1,6 @@
 ---
 title: Writing as moats for humans
-date: 2024-08-24T14:41:00.000Z
+date: 2025-08-24T14:41:00.000Z
 slug: writing-moats
 tags:
   - writing
