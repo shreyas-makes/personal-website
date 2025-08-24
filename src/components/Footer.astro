@@ -1,54 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 
-export interface Props {
-  showMainSection?: boolean;
-}
-
-const { showMainSection = true } = Astro.props;
-
 // Get all posts including drafts
 const allPosts = await getCollection('posts');
 
 // Calculate stats
 const posts = allPosts.filter(post => !post.data.draft);
-const projects = posts.filter(post => post.data.tags?.includes('projects'));
-const books = posts.filter(post => post.data.tags?.includes('books'));
-const prototypes = posts.filter(post => post.data.tags?.includes('prototypes'));
-
-// Get recent posts (excluding rough-notes and curiosities)
-const recentPosts = [...posts]
-  .filter(post => 
-    !post.data.tags?.includes('rough-notes') && 
-    !post.data.tags?.includes('curiosities')
-  )
-  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-  .slice(0, 12);
-
-// Get rough notes posts
-const roughNotesPosts = [...posts]
-  .filter(post => post.data.tags?.includes('rough-notes'))
-  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-  .slice(0, 10);
-
-// For popular posts, import the existing view tracking system
-import { getPopularPosts } from '../utils/pageViews';
-
-// Get most visited posts (or use fallback if not available)
-let popularPosts;
-try {
-  popularPosts = await getPopularPosts(10);
-} catch (error) {
-  // Fallback if pageViews utility is not available or fails
-  popularPosts = [...posts]
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 10)
-    .map(post => ({
-      slug: post.slug,
-      title: post.data.title,
-      views: Math.floor(Math.random() * 100)
-    }));
-}
 
 // Calculate total words (assuming each post has a body)
 const totalWords = posts.reduce((acc, post) => {
@@ -65,56 +22,6 @@ const currentYear = new Date().getFullYear();
 
 <footer class="bg-white dark:bg-[#161618] text-gray-900 dark:text-gray-100">
   <div class="max-w-6xl mx-auto px-4 py-6 md:py-12 relative">
-    {showMainSection && (
-      <!-- Main footer content in columns -->
-      <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12 max-w-4xl mx-auto">
-        <!-- Column 1: Rough Notes -->
-        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-300 dark:border-gray-700 text-center">
-          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent concepts</h2>
-          <ul class="space-y-1.5 md:space-y-2">
-            {roughNotesPosts.slice(0, 6).map(post => (
-              <li>
-                <a href={`/${post.slug}`} class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-[0.1em]">
-                  {post.data.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Column 2: Recent Book Notes -->
-        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-300 dark:border-gray-700 text-center">
-          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent book notes</h2>
-          <ul class="space-y-1.5 md:space-y-2">
-            {books.slice(0, 6).map(book => (
-              <li>
-                <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-[0.1em]">
-                  {book.data.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Column 3: Recent curiosities -->
-        <div class="p-3 md:p-4 text-center">
-          <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent experiments</h2>
-          <ul class="space-y-1.5 md:space-y-2">
-            {posts
-              .filter(post => post.data.tags?.includes('curiosities'))
-              .slice(0, 6)
-              .map(post => (
-                <li>
-                  <a href={`/${post.slug}`} class="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-[0.1em]">
-                    {post.data.title}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </div>
-      </div>
-    )}
-
     <!-- Bottom footer section with stats and links -->
     <div class="border-t border-gray-300 dark:border-gray-700 pt-6 md:pt-8">
       <div class="text-sm text-gray-600 dark:text-gray-300 space-y-4">
