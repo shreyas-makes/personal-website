@@ -67,9 +67,9 @@ const currentYear = new Date().getFullYear();
   <div class="max-w-6xl mx-auto px-4 py-6 md:py-12 relative">
     {showMainSection && (
       <!-- Main footer content in columns -->
-      <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12">
+      <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-12 max-w-4xl mx-auto">
         <!-- Column 1: Rough Notes -->
-        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
+        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-300 dark:border-gray-700 text-center">
           <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent concepts</h2>
           <ul class="space-y-1.5 md:space-y-2">
             {roughNotesPosts.slice(0, 6).map(post => (
@@ -83,7 +83,7 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <!-- Column 2: Recent Book Notes -->
-        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-700/30 dark:border-gray-300/30">
+        <div class="p-3 md:p-4 border-b md:border-b-0 md:border-r border-gray-300 dark:border-gray-700 text-center">
           <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent book notes</h2>
           <ul class="space-y-1.5 md:space-y-2">
             {books.slice(0, 6).map(book => (
@@ -97,7 +97,7 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <!-- Column 3: Recent curiosities -->
-        <div class="p-3 md:p-4">
+        <div class="p-3 md:p-4 text-center">
           <h2 class="text-base md:text-lg font-medium mb-3 md:mb-4 text-gray-900 dark:text-gray-100">Recent experiments</h2>
           <ul class="space-y-1.5 md:space-y-2">
             {posts
@@ -116,7 +116,7 @@ const currentYear = new Date().getFullYear();
     )}
 
     <!-- Bottom footer section with stats and links -->
-    <div class="border-t border-gray-700/30 dark:border-gray-300/30 pt-6 md:pt-8">
+    <div class="border-t border-gray-300 dark:border-gray-700 pt-6 md:pt-8">
       <div class="text-sm text-gray-600 dark:text-gray-300 space-y-4">
         <!-- Site statistics -->
         <div class="mb-4 md:mb-6 max-w-3xl mx-auto">
