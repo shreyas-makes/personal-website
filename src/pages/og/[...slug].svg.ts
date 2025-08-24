@@ -30,7 +30,7 @@ function OGImageTemplate({
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: '#0f0f10',
-        padding: '60px',
+        padding: '80px 80px 60px 80px', // More padding for mobile safety
         fontFamily: 'system-ui, -apple-system, sans-serif',
         position: 'relative',
         background: 'linear-gradient(135deg, #0f0f10 0%, #1a1a1c 100%)'
@@ -43,8 +43,9 @@ function OGImageTemplate({
             style: {
               fontSize: '18px',
               color: '#888892',
-              marginBottom: '40px',
-              fontWeight: '400'
+              marginBottom: '20px',
+              fontWeight: '400',
+              textAlign: 'center'
             },
             children: date
           }
@@ -67,12 +68,14 @@ function OGImageTemplate({
                 type: 'div',
                 props: {
                   style: {
-                    fontSize: title.length > 50 ? '48px' : title.length > 30 ? '56px' : '64px',
+                    fontSize: title.length > 60 ? '44px' : title.length > 40 ? '52px' : '60px',
                     fontWeight: '700',
                     color: '#ffffff',
-                    lineHeight: '1.1',
+                    lineHeight: '1.15',
                     letterSpacing: '-0.02em',
-                    maxWidth: '1000px'
+                    maxWidth: '1040px', // Safe zone for mobile cropping
+                    textAlign: 'center',
+                    margin: '0 auto'
                   },
                   children: title
                 }
@@ -83,11 +86,13 @@ function OGImageTemplate({
                 type: 'div',
                 props: {
                   style: {
-                    fontSize: '24px',
+                    fontSize: '22px',
                     color: '#a1a1aa',
-                    lineHeight: '1.4',
-                    maxWidth: '900px',
-                    fontWeight: '400'
+                    lineHeight: '1.5',
+                    maxWidth: '960px', // Safe zone for mobile cropping
+                    fontWeight: '400',
+                    textAlign: 'center',
+                    margin: '0 auto'
                   },
                   children: excerpt
                 }
@@ -103,11 +108,12 @@ function OGImageTemplate({
             style: {
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
+              justifyContent: 'center',
+              gap: '40px',
               marginTop: '40px'
             },
             children: [
-              // Left side - reading time
+              // Reading time
               {
                 type: 'div',
                 props: {
@@ -120,7 +126,20 @@ function OGImageTemplate({
                 }
               },
 
-              // Right side - site name
+              // Separator
+              {
+                type: 'div',
+                props: {
+                  style: {
+                    fontSize: '18px',
+                    color: '#444449',
+                    fontWeight: '500'
+                  },
+                  children: '•'
+                }
+              },
+
+              // Site name
               {
                 type: 'div',
                 props: {
@@ -243,13 +262,18 @@ export const GET: APIRoute = async ({ params }) => {
     // If Satori fails, create a modern personalized SVG manually
     console.log('OG Image: Creating modern fallback SVG...');
     
-    // Helper function to wrap text
+    // Helper function to wrap text with better mobile handling
     const wrapText = (text: string, maxLength: number = 40) => {
       const words = text.split(' ');
       const lines: string[] = [];
       let currentLine = '';
       
       words.forEach(word => {
+        // Handle long words by truncating them
+        if (word.length > maxLength) {
+          word = word.substring(0, maxLength - 3) + '...';
+        }
+        
         if ((currentLine + word).length > maxLength) {
           if (currentLine) lines.push(currentLine.trim());
           currentLine = word + ' ';
@@ -277,30 +301,33 @@ export const GET: APIRoute = async ({ params }) => {
         
         <rect width="1200" height="630" fill="url(#bg-gradient)"/>
         
-        <!-- Date header -->
-        <text x="60" y="110" font-family="system-ui, sans-serif" font-size="18" font-weight="400" fill="#888892">
+        <!-- Date header - centered -->
+        <text x="600" y="120" font-family="system-ui, sans-serif" font-size="18" font-weight="400" fill="#888892" text-anchor="middle">
           ${formattedDate}
         </text>
         
-        <!-- Title section -->
+        <!-- Title section - centered with better mobile spacing -->
         ${titleLines.map((line, index) => `
-          <text x="60" y="${220 + (index * 70)}" font-family="system-ui, sans-serif" font-size="${titleLines.length === 1 ? '64' : '56'}" font-weight="700" fill="#ffffff" letter-spacing="-0.02em">
+          <text x="600" y="${200 + (index * 65)}" font-family="system-ui, sans-serif" font-size="${titleLines.length === 1 ? '60' : '52'}" font-weight="700" fill="#ffffff" letter-spacing="-0.02em" text-anchor="middle">
             ${line}
           </text>
         `).join('')}
         
-        <!-- Excerpt section -->
+        <!-- Excerpt section - centered with safe margins -->
         ${excerptLines.slice(0, 2).map((line, index) => `
-          <text x="60" y="${350 + (index * 35)}" font-family="system-ui, sans-serif" font-size="24" font-weight="400" fill="#a1a1aa">
+          <text x="600" y="${340 + (index * 32)}" font-family="system-ui, sans-serif" font-size="22" font-weight="400" fill="#a1a1aa" text-anchor="middle">
             ${line}
           </text>
         `).join('')}
         
-        <!-- Footer section -->
-        <text x="60" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892">
+        <!-- Footer section - centered with separator -->
+        <text x="520" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892" text-anchor="middle">
           ${readingTime}
         </text>
-        <text x="1080" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892" text-anchor="end">
+        <text x="600" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#444449" text-anchor="middle">
+          •
+        </text>
+        <text x="680" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892" text-anchor="middle">
           shreyasprakash.com
         </text>
       </svg>
