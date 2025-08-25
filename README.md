@@ -1,7 +1,177 @@
+# Astro Blog Template
 
+A modern, minimalistic blog built with Astro, featuring a clean design, excellent performance, and developer-friendly architecture. This template is perfect for writers, developers, and creators who want a fast, SEO-optimized blog with minimal maintenance.
 
+## ✨ Features
 
-<br>
+- **Fast & Lightweight**: Built with Astro for optimal performance
+- **Modern Design**: Clean, responsive design with dark mode support
+- **SEO Optimized**: Built-in sitemap, RSS feeds, and meta tags
+- **Content Management**: Easy markdown-based content management
+- **Search Functionality**: Full-text search across all posts
+- **Image Optimization**: Automatic image optimization and responsive images
+- **Newsletter Integration**: ConvertKit integration for email newsletters
+- **Analytics Ready**: Page view tracking and popular posts
+- **Book Reviews**: Dedicated section for book notes and reviews
+- **Tag System**: Organized content with tag-based navigation
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18.19.0 or higher
+- npm 9.6.7 or higher
+
+### Installation
+
+1. **Fork or clone this repository**
+   ```bash
+   git clone https://github.com/shreyas-makes/astro-blog-ghost.git
+   cd astro-blog-ghost
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:4321` to see your blog!
+
+## 📝 Configuration
+
+### Basic Setup
+
+1. **Update site configuration** in `astro.config.mjs`:
+   ```javascript
+   const LIVE_URL = "https://yourdomain.com";
+   export default defineConfig({
+     site: 'https://yourdomain.com',
+     // ... rest of config
+   });
+   ```
+
+2. **Update package.json**:
+   - Change the `name` field
+   - Update the `repository.url`
+   - Modify the `description` if needed
+
+3. **Update site metadata** in `src/utils/config.js`:
+   ```javascript
+   export const SITE_CONFIG = {
+     title: "Your Name",
+     description: "Your blog description",
+     author: "Your Name",
+     // ... other config
+   };
+   ```
+
+### Content Structure
+
+- **Blog Posts**: Add markdown files to `src/content/posts/`
+- **Book Notes**: Add book reviews to `src/content/posts/booknotes/`
+- **Images**: Store images in `public/images/` with year/month folders
+- **Data**: Add custom data in `src/data/`
+
+### Customization
+
+- **Styling**: Modify `src/css/` files for custom styles
+- **Layouts**: Edit `src/layouts/` for page structure changes
+- **Components**: Customize `src/components/` for reusable elements
+- **Pages**: Add new pages in `src/pages/`
+
+## 🛠️ Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run check` - Type check your code
+- `npm run fix-frontmatter` - Fix frontmatter in markdown files
+
+### Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── content/        # Blog posts and content
+├── css/           # Global styles
+├── data/          # Static data and metadata
+├── layouts/       # Page layouts
+├── pages/         # Astro pages and routes
+├── store/         # State management
+├── styles/        # Additional styles
+└── utils/         # Utility functions
+```
+
+### Key Technologies
+
+- **Astro** - Static site generator
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **React** - Interactive components
+- **Markdown** - Content authoring
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+### How to Contribute
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Make your changes**
+4. **Test your changes**
+   ```bash
+   npm run build
+   npm run preview
+   ```
+5. **Commit your changes**
+   ```bash
+   git commit -m 'Add amazing feature'
+   ```
+6. **Push to the branch**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+7. **Open a Pull Request**
+
+### Contribution Guidelines
+
+- Follow the existing code style and conventions
+- Add tests for new features when possible
+- Update documentation for any new features
+- Ensure all builds pass before submitting PRs
+- Be respectful and constructive in discussions
+
+### Areas for Contribution
+
+- **Bug fixes** - Report and fix issues
+- **Feature requests** - Suggest and implement new features
+- **Documentation** - Improve README, comments, and guides
+- **Performance** - Optimize build times and runtime performance
+- **Accessibility** - Improve accessibility features
+- **Design** - Enhance UI/UX components
+
+## 🙏 Acknowledgments
+
+- Built with [Astro](https://astro.build/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Icons from [React Icons](https://react-icons.github.io/react-icons/)
+- Fonts from [Fontsource](https://fontsource.org/)
+
+---
+
+<div align="center">
 
 [![Website](https://img.shields.io/badge/shreyasprakash.com-000000?style=flat-square&logoColor=white)](https://www.shreyasprakash.com)
 [![Twitter](https://img.shields.io/badge/@shreyasmakes-000000?style=flat-square&logoColor=white)](https://twitter.com/shreyasmakes)
@@ -11,51 +181,6 @@
 
 ---
 
-## 🛠️ Open Source Projects
-
-<table>
-  <tr>
-    <td><b><a href="https://chesscoach-one.vercel.app/">Chess Coach</a></b></td>
-    <td>AI-powered chess improvement tool that analyzes your games and provides personalized coaching</td>
-  </tr>
-  <tr>
-    <td><b><a href="https://github.com/shreyas-makes/writing.humans">writing.humans</a></b></td>
-    <td>AI writing assistant that helps you write more naturally and authentically</td>
-  </tr>
-  <tr>
-    <td><b><a href="https://github.com/shreyas-makes/editnext-plugin">Edit Next</a></b></td>
-    <td>Obsidian plugin that helps you prioritize and tackle your most challenging drafts</td>
-  </tr>
-  <tr>
-    <td><b><a href="https://github.com/shreyas-makes/magic-window">Magic Window</a></b></td>
-    <td>Screen recorder with smooth zoom transitions and effects for better presentations</td>
-  </tr>
-  <tr>
-    <td><b><a href="https://github.com/shreyas-makes/zotero-raycast">Zotero Raycast</a></b></td>
-    <td>Quick citation tool that seamlessly integrates Zotero with your workflow</td>
-  </tr>
-</table>
-
-
-## Technologies
-
-![TypeScript](https://img.shields.io/badge/TypeScript-000000?style=flat-square&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-000000?style=flat-square&logo=javascript&logoColor=white)
-![Python](https://img.shields.io/badge/Python-000000?style=flat-square&logo=python&logoColor=white)
-![React](https://img.shields.io/badge/React-000000?style=flat-square&logo=react&logoColor=white)
-![Astro](https://img.shields.io/badge/Astro-000000?style=flat-square&logo=astro&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-000000?style=flat-square&logo=node.js&logoColor=white)
-![Ruby on Rails](https://img.shields.io/badge/Ruby%20on%20Rails-000000?style=flat-square&logo=ruby-on-rails&logoColor=white)
-
-## GitHub Activity
-
-<div align="center">
-
-<a href="https://github.com/shreyas-makes">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=shreyas-makes&layout=compact&theme=transparent&hide_border=true&bg_color=ffffff&title_color=000000&text_color=000000&langs_count=6"/>
-</a>
-
-</div>
 
 
 <div align="center">
@@ -90,15 +215,5 @@
 
 </div>
 
-## Connect
 
-<div align="center">
-
-**Open to collaborations on projects that make the world a little better**
-
-[![Email](https://img.shields.io/badge/Contact-000000?style=flat-square&logoColor=white)](mailto:shreyas314159@gmail.com)
-
-<br><br>
-
-</div>
 
