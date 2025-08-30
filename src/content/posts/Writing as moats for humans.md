@@ -34,4 +34,4 @@ And when you're truly spiky, it clicks. Instead of 10,000 people saying *meh..ok
 [^2]: As [Alex Guzey](https://guzey.com/) puts it, there are various such out-distribution pieces of work, which includes research, learning deeply, real writing etc..
 
 
-[^3]: Simone argues that, in fact, truly novel innovations (proofs of unsolved theorems) would always be "out-distribution" for the LLMs. This would be the case as points would exist outside the "convex hull"of an LLM's training data. But this is not just the case for LLMs, but humans work the same way by creating genuinely new things by just "remixing" (great artists copy, bad artists steal example)
+[^3]: [Simone argues that, in fact, truly novel innovations (proofs of unsolved theorems) would always be "out-distribution" for the LLMs](https://www.lesswrong.com/posts/r587cE9sW6fBhtXSv/good-bings-copy-great-bings-steal). This would be the case as points would exist outside the "convex hull"of an LLM's training data. But this is not just the case for LLMs, but humans work the same way by creating genuinely new things by just "remixing" 
