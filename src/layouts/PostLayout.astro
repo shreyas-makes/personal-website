@@ -679,6 +679,10 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     font-size: 0.75rem;
   }
 
+  :global(.prose .footnotes a[href^="#fnref-"]:after) {
+    content: " ↩";
+  }
+
   :global(.dark .prose .footnotes a[href^="#fnref-"]) {
     color: #9ca3af;
   }

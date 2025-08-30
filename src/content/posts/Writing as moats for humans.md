@@ -8,7 +8,7 @@ stage: plant
 ---
 Most writing on the internet is AI-writing now. The **dark forest theory of internet**, a re-hash of a concept popularised by the sci-fi author, [Cixin Liu](https://en.wikipedia.org/wiki/Liu_Cixin) referring to this hostile digital landscape where most content is written by the bots, and to escape from this cybernetic fake-ness, users retreat to hidden, invite-only "private" communities to escape this chaos. We live in this hostile. digital. landscape: 
 
-Every now and then when I read something on the internet, to some extent, I know it's AI generated. It smells strange and I can sense it. My AI-sniff-test radar's sensory perceptions got heightened after some test-runs with the usual suspects: you had Claude with it's opening-line, "You're absolutely right!". Or the incessant use of em-dashes everywhere (even after prompting it not to use them em'). 
+Every now and then when I read something on the internet, to some extent, I know it's AI generated. It smells strange and I can sense it in my bloodstream. My AI-sniff-test radar's sensory perceptions got heightened after some test-runs with the usual suspects: you had Claude with it's opening-line, "You're absolutely right!". Or the incessant — use — of — em-dashes — everywhere (even after prompting it not to use them em'). 
 
 It's still not so clearly describable as to why a particular writing was solely written by a human. This intangible essence has not been codified yet (perhaps, that's also why the LLMs have not caught up to this mode of writing yet). The larger proportion of people might just fail at detecting AI writing online; giving marketeers more confidence in injecting more such premium-mediocre AI slop. And as a result, we're more exposed to soul-less, spine-less writing. 
 
@@ -22,7 +22,7 @@ AI-writing is not completely useless though. They're really good at blending thi
 
 If good writing is what we call as mere combination, recombination of sequence of texts in harmless ways; then sure, AI writing could pass this test. But this is clearly not the larger umbrella of writing jobs. AI-writing only serves mundane writing-jobs such as: "business" writing, dry boring policies, condensing meeting action items, making exam notes, regurgitating legal text/s, literature reviews, market research, etc.  [As Venkatesh Rao describes it in his recent essay](https://contraptions.venkateshrao.com/p/texts-as-toys), "**writing is now toy-making, and reading is now playing with toys.**" As all these writing jobs are mix-and-match combinatorics are still "in-distribution" work. **It could be delegated/or automated out**. 
 
-True writing is still "out-distribution"[^2] and cannot be automated away[^1]. It's about thinking hard, and it's not just a combinatrics problem. You still need to know how to play with all the text toys available inorder to make the writing more spiky and opinionated.
+True writing is still "out-distribution"[^2] [^3] and cannot be automated away[^1]. It's about thinking hard, and it's not just a combinatrics problem. You still need to know how to play with all the text toys available in order to make the writing more spiky and opinionated.
 
 And when you're truly spiky, it clicks. Instead of 10,000 people saying *meh..ok*, you might have a 5 saying "wow!!!". Good human-writing achieves long-tail resonance. 
 
@@ -32,3 +32,6 @@ And when you're truly spiky, it clicks. Instead of 10,000 people saying *meh..ok
 
 
 [^2]: As [Alex Guzey](https://guzey.com/) puts it, there are various such out-distribution pieces of work, which includes research, learning deeply, real writing etc..
+
+
+[^3]: Simone argues that, in fact, truly novel innovations (proofs of unsolved theorems) would always be "out-distribution" for the LLMs. This would be the case as points would exist outside the "convex hull"of an LLM's training data. But this is not just the case for LLMs, but humans work the same way by creating genuinely new things by just "remixing" (great artists copy, bad artists steal example)
