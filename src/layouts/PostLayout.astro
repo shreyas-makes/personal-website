@@ -21,8 +21,8 @@ const formattedDate = formatDate(post.data.date);
 // Generate OG image URL for this post
 const ogImageUrl = `${Astro.site}og/${post.slug}.svg`;
 
-// Post description - use summary if available, otherwise truncate title
-const postDescription = post.data.summary || `${post.data.title} - ${readingTime} read on Shreyas Prakash's blog`;
+// Post description - use summary if available, otherwise create a clean description
+const postDescription = post.data.summary || `${readingTime} read - ${post.data.title}`;
 
 // Function to get the GitHub edit URL for the post
 const getGitHubEditUrl = (post: CollectionEntry<'posts'>) => {
