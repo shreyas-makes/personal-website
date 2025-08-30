@@ -616,6 +616,81 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
   :global(.prose pre) {
     counter-reset: line;
   }
+
+  /* Footnote styling */
+  :global(.prose .footnotes) {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #6b7280;
+  }
+
+  :global(.dark .prose .footnotes) {
+    border-top-color: #374151;
+    color: #9ca3af;
+  }
+
+  :global(.prose .footnotes ol) {
+    padding-left: 1rem;
+    margin: 0;
+  }
+
+  :global(.prose .footnotes li) {
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  :global(.prose .footnotes li p) {
+    margin: 0;
+    font-size: inherit;
+  }
+
+  /* Footnote reference links (superscript numbers) */
+  :global(.prose a[href^="#fn-"]) {
+    text-decoration: none;
+    font-size: 0.75rem;
+    vertical-align: super;
+    line-height: 0;
+    font-weight: 500;
+    color: #4f46e5;
+    padding: 0 0.1rem;
+  }
+
+  :global(.dark .prose a[href^="#fn-"]) {
+    color: #818cf8;
+  }
+
+  :global(.prose a[href^="#fn-"]:hover) {
+    color: #3730a3;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose a[href^="#fn-"]:hover) {
+    color: #c7d2fe;
+  }
+
+  /* Footnote back-references */
+  :global(.prose .footnotes a[href^="#fnref-"]) {
+    text-decoration: none;
+    margin-left: 0.25rem;
+    color: #6b7280;
+    font-size: 0.75rem;
+  }
+
+  :global(.dark .prose .footnotes a[href^="#fnref-"]) {
+    color: #9ca3af;
+  }
+
+  :global(.prose .footnotes a[href^="#fnref-"]:hover) {
+    color: #374151;
+    text-decoration: underline;
+  }
+
+  :global(.dark .prose .footnotes a[href^="#fnref-"]:hover) {
+    color: #d1d5db;
+  }
 </style>
 
 <script set:html={prismCopyButtonScript} /> 

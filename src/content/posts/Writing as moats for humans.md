@@ -22,7 +22,7 @@ AI-writing is not completely useless though. They're really good at blending thi
 
 If good writing is what we call as mere combination, recombination of sequence of texts in harmless ways; then sure, AI writing could pass this test. But this is clearly not the larger umbrella of writing jobs. AI-writing only serves mundane writing-jobs such as: "business" writing, dry boring policies, condensing meeting action items, making exam notes, regurgitating legal text/s, literature reviews, market research, etc.  [As Venkatesh Rao describes it in his recent essay](https://contraptions.venkateshrao.com/p/texts-as-toys), "**writing is now toy-making, and reading is now playing with toys.**" As all these writing jobs are mix-and-match combinatorics are still "in-distribution" work. **It could be delegated/or automated out**. 
 
-True writing is still "out-distribution"[^2] and cannot be automated away [^1]. It's about thinking hard, and it's not just a combinatrics problem. You still need to know how to play with all the text toys available inorder to make the writing more spiky and opinionated. 
+True writing is still "out-distribution"[^2] and cannot be automated away[^1]. It's about thinking hard, and it's not just a combinatrics problem. You still need to know how to play with all the text toys available inorder to make the writing more spiky and opinionated.
 
 And when you're truly spiky, it clicks. Instead of 10,000 people saying *meh..ok*, you might have a 5 saying "wow!!!". Good human-writing achieves long-tail resonance. 
 
