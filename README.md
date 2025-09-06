@@ -161,15 +161,6 @@ rm -f src/data/movies.ts
 rm -f src/data/read-counts.json
 ```
 
-**Clean up my random documentation:**
-```bash
-# These are just my personal notes
-rm -f CLAUDE.md
-rm -f DEPLOYMENT_CHECKLIST.md
-rm -f OG_TESTING_GUIDE.md
-rm -f PERSONALIZATION_FIX_SUMMARY.md
-```
-
 ### Step 2: Make it yours
 
 **First, fix the basic info in `package.json`:**
