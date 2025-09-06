@@ -7,8 +7,6 @@ description: Longevity expert, polymath, data-obsessed
 
 **Disclaimer:** This transcript has been processed and cleaned using AI language models to improve readability from the original raw audio recording. While efforts have been made to preserve accuracy and intent, the content may contain errors, omissions, or misinterpretations from the automated transcription process, and has not been reviewed by the original speakers. For critical use or citation purposes, please refer to the original audio recording.
 
-# Future of Ageing | Mehdi Yacoubi
-
 **Show:** Shake Up The World
 
 **Source:** [https://podcasters.spotify.com/pod/show/shake-up-the-world/episodes/Future-of-Ageing--Mehdi-Yacoubi-ekid6k](https://podcasters.spotify.com/pod/show/shake-up-the-world/episodes/Future-of-Ageing--Mehdi-Yacoubi-ekid6k)

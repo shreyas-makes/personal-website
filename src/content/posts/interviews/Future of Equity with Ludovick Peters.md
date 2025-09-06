@@ -8,8 +8,6 @@ description: rationalism, education and shelter for albino children
 
 **Disclaimer:** This transcript has been processed and cleaned using AI language models to improve readability from the original raw audio recording. While efforts have been made to preserve accuracy and intent, the content may contain errors, omissions, or misinterpretations from the automated transcription process, and has not been reviewed by the original speakers. For critical use or citation purposes, please refer to the original audio recording.
 
-# Future of Equity | St. Ludovick Peters
-
 **Show:** Shake Up The World
 
 **Source:** [https://podcasters.spotify.com/pod/show/shake-up-the-world/episodes/Future-of-Equity--St--Ludovick-Peters-efcdpo](https://podcasters.spotify.com/pod/show/shake-up-the-world/episodes/Future-of-Equity--St--Ludovick-Peters-efcdpo)
