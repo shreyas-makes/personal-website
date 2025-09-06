@@ -18,7 +18,7 @@ const nowSlug = nowPost[0]?.slug;
 const vibesSlug = vibesPost[0]?.slug;
 
 // Get current path but make it reactive to navigation
-let pathname = new URL(Astro.request.url).pathname;
+let pathname = Astro.url?.pathname || '/';
 let currentPath = pathname.slice(1);
 
 // Check if we're on the homepage
@@ -29,7 +29,7 @@ const isHomepage = pathname === '/';
 
   <header 
     id="main-header"
-    class="fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF] dark:bg-[#161618] pb-2 sm:pb-4 border-b border-gray-200 dark:border-gray-600 transition-transform duration-300 ease-in-out translate-y-0"
+    class="fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF] dark:bg-[#161618] py-2 sm:py-3 border-b border-gray-200 dark:border-gray-600 transition-transform duration-300 ease-in-out translate-y-0"
     transition:persist="header"
     transition:animate="none"
   >
@@ -38,14 +38,14 @@ const isHomepage = pathname === '/';
   <link rel="preload" href="/books" as="document" />
   <link rel="preload" href="/tags/prototypes" as="document" />
   
-  <div class="max-w-4xl mt-2 sm:mt-4 mx-auto px-4 sm:px-6">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
     <!-- Desktop layout - unified header -->
-    <div class="hidden md:flex md:items-center md:justify-between">
+    <div class="hidden md:flex md:items-center md:justify-between md:py-2">
       <!-- Logo/Home link - left aligned -->
       <a href="/" class="text-xl font-normal text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
       
       <!-- Unified navigation - center -->
-      <nav class="flex gap-6 text-sm" id="desktop-navigation">
+      <nav class="flex gap-4 text-sm" id="desktop-navigation">
         <!-- Now Tab -->
         <a 
           href={`/${nowSlug}`}
@@ -120,10 +120,28 @@ const isHomepage = pathname === '/';
           <span>Work</span>
         </a>
         
+        <!-- Interviews Tab -->
+        <a 
+          href="/interviews"
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === "interviews" 
+              ? "nav-item-active" 
+              : "nav-item"
+          ]}
+          data-path="interviews"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+          <span>Interviews</span>
+        </a>
+        
       </nav>
       
       <!-- Desktop utility icons - right aligned -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-4">
         <SearchButton client:load />
         <button id="theme-toggle-desktop" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
           <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -143,12 +161,12 @@ const isHomepage = pathname === '/';
     </div>
 
     <!-- Mobile layout -->
-    <div class="md:hidden flex justify-between items-center mb-0">
+    <div class="md:hidden flex justify-between items-center mb-0 py-2">
       <!-- Logo/Home link - aligned left on mobile -->
       <a href="/" class="text-lg font-normal text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
       
       <!-- Mobile header controls - grouped on right -->
-      <div class="flex items-center gap-1">
+      <div class="flex items-center gap-2">
         <SearchButton client:load />
         <button id="theme-toggle" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
           <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -259,6 +277,21 @@ const isHomepage = pathname === '/';
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
           </svg>
           <span>Work</span>
+        </a>
+        
+        <a 
+          href="/interviews"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "interviews" && "mobile-nav-item-active"
+          ]}
+          data-path="interviews"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+          <span>Interviews</span>
         </a>
       </nav>
     </div>

@@ -5,6 +5,11 @@
  * @returns {string} Formatted excerpt
  */
 export function generateExcerpt(body, length = 400) {
+  // Handle undefined or empty body
+  if (!body) {
+    return 'No excerpt available...';
+  }
+  
   // Clean the body text of markdown formatting and embeds
   const cleanText = body
     .split('\n')

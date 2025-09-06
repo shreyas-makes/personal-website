@@ -20,7 +20,7 @@ const booksForStats = allPostsForStats.filter(post => post.data.tags?.includes('
 
 // Calculate total words
 const totalWords = allPostsForStats.reduce((acc, post) => {
-  const wordCount = post.body.split(/\s+/).length;
+  const wordCount = post.body ? post.body.split(/\s+/).length : 0;
   return acc + wordCount;
 }, 0);
 
@@ -83,7 +83,7 @@ const posts = await getCollection('posts').then(allPosts => {
     });
 
     // Add to total word count
-    acc.totalWords += post.body.split(/\s+/).length;
+    acc.totalWords += post.body ? post.body.split(/\s+/).length : 0;
 
     return acc;
   }, {

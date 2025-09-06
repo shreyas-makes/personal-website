@@ -9,7 +9,7 @@ const posts = allPosts.filter(post => !post.data.draft);
 
 // Calculate total words (assuming each post has a body)
 const totalWords = posts.reduce((acc, post) => {
-  const wordCount = post.body.split(/\s+/).length;
+  const wordCount = post.body ? post.body.split(/\s+/).length : 0;
   return acc + wordCount;
 }, 0);
 

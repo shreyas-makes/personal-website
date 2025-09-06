@@ -48,6 +48,9 @@
         "summary": {
           "type": "string"
         },
+        "description": {
+          "type": "string"
+        },
         "cover": {
           "type": "string"
         },

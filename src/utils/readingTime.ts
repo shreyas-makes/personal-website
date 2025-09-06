@@ -1,6 +1,11 @@
-export function calculateReadingTime(content: string): string {
+export function calculateReadingTime(content: string | undefined): string {
   // Average reading speed (words per minute)
   const WORDS_PER_MINUTE = 200;
+  
+  // Handle undefined or empty content
+  if (!content) {
+    return '1 minute read';
+  }
   
   // Count words by splitting on whitespace
   const words = content.trim().split(/\s+/).length;
