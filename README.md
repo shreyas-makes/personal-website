@@ -4,25 +4,22 @@ It's built with Astro and has all the features I wanted in a personal blog - cle
 
 ## Features
 
-### What's in the box?
-
-**Content stuff that actually works:**
-- Regular blog posts, interviews, book reviews - all organized automatically
+- Essays, notes (less perfect than essays),interviews, book reviews - all organized automatically
 - A cool "growth stage" system (seedling → sprout → plant) for tracking how your ideas evolve
 - Smart tagging that handles different content types
 - Draft mode so you can hide posts you're still working on
 
-**Design that doesn't suck:**
+**Clean, clean, clean:**
 - Clean, minimal design that puts your writing first
-- Dark mode (because obviously)
-- Actually readable on phones
+- Dark mode
+- Pleasant to read on phone due to Verdana minimal
 - Reading time calculation and word counter in the footer
 
 **Technical bits:**
-- Built with Astro 5 - it's stupidly fast
-- Full-text search that works offline
+- Built with Astro 5
+- Full-text search for readers to find blogs 
 - Images get optimized automatically
-- TypeScript throughout (no more debugging in production)
+- TypeScript throughout 
 - RSS feeds and proper SEO
 
 ## Getting Started
