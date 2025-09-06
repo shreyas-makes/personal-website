@@ -13,6 +13,21 @@ export const prerender = true;
 // Get all posts including drafts (for stats calculation)
 const allPostsWithDrafts = await getCollection('posts');
 
+// Get interview posts separately
+const interviews = await getCollection('posts', ({ id }) => {
+  return id.startsWith('interviews/');
+}).then(posts => {
+  const filteredPosts = posts.filter(post => !post.data.draft);
+  return filteredPosts.map(post => ({
+    ...post,
+    readingTime: calculateReadingTime(post.body),
+    excerpt: post.data.summary || generateExcerpt(post.body)
+  }));
+});
+
+// Sort interviews by date (newest first)
+interviews.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
 // Calculate stats (same as NewsletterFormWithHeaders)
 const allPostsForStats = allPostsWithDrafts.filter(post => !post.data.draft);
 const projectsForStats = allPostsForStats.filter(post => post.data.tags?.includes('projects'));
@@ -236,6 +251,45 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
         })}
       </div>
     </section>
+
+    <!-- Add visual separator before interviews -->
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+
+    <!-- Interviews Section -->
+    {interviews.length > 0 && (
+      <section class="mb-16">
+        <div class="flex items-baseline justify-between mb-8">
+          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Interviews</h2>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <span>{interviews.length} interviews</span>
+            <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
+            <a href="/interviews" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+              View all →
+            </a>
+          </div>
+        </div>
+        <div class="space-y-2">
+          {interviews.slice(0, 10).map((interview) => {
+            const postDate = new Date(interview.data.date);
+            const year = postDate.getFullYear();
+            
+            return (
+              <div class="flex items-baseline gap-4">
+                <span class="text-gray-500 dark:text-gray-400 text-sm font-mono tabular-nums min-w-fit">
+                  {year}
+                </span>
+                <a 
+                  href={`/${interview.slug}`} 
+                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                >
+                  {interview.data.title}
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    )}
 
     <!-- Add visual separator before rough notes -->
     <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
