@@ -3,7 +3,7 @@ title: India after gandhi
 date: 2023-01-15T12:00:00.000Z
 author: Ramachandra Guha
 rating: 7
-summary: Step by step algorithms which can be applied in our daily lives
+summary: the stories after india's independence
 cover: india-after-gandhi.jpg
 tags:
   - books
