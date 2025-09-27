@@ -1,5 +1,5 @@
 ---
-title: "L2 Fat market sketches"
+title: "L2 Fat marker sketches"
 date: "2025-09-27T14:41:00.000Z"
 slug: "l2-fat-market-sketches"
 tags: [design, prototyping]
@@ -8,9 +8,7 @@ stage: "plant"
 
 What's the best level of detail one should use to communicate an idea? If it's too crude it welcomes teams to give constructive feedback without any hesitance. One could call this as fidelity level 1 (L1).. 
 
-The following example is a simple wireframe diagram (and this could also be on a paper napkin..)
-
-![[Pasted image 20250927152513.png]]
+This could be a simple wireframe diagram (and this could also be on a paper napkin..)
 
 I can expect a lot more feedback coming in from an L1 sketch. It offers a safe-space to critique the idea. Now, it is not necessary that ideas SHOULD always be loose and communicated as an L1 sketch.
 
@@ -28,14 +26,10 @@ I think there are still some use cases for an "L2 sketch". For this, I remixed t
 
 There is some nuance here for an L2 sketch to ensure there is a right balance of vagueness and concreteness.
 
-Take this example of the image below:
 
-![[Pasted image 20250927152610.png]]
+Let's say you're describing the UI (payment form preview), in case of L1 sketch you still don't provide much detail on the journey (you're just putting a box describing the function, not HOW the UI behaves, responds etc). That's still a black box. To describe the journey as well, you might have to go two levels deeper. 
 
-You're clearly describing the UI (payment form preview), but you still don't provide much detail on the journey. That's still a black box. To describe the journey as well, you might have to go two levels deeper. 
+L2 Fat marker sketches can be very effective in such casses; you just need to take more care to label them cleanly on the UI, describing the payment form as well as how the user interacts with it.
 
-L2 Fat marker sketches can be very effective in such casses; you just need to take more care to label them cleanly on the UI.
-
-![[Pasted image 20250927152652.png]]
 
 "Medium is also the message", and while we might put in efforts to communicate the idea, it's also a prudent decision to put efforts in finding the medium that represents this desired fidelity. And it could be an L1, L2 or an L4..
