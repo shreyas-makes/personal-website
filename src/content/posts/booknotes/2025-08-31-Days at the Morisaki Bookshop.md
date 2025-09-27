@@ -3,7 +3,7 @@ title: Days at the Morisaki Bookshop
 date: 2025-08-23T12:00:00.000Z
 author: Yuzuku Asako
 rating: 4
-summary: 
+summary: A heartwarming story about a young woman who finds solace and purpose in her uncle's secondhand bookshop, learning about love, loss, and the healing power of books.
 cover: days-at-morisaki-bookshop.jpg
 tags:
   - books
