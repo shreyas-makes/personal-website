@@ -29,23 +29,42 @@ const isHomepage = pathname === '/';
 
   <header 
     id="main-header"
-    class="fixed top-0 left-0 right-0 z-50 bg-[#FFFFFF] dark:bg-[#161618] py-2 sm:py-3 border-b border-gray-200 dark:border-gray-600 transition-transform duration-300 ease-in-out translate-y-0"
+    class="bg-[#FFFFFF] dark:bg-[#161618] py-8 sm:py-12"
     transition:persist="header"
     transition:animate="none"
   >
+  <!-- Profile Section -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
+    <a href="/" class="block">
+      <div class="header-section flex items-center justify-center gap-6 sm:gap-8 hover:opacity-80 transition-opacity">
+        <div class="header-frame text-center sm:text-left">
+          <h1 class="text-xl sm:text-2xl font-normal text-gray-900 dark:text-gray-100 mb-1">Shreyas Prakash</h1>
+          <h2 class="text-lg text-gray-600 dark:text-gray-400">Product Manager from London</h2>
+        </div>
+        <div class="img-frame flex-shrink-0">
+          <img 
+            id="propic"
+            src="https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256"
+            width="120"
+            height="120"
+            alt="Shreyas Prakash"
+            class="rounded-full border-2 border-gray-900 dark:border-black"
+          >
+        </div>
+      </div>
+    </a>
+  </div>
   <!-- Add preload hints for critical pages -->
   <link rel="preload" href="/" as="document" />
   <link rel="preload" href="/books" as="document" />
   <link rel="preload" href="/tags/prototypes" as="document" />
   
+  <!-- Navigation Section -->
   <div class="max-w-4xl mx-auto px-4 sm:px-6">
-    <!-- Desktop layout - unified header -->
-    <div class="hidden md:flex md:items-center md:justify-between md:py-2">
-      <!-- Logo/Home link - left aligned -->
-      <a href="/" class="text-xl font-normal text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
-      
-      <!-- Unified navigation - center -->
-      <nav class="flex gap-4 text-sm" id="desktop-navigation">
+    <!-- Desktop layout - centered navigation -->
+    <div class="hidden md:flex md:justify-center md:py-2">
+      <!-- Centered navigation -->
+      <nav class="flex gap-6 text-sm" id="desktop-navigation">
         <!-- Now Tab -->
         <a 
           href={`/${nowSlug}`}
@@ -138,35 +157,31 @@ const isHomepage = pathname === '/';
           <span>Interviews</span>
         </a>
         
+        <!-- Utility items as part of nav -->
+        <div class="flex items-center gap-4 ml-6 pl-6 border-l border-gray-200 dark:border-gray-600">
+          <SearchButton client:load />
+          <button id="theme-toggle-desktop" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+            <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+            <svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </button>
+          <a href="/rss.xml" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+            <span class="sr-only">RSS Feed</span>
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
+            </svg>
+          </a>
+        </div>
       </nav>
-      
-      <!-- Desktop utility icons - right aligned -->
-      <div class="flex items-center gap-4">
-        <SearchButton client:load />
-        <button id="theme-toggle-desktop" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
-          <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-          </svg>
-          <svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-          </svg>
-        </button>
-        <a href="/rss.xml" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
-          <span class="sr-only">RSS Feed</span>
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
-          </svg>
-        </a>
-      </div>
     </div>
 
     <!-- Mobile layout -->
-    <div class="md:hidden flex justify-between items-center mb-0 py-2">
-      <!-- Logo/Home link - aligned left on mobile -->
-      <a href="/" class="text-lg font-normal text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300" aria-label="Home" data-astro-prefetch>Shreyas Prakash</a>
-      
-      <!-- Mobile header controls - grouped on right -->
-      <div class="flex items-center gap-2">
+    <div class="md:hidden flex justify-center py-2">
+      <!-- Mobile controls - centered -->
+      <div class="flex items-center gap-4">
         <SearchButton client:load />
         <button id="theme-toggle" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
           <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -197,7 +212,7 @@ const isHomepage = pathname === '/';
   <!-- Mobile menu -->
   <div 
     id="mobile-menu" 
-    class="hidden md:hidden fixed inset-x-0 top-[60px] bg-[#FFFFFF] dark:bg-[#161618] border-b border-gray-200/10 dark:border-gray-600/10 transition-all duration-200 ease-in-out z-40"
+    class="hidden md:hidden bg-[#FFFFFF] dark:bg-[#161618] border-t border-gray-200 dark:border-gray-600 transition-all duration-200 ease-in-out"
   >
     <div class="px-8 py-6 space-y-4">
       <nav class="flex flex-col space-y-3" id="mobile-navigation">
@@ -305,108 +320,8 @@ const isHomepage = pathname === '/';
   )}
 </header>
 
-<!-- Spacer to prevent content from hiding under header when in first fold -->
-<div class="h-24 md:h-0"></div>
 
 <script>
-  // Auto-hide header functionality
-  function setupAutoHideHeader() {
-    const header = document.getElementById('main-header');
-    if (!header) return;
-
-    let hideTimeout = null;
-    let isScrolledDown = false;
-    const SCROLL_THRESHOLD = window.innerHeight * 0.8; // Hide after 80% of viewport height
-    const HOVER_THRESHOLD = 80; // Distance from top to trigger header appearance when scrolled
-    const HIDE_DELAY = 500; // Delay before hiding header when mouse moves away
-
-    function showHeader() {
-      header.classList.remove('-translate-y-full');
-      header.classList.add('translate-y-0');
-      if (hideTimeout) {
-        clearTimeout(hideTimeout);
-        hideTimeout = null;
-      }
-    }
-
-    function hideHeader() {
-      header.classList.remove('translate-y-0');
-      header.classList.add('-translate-y-full');
-    }
-
-    function scheduleHide() {
-      if (hideTimeout) clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(hideHeader, HIDE_DELAY);
-    }
-
-    // Handle scroll events
-    function handleScroll() {
-      const scrollY = window.scrollY;
-      const wasScrolledDown = isScrolledDown;
-      isScrolledDown = scrollY > SCROLL_THRESHOLD;
-
-      if (isScrolledDown && !wasScrolledDown) {
-        // Just scrolled past threshold - hide header
-        hideHeader();
-      } else if (!isScrolledDown && wasScrolledDown) {
-        // Scrolled back to top - show header
-        showHeader();
-      }
-    }
-
-    // Track mouse movement (only when scrolled down)
-    function handleMouseMove(e) {
-      if (!isScrolledDown) return; // Only use hover when scrolled down
-      
-      const mouseY = e.clientY;
-      
-      if (mouseY <= HOVER_THRESHOLD) {
-        showHeader();
-      } else {
-        // Check if mouse is over the header itself
-        const headerRect = header.getBoundingClientRect();
-        const isOverHeader = mouseY <= headerRect.bottom && mouseY >= headerRect.top;
-        
-        if (!isOverHeader) {
-          scheduleHide();
-        }
-      }
-    }
-
-    // Keep header visible when hovering over it (only when scrolled down)
-    function handleHeaderMouseEnter() {
-      if (!isScrolledDown) return;
-      if (hideTimeout) {
-        clearTimeout(hideTimeout);
-        hideTimeout = null;
-      }
-    }
-
-    function handleHeaderMouseLeave() {
-      if (!isScrolledDown) return;
-      scheduleHide();
-    }
-
-    // Initialize scroll state
-    handleScroll();
-
-    // Add event listeners
-    document.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('mousemove', handleMouseMove);
-    header.addEventListener('mouseenter', handleHeaderMouseEnter);
-    header.addEventListener('mouseleave', handleHeaderMouseLeave);
-
-    // Cleanup function
-    return function cleanup() {
-      document.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousemove', handleMouseMove);
-      header.removeEventListener('mouseenter', handleHeaderMouseEnter);
-      header.removeEventListener('mouseleave', handleHeaderMouseLeave);
-      if (hideTimeout) {
-        clearTimeout(hideTimeout);
-      }
-    };
-  }
   // Add a home link prefetch on page load
   document.addEventListener('DOMContentLoaded', () => {
     // Prefetch the homepage content immediately on any other page
@@ -662,22 +577,18 @@ const isHomepage = pathname === '/';
 
   // Setup on initial load
   let cleanup = setupUI();
-  let autoHideCleanup = setupAutoHideHeader();
 
   // Handle Astro view transitions
   document.addEventListener('astro:page-load', () => {
     // Clean up old listeners
     if (cleanup) cleanup();
-    if (autoHideCleanup) autoHideCleanup();
     // Setup new listeners
     cleanup = setupUI();
-    autoHideCleanup = setupAutoHideHeader();
   });
 
   // Cleanup before page transitions
   document.addEventListener('astro:before-swap', () => {
     if (cleanup) cleanup();
-    if (autoHideCleanup) autoHideCleanup();
   });
 
   // Make toggleSearch available globally
@@ -750,5 +661,69 @@ const isHomepage = pathname === '/';
   .dark .mobile-nav-item-active {
     background-color: rgb(55, 65, 81); /* gray-700 for dark mode */
     color: rgb(255, 255, 255); /* white for dark mode */
+  }
+
+  /* Multi-colored link system inspired by Cassidy's site */
+  :root {
+    --link-color-1: #22c55e; /* green */
+    --link-color-2: #ec4899; /* pink */
+    --link-color-3: #3b82f6; /* blue */
+    --link-color-4: #eab308; /* yellow */
+  }
+
+  .nav-item:hover,
+  .mobile-nav-item:hover {
+    animation: colorCycle 0.3s ease-in-out;
+  }
+
+  .nav-item:nth-child(4n+1):hover {
+    color: var(--link-color-1) !important;
+  }
+
+  .nav-item:nth-child(4n+2):hover {
+    color: var(--link-color-2) !important;
+  }
+
+  .nav-item:nth-child(4n+3):hover {
+    color: var(--link-color-3) !important;
+  }
+
+  .nav-item:nth-child(4n+4):hover {
+    color: var(--link-color-4) !important;
+  }
+
+  /* Apply same colors to mobile nav */
+  .mobile-nav-item:nth-child(4n+1):hover {
+    color: var(--link-color-1) !important;
+  }
+
+  .mobile-nav-item:nth-child(4n+2):hover {
+    color: var(--link-color-2) !important;
+  }
+
+  .mobile-nav-item:nth-child(4n+3):hover {
+    color: var(--link-color-3) !important;
+  }
+
+  .mobile-nav-item:nth-child(4n+4):hover {
+    color: var(--link-color-4) !important;
+  }
+
+  @keyframes colorCycle {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  /* Header responsive layout */
+  @media (max-width: 640px) {
+    .header-section {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .header-frame {
+      text-align: center !important;
+    }
   }
 </style>
