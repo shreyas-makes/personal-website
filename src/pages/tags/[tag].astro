@@ -133,7 +133,7 @@ const isCuriositiesTag = tag === 'curiosities';
 
     <section class="mt-8 sm:mt-16 md:mt-24 mb-20">
       <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">{formatTag(tag as string)}</h2>
+        <h2 class="text-xl font-medium tracking-[0.02em] text-gray-600 dark:text-gray-400">{formatTag(tag as string)}</h2>
         <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
           <span>{posts.length} post{posts.length === 1 ? '' : 's'}</span>
         </div>
@@ -148,7 +148,7 @@ const isCuriositiesTag = tag === 'curiosities';
             <li class="flex flex-col gap-1">
               <div class="flex flex-col space-y-1">
                 <a href={`/${post.slug}`} 
-                   class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1">
+                   class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1 font-medium tracking-[0.015em]">
                   <span class="block text-ellipsis overflow-hidden">
                     {post.data.title}
                   </span>

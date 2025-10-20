@@ -12,7 +12,7 @@ It's built with Astro and has all the features I wanted in a personal blog - cle
 **Clean, clean, clean:**
 - Clean, minimal design that puts your writing first
 - Dark mode
-- Pleasant to read on phone due to Verdana minimal
+- Pleasant to read on phone thanks to the Iowan Old Style serif stack
 - Reading time calculation and word counter in the footer
 
 **Technical bits:**

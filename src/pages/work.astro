@@ -17,7 +17,7 @@ export const prerender = true;
 
     <!-- Notable Work Experiences -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-700 dark:text-gray-400 mb-6">Notable experiences</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-700 dark:text-gray-400 mb-6">Notable experiences</h2>
       
       <div class="space-y-8">
         <div>
@@ -59,7 +59,7 @@ export const prerender = true;
 
     <!-- Open Source Tools and Side Quests -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-700 dark:text-gray-400 mb-2">Open source tools and other side quests</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-700 dark:text-gray-400 mb-2">Open source tools and other side quests</h2>
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">943+ contributions in github repositories this year (2025)</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div>
@@ -114,7 +114,7 @@ export const prerender = true;
 
     <!-- Awards and Recognition -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-700 dark:text-gray-400 mb-6">Awards and recognitions</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-700 dark:text-gray-400 mb-6">Awards and recognitions</h2>
       <div class="space-y-4">
         <div class="text-gray-700 dark:text-gray-300">
           <a href="https://adplist.org/certifications/160035" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">ADPlist mentorship award</a> — 1000+ mentorship minutes (2021)
@@ -139,7 +139,7 @@ export const prerender = true;
 
     <!-- Notable Media Mentions -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-700 dark:text-gray-400 mb-6">Notable media mentions</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-700 dark:text-gray-400 mb-6">Notable media mentions</h2>
       
       <!-- Articles & Blog Posts -->
       <div class="mb-8">
@@ -195,7 +195,7 @@ export const prerender = true;
 
     <!-- Teaching and Mentoring -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-700 dark:text-gray-400 mb-6">Teaching and mentoring</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-700 dark:text-gray-400 mb-6">Teaching and mentoring</h2>
       <div class="space-y-4">
         <div class="text-gray-700 dark:text-gray-300">
           <a href="https://adplist.org/mentors/shreyas" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">ADPlist award for mentorship hours</a>
@@ -211,7 +211,7 @@ export const prerender = true;
 
     <!-- Research and Publications -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-700 dark:text-gray-400 mb-6">Research and publications</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-700 dark:text-gray-400 mb-6">Research and publications</h2>
       <div class="space-y-4">
         <div class="text-gray-700 dark:text-gray-300">
           Persaud, S., Prakash, S., & Flipsen, B. (2021). Dialogue for design teams: A case study of generative conversations for dealing with diversity. In <em>DS 110: Proceedings of the 23rd International Conference on Engineering and Product Design Education (E&PDE 2021), VIA Design, VIA University in Herning, Denmark. 9th-10th September 2021</em>.
@@ -230,7 +230,7 @@ export const prerender = true;
 
     <!-- Books Published -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-700 dark:text-gray-400 mb-6">Books published</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-700 dark:text-gray-400 mb-6">Books published</h2>
       <div class="text-gray-700 dark:text-gray-300">
         <a href="https://archive.org/details/ruraldesigntoolkit" class="hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-1">Rural design toolkit</a> by Shreyas Prakash, Krishna Thiruvengadam
       </div>
@@ -242,22 +242,17 @@ export const prerender = true;
 <style>
   /* Clean, minimal styling */
   :root {
-    --text-primary: #1f2937;
+    --text-primary: rgb(44, 53, 61);
     --text-secondary: #666;
     --hover-color: #555;
   }
 
-  /* Use Verdana as the font */
+  /* Typography */
   main {
     color: var(--text-primary);
-    line-height: 1.4;
-    font-family: 'Verdana', Geneva, sans-serif;
-    font-size: 15px;
-  }
-
-  h1, h2, h3 {
-    font-weight: 400;
-    font-family: 'Verdana', Geneva, sans-serif;
+    line-height: 29px;
+    font-family: var(--font-system);
+    font-size: 18px;
   }
 
   /* Only apply hover effects on larger screens */
@@ -284,7 +279,8 @@ export const prerender = true;
   /* Mobile adjustments */
   @media (max-width: 640px) {
     main {
-      font-size: 14px;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 

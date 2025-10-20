@@ -43,7 +43,7 @@ const formatDate = (date: string | Date): string => {
 <BaseLayout title="Rough notes | Shreyas" showMainFooterSection={true}>
   <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 sm:pt-32 pb-6 sm:pb-8">
     <div class="flex items-baseline justify-between mb-12">
-      <h1 class="text-3xl font-normal text-gray-800 dark:text-gray-200">Rough Notes</h1>
+      <h1 class="text-3xl font-medium tracking-[0.02em] text-gray-800 dark:text-gray-200">Rough Notes</h1>
       <span class="text-sm text-gray-500 dark:text-gray-400">
         {roughNotes.length} notes
       </span>
@@ -79,7 +79,7 @@ const formatDate = (date: string | Date): string => {
             <div class="mb-2">
               <a 
                 href={`/${post.slug}`} 
-                class="text-xl font-normal text-gray-800 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400"
+                class="text-xl font-medium tracking-[0.015em] text-gray-800 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400"
               >
                 {post.data.title}
               </a>
@@ -114,7 +114,8 @@ const formatDate = (date: string | Date): string => {
   }
 
   h1 {
-    font-weight: 400;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--text-primary);
   }
 

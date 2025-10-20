@@ -162,17 +162,20 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     </section>
 
     <section class="my-8">
-      <h2 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">Themes</h2>
-      <div class="text-gray-800 dark:text-gray-200 leading-relaxed" style="word-break: break-word;">
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-600 dark:text-gray-400 mb-4">Themes</h2>
+      <div class="flex flex-wrap gap-x-3 gap-y-2 text-gray-800 dark:text-gray-200 leading-relaxed">
         {Object.keys(topTags).map((tag, index) => (
-          <>
+          <div class="flex items-center gap-3" key={tag}>
             <a 
               href={`/tags/${tag}`} 
-              class="underline hover:no-underline text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 inline-block"
+              class="underline hover:no-underline text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
               style="text-decoration-skip-ink: auto; text-underline-position: under;"
               title={`View posts tagged "${tag}"`}
-            >{tag}</a>{index < Object.keys(topTags).length - 1 && <span>, </span>}
-          </>
+            >
+              {tag}
+            </a>
+            {index < Object.keys(topTags).length - 1 && <span class="text-gray-400 dark:text-gray-500">•</span>}
+          </div>
         ))}
       </div>
     </section>
@@ -182,12 +185,12 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
         <!-- Latest section -->
     <section class="mb-16">
-      <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Recently published</h2>
+      <h2 class="text-xl font-medium tracking-[0.02em] text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Recently published</h2>
       <div class="space-y-8 sm:space-y-12">
         {latestPosts.map((post) => (
           <article class="group">
             <a href={`/${post.slug}`} class="block space-y-2">
-              <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
+              <h3 class="text-lg sm:text-xl font-medium tracking-[0.015em] text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
                 {post.data.title}
               </h3>
               <div class="text-gray-600 dark:text-gray-400 text-sm">
@@ -208,7 +211,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
     <section class="mt-12">
       <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Essays</h2>
+        <h2 class="text-xl font-medium tracking-[0.02em] text-gray-600 dark:text-gray-400">Essays</h2>
         <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
           <span>{posts.regular.length} posts</span>
           {posts.regular.length > 13 && (
@@ -221,7 +224,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
           )}
         </div>
       </div>
-      <div class="space-y-2">
+      <div class="space-y-3">
         {posts.regular.slice(3).map((post) => {
           const postDate = new Date(post.data.date);
           const year = postDate.getFullYear();
@@ -233,7 +236,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
               </span>
               <a 
                 href={`/${post.slug}`} 
-                class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1 font-medium tracking-[0.015em]"
               >
                 {post.data.title}
               </a>
@@ -250,7 +253,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     {interviews.length > 0 && (
       <section class="mb-16">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Interviews</h2>
+          <h2 class="text-xl font-medium tracking-[0.02em] text-gray-600 dark:text-gray-400">Interviews</h2>
           <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
             <span>{interviews.length} interviews</span>
             <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
@@ -259,7 +262,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             </a>
           </div>
         </div>
-        <div class="space-y-2">
+        <div class="space-y-3">
           {interviews.slice(0, 10).map((interview) => {
             const postDate = new Date(interview.data.date);
             const year = postDate.getFullYear();
@@ -271,7 +274,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
                 </span>
                 <a 
                   href={`/${interview.slug}`} 
-                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1 font-medium tracking-[0.015em]"
                 >
                   {interview.data.title}
                 </a>
@@ -289,7 +292,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     {posts.roughNotes.length > 0 && (
       <section class="mb-16">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Notes</h2>
+          <h2 class="text-xl font-medium tracking-[0.02em] text-gray-600 dark:text-gray-400">Notes</h2>
           <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
             <span>{posts.roughNotes.length} posts</span>
             {posts.roughNotes.length > 20 && (
@@ -302,7 +305,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             )}
           </div>
         </div>
-        <div class="space-y-2">
+        <div class="space-y-3">
           {posts.roughNotes.map((post) => {
             const postDate = new Date(post.data.date);
             const year = postDate.getFullYear();
@@ -314,7 +317,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
                 </span>
                 <a 
                   href={`/${post.slug}`} 
-                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1 font-medium tracking-[0.015em]"
                 >
                   {post.data.title}
                 </a>
@@ -331,23 +334,25 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 <style>
   /* Clean, minimal styling */
   :root {
-    --text-primary: #000;
+    --text-primary: rgb(44, 53, 61);
     --text-secondary: #666;
     --hover-color: #555;
   }
 
-  /* Use Verdana as the font */
+  /* Typography */
   main {
     color: var(--text-primary);
-    line-height: 1.4;
-    font-family: 'Verdana', Geneva, sans-serif;
-    font-size: 15px;
+    line-height: 29px;
+    font-family: var(--font-system);
+    font-size: 18px;
   }
 
   h1 {
     font-weight: 400;
     color: var(--text-primary);
-    font-family: 'Verdana', Geneva, sans-serif;
+    font-family: var(--font-heading);
+    font-size: 40px;
+    line-height: 48px;
   }
 
   /* Only apply hover effects on larger screens */
@@ -374,8 +379,9 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
   /* Mobile adjustments */
   @media (max-width: 640px) {
     main {
-      font-size: 14px;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 
-</style> 
+</style>
