@@ -85,7 +85,7 @@ function getFirstTag(tags: string[] | undefined): string | null {
 <BaseLayout title="Essays | Shreyas" showMainFooterSection={true}>
   <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 sm:pt-32 pb-6 sm:pb-8">
     <div class="flex items-baseline justify-between mb-12">
-      <h1 class="text-3xl font-medium tracking-[0.02em] text-gray-800 dark:text-gray-200">Essays</h1>
+      <h1 class="text-3xl font-normal text-gray-800 dark:text-gray-200">Essays</h1>
       <span class="text-sm text-gray-500 dark:text-gray-400">
         {sortedPosts.length} posts
       </span>
@@ -104,7 +104,7 @@ function getFirstTag(tags: string[] | undefined): string | null {
           <li class="flex flex-col gap-1">
             <div class="flex flex-col space-y-1">
               <a href={`/${post.slug}`} 
-                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1 font-medium tracking-[0.015em]">
+                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1">
                 <span class="block text-ellipsis overflow-hidden">
                   {post.data.title}
                 </span>
@@ -143,8 +143,7 @@ function getFirstTag(tags: string[] | undefined): string | null {
   }
 
   h1 {
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-weight: 400;
     color: var(--text-primary);
   }
 

@@ -3,23 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --font-system: 'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', 'Droid Serif', Times, 'Source Serif Pro', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  --font-heading: 'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', 'Droid Serif', Times, 'Source Serif Pro', serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-system: 'Verdana', Geneva, sans-serif;
+  --font-heading: 'Verdana', Geneva, sans-serif;
   --background: #FFFFFF;
-  --text: rgb(44, 53, 61);
+  --text: #000;
   --form-input-bg: #ffffff;
   --form-input-border: #e2e8f0;
   --form-button-bg: #2563eb;
   --form-button-hover: #1d4ed8;
-  font-family: var(--font-system);
+  font-family: 'Verdana', Geneva, sans-serif;
 }
 
 body {
-  font-family: var(--font-system);
+  font-family: 'Verdana', Geneva, sans-serif;
   background: var(--background);
   color: var(--text);
   line-height: 29px;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
@@ -87,9 +87,9 @@ video {
 
 /* Blog post content styles */
 .prose {
-  font-size: 18px;
+  font-size: 19px;
   line-height: 29px;
-  font-family: var(--font-system);
+  font-family: 'Verdana', Geneva, sans-serif;
   font-weight: 400;
   color: var(--text);
 }

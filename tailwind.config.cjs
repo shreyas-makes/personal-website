@@ -9,16 +9,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Iowan Old Style', 'Apple Garamond', 'Baskerville', 'Times New Roman', 'Droid Serif', 'Times', 'Source Serif Pro', 'serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'],
-        body: ['Iowan Old Style', 'Apple Garamond', 'Baskerville', 'Times New Roman', 'Droid Serif', 'Times', 'Source Serif Pro', 'serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'],
-        heading: ['Iowan Old Style', 'Apple Garamond', 'Baskerville', 'Times New Roman', 'Droid Serif', 'Times', 'Source Serif Pro', 'serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'],
+        sans: ['Verdana', 'Geneva', 'sans-serif'],
+        body: ['Verdana', 'Geneva', 'sans-serif'],
+        heading: ['Verdana', 'Geneva', 'sans-serif'],
       },
       fontSize: {
-        'title': '40px',
-        'body': '18px',
+        'title': '32px',
+        'body': '19px',
       },
       lineHeight: {
-        'title': '48px',
+        'title': 'normal',
         'body': '29px',
       },
       colors: {
