@@ -1,8 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import NewsletterFormWithHeaders from '../components/NewsletterFormWithHeaders.astro';
-import type { CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { calculateReadingTime } from '../utils/readingTime';
+import { formatDate } from '../utils/formatDate';
+import { getEssayRecommendations } from '../utils/recommendations';
 
 type Props = CollectionEntry<'posts'>['data'] & {
   slug?: string;
@@ -41,6 +43,13 @@ const ogImageUrl = `https://www.shreyasprakash.com/og/${slug}.svg`;
 const postDescription = readingTime
   ? `${title} - ${readingTime} on Shreyas Prakash's blog`
   : `${title} - A new post on Shreyas Prakash's blog`;
+
+const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !id.startsWith('booknotes/'));
+const randomEssays = getEssayRecommendations({
+  posts: allPosts,
+  currentSlug: slug,
+  limit: 10,
+});
 
 ---
 
@@ -118,6 +127,39 @@ const postDescription = readingTime
       <div class="prose prose-neutral dark:prose-invert max-w-none">
         <slot />
       </div>
+
+      {randomEssays.length > 0 && (
+        <section class="mt-12">
+          <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 shadow-sm p-6 sm:p-8">
+            <p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-gray-500 dark:text-gray-400">
+              Keep Reading
+            </p>
+            <h2 class="mt-2 text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100">
+              Ten random essays to wander into
+            </h2>
+            <ol class="mt-6 space-y-4">
+              {randomEssays.map((essay, index) => (
+                <li class="flex gap-4">
+                  <span class="text-sm font-semibold text-gray-400 dark:text-gray-500">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div class="flex-1 space-y-1">
+                    <a 
+                      href={`/${essay.slug}`} 
+                      class="text-base font-medium text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-1 hover:decoration-2"
+                    >
+                      {essay.data.title}
+                    </a>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      {essay.data.summary || formatDate(essay.data.date)}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
       
       {/* Newsletter Section */}
       <div class="mt-16">

@@ -9,6 +9,7 @@ import type { CollectionEntry } from 'astro:content';
 import GrowthStage from '../components/GrowthStage.astro';
 import { incrementPageView, getPopularPosts } from '../utils/pageViews';
 import { siteConfig } from '../utils/config';
+import { getEssayRecommendations } from '../utils/recommendations';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -78,6 +79,13 @@ try {
     .sort(() => Math.random() - 0.5) // Randomize order
     .slice(0, 5); // Take 5 posts
 }
+
+const randomEssays = getEssayRecommendations({
+  posts: allPosts,
+  currentSlug: post.slug,
+  currentId: post.id,
+  limit: 10,
+});
 
 // Store API path for client-side use
 const pageViewsEndpoint = siteConfig.api.pageViews;
@@ -205,6 +213,40 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
         <div class="prose prose-neutral dark:prose-invert max-w-none">
           <slot />
         </div>
+
+        {randomEssays.length > 0 && (
+          <section class="mt-12">
+            <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 shadow-sm p-6 sm:p-8">
+              <p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-gray-500 dark:text-gray-400">
+                Keep Reading
+              </p>
+              <h2 class="mt-2 text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                Ten random essays to wander into
+              </h2>
+              <ol class="mt-6 space-y-4">
+                {randomEssays.map((essay, index) => (
+                  <li class="flex gap-4">
+                    <span class="text-sm font-semibold text-gray-400 dark:text-gray-500">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div class="flex-1 space-y-1">
+                      <a 
+                        href={`/${essay.slug}`} 
+                        class="text-base font-medium text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-1 hover:decoration-2"
+                      >
+                        {essay.data.title}
+                      </a>
+                      <p class="text-sm text-gray-500 dark:text-gray-400">
+                        {essay.data.summary || formatDate(essay.data.date)}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        )}
+
         <!-- Post Footer Section -->
         <div class="mt-16 mb-12">
           <div class="max-w-2xl mx-auto">
