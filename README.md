@@ -113,6 +113,11 @@ src/
 - `npm run preview` - Preview production build
 - `npm run check` - Type check
 
+## Content Utilities
+
+- `npm run list-philosophers` - Scan every post and print a deduplicated list of philosophers/thinkers you have referenced. Pass `-- --limit=5` to cap the list or `-- --json` to get machine-readable output for further tooling. The script reads from `src/data/philosophers.ts`, so extend that file manually with new names/aliases whenever you cite someone new.
+
+
 ## Deployment
 
 This template is configured for **Cloudflare Pages** but works with any Astro-compatible host:

@@ -4,6 +4,7 @@ export interface PhilosopherDefinition {
   aliases?: string[];
 }
 
+// Manually curated list—extend this whenever you cite a new thinker.
 export const PHILOSOPHERS: PhilosopherDefinition[] = [
   {
     name: 'Michel de Montaigne',
@@ -43,6 +44,11 @@ export const PHILOSOPHERS: PhilosopherDefinition[] = [
     aliases: ['Hume'],
   },
   {
+    name: 'Terresa Torres',
+    slug: 'terresa-torres',
+    aliases: ['Terresa Torres', 'Terresa'],
+  },
+  {
     name: 'Michel Foucault',
     slug: 'michel-foucault',
     aliases: ['Foucault'],
@@ -63,6 +69,16 @@ export const PHILOSOPHERS: PhilosopherDefinition[] = [
     aliases: ['Polanyi'],
   },
   {
+    name: 'Richard Feynman',
+    slug: 'richard-feynman',
+    aliases: ['Feynman'],
+  },
+  {
+    name: 'Alexey Guzey',
+    slug: 'alexey-guzey',
+    aliases: ['Guzey'],
+  },
+  {
     name: 'David Deutsch',
     slug: 'david-deutsch',
     aliases: ['Deutsch'],
@@ -72,4 +88,9 @@ export const PHILOSOPHERS: PhilosopherDefinition[] = [
     slug: 'thomas-jefferson',
     aliases: ['Jefferson'],
   },
+  {
+    name: 'Richard Feynman',
+    slug: 'richard-feynman',
+    aliases: ['Feynman'],
+  }
 ];
