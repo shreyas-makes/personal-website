@@ -51,40 +51,47 @@ const totalMentions = mentions.reduce((acc, mention) => acc + mention.count, 0);
 ---
 
 <BaseLayout title={`Influenced by ${philosopher.name}`}>
-  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 sm:pt-28 pb-12 text-gray-800 dark:text-gray-200">
-    <header class="mb-14 space-y-3">
-      <p class="text-xs tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500">Influence</p>
-      <h1 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-gray-100">{philosopher.name}</h1>
-      <p class="text-base text-gray-600 dark:text-gray-400">
-        Mentioned {totalMentions} {totalMentions === 1 ? 'time' : 'times'} across my writing.
-      </p>
-    </header>
+  <main class="max-w-4xl mx-auto px-4 sm:px-5 pt-8 sm:pt-12 pb-8 sm:pb-10 text-gray-800 dark:text-gray-200">
+    <div class="flex items-baseline justify-between mb-8">
+      <div>
+        <p class="text-xs tracking-[0.4em] uppercase text-gray-500 dark:text-gray-500">Influence</p>
+        <h1 class="text-3xl font-normal text-gray-900 dark:text-gray-100 mt-3">{philosopher.name}</h1>
+      </div>
+      <span class="text-sm text-gray-500 dark:text-gray-400">
+        {totalMentions} {totalMentions === 1 ? 'mention' : 'mentions'}
+      </span>
+    </div>
 
     {mentionDetails.length === 0 ? (
       <p class="text-gray-600 dark:text-gray-400">
         I haven’t written about {philosopher.name} yet—check back soon.
       </p>
     ) : (
-      <ol class="space-y-12">
+      <ul class="space-y-8">
         {mentionDetails.map(({ post, count, readingTime, excerpt }) => (
-          <li class="space-y-3">
-            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-              <span>{formatDate(post.data.date)}</span>
-              <span>{readingTime}</span>
+          <li class="flex flex-col gap-1">
+            <div class="flex flex-col space-y-1">
+              <a
+                href={`/${post.slug}`}
+                class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1"
+              >
+                <span class="block text-ellipsis overflow-hidden">
+                  {post.data.title}
+                </span>
+              </a>
+              <span class="text-gray-500 dark:text-gray-400 text-xs">
+                {readingTime} <span class="mx-2"> — </span> {formatDate(post.data.date)}
+              </span>
+              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                {excerpt}
+              </p>
             </div>
-            <a
-              href={`/${post.slug}`}
-              class="group block text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 underline underline-offset-4 decoration-1"
-            >
-              <h2 class="text-2xl font-medium">{post.data.title}</h2>
-            </a>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{excerpt}</p>
-            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-500">
-              {count} {count === 1 ? 'mention' : 'mentions'}
+            <p class="text-[11px] uppercase tracking-wide text-gray-500 dark:text-gray-500 mt-2">
+              {count} {count === 1 ? 'mention' : 'mentions'} in this piece
             </p>
           </li>
         ))}
-      </ol>
+      </ul>
     )}
 
     <div class="mt-16">
