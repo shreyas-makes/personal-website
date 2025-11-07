@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { calculateReadingTime } from '../../utils/readingTime';
+import { generateExcerpt } from '../../utils/excerptUtils';
+import { getInfluenceStats, getPhilosopherMentions } from '../../utils/philosopherUtils';
+import { PHILOSOPHERS } from '../../data/philosophers';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  const published = allPosts.filter((post) => !post.data.draft);
+  const influences = getInfluenceStats(published, PHILOSOPHERS.length);
+
+  return influences.map(({ slug }) => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  throw new Error('Missing influence slug');
+}
+
+const allPosts = await getCollection('posts');
+const publishedPosts = allPosts.filter((post) => !post.data.draft);
+
+const { philosopher, mentions } = getPhilosopherMentions(publishedPosts, slug);
+
+if (!philosopher) {
+  throw new Error(`No philosopher configured for slug "${slug}"`);
+}
+
+const mentionDetails = mentions.map(({ post, count }) => ({
+  post,
+  count,
+  readingTime: calculateReadingTime(post.body),
+  excerpt: post.data.summary || generateExcerpt(post.body),
+}));
+
+const formatDate = (date: string | Date) =>
+  new Date(date).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  }).replace(/ /g, ' ');
+
+const totalMentions = mentions.reduce((acc, mention) => acc + mention.count, 0);
+---
+
+<BaseLayout title={`Influenced by ${philosopher.name}`}>
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 sm:pt-28 pb-12 text-gray-800 dark:text-gray-200">
+    <header class="mb-14 space-y-3">
+      <p class="text-xs tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500">Influence</p>
+      <h1 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-gray-100">{philosopher.name}</h1>
+      <p class="text-base text-gray-600 dark:text-gray-400">
+        Mentioned {totalMentions} {totalMentions === 1 ? 'time' : 'times'} across my writing.
+      </p>
+    </header>
+
+    {mentionDetails.length === 0 ? (
+      <p class="text-gray-600 dark:text-gray-400">
+        I haven’t written about {philosopher.name} yet—check back soon.
+      </p>
+    ) : (
+      <ol class="space-y-12">
+        {mentionDetails.map(({ post, count, readingTime, excerpt }) => (
+          <li class="space-y-3">
+            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+              <span>{formatDate(post.data.date)}</span>
+              <span>{readingTime}</span>
+            </div>
+            <a
+              href={`/${post.slug}`}
+              class="group block text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-300 underline underline-offset-4 decoration-1"
+            >
+              <h2 class="text-2xl font-medium">{post.data.title}</h2>
+            </a>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{excerpt}</p>
+            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-500">
+              {count} {count === 1 ? 'mention' : 'mentions'}
+            </p>
+          </li>
+        ))}
+      </ol>
+    )}
+
+    <div class="mt-16">
+      <a
+        href="/"
+        class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700"
+      >
+        ← Back to home
+      </a>
+    </div>
+  </main>
+</BaseLayout>
