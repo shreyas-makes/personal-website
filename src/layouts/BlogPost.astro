@@ -2,8 +2,6 @@
 import BaseLayout from './BaseLayout.astro';
 import NewsletterFormWithHeaders from '../components/NewsletterFormWithHeaders.astro';
 import type { CollectionEntry } from 'astro:content';
-import GrowthStage from '../components/GrowthStage.astro';
-import { formatDate } from '../utils/formatDate';
 import { calculateReadingTime } from '../utils/readingTime';
 
 type Props = CollectionEntry<'posts'>['data'] & {
@@ -13,14 +11,36 @@ type Props = CollectionEntry<'posts'>['data'] & {
 
 const { title, date, publishDate, updatedDate, heroImage, tags, stage = 'seedling', slug, body } = Astro.props;
 
-// Calculate reading time if body is provided
 const readingTime = body ? calculateReadingTime(body) : null;
+const articleDate = publishDate ?? date ?? updatedDate ?? null;
+const displayDate = articleDate
+  ? new Date(articleDate).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })
+  : '';
+const wordCount = body ? body.trim().split(/\s+/).filter(Boolean).length : 0;
+const readingMinutes = wordCount > 0 ? Math.max(1, Math.ceil(wordCount / 200)) : null;
+const readingTimeShort = readingMinutes ? (readingMinutes === 1 ? '1 min' : `${readingMinutes} mins`) : null;
+const metadataItems = [
+  displayDate || null,
+  wordCount ? `${wordCount.toLocaleString()} words` : null,
+  readingTimeShort
+].filter((item): item is string => Boolean(item));
+const authorAvatar = 'https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256';
+const authorName = 'Shreyas Prakash';
+const authorEmail = 'mailto:hi@shreyasprakash.com';
+const authorTwitter = 'https://twitter.com/shreyasprakash';
+const authorLinkedIn = 'https://linkedin.com/in/shreyasprakash';
 
 // Generate OG image URL for this post
 const ogImageUrl = `https://www.shreyasprakash.com/og/${slug}.svg`;
 
 // Post description - could come from frontmatter or generated
-const postDescription = `${title} - ${readingTime} read on Shreyas Prakash's blog`;
+const postDescription = readingTime
+  ? `${title} - ${readingTime} on Shreyas Prakash's blog`
+  : `${title} - A new post on Shreyas Prakash's blog`;
 
 ---
 
@@ -31,25 +51,68 @@ const postDescription = `${title} - ${readingTime} read on Shreyas Prakash's blo
   ogType="article"
   showMainFooterSection={true}
 >
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-12 sm:pt-24 pb-6">
-    <article class="max-w-3xl mx-auto">
-      <header class="mb-6 text-center">
-        {/* Title */}
-        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-6">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-8 sm:pt-16 pb-16">
+    <article class="max-w-4xl mx-auto">
+      <header class="mb-16 text-center">
+        <h1 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-gray-100 leading-tight">
           {title}
         </h1>
-        
-        {/* Metadata - Only reading time */}
-        {readingTime && (
-          <div class="flex justify-center items-center text-xs text-gray-500 dark:text-gray-400">
-            <div class="flex items-center gap-1 px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full">
-              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>{readingTime}</span>
+
+        {metadataItems.length > 0 && (
+          <p class="mt-4 text-base text-gray-600 dark:text-gray-300">
+            {metadataItems.join(' • ')}
+          </p>
+        )}
+
+        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+          <div class="flex-shrink-0">
+            <img
+              src={authorAvatar}
+              alt={`${authorName} headshot`}
+              width="80"
+              height="80"
+              class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-gray-900 dark:border-gray-100 object-cover"
+            />
+          </div>
+
+          <div class="flex flex-col items-center gap-3 text-gray-900 dark:text-gray-100 sm:items-start">
+            <p class="text-lg font-semibold">{authorName}</p>
+            <div class="flex items-center gap-3 text-gray-500 dark:text-gray-300">
+              <a
+                href={authorLinkedIn}
+                class="p-2 rounded-full border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
+                aria-label="LinkedIn profile"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-9 18H7v-7h3v7zm-1.5-8.29c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76c.96 0 1.75.79 1.75 1.76s-.77 1.76-1.75 1.76zm11.5 8.29h-3v-3.61c0-.86-.02-1.97-1.2-1.97-1.2 0-1.38.94-1.38 1.91V18h-3v-7h2.88v.96h.04c.4-.75 1.36-1.55 2.8-1.55 2.99 0 3.55 1.97 3.55 4.52V18z" />
+                </svg>
+              </a>
+              <a
+                href={authorTwitter}
+                class="p-2 rounded-full border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
+                aria-label="Twitter profile"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19.633 7.997c.013.176.013.353.013.53 0 5.39-4.103 11.603-11.603 11.603-2.305 0-4.45-.676-6.25-1.843.322.038.63.051.965.051 1.905 0 3.66-.647 5.056-1.742-1.781-.038-3.28-1.21-3.797-2.823.253.038.506.063.772.063.367 0 .734-.051 1.076-.139-1.868-.38-3.268-2.022-3.268-3.999v-.051c.546.304 1.19.492 1.868.517a4.06 4.06 0 0 1-1.81-3.385c0-.746.19-1.43.534-2.027a11.646 11.646 0 0 0 8.45 4.287 4.588 4.588 0 0 1-.101-.93c0-2.233 1.81-4.056 4.056-4.056 1.166 0 2.22.492 2.961 1.29a8.074 8.074 0 0 0 2.574-.983 4.027 4.027 0 0 1-1.78 2.244 8.17 8.17 0 0 0 2.342-.63 8.71 8.71 0 0 1-2.04 2.09z" />
+                </svg>
+              </a>
+              <a
+                href={authorEmail}
+                class="p-2 rounded-full border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
+                aria-label="Email Shreyas"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="m3 7 9 6 9-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
             </div>
           </div>
-        )}
+        </div>
       </header>
       
       <div class="prose prose-neutral dark:prose-invert max-w-none">
@@ -97,4 +160,3 @@ const postDescription = `${title} - ${readingTime} read on Shreyas Prakash's blo
     }
   }
 </style> 
-
