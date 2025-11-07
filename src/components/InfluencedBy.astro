@@ -6,6 +6,11 @@ interface Props {
 }
 
 const { influences = [] } = Astro.props as Props;
+
+const getNotchHeight = (count: number) => {
+  const capped = Math.min(count, 12);
+  return Math.round(8 + capped * 0.9);
+};
 ---
 
 <section class="my-12">
@@ -15,22 +20,110 @@ const { influences = [] } = Astro.props as Props;
       I’ll keep writing about the thinkers who continue to shape my work.
     </p>
   ) : (
-    <div class="flex flex-wrap items-center text-gray-800 dark:text-gray-200 leading-relaxed gap-y-2" style="word-break: break-word;">
-      {influences.map((influence, index) => (
-        <span class="flex items-start gap-2 mr-4" key={influence.slug}>
-          {index > 0 && <span class="text-gray-400 dark:text-gray-600" aria-hidden="true">•</span>}
-          <span class="inline-flex items-start gap-1 pb-1">
+    <div class="baseline-ticker-shell text-gray-800 dark:text-gray-200">
+      <ul class="baseline-ticker-track" role="list">
+        {influences.map((influence) => (
+          <li
+            class="baseline-ticker-item"
+            style={`--notch-height: ${getNotchHeight(influence.count)}px;`}
+            key={influence.slug}
+          >
+            <span class="baseline-ticker-notch" aria-hidden="true">
+              <span class="baseline-ticker-value">{influence.count}</span>
+              <span class="baseline-ticker-stem" />
+            </span>
             <a
               href={`/influences/${influence.slug}`}
-              class="underline hover:no-underline text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
-              style="text-decoration-skip-ink: auto; text-underline-position: under;"
+              class="baseline-ticker-name hover:text-gray-600 dark:hover:text-gray-400"
             >
               {influence.name}
             </a>
-            <sup class="text-xs text-gray-500 dark:text-gray-400 align-super">{influence.count}</sup>
-          </span>
-        </span>
-      ))}
+            <span class="sr-only">{`${influence.name} referenced ${influence.count} times`}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   )}
 </section>
+
+<style>
+  .baseline-ticker-shell {
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+    scrollbar-width: none;
+  }
+
+  .baseline-ticker-shell::-webkit-scrollbar {
+    display: none;
+  }
+
+  .baseline-ticker-track {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-items: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0.75rem;
+  }
+
+  .baseline-ticker-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: max-content;
+    font-size: 0.95rem;
+  }
+
+  .baseline-ticker-name {
+    display: inline-block;
+    padding-bottom: 0.35rem;
+    font-weight: 500;
+    transition: color 120ms ease;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 0.2em;
+  }
+
+  .baseline-ticker-notch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(107, 114, 128, 0.9);
+  }
+
+  :global(.dark) .baseline-ticker-notch {
+    color: rgba(156, 163, 175, 0.85);
+  }
+
+  .baseline-ticker-value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .baseline-ticker-stem {
+    width: 1px;
+    height: var(--notch-height, 12px);
+    background: rgba(55, 65, 81, 0.35);
+    background: color-mix(in srgb, currentColor 35%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    .baseline-ticker-track {
+      flex-wrap: nowrap;
+      gap: 0.5rem 1.5rem;
+      padding-right: 1rem;
+    }
+
+    .baseline-ticker-item {
+      font-size: 0.9rem;
+    }
+  }
+</style>
