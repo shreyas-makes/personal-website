@@ -17,9 +17,14 @@ export const PHILOSOPHERS: PhilosopherDefinition[] = [
     aliases: ['Nassim Taleb', 'Taleb'],
   },
   {
+    name: 'Karl Popper',
+    slug: 'karl-popper',
+    aliases: ['Popper'],
+  },
+  {
     name: 'Friedrich Nietzsche',
     slug: 'friedrich-nietzsche',
-    aliases: ['Nietzsche'],
+    aliases: ['Nietzsche', 'nietzsche'],
   },
   {
     name: 'Arthur Schopenhauer',
