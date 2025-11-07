@@ -33,27 +33,28 @@ const isHomepage = pathname === '/';
     transition:persist="header"
     transition:animate="none"
   >
-  <!-- Profile Section -->
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
-    <a href="/" class="block">
-      <div class="header-section flex items-center justify-center gap-6 sm:gap-8 hover:opacity-80 transition-opacity">
-        <div class="header-frame text-center sm:text-left">
-          <h1 class="text-xl sm:text-2xl font-normal text-gray-900 dark:text-gray-100 mb-1">Shreyas Prakash</h1>
-          <h2 class="text-lg text-gray-600 dark:text-gray-400">Product Manager from London</h2>
+  {isHomepage && (
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
+      <a href="/" class="block">
+        <div class="header-section flex items-center justify-center gap-6 sm:gap-8 hover:opacity-80 transition-opacity">
+          <div class="header-frame text-center sm:text-left">
+            <h1 class="text-xl sm:text-2xl font-normal text-gray-900 dark:text-gray-100 mb-1">Shreyas Prakash</h1>
+            <h2 class="text-lg text-gray-600 dark:text-gray-400">Product Manager from London</h2>
+          </div>
+          <div class="img-frame flex-shrink-0">
+            <img 
+              id="propic"
+              src="https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256"
+              width="120"
+              height="120"
+              alt="Shreyas Prakash"
+              class="rounded-full border-2 border-gray-900 dark:border-black"
+            >
+          </div>
         </div>
-        <div class="img-frame flex-shrink-0">
-          <img 
-            id="propic"
-            src="https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256"
-            width="120"
-            height="120"
-            alt="Shreyas Prakash"
-            class="rounded-full border-2 border-gray-900 dark:border-black"
-          >
-        </div>
-      </div>
-    </a>
-  </div>
+      </a>
+    </div>
+  )}
   <!-- Add preload hints for critical pages -->
   <link rel="preload" href="/" as="document" />
   <link rel="preload" href="/books" as="document" />
