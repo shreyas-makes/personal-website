@@ -160,6 +160,11 @@ const isHomepage = pathname === '/';
         
         <!-- Utility items as part of nav -->
         <div class="flex items-center gap-4 ml-6 pl-6 border-l border-gray-200 dark:border-gray-600">
+          <a href="/" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-label="Home">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 11 9-8 9 8M5 10v10h5v-6h4v6h5V10" />
+            </svg>
+          </a>
           <SearchButton client:load />
           <button id="theme-toggle-desktop" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
             <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -183,6 +188,11 @@ const isHomepage = pathname === '/';
     <div class="md:hidden flex justify-center py-2">
       <!-- Mobile controls - centered -->
       <div class="flex items-center gap-4">
+        <a href="/" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-label="Home">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 11 9-8 9 8M5 10v10h5v-6h4v6h5V10" />
+          </svg>
+        </a>
         <SearchButton client:load />
         <button id="theme-toggle" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
           <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
