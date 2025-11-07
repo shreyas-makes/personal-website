@@ -182,11 +182,6 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       </div>
     </section>
 
-    <InfluencedBy influences={topInfluences} />
-
-    <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
-
         <!-- Latest section -->
     <section class="mb-16">
       <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Recently published</h2>
@@ -331,6 +326,10 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
         </div>
       </section>
     )}
+
+    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+
+    <InfluencedBy influences={topInfluences} />
 
   </main>
 </BaseLayout>
