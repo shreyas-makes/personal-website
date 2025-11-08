@@ -33,11 +33,17 @@ if (!philosopher) {
   throw new Error(`No philosopher configured for slug "${slug}"`);
 }
 
+const getPostUrl = (slug: string) =>
+  slug.startsWith('booknotes/')
+    ? `/books/${slug.replace('booknotes/', '')}`
+    : `/${slug}`;
+
 const mentionDetails = mentions.map(({ post, count }) => ({
   post,
   count,
   readingTime: calculateReadingTime(post.body),
   excerpt: post.data.summary || generateExcerpt(post.body),
+  url: getPostUrl(post.slug),
 }));
 
 const formatDate = (date: string | Date) =>
@@ -68,11 +74,11 @@ const totalMentions = mentions.reduce((acc, mention) => acc + mention.count, 0);
       </p>
     ) : (
       <ul class="space-y-8">
-        {mentionDetails.map(({ post, count, readingTime, excerpt }) => (
+        {mentionDetails.map(({ post, count, readingTime, excerpt, url }) => (
           <li class="flex flex-col gap-1">
             <div class="flex flex-col space-y-1">
               <a
-                href={`/${post.slug}`}
+                href={url}
                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1"
               >
                 <span class="block text-ellipsis overflow-hidden">
