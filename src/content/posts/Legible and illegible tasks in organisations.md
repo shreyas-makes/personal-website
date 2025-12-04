@@ -1,6 +1,6 @@
 ---
 title: Legible and illegible tasks in organisations
-date: 2024-11-15T15:56:40.000Z
+date: 2025-11-15T15:56:40.000Z
 slug: legible-illegible-work
 tags:
   - product
