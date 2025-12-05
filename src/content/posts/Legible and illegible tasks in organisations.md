@@ -18,7 +18,7 @@ If we were to translate this into three principles:
 2. **However, these organizations are dependent on a huge amount of “illegible” work: work that cannot be tracked or planned for, but is nonetheless essential.**
 3. **Increasing legibility thus often actually _lowers_ efficiency - but the other benefits are high enough that organizations are typically willing to do so regardless.**
 
-The other way to put this is that "what gets measured, gets managed", and when this company prioritises the throughput of the more manageable tasks, the overall efficiency of work gets affected as **work == legible work + illegible work.**
+The other way to put this is that "what gets measured, gets managed", and when this company prioritises the measurable (more manageable) work, the overall efficiency of the company gets affected.
 
 I'll highlight some examples from the book to illustrate these points:
 
@@ -30,13 +30,11 @@ I'll highlight some examples from the book to illustrate these points:
 
 In the world of corporate-speak, organisations and softwares, this is made so visible in terms of program status update calls, bi-weekly delivery syncs, monthly OKRs, CSATs, NPS scores etc. A company that is known for certain "illegible" qualities as a startup, as it grows to be a scale-up sometimes loses them for the sake of becoming more measurable, losing itself and it's DNA in due course.  But once in a while, you might also see exceptions to this rule where organisations consciously make the illegible work more visible:
 
-In my previous product role at Noora Health, a healthcare non-profit, we were running a program that trained patients and caregivers in maternal child care. In this case, the number of “trained patients” was legible work, but the “number of trained patients where nurse empathetically listened to the patient, and spoke to them gently” is illegible work, and is difficult to account for. After all, how can you even measure "care". 
-
-That doesn’t discount the fact that illegible work is not important (it’s important but it’s difficult to measure).. 
+In my previous product role at Noora Health, a healthcare non-profit, we were running a program that trained patients and caregivers in maternal child care. In this case, the number of “trained patients” was legible work. This was the figure given to the grants, philanthropists and other stakeholders who were financing the program in proportion to the scale of such impact. But you also had “number of trained patients where nurse empathetically listened to the patient, and spoke to them gently” which was very illegible to measure and manage. As a consequence, this didn't get measured, and therefore, not managed. How can you even measure "care"? But that doesn’t discount the fact that illegible work is not important (it’s important but it’s difficult to measure).. 
 
 To ensure that the "illegible" work was still incorporated into the core program while it continued to scale and serve millions of patients and caregivers, the caregiving program had two components: an in-person component where nurses were trained to educate patients and caregivers in health facilities. And a digital component which provided just-in-time information through mobile phones for family caregiving. 
 
-If it was all about maximising "number of patients trained", it could have very well just revamped the program as just the digital component (as it's easy to scale to 10s of millions this way). But it didn't want to compromise on the in-person component as there is a lot of "illegible work" when it comes to providing care. As a program on caregiving, it didn't want to compromise on this part of the value provided to the patients. The way they have absorbed "illegible work" as a part of their core-program is a beautiful lesson on how it's possible to also scale while ensuring the illegible work remains uncompromised.
+If it was all about maximising "number of patients trained", Noora Health could have very well just revamped the program focussing on JUST the digital component (as it's easy to scale to 10s of millions this way, why bother to have an in-person component? even..). But they didn't make that compromise, as there is a lot of "illegible work" when it comes to providing care. **The way they have absorbed "illegible work" as a part of their core-program is a beautiful lesson on how it's possible to also scale while ensuring the illegible work remains uncompromised.**
 
 Coming back to the original premise of this essay, where I was debating with my tech lead on why user interviews are important despite tons of quant data... it boils down to the same principle: **illegible work should remain uncompromised.**
 
