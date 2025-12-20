@@ -674,58 +674,6 @@ const isHomepage = pathname === '/';
     color: rgb(255, 255, 255); /* white for dark mode */
   }
 
-  /* Multi-colored link system inspired by Cassidy's site */
-  :root {
-    --link-color-1: #22c55e; /* green */
-    --link-color-2: #ec4899; /* pink */
-    --link-color-3: #3b82f6; /* blue */
-    --link-color-4: #eab308; /* yellow */
-  }
-
-  .nav-item:hover,
-  .mobile-nav-item:hover {
-    animation: colorCycle 0.3s ease-in-out;
-  }
-
-  .nav-item:nth-child(4n+1):hover {
-    color: var(--link-color-1) !important;
-  }
-
-  .nav-item:nth-child(4n+2):hover {
-    color: var(--link-color-2) !important;
-  }
-
-  .nav-item:nth-child(4n+3):hover {
-    color: var(--link-color-3) !important;
-  }
-
-  .nav-item:nth-child(4n+4):hover {
-    color: var(--link-color-4) !important;
-  }
-
-  /* Apply same colors to mobile nav */
-  .mobile-nav-item:nth-child(4n+1):hover {
-    color: var(--link-color-1) !important;
-  }
-
-  .mobile-nav-item:nth-child(4n+2):hover {
-    color: var(--link-color-2) !important;
-  }
-
-  .mobile-nav-item:nth-child(4n+3):hover {
-    color: var(--link-color-3) !important;
-  }
-
-  .mobile-nav-item:nth-child(4n+4):hover {
-    color: var(--link-color-4) !important;
-  }
-
-  @keyframes colorCycle {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-
   /* Header responsive layout */
   @media (max-width: 640px) {
     .header-section {

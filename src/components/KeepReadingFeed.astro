@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  posts: CollectionEntry<'posts'>[];
+};
+
+const { posts } = Astro.props;
+
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const yearGroups: { year: string; posts: CollectionEntry<'posts'>[] }[] = [];
+
+for (const post of sortedPosts) {
+  const year = new Date(post.data.date).getFullYear().toString();
+  const lastGroup = yearGroups[yearGroups.length - 1];
+
+  if (!lastGroup || lastGroup.year !== year) {
+    yearGroups.push({ year, posts: [post] });
+  } else {
+    lastGroup.posts.push(post);
+  }
+}
+
+---
+
+{sortedPosts.length > 0 && (
+  <section class="mt-16 pt-10 border-t border-gray-200 dark:border-gray-800">
+    <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 shadow-sm p-6 sm:p-8">
+      <div class="space-y-10">
+        {yearGroups.map((group) => (
+          <section class="space-y-4 border-t border-gray-200/70 dark:border-gray-800/70 pt-6 first:border-t-0 first:pt-0">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100">
+              {group.year}
+            </h3>
+            <ol class="space-y-3">
+              {group.posts.map((post) => (
+                <li class="group">
+                  <a
+                    href={`/${post.slug}`}
+                    class="text-base font-medium text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-1 hover:decoration-2"
+                  >
+                    {post.data.title}
+                  </a>
+                  {post.data.summary && (
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      {post.data.summary}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
