@@ -10,6 +10,7 @@ import GrowthStage from '../components/GrowthStage.astro';
 import KeepReadingFeed from '../components/KeepReadingFeed.astro';
 import { incrementPageView, getPopularPosts } from '../utils/pageViews';
 import { siteConfig } from '../utils/config';
+import { generateExcerpt } from '../utils/excerptUtils';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -22,8 +23,11 @@ const formattedDate = formatDate(post.data.date);
 // Generate OG image URL for this post
 const ogImageUrl = `${Astro.site}og/${post.slug}.png`;
 
-// Post description - use summary if available, otherwise create a clean description
-const postDescription = post.data.summary || `${readingTime} read - ${post.data.title}`;
+// Post description - prefer frontmatter, then summary, then excerpt
+const postDescription =
+  post.data.description ||
+  post.data.summary ||
+  generateExcerpt(post.body);
 
 // Function to get the GitHub edit URL for the post
 const getGitHubEditUrl = (post: CollectionEntry<'posts'>) => {

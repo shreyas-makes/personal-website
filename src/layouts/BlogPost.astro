@@ -4,13 +4,26 @@ import NewsletterFormWithHeaders from '../components/NewsletterFormWithHeaders.a
 import KeepReadingFeed from '../components/KeepReadingFeed.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { calculateReadingTime } from '../utils/readingTime';
+import { generateExcerpt } from '../utils/excerptUtils';
 
 type Props = CollectionEntry<'posts'>['data'] & {
   slug?: string;
   body?: string;
 };
 
-const { title, date, publishDate, updatedDate, heroImage, tags, stage = 'seedling', slug, body } = Astro.props;
+const {
+  title,
+  date,
+  publishDate,
+  updatedDate,
+  heroImage,
+  tags,
+  stage = 'seedling',
+  slug,
+  body,
+  description,
+  summary
+} = Astro.props;
 
 const readingTime = body ? calculateReadingTime(body) : null;
 const articleDate = publishDate ?? date ?? updatedDate ?? null;
@@ -38,10 +51,14 @@ const authorLinkedIn = 'https://linkedin.com/in/shreyasprakash';
 // Generate OG image URL for this post
 const ogImageUrl = `${Astro.site}og/${slug}.png`;
 
-// Post description - could come from frontmatter or generated
-const postDescription = readingTime
-  ? `${title} - ${readingTime} on Shreyas Prakash's blog`
-  : `${title} - A new post on Shreyas Prakash's blog`;
+// Post description - prefer frontmatter, then summary, then excerpt
+const postDescription =
+  description ||
+  summary ||
+  (body ? generateExcerpt(body) : '') ||
+  (readingTime
+    ? `${title} - ${readingTime} on Shreyas Prakash's blog`
+    : `${title} - A new post on Shreyas Prakash's blog`);
 
 const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !id.startsWith('booknotes/'));
 ---
