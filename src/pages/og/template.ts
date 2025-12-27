@@ -40,6 +40,9 @@ export const createOgTemplate = ({
   avatarUrl
 }: OgTemplateProps) => {
   const isCentered = align === 'center';
+  const baseFontFamily = 'Inter, system-ui, sans-serif';
+  const safeText = (value: unknown) =>
+    value === undefined || value === null ? '' : String(value);
   const backgroundLayer = backgroundImageUrl
     ? {
         type: 'img',
@@ -72,7 +75,7 @@ export const createOgTemplate = ({
           type: 'div',
           props: {
             style: {
-              fontFamily: 'Inter, system-ui, sans-serif',
+              fontFamily: baseFontFamily,
               fontSize: pickTitleSize(title),
               lineHeight: '1.05',
               fontWeight: '700',
@@ -80,20 +83,21 @@ export const createOgTemplate = ({
               color: '#f8fafc',
               textAlign: isCentered ? 'center' : 'left'
             },
-            children: title
+            children: safeText(title)
           }
         },
         {
           type: 'div',
           props: {
             style: {
+              fontFamily: baseFontFamily,
               fontSize: '24px',
               color: 'rgba(255,255,255,0.78)',
               lineHeight: '1.5',
               maxWidth: isCentered ? '740px' : '680px',
               textAlign: isCentered ? 'center' : 'left'
             },
-            children: description
+            children: safeText(description)
           }
         }
       ]
@@ -144,7 +148,7 @@ export const createOgTemplate = ({
         justifyContent: 'space-between',
         backgroundColor: '#050707',
         padding: '72px',
-        fontFamily: 'Inter, system-ui, sans-serif',
+        fontFamily: baseFontFamily,
         position: 'relative',
         overflow: 'hidden'
       },
@@ -232,12 +236,13 @@ export const createOgTemplate = ({
                           type: 'div',
                           props: {
                             style: {
+                              fontFamily: baseFontFamily,
                               fontSize: '20px',
                               fontWeight: '700',
                               letterSpacing: '-0.04em',
                               color: '#f8fafc'
                             },
-                            children: logoText
+                            children: safeText(logoText)
                           }
                         }
                       ]
@@ -247,6 +252,7 @@ export const createOgTemplate = ({
                     type: 'div',
                     props: {
                       style: {
+                        fontFamily: baseFontFamily,
                         fontSize: '12px',
                         fontWeight: '700',
                         letterSpacing: '0.24em',
@@ -256,7 +262,7 @@ export const createOgTemplate = ({
                         padding: '8px 18px',
                         borderRadius: '999px'
                       },
-                      children: badge
+                      children: safeText(badge)
                     }
                   }
                 ]
@@ -283,7 +289,7 @@ export const createOgTemplate = ({
                   display: 'flex',
                   alignItems: 'flex-end',
                   justifyContent: isCentered ? 'center' : 'space-between',
-                  gap: isCentered ? '24px' : undefined
+                  gap: isCentered ? '24px' : '0px'
                 },
                 children: [
                   {
@@ -306,24 +312,26 @@ export const createOgTemplate = ({
                               type: 'div',
                               props: {
                                 style: {
+                                  fontFamily: baseFontFamily,
                                   fontSize: '11px',
                                   fontWeight: '700',
                                   letterSpacing: '0.16em',
                                   textTransform: 'uppercase',
                                   color: 'rgba(255,255,255,0.65)'
                                 },
-                                children: item.label
+                                children: safeText(item.label)
                               }
                             },
                             {
                               type: 'div',
                               props: {
                                 style: {
+                                  fontFamily: baseFontFamily,
                                   fontSize: '18px',
                                   fontWeight: '600',
                                   color: '#f8fafc'
                                 },
-                                children: item.value
+                                children: safeText(item.value)
                               }
                             }
                           ]
@@ -335,6 +343,7 @@ export const createOgTemplate = ({
                     type: 'div',
                     props: {
                       style: {
+                        fontFamily: baseFontFamily,
                         fontSize: '14px',
                         fontWeight: '600',
                         letterSpacing: '0.08em',
@@ -344,7 +353,7 @@ export const createOgTemplate = ({
                         padding: '10px 16px',
                         borderRadius: '12px'
                       },
-                      children: siteText
+                      children: safeText(siteText)
                     }
                   }
                 ]

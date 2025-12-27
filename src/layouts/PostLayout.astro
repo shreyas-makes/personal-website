@@ -20,7 +20,7 @@ const readingTime = calculateReadingTime(post.body);
 const formattedDate = formatDate(post.data.date);
 
 // Generate OG image URL for this post
-const ogImageUrl = `${Astro.site}og/${post.slug}.svg`;
+const ogImageUrl = `${Astro.site}og-images/${post.slug}.png`;
 
 // Post description - use summary if available, otherwise create a clean description
 const postDescription = post.data.summary || `${readingTime} read - ${post.data.title}`;

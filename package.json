@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "astro dev",
     "fix-frontmatter": "node scripts/fix-frontmatter.mjs",
+    "generate-og-images": "tsx scripts/generate-og-images.ts",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
