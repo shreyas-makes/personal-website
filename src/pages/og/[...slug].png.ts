@@ -7,17 +7,48 @@ export const prerender = true;
 
 const posts = await getCollection('posts', ({ data }) => !data.draft);
 
+const generateExcerpt = (content: string, maxLength: number = 220): string => {
+  const cleanContent = content
+    .replace(/---[\s\S]*?---/, '')
+    .replace(/#{1,6}\s+/g, '')
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/\*(.*?)\*/g, '$1')
+    .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`(.*?)`/g, '$1')
+    .replace(/\n{2,}/g, ' ')
+    .replace(/\n/g, ' ')
+    .trim();
+
+  if (cleanContent.length <= maxLength) {
+    return cleanContent;
+  }
+
+  const truncated = cleanContent.substring(0, maxLength);
+  const lastSpaceIndex = truncated.lastIndexOf(' ');
+  return lastSpaceIndex > 0
+    ? `${truncated.substring(0, lastSpaceIndex)}...`
+    : `${truncated}...`;
+};
+
 const pages = Object.fromEntries(
-  posts.map(post => [
-    post.slug,
-    {
-      title: post.data.title,
-      description: post.data.description || post.data.summary || '',
-      date: formatDate(post.data.date) || 'Today',
-      readingTime: calculateReadingTime(post.body),
-      stage: post.data.stage ?? 'seedling'
-    }
-  ])
+  posts.map(post => {
+    const description =
+      post.data.description ||
+      post.data.summary ||
+      generateExcerpt(post.body);
+
+    return [
+      post.slug,
+      {
+        title: post.data.title,
+        description,
+        date: formatDate(post.data.date) || 'Today',
+        readingTime: calculateReadingTime(post.body),
+        stage: post.data.stage ?? 'seedling'
+      }
+    ];
+  })
 );
 
 pages.landing = {
@@ -40,7 +71,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
       fit: 'cover'
     },
     logo: {
-      path: './public/images/og/avatar.png',
+      path: './public/images/og/avatar-circle.png',
       size: [140]
     },
     padding: 72,
