@@ -63,28 +63,33 @@ export const { getStaticPaths, GET } = OGImageRoute({
   param: 'slug',
   pages,
   getSlug: (path) => path,
-  getImageOptions: (_path, page) => ({
-    title: page.title,
-    description: page.description,
+  getImageOptions: (_path, page) => {
+    const titleLength = page.title.length;
+    const titleSize = titleLength > 70 ? 56 : titleLength > 52 ? 62 : 70;
+    const descriptionSize = titleLength > 70 ? 22 : 24;
+
+    return {
+      title: page.title,
+      description: page.description,
     bgImage: {
       path: './public/images/og/serene-forest.jpg',
       fit: 'cover'
     },
     logo: {
       path: './public/images/og/avatar-circle.png',
-      size: [140]
+      size: [110]
     },
-    padding: 72,
+    padding: 60,
     font: {
       title: {
-        size: 68,
+        size: titleSize,
         lineHeight: 1.05,
         weight: 'Bold',
         families: ['Inter']
       },
       description: {
-        size: 28,
-        lineHeight: 1.4,
+        size: descriptionSize,
+        lineHeight: 1.35,
         weight: 'Normal',
         families: ['Inter']
       }
@@ -97,5 +102,6 @@ export const { getStaticPaths, GET } = OGImageRoute({
       color: [255, 255, 255],
       width: 0
     }
-  })
+    };
+  }
 });
