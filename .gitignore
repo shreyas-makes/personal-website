@@ -16,3 +16,6 @@ src/content/posts/.obsidian/**
 src/data/read-counts.json
 .specstory
 articlehighlights.csv
+
+# Generated OG images (dynamic now)
+public/og-images/
