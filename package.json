@@ -20,7 +20,6 @@
   "scripts": {
     "dev": "astro dev",
     "fix-frontmatter": "node scripts/fix-frontmatter.mjs",
-    "generate-og-images": "tsx scripts/generate-og-images.ts",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -43,6 +42,8 @@
     "@vercel/og": "^0.8.5",
     "astro": "^5.3.0",
     "astro-markdoc-renderer": "^0.0.1-alpha.1",
+    "astro-og-canvas": "^0.7.2",
+    "canvaskit-wasm": "^0.40.0",
     "csv-parse": "^5.6.0",
     "dftree": "^1.0.1",
     "dotenv": "^16.5.0",

@@ -35,12 +35,6 @@ const getGitHubEditUrl = (post: CollectionEntry<'posts'>) => {
   return `https://github.com/shreyas-makes/astro-blog-ghost/edit/main/src/content/posts/${encodeURIComponent(filename)}`;
 };
 
-// Track page view for this post
-if (Astro.request.method === 'GET') {
-  // Only track views on actual page loads, not during SSR
-  // This is a client-side operation that will be handled by the script below
-}
-
 // Get popular posts
 const allPosts = await getCollection('posts', ({ id, data }) => !data.draft);
 

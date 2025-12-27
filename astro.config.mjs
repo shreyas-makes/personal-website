@@ -2,22 +2,12 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import cloudflare from '@astrojs/cloudflare';
 
 const LIVE_URL = "https://shreyasprakash.com";
 
 export default defineConfig({
   site: 'https://shreyasprakash.com',
-  output: 'server',
-  adapter: cloudflare(),
-  image: {
-    service: {
-      entrypoint: 'astro/assets/services/compile'
-    }
-  },
-  experimental: {
-    session: true
-  },
+  output: 'static',
   integrations: [
     react({
       include: ['**/react/*', '**/Search.tsx', '**/SearchButton.tsx', '**/Chat.jsx']
@@ -42,14 +32,6 @@ export default defineConfig({
     rehypePlugins: []
   },
   viewTransitions: false,
-  headers: {
-    '/*.{js,css,jpg,jpeg,png,gif,svg}': [
-      {
-        key: 'Cache-Control',
-        value: 'public, max-age=31536000, immutable'
-      }
-    ]
-  },
   vite: {
     build: {
       rollupOptions: {

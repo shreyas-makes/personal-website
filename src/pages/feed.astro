@@ -4,8 +4,7 @@ import { getCollection } from 'astro:content';
 import { calculateReadingTime } from '../utils/readingTime';
 import { formatDate } from '../utils/dateUtils';
 
-// Change to server rendering
-export const prerender = false;
+export const prerender = true;
 
 // Get posts for the feed (excluding drafts, special pages, book-notes, and posts tagged "books")
 const allPosts = await getCollection('posts', ({ data, id }) => {

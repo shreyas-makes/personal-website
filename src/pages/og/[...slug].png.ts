@@ -1,112 +1,70 @@
-import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
+import { OGImageRoute } from 'astro-og-canvas';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { formatDate } from '../../utils/formatDate';
-import { clampText } from './template';
-import { buildOgHtml } from './html-template';
 
-const buildConvertUrl = () => {
-  const url = new URL('https://html2png.dev/api/convert');
-  url.searchParams.set('width', '1200');
-  url.searchParams.set('height', '630');
-  url.searchParams.set('format', 'png');
-  url.searchParams.set('deviceScaleFactor', '2');
-  url.searchParams.set('persist', 'true');
-  return url;
+export const prerender = true;
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+const pages = Object.fromEntries(
+  posts.map(post => [
+    post.slug,
+    {
+      title: post.data.title,
+      description: post.data.description || post.data.summary || '',
+      date: formatDate(post.data.date) || 'Today',
+      readingTime: calculateReadingTime(post.body),
+      stage: post.data.stage ?? 'seedling'
+    }
+  ])
+);
+
+pages.landing = {
+  title: 'Shreyas Prakash',
+  description: 'Essays and experiments at the intersection of product, design, and technology.',
+  date: formatDate(new Date()) || 'Today',
+  readingTime: 'Homepage',
+  stage: 'Live'
 };
 
-const resolveSiteUrl = (request: Request) => {
-  const configured = new URL(import.meta.env.SITE || new URL(request.url).origin);
-  return configured.toString().endsWith('/') ? configured.toString() : `${configured.toString()}/`;
-};
-
-const generateExcerpt = (content: string, maxLength: number = 280): string => {
-  const cleanContent = content
-    .replace(/---[\s\S]*?---/, '')
-    .replace(/#{1,6}\s+/g, '')
-    .replace(/\*\*(.*?)\*\*/g, '$1')
-    .replace(/\*(.*?)\*/g, '$1')
-    .replace(/\[(.*?)\]\(.*?\)/g, '$1')
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/`(.*?)`/g, '$1')
-    .replace(/\n{2,}/g, ' ')
-    .replace(/\n/g, ' ')
-    .trim();
-
-  if (cleanContent.length <= maxLength) {
-    return cleanContent + '...';
-  }
-
-  const truncated = cleanContent.substring(0, maxLength);
-  const lastSpaceIndex = truncated.lastIndexOf(' ');
-
-  return lastSpaceIndex > 0
-    ? truncated.substring(0, lastSpaceIndex) + '...'
-    : truncated + '...';
-};
-
-export const GET: APIRoute = async ({ params, request }) => {
-  const { slug } = params;
-
-  if (!slug) {
-    return new Response('Slug is required', { status: 400 });
-  }
-
-  const posts = await getCollection('posts', ({ data }) => !data.draft);
-  const post = posts.find(p => p.slug === slug);
-
-  if (!post) {
-    return new Response('Post not found', { status: 404 });
-  }
-
-  const readingTime = calculateReadingTime(post.body);
-  const formattedDate = formatDate(post.data.date) || 'Today';
-  const siteUrl = resolveSiteUrl(request);
-  const backgroundUrl = new URL('images/og/serene-forest.jpg', siteUrl).toString();
-  const avatarUrl = new URL('images/og/avatar.png', siteUrl).toString();
-
-  const rawDescription = post.data.description || post.data.summary || generateExcerpt(post.body);
-  const excerpt = clampText(rawDescription || '', 200);
-
-  const html = buildOgHtml({
-    title: post.data.title,
-    description: excerpt,
-    badge: `Stage / ${post.data.stage ?? 'seedling'}`.toUpperCase(),
-    meta: [
-      { label: 'Date', value: formattedDate },
-      { label: 'Read', value: readingTime },
-      { label: 'Stage', value: post.data.stage ?? 'seedling' }
-    ],
-    backgroundUrl,
-    avatarUrl
-  });
-
-  const apiUrl = buildConvertUrl();
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/html'
+export const { getStaticPaths, GET } = OGImageRoute({
+  param: 'slug',
+  pages,
+  getSlug: (path) => path,
+  getImageOptions: (_path, page) => ({
+    title: page.title,
+    description: page.description,
+    bgImage: {
+      path: './public/images/og/serene-forest.jpg',
+      fit: 'cover'
     },
-    body: html
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    return new Response(errorText, { status: response.status });
-  }
-
-  const data = await response.json();
-  if (!data?.url) {
-    return new Response('OG image generation failed', { status: 500 });
-  }
-
-  return Response.redirect(data.url, 302);
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getCollection('posts', ({ data }) => !data.draft);
-
-  return posts.map(post => ({
-    params: { slug: post.slug }
-  }));
-};
+    logo: {
+      path: './public/images/og/avatar.png',
+      size: [140]
+    },
+    padding: 72,
+    font: {
+      title: {
+        size: 68,
+        lineHeight: 1.05,
+        weight: 'Bold',
+        families: ['Inter']
+      },
+      description: {
+        size: 28,
+        lineHeight: 1.4,
+        weight: 'Normal',
+        families: ['Inter']
+      }
+    },
+    fonts: [
+      './public/images/og/fonts/inter-400.woff',
+      './public/images/og/fonts/inter-700.woff'
+    ],
+    border: {
+      color: [255, 255, 255],
+      width: 0
+    }
+  })
+});
