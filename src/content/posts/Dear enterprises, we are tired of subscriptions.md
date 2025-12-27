@@ -1,5 +1,6 @@
 ---
 title: "Dear enterprises, we're tired of your subscriptions"
+description: "When you build a SaaS app, how do you price it? The first option which comes to everyone's mind is a monthly/yearly subscription model While building Clarity notes, I was stuck with a usual question..."
 date: "2024-01-23T14:31:25.000Z"
 slug: "dear-enterprises-were-tired-of-your-subscriptions"
 tags: [software]

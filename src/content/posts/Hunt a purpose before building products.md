@@ -1,5 +1,6 @@
 ---
 title: World's most ancient public health problem
+description: "From the place I come from, in Kerala, a baby is not given a name until he/she is 28 days old. And for marginalised castes/communities, the naming ceremony is delayed to 90 days. I never really..."
 date: 2024-01-23T18:00:00.000Z
 slug: before-building-a-product-hunt-a-purpose
 tags:

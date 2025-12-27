@@ -1,5 +1,6 @@
 ---
 title: "Design education amidst social tribulations"
+description: "The _Lead By Design_ program started about 5 months back in Auroville, Pondicherry for a group of 11 students from two different communities, the edayanchavadi and kottakarai village communities. It..."
 date: "2019-07-21T06:27:26.000Z"
 slug: "a-journey-of-design-education-amidst-social-tribulations"
 tags: [design, education, social-design, rough-notes]

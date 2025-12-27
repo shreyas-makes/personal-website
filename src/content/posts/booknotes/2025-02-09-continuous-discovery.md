@@ -1,5 +1,6 @@
 ---
 title: "Continuous Discovery"
+description: "The book focuses on the question \"what to build\", which can be daunting looking at the universe of possible options. Teresa Torres provides practical and concrete methodologies to clarify a problem..."
 date: "2025-02-02T12:00:00.000Z"
 author: "Teressa Torres"
 rating: 7

@@ -1,5 +1,6 @@
 ---
 title: "English is the hot new programming language"
+description: "Intended Audience—Indie no-code developers, digital marketers and other non-tech professionals working in tech I made a resolution for 2024 to learn Ruby on Rails, a controversial web development..."
 date: "2024-02-17T10:27:02.000Z"
 slug: "english-is-the-hot-new-programming-language"
 tags: [software, no-code, rough-notes]

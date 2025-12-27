@@ -1,5 +1,6 @@
 ---
 title: Trees, Branches, Twigs and Leaves — Mental Models for Writing
+description: "What differentiates a good essay and a great essay? — With a great essay, you can see the larger tree that connects all those branches, leaves, and twigs together into a single unit of a 'tree'. A..."
 date: 2024-12-21T12:03:15.000Z
 slug: trees-branches-twigs-and-leaves-mental-models-for-writing
 tags:

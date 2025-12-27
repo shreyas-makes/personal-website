@@ -1,5 +1,6 @@
 ---
 title: "Three body problem"
+description: "Liu takes familiar scientific concepts and stretches them until they snap, creating something entirely new yet unnervingly plausible. The sophons – these protons unfolded into two dimensions and..."
 date: "2025-02-02T12:00:00.000Z"
 author: "Cixin Liu"
 rating: 9

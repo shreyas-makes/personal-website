@@ -1,5 +1,6 @@
 ---
 title: Maxims for AI assisted coding
+description: "AI-assisted coding has this strange phenomenon of making the 10x developer, a 100x one. For the rookie, it's either a hit-or-miss, and you usually end up with a lot more slop and hallucinations. I've..."
 date: 2025-03-15
 slug: maxims-ai-assisted-coding-cursor
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Do's and Don'ts of User Research"
+description: "Some principles which I follow while doing user-centered design: 1.  Involving users early in the product development process makes products intuitive and fosters loyalty. It is essential to zoom out..."
 date: "2023-06-21T14:35:00.000Z"
 slug: "dos-and-donts-of-user-research"
 tags: [design, rough-notes]

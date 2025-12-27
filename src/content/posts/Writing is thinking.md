@@ -1,5 +1,6 @@
 ---
 title: Writing is thinking
+description: "My blog has had a median of ~2 visitors per day for almost two years (nowadays, it's only a marginal improvement). And I don't care. Writing is thinking. And this blog has served as a public notepad..."
 date: 2025-01-02T13:27:20.000Z
 slug: writing-is-thinking
 tags:

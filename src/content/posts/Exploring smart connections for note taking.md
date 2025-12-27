@@ -1,5 +1,6 @@
 ---
 title: "Exploring \"smart connections\" for note taking"
+description: "Not starting with a blank slate has been a great productivity boost in my writing. I wrote 50K words in 2024. And I can safely say that these 50K words have been written in a well thought manner,..."
 date: "2024-12-02T09:13:43.000Z"
 slug: "exploring-smart-connections-for-note-taking"
 tags: [knowledge, writing]

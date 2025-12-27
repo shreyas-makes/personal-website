@@ -1,5 +1,6 @@
 ---
 title: "Deploying Home Cooked Apps with Rails"
+description: "As a Rails enthusiast, I've always wanted a better deployment solution to house my hobby projects. It was not that there was no good solution available: We have AWS, Heroku, Hatchbox, Fly, Render.io..."
 date: "2024-11-24T22:01:30.000Z"
 slug: "rails-8-app-hetzner-with-kamal-2"
 tags: [software]

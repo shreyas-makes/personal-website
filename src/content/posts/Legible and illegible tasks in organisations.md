@@ -1,5 +1,6 @@
 ---
 title: Legible and illegible tasks in organisations
+description: "I’ve been debating with my tech lead about the role of qualitative methods, continuous discovery, interviews, observational studies, in generating user insight. In his view: if we already collect..."
 date: 2025-11-15T15:56:40.000Z
 slug: legible-illegible-work
 tags:

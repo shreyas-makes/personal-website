@@ -1,5 +1,6 @@
 ---
 title: "Let's make every work 'strategic'"
+description: "A 'strategic' wrapper can turn a $100 work into a $10,000 work. Thinking 10,000 ft. above sea level pays more. It's a win-win for both sides. If we take a look at the field of writing, the standard..."
 date: "2024-01-22T14:36:00.000Z"
 slug: "strategic-wrappers-for-consulting"
 tags: [consulting, business-strategy, freelancing, pricing]

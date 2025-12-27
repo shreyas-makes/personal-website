@@ -1,5 +1,6 @@
 ---
 title: "L2 Fat marker sketches"
+description: "What's the best level of detail one should use to communicate an idea?  Let's take the most simplest, benign format: the humble paper napkin sketch. It makes the representation of the idea too crude,..."
 date: "2025-09-27T14:41:00.000Z"
 slug: "l2-fat-market-sketches"
 tags: [design, prototyping]

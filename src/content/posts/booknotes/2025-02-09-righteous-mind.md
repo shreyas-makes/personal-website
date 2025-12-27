@@ -1,5 +1,6 @@
 ---
 title: "Righteous Mind"
+description: "It took me a long time to realize that arguments we argue about — aren’t always about facts. They are about values. Reading Jonathan Haidt’s The Righteous Mind made this clearer that: be it liberals..."
 date: "2025-04-02T12:00:00.000Z"
 author: "Jonathan Haidt"
 rating: 8

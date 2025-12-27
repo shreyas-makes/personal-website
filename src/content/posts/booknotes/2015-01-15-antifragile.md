@@ -1,5 +1,6 @@
 ---
 title: "Antifragile"
+description: "Some ideas that I liked from the book: The Hydra Principle - Taleb's favorite metaphor for antifragility: cut off one head, two grow back. Real-world application: Switzerland's militia system where..."
 date: "2015-01-15T12:00:00.000Z"
 author: "Nassim Nicholas Taleb"
 rating: 10

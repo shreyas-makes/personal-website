@@ -1,5 +1,6 @@
 ---
 title: "Importance of Why"
+description: "When it comes to task management, a fundamental principle stands tall: explain the reason before the details of what and how. By letting others know the why behind a task, it facilitates faster..."
 date: "2023-12-11T14:36:00.000Z"
 slug: "importance-of-why"
 tags: [task-management, rough-notes]

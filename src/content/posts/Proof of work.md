@@ -1,5 +1,6 @@
 ---
 title: Proof of work
+description: "Showing proof-of-work as a designer is quite simple. You made an app, you communicated the output product and exhibit how the product evolved over time ranging from the paper napkin sketch, low..."
 date: 2024-12-06T13:41:29.000Z
 slug: proof-of-work
 tags:

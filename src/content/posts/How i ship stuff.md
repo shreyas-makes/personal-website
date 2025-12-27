@@ -1,5 +1,6 @@
 ---
 title: How I ship "stuff"
+description: "As a disclaimer, I would like to mention that I have a very shabby process of getting things done. There could be a golden standard out there worth emulating; but nevertheless, this (rather easy)..."
 date: 2025-01-11T19:46:34.000Z
 slug: how-i-ship
 tags:

@@ -1,5 +1,6 @@
 ---
 title: Days at the Morisaki Bookshop
+description: "Feel good, fast read.  “There’s one thing I want you to promise me,” he said first as a preamble. Then he said, “Don’t be afraid to love someone. When you fall in love, I want you to fall in love all..."
 date: 2025-08-23T12:00:00.000Z
 author: Yuzuku Asako
 rating: 4

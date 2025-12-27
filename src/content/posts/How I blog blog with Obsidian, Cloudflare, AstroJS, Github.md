@@ -1,5 +1,6 @@
 ---
 title: How I blog with Obsidian, Cloudflare, AstroJS, Github
+description: "I’ve been refining my writing and publishing workflow to the point where it feels effortless. It combines Obsidian for writing, AstroJS for building the site, and Cloudflare Pages for deployment. ..."
 date: 2025-04-25
 slug: blog-obsidian-astrojs
 tags:

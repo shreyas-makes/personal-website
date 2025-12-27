@@ -1,5 +1,6 @@
 ---
 title: Boundary objects as the new prototypes
+description: "Citing from one of those work situations in the past: Our team had a catchup to discuss the problem statement; but then right after that; the UX jumped the gun and presented a \"prototype\" to the team..."
 date: 2025-07-25
 slug: boundary-objects
 tags:

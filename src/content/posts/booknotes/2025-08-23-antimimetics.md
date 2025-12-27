@@ -1,5 +1,6 @@
 ---
 title: Antimimetics
+description: "- Not all viral ideas are good, and not all good ideas are viral. All good ideas go viral eventually, and the most important ideas seem to be hidden in plain sight, tunnelling downwards towards the..."
 date: 2025-08-23T12:00:00.000Z
 author: Nadia Asparouhova
 rating: 6

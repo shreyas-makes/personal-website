@@ -1,5 +1,6 @@
 ---
 title: Weekly TODO List on CLI
+description: "As a designer transitioning into what I now call my \"vibe-coder\" phase, I've developed a particular appreciation for the elegant simplicity of command-line interfaces. Something about the monospaced..."
 date: 2025-01-05
 slug: ascii-todo-cli
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Guns, Germs, and Steel"
+description: "The Eurasian Advantage - Diamond argues that Eurasians had a unique combination of factors that allowed them to dominate the world: Guns - The development of advanced weaponry gave them a military..."
 date: "2023-01-15T12:00:00.000Z"
 author: "Jared Diamond"
 rating: 8

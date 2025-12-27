@@ -1,5 +1,6 @@
 ---
 title: "Minto principle for writing memos"
+description: "Initially popularised by McKinsey consultants to draft internal reports, this became quite widespread as a global standard for business writing. Start with the main statement, draw some conclusions..."
 date: "2023-12-12T15:23:00.000Z"
 slug: "minto-principle-for-writing-memos"
 tags: [writing, communication, rough-notes]

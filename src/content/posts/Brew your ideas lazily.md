@@ -1,5 +1,6 @@
 ---
 title: Brew your ideas lazily
+description: "Leonardo da Vinci's masterpiece, the Mona Lisa achieved through the painstaking application of countless gossamer-thin layers of oil paint over the course of many years, many months. The _sfumato_..."
 date: 2024-12-28T13:03:59.000Z
 slug: brew-your-ideas-lazily
 tags:

@@ -1,5 +1,6 @@
 ---
 title: Idea in the shower, testing before breakfast
+description: "Imagine having an idea in the shower and testing it before breakfast? It's highly plausible now as AI lets you prototype at the speed of thought. Currently, I use Claude Projects and Cursor to build..."
 date: 2025-01-12T12:31:35.000Z
 slug: idea-in-the-shower-testing-before-breakfast
 tags:

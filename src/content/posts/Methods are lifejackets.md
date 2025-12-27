@@ -1,5 +1,6 @@
 ---
 title: Methods are lifejackets not straight jackets
+description: "Design methods are life jackets. Not straight jackets. Structures, whether they're processes, frameworks, or plans, are excellent tools to navigate complicated problems. They bring efficiency, reduce..."
 date: 2023-12-27T14:39:00.000Z
 slug: methods-are-lifejackets-not-straight-jackets
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Minimum Lovable Product"
+description: "We might have to rethink on the definition of the 'Minimum Viable Prototype'. Especially since the bar for what's viable keeps rising up, with the likes of Gumroad, etc being built in a weekend...."
 date: "2024-01-02T14:39:00.000Z"
 slug: "minimum-lovable-product"
 tags: [product, design, startups, rough-notes]

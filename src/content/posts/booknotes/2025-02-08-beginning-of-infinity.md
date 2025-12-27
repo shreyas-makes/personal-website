@@ -1,5 +1,6 @@
 ---
 title: Beginning of Infinity
+description: "This book was first recommended in Naval Ravikant's Almanack. I didn't give this book enough attention, until I came across the joint podcast of Naval with David Deutsch on the Tim Ferris show. I..."
 date: 2025-02-02T12:00:00.000Z
 author: David Deutsch
 rating: 8

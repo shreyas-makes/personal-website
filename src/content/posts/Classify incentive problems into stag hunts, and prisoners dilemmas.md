@@ -1,5 +1,6 @@
 ---
 title: Classify incentive problems into stag hunts, and prisoners dilemmas
+description: "In some product-related decisions, we deal especially with the problem of incentives. In a more crude way, we can treat incentive problems as either zero-sum games, or positive-sum games. I thought..."
 date: 2025-04-07
 slug: stag-hunt-prisoners-dilemma
 tags:

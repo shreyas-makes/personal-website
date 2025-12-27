@@ -1,5 +1,6 @@
 ---
 title: Quality Ideas Trump Execution
+description: "‘’What might seem to be merely the initial step, deciding what to work on, is in a sense the key to the whole game’’ — Paul Graham A good start when it comes to product building is half the work..."
 date: 2023-12-10T14:34:00.000Z
 slug: quality-ideas-trump-execution
 tags:

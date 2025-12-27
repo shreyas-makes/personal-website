@@ -1,5 +1,6 @@
 ---
 title: "Virtuoso Guide for Personal Memory Systems"
+description: "Forgetting concepts is good for your memory. Forgetting them for a certain duration, and thinking about them again, actually makes the memory more concrete. This could be best illustrated by the..."
 date: "2025-01-17T11:52:44.000Z"
 slug: "virtuoso-guide-for-personal-memory-systems"
 tags: [memory]

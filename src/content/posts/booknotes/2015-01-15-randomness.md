@@ -1,5 +1,6 @@
 ---
 title: Fooled by Randomness
+description: "Some ideas that I liked from the book: Taleb's critique of post-hoc financial analysis. 2008 crisis \"explanations\" ignored the role of black swan events, similar to explaining lightning strikes as..."
 date: 2020-01-15T12:00:00.000Z
 author: Nassim Nicholas Taleb
 rating: 8

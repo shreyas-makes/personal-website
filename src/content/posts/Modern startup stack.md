@@ -1,5 +1,6 @@
 ---
 title: "The Modern Startup Stack"
+description: "Choosing a web framework is like choosing your first pokémon. I didn't want to succumb to the 'new hotness' problem with the myriad of JS frameworks to choose from (Angular, Vue, React, Solid). I..."
 date: "2024-06-23T17:05:19.000Z"
 slug: "sveltejs-ruby-rails-setup"
 tags: [software]

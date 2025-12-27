@@ -1,5 +1,6 @@
 ---
 title: "How might we help children invent for social good?"
+description: "I stayed in a tribal village in India for a year teaching children leadership skills through design thinking. Here's a story behind my non-profit initiative and how we've impacted 1200+ children from..."
 date: "2024-06-16T15:29:06.000Z"
 slug: "dhive"
 tags: [social-design, projects]

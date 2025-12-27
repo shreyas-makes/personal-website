@@ -1,5 +1,6 @@
 ---
 title: Meta-analysis for contradictory research findings
+description: "In the world of nutrition research, contradictory findings are as common as fad diets. One day, a study proclaims the benefits of a low-carb diet for weight loss. The next, another study champions a..."
 date: 2024-12-06T15:07:31.000Z
 slug: meta-analysis-for-contradictory-research-findings
 tags:

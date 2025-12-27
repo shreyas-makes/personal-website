@@ -1,5 +1,6 @@
 ---
 title: "Making Nielsen's heuristics more digestible"
+description: "Jakob Nielsen's heuristics are probably the most-used usability heuristics for the design of interfaces. If you go to their website, you might encounter these dry prescriptive statements as shown in..."
 date: "2024-01-09T14:12:00.000Z"
 slug: "making-nielsens-heuristics-more-digestible"
 tags: [design, usability, ux, user-experience, design-principles, rough-notes]

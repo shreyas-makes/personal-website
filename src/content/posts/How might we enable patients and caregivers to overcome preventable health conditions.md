@@ -1,5 +1,6 @@
 ---
 title: How might we enable patients and caregivers to overcome preventable health conditions?
+description: "For MCH, a study we conducted in 2021 observed strong evidence that the health messaging service (RES) improved maternal knowledge and infant care. It observed significantly higher rates of..."
 date: 2022-06-16T15:27:02.000Z
 slug: bdres
 tags:

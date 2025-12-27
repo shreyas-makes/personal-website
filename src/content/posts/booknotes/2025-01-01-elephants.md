@@ -1,5 +1,6 @@
 ---
 title: "Elephants on the Brain"
+description: "Some ideas that I liked from the book: De Waal's elephant studies reveal conscious self-presentation - when subjects recognized themselves in mirrors, they began practicing \"social cosmetics\" like..."
 date: "2023-01-15T12:00:00.000Z"
 author: "Frans de Waal"
 rating: 8

@@ -1,5 +1,6 @@
 ---
 title: "Read writers who operate"
+description: "We have more books on birds written by ornithologists than books on birds written by birds, and books on ornithologists written by birds. Taleb eloquently describes this as the key problem of..."
 date: "2024-12-29T15:03:28.000Z"
 slug: "read-writers-who-operate"
 tags: [writing]

@@ -1,5 +1,6 @@
 ---
 title: "Products need not be user centered"
+description: "Putting the user first has always been the golden rule in design. It’s so common that nobody really questions it anymore. We’re told, ‘The user knows best. Listen to them.’ I’ve had my skepticism..."
 date: "2024-01-23T14:28:59.000Z"
 slug: "products-need-not-be-user-centered"
 tags: [design, software, rough-notes]

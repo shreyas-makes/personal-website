@@ -1,5 +1,6 @@
 ---
 title: How do we absorb ideas better?
+description: "The top 1% smart thinkers I've observed have all been very clear thinkers. They could elucidate complex thoughts as they understanding the basics, at a very fundamental level. Sure, you could..."
 date: 2025-01-01T12:36:53.000Z
 slug: syntopic-learning
 tags:

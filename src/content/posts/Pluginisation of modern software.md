@@ -1,5 +1,6 @@
 ---
 title: "Pluginisation of Modern Software"
+description: "Transitioning from Adobe to Figma was a big change for me in my design journey. At that time, the whole design ecosystem was revolving around Adobe. For image manipulation, you had Photoshop,..."
 date: "2024-01-22T14:37:00.000Z"
 slug: "pluginisation-of-modern-software"
 tags: [design, software, product-strategy, user-experience, tools]

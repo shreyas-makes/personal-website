@@ -1,5 +1,6 @@
 ---
 title: Insights are not just a salad of facts
+description: "What is an insight? An insight for Elon was: \"The most entertaining outcome was the most likely'. His tweet suggests that he believes in taking risks and embracing the unknown, rather than playing it..."
 date: 2024-01-06T14:39:00.000Z
 slug: insights-are-not-just-a-salad-of-facts
 tags:

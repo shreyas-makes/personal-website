@@ -1,5 +1,6 @@
 ---
 title: The meeting before the meeting
+description: "If you think most product managers spend time in meetings, you're mistaken. The larger chunk of a PM's time is spent in _preparation_ for those meetings - having the \"meetings before the meeting\",..."
 date: 2024-06-15T18:57:07.000Z
 slug: the-meeting-before-the-meeting
 tags:

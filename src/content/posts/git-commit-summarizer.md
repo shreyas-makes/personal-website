@@ -1,5 +1,6 @@
 ---
 title: AI git commits
+description: "I built a CLI tool that leverages OpenAI to automatically generate concise summaries of git commit changes. You can find the git-commit-summarizer npm package with installation instructions and usage..."
 date: 2023-07-01
 slug: git-commit-summarizer
 tags:

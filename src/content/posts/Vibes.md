@@ -1,5 +1,6 @@
 ---
 title: Vibes
+description: "I recently attempted to document some of the \"vibes\" that were resonating with me through this short-lived ephemeral feed. I abandoned this project as i didn't have a straightforward way to capture..."
 date: 2024-12-27T18:07:48.000Z
 slug: vibes
 tags:

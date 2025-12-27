@@ -1,5 +1,6 @@
 ---
 title: "Rapid Journey Prototyping"
+description: "As a product manager who also pitches in as a service designer at Noora Health, i sometimes do wonder how I could use most of the design methods I'm applying at my day job for myself. Let's take the..."
 date: "2023-08-15T14:38:00.000Z"
 slug: "rapid-journey-prototyping"
 tags: [design, product, service-design, methodology, rough-notes]

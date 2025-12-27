@@ -1,5 +1,6 @@
 ---
 title: "The role of taste in building products"
+description: "Take Marc Lou, a familiar figure within the Twitter Indiehacking circle. He's garnered attention for openly sharing his journey as a product builder. This transparency has piqued interest in his..."
 date: "2024-01-24T12:39:34.000Z"
 slug: "the-role-of-taste-in-building-products"
 tags: [design, software, rough-notes]

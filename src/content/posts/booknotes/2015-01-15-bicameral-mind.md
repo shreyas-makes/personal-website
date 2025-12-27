@@ -1,5 +1,6 @@
 ---
 title: "Origin of Consciousness in the Breakdown of the Bicameral Mind"
+description: "Some ideas that I liked from the book: Jaynes' radical theory: humans until ~1000 BCE lacked conscious introspection, instead experiencing \"divine voices\" as commands from a right-brain \"god\" chamber..."
 date: "2023-01-15T12:00:00.000Z"
 author: "Oliver Sacks"
 rating: 8

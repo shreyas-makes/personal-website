@@ -1,5 +1,6 @@
 ---
 title: Moonwalking with Einstein
+description: "Joshua Foer's Moonwalking with Einstein dismantles the myth of photographic memory, revealing instead that exceptional recall is a trainable skill rooted in ancient mnemonic techniques.  Through his..."
 date: "2025-02-02T12:00:00.000Z"
 author: Joshua Foer
 rating: 8

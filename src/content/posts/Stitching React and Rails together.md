@@ -1,5 +1,6 @@
 ---
 title: Stitching React and Rails together
+description: "In this tutorial, I will take you through my current process of deploying a Rails 8 app with some careful design choices: 1.  React: Best design engineering stack for those itching to add some front..."
 date: 2024-12-05T14:58:46.000Z
 slug: home-cooked-apps-using-rails-8-react-inertia-js-and-shadcn
 tags:

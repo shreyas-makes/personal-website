@@ -1,5 +1,6 @@
 ---
 title: "Bed of Procrustes"
+description: "Some quotes that I liked from the book: \"The cure for modernity is to punish the least competent and most intolerant of uncertainty\" - Taleb's inversion of traditional expertise hierarchy. Modern..."
 date: "2023-01-15T12:00:00.000Z"
 author: "Nassim Nicholas Taleb"
 rating: 6

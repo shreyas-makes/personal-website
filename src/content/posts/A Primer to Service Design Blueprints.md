@@ -1,5 +1,6 @@
 ---
 title: "A Primer to Service Design Blueprints"
+description: "When someone asks me what is service design? I usually explain them what this means with an example:  Let's say you're heading to the airport to catch your next flight. You head to the entrance, show..."
 date: "2023-08-22T14:41:00.000Z"
 slug: "mapping-interconnections-through-service-design-blueprinting"
 tags: [design, rough-notes]

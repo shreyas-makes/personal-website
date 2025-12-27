@@ -1,5 +1,6 @@
 ---
 title: Git way of learning to code
+description: "My last year's resolution was to learn how to build on Rails. I taught myself the basics by following some courses, but nothing really stuck with me. I wasn’t building apps; I was getting into a..."
 date: 2025-02-14
 slug: git-way-learning-to-code
 tags:

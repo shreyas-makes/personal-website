@@ -1,5 +1,6 @@
 ---
 title: "Poetic License of Design"
+description: "Let's say you have to make slides for tomorrow's big meeting. Your boss wants five strategy points on one slide. You know that's too much to be put on one slide, but it's being insisted. \"This gives..."
 date: "2025-01-12T14:16:36.000Z"
 slug: "poetic-ux-license"
 tags: [design, rough-notes]

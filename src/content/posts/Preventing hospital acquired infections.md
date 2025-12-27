@@ -1,5 +1,6 @@
 ---
 title: How might we prevent acquired infections in hospitals?
+description: "What if you visited the hospital for a routine health checkup and ended up contracting an infection that required hospitalization? ! Sterilising high traffic hotspots within hospitals was the need of..."
 date: 2020-01-16T15:31:40.000Z
 slug: uvfy
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "How does AI affect UI?"
+description: "Intended Audience — For conversational UI designers in healthcare industry curious about various UI affordances/design patterns in vogue right now Our online conversations have been increasingly..."
 date: "2024-08-12T08:56:23.000Z"
 slug: "conversational-ai-design-patterns"
 tags: [design, software]

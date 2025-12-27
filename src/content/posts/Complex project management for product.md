@@ -1,5 +1,6 @@
 ---
 title: Complex project management for product
+description: "In complex companies, with non-obvious interdependencies and hard schedule constraints, organizing the process is a huge \"full-time\" job, and can save weeks of delays if done right. It signifies the..."
 date: 2023-04-29
 slug: complex-project-management
 tags:

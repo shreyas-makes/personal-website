@@ -1,5 +1,6 @@
 ---
 title: How I build greenfield apps with AI-assisted coding
+description: "Building apps with AI-assisted coding can be quite tricky if you start with a blank empty space. Previously I used to prompt the LLMs like a rookie by saying \"fix this, add this, build this\", and so..."
 date: 2025-04-08
 slug: greenfield-apps
 tags:

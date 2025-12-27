@@ -1,5 +1,6 @@
 ---
 title: "Obsessing over personal websites"
+description: "Intended Audience—For those of us who have attempted to make a personal website of their own and have guilt-tripped over making multiple updates every year I’ve been obsessed with my personal..."
 date: "2024-04-07T14:09:03.000Z"
 slug: "obsessing-over-personal-websites"
 tags: [software, personal-branding]

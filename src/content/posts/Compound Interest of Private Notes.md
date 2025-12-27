@@ -1,5 +1,6 @@
 ---
 title: "Compound Interest of Private Notes"
+description: "Strongly recommend everyone to keep private notes about people. These could even be some random jotted keywords: \"served in the navy\", \"capuccino lover\", \"biker\", \"loves going on long walks\", and so..."
 date: "2024-12-11T09:05:12.000Z"
 slug: "compound-interest-of-private-notes"
 tags: [knowledge, writing]

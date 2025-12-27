@@ -1,5 +1,6 @@
 ---
 title: "Algorithms to Live By"
+description: "Some ideas that I liked from the book: The 37% Rule of Optimal Stopping - When evaluating options sequentially (apartment hunting, hiring, dating), examine 37% of possibilities as exploration phase..."
 date: "2023-01-15T12:00:00.000Z"
 author: "Brian Christian and Tom Griffiths"
 rating: 6

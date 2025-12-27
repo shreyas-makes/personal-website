@@ -1,5 +1,6 @@
 ---
 title: "Atomic Habits"
+description: "The best way to understand habits is to view them as compound interest for your behavior. Just as Warren Buffett's wealth grew exponentially through decades of compounding returns, our daily actions..."
 date: "2025-02-02T12:00:00.000Z"
 author: "James Clear"
 rating: 9

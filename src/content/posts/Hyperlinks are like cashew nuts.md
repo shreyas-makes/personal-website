@@ -1,5 +1,6 @@
 ---
 title: "Hyperlinks are like cashew nuts"
+description: "Take a small block of paragraph and sprinkle 8-10 hyperlinks in it— _Lorem_ _ipsum_ _dolor sit amet,_ _consectetur_ _adipiscing elit._ _Donec_ _tristique elit sit_ _amet_ _diam fringilla_ _posuere_..."
 date: "2024-11-15T09:11:52.000Z"
 slug: "hyperlinks-are-like-cashew-nuts"
 tags: [writing, rough-notes]

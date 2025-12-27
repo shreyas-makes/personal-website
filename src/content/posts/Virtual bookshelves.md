@@ -1,5 +1,6 @@
 ---
 title: Virtual bookshelves
+description: "There's something special about the moment when a guest visits your home, browses your bookshelf, and discovers a book you both cherish. That spark of connection often leads to meandering..."
 date: 2025-02-22
 slug: virtual-bookshelf
 tags:

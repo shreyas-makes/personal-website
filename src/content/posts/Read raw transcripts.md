@@ -1,5 +1,6 @@
 ---
 title: Read raw transcripts
+description: "I opened up Claude one day, and asked to summarise Dostoevsky's Crime and Punishment into one sentence; and it said: Would this mean that I've saved 20 hours of reading, 30 days of thinking about the..."
 date: 2025-07-26
 slug: read-raw-transcripts
 tags:

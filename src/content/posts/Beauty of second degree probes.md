@@ -1,5 +1,6 @@
 ---
 title: Beauty of second degree probes
+description: "I've been noticing this pattern again and again—just about enough to make this pattern a heuristic for my own understanding.  \"No lie can overcome a second degree probe\" If you probe a lie, just..."
 date: 2025-08-09
 slug: second-degree-probe
 tags:

@@ -1,5 +1,6 @@
 ---
 title: Flipping questions on its head
+description: "A cardinal sin when it comes to design research is when some one asks a leading question. If you're interviewing a consumer of Pepsodent toothpaste, you should almost never, ever, ever, ask \"How much..."
 date: 2025-05-02
 slug: non-leading-leading-questions
 tags:

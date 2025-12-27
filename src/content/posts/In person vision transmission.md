@@ -1,5 +1,6 @@
 ---
 title: In-person vision transmission
+description: "I recently transitioned from leading a product team in a region to a more centralised role overseeing products across multiple geographies. As part of that transition, I needed to onboard the new..."
 date: 2024-06-18T05:58:16.000Z
 slug: in-person-vision
 tags:

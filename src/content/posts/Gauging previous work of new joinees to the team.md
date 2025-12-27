@@ -1,5 +1,6 @@
 ---
 title: Gauging previous work of new joinees to the team
+description: "I've been hiring people (and conducting more thorough reference checks) more recently now, and I've learned something important: most reference checks are useless. They're like those mandatory..."
 date: 2024-12-06T13:32:54.000Z
 slug: thorough-reference-checks
 tags:

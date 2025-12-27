@@ -1,5 +1,6 @@
 ---
 title: Public gardens, secret routes
+description: "When you land on a site, you are treated with various hyperlinks. Based on the UX choices you make, you might end up preferring one over the other. You might get the job done, and head back to your..."
 date: 2025-02-19
 slug: public-gardens-secret-routes
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Design Manifesto"
+description: "This thought was inspired by the book _Design Expertise_ (Lawson & Dorst, 2009) which includes an interview with the architect Ken Yeang where the author mentions: “I give every new member of staff..."
 date: "2023-05-10T14:37:00.000Z"
 slug: "design-manifesto"
 tags: [design]

@@ -1,5 +1,6 @@
 ---
 title: "Song of Shapes, Words and Paths"
+description: "Three different kinds of humans exist in this planet. Shape rotators, wordcels and journey-shifters. You are usually a mix of one, two or all of these traits. ! If you’ve been following nerdish and..."
 date: "2025-01-01T15:52:12.000Z"
 slug: "shape-rotators-wordcels-journey-shifters"
 tags: [creativity]

@@ -1,5 +1,6 @@
 ---
 title: I was wrong about optimal stopping
+description: "If you were tasked with a need to find the tallest mountain, and went searching in a far away land surrounded by a series of mountains, how would you finalise the tallest mountain, especially when..."
 date: 2025-04-07
 slug: optimal-stopping
 tags:

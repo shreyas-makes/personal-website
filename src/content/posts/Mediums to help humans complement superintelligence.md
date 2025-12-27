@@ -1,5 +1,6 @@
 ---
 title: New mediums for humans to complement superintelligence
+description: "If superintelligence has already been commoditized and neatly packaged into the workforce, what would our renewed \"mediums of message\" look like? To understand the shape + form of medium 2.0, we..."
 date: 2025-03-19
 slug: software-essays
 tags:

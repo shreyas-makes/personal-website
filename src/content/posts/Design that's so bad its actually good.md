@@ -1,5 +1,6 @@
 ---
 title: "Design that's so bad it's actually good"
+description: "Recently, a relative sought my help to tweak a badly designed poster on Microsoft Paint. This was meant to be circulated on Whatsapp as an advertisement for the handyman services his friend was..."
 date: "2024-05-16T19:38:53.000Z"
 slug: "bad-design-good-execution"
 tags: [design, software]

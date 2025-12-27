@@ -1,5 +1,6 @@
 ---
 title: Thinking like a ship
+description: "It took me a long time to realize that arguments we argue about — aren’t always about facts. They are about values.  Reading Jonathan Haidt's The Righteous Mind made this clear, that: be it liberals..."
 date: 2025-04-05
 slug: thinking-like-a-ship
 tags:

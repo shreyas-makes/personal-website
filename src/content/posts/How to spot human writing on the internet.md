@@ -1,5 +1,6 @@
 ---
 title: How to spot human writing on the internet?
+description: "In the classic Turing Test, a computer is considered intelligent if it can convince a human that it’s another human in a conversation. At that time, human-generated content dominated the internet...."
 date: 2024-08-20T15:56:39.000Z
 slug: how-to-spot-human-writing-on-the-internet
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Personal Observation Techniques"
+description: "When I first started doing design observations, there was ABSOLUTELY no structure. I just went ahead to observe the surroundings and talking to as many people as I can. Although I did get some..."
 date: "2023-09-12T14:39:00.000Z"
 slug: "personal-observation-techniques"
 tags: [design, rough-notes]

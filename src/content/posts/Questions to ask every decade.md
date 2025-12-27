@@ -1,5 +1,6 @@
 ---
 title: Questions to ask every decade
+description: "This is a list inspired by Kepano in his blog: 1.  What would you do if you had 6 months to live? 2.  What would you do if you had a billion dollars? 3.  What advice would you give yourself 10 years..."
 date: 2024-11-15T16:02:21.000Z
 slug: questions-to-ask-every-decade
 tags:

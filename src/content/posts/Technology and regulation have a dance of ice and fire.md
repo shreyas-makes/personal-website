@@ -1,5 +1,6 @@
 ---
 title: Technology and regulation have a dance of ice and fire
+description: "Let's take a clear pond flourishing with various aquatic plants — water lilies, duckweeds, water milfoils, you name it. The variety of these plants provide a delicate balance, feeding the pond with..."
 date: 2025-01-12T11:47:44.000Z
 slug: frightening-tech-versus-big-daddy-regulators
 tags:

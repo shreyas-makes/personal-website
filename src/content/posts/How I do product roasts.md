@@ -1,5 +1,6 @@
 ---
 title: How I do product roasts
+description: "Product roasts are the best way to enhance one's sensibility around building better products. It's called a \"roast\" because it often involves a no-holds-barred, brutally honest critique of the..."
 date: 2024-07-13T03:53:21.000Z
 slug: how-i-do-product-roasts
 tags:

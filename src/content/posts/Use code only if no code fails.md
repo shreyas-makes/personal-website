@@ -1,5 +1,6 @@
 ---
 title: Use code only if no code fails
+description: "> UPDATE: The landscape right now looks so different with the recent evolution of \"vibe coding\". I don't touch no-code tools such as Bubble, Softr etc for any of my prototyping needs for eg. I just..."
 date: 2023-11-22T14:31:00.000Z
 slug: use-code-only-if-no-code-fails
 tags:

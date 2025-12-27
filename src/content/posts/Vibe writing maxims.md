@@ -1,5 +1,6 @@
 ---
 title: Vibe writing maxims
+description: "Some vibe-writing maxims: - While writing, have two windows open: one for the writing, and the other one for ChatGPT. Previously he used to consult ChatGPT a couple of times for internet research,..."
 date: 2025-05-02
 slug: vibe-writing-maxims
 tags:

@@ -1,5 +1,6 @@
 ---
 title: One way door decisions
+description: "There are moments in life when you hit slow-burn-max mode, when you know a big decision is coming, and you can feel the weight of it. You stop everything else and think deeply about the problem..."
 date: 2025-05-28
 slug: one-way-doors
 tags:

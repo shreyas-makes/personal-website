@@ -1,5 +1,6 @@
 ---
 title: "Pedagogy of the Uncharted — What for, and Where to?"
+description: "Think about the past year, 2021 for a second. 2021 felt like five years packed into one. — _Joe Biden becomes the President of United States.    — SpaceX launches an All-Civilian Flight.    — Tokyo..."
 date: "2022-01-19T18:18:47.000Z"
 slug: "pedagogy-of-the-uncharted-education-what-for-and-where-to"
 tags: [education, rough-notes]  

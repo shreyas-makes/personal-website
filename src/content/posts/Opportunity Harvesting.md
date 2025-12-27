@@ -1,5 +1,6 @@
 ---
 title: Opportunity Harvesting
+description: "Intended Audience — For those who are in a transitory phase in their careers, looking for their next big leap of faith. This is a guide to harvest opportunies in a systematic fashion In the past..."
 date: 2024-08-14T16:08:08.000Z
 slug: opportunity-harvesting
 tags:

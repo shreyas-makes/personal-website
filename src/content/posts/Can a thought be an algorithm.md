@@ -1,5 +1,6 @@
 ---
 title: Can a thought be an algorithm?
+description: "When you actively hold a question in your mind, you start seeing potential answers and questions related to it pop up in your radar. The question and the answer co-evolve in a gracious dance..."
 date: 2024-08-17T12:57:11.000Z
 slug: algorithms-of-thought
 tags:

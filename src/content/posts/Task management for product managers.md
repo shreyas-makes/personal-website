@@ -1,5 +1,6 @@
 ---
 title: Task management for product managers
+description: "In the book Inspired, Marty Cagan talks about dividing one's day-to-day tasks into three major buckets: people, process and product. I'd experimented with categorising my tasks into similar such..."
 date: 2024-12-06T13:27:18.000Z
 slug: task-management-for-product-managers
 tags:

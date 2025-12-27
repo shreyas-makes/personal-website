@@ -1,5 +1,6 @@
 ---
 title: How to arrive at on-brand colours?
+description: "While creating a brand, one of the hardest things to do is to arrive at the right set of colors. Colors are a tricky subject—when done incorrectly, the emotions get mismatched, and in the worst of..."
 date: 2023-12-14T14:43:00.000Z
 slug: how-to-arrive-at-on-brand-colours
 tags:

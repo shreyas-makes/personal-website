@@ -1,5 +1,6 @@
 ---
 title: Hyperpersonalised N=1 learning
+description: "For decades, formal education has resembled a Procrustean bed—a system that stretches or cuts students to fit a rigid mold, regardless of their needs, talents, or pace. Every child is expected to..."
 date: 2025-03-28
 slug: hyperpersonalised-learning
 tags:

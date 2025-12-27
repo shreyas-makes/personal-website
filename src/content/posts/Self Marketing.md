@@ -1,5 +1,6 @@
 ---
 title: Self Marketing
+description: "_I decided to revive a long-lost interest and try my hand at cartooning. But it was an unlikely dream, given my complete lack of artistic talent and the rarity of success stories in that business. So..."
 date: 2024-11-17T13:37:21.000Z
 slug: self-marketing
 tags:

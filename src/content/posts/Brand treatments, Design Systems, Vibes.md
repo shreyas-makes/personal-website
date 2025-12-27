@@ -1,5 +1,6 @@
 ---
 title: Brand treatments, Design Systems, Vibes
+description: "The usual approach to building a design system often involves compiling a list of font families, typography guidelines, color palettes, patterns, and similar visual elements. Take Gumroad, for..."
 date: 2024-09-20T08:04:38.000Z
 slug: brand-treatments
 tags:

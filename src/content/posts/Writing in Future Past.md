@@ -1,5 +1,6 @@
 ---
 title: "Writing in Future Past"
+description: "We lack frequent usage of the future past tense in modern discourse. When I was recently drafting my new year resolutions, I noticed the use of 'I can', and 'I will', and found myself questioning the..."
 date: "2025-01-17T10:41:33.000Z"
 slug: "writing-in-future-past"
 tags: [writing, philosophy, rough-notes]

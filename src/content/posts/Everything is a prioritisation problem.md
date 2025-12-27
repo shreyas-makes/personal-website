@@ -1,5 +1,6 @@
 ---
 title: Everything is a prioritisation problem
+description: "When it comes to building a product, everything is a prioritisation problem. > We might be building things right, but are we building the right thing? The journey of prioritisation begins way before..."
 date: 2024-07-29T05:47:29.000Z
 slug: prioritisation-problem
 tags:

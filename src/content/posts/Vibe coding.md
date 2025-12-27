@@ -1,5 +1,6 @@
 ---
 title: Vibe coding with Cursor
+description: "I used to run my blog on Ghost CMS hosted on a Digital Ocean droplet for $20/mo. Now I do all that for $0/mo using AstroJS, Cloudflare pages hosting. I didn't make any major tradeoffs, I just ditched..."
 date: 2025-02-13
 slug: vibe-coding-with-cursor
 tags:

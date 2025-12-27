@@ -1,5 +1,6 @@
 ---
 title: "Startups are a fertile ground for risk taking"
+description: "Startups are interesting even if most startups fail. I've found Patrick Collinson's argument to be the most convincing: \"Part of the reason startups resonate with people is because the outcome is not..."
 date: "2024-01-07T14:32:00.000Z"
 slug: "startups-are-a-fertile-ground-for-risk-taking"
 tags: [entrepreneurship, startups, risk-management, leadership, rough-notes]

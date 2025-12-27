@@ -1,5 +1,6 @@
 ---
 title: Better way to think about conflicts
+description: "What's the hardest conflict you've ever encountered at your work? It's hard to avoid conflicts, but there are various ways in which we could mitigate conflict as much as possible. As a product..."
 date: 2024-02-06
 slug: biceps-for-conflict-management
 tags:

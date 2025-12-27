@@ -1,5 +1,6 @@
 ---
 title: Finished softwares should exist
+description: "Some blockbuster software products should just end the cycle of endless iteration.  The conversation around product development needs to take seriously the idea of “finished” software, alongside the..."
 date: 2025-05-24
 slug: finished-software
 tags:

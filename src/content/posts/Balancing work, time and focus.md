@@ -1,5 +1,6 @@
 ---
 title: Balancing work, time and focus
+description: "Imagine a one-story, narrow structure, a straightforward rectangle divided into five rooms, in succession. There's no quick escape route here. This design insists that as you move through, you're..."
 date: 2024-11-15T15:56:40.000Z
 slug: eudaimonia-machines
 tags:

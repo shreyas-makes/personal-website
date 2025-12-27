@@ -1,5 +1,6 @@
 ---
 title: Beauty of Zettels
+description: "I've tried various tools and systems for online writing, but nothing beats the power of Zettels.  What are they, really? You may ask. They come from the Zettelkasten method, developed by Niklas..."
 date: 2024-12-06T14:11:48.000Z
 slug: beauty-of-zettels
 tags:

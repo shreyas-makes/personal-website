@@ -1,5 +1,6 @@
 ---
 title: Writing as moats for humans
+description: "Most writing on the internet is AI-writing now. The dark forest theory of internet, a re-hash of a concept popularised by the sci-fi author, Cixin Liu referring to this hostile digital landscape..."
 date: 2025-08-24T14:41:00.000Z
 slug: writing-moats
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Publish Originally, Syndicate Elsewhere"
+description: "Writing for yourself on your personal website is the purest form of self-expression on the internet. It avoids any trappings from the algorithmic maze. And there are no digital echo chambers. It's..."
 date: 2025-01-16
 tags: ["blogging", "writing", "digital-gardens"]
 stage: "sprout"

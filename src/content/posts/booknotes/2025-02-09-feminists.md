@@ -1,5 +1,6 @@
 ---
 title: "We should all be feminists"
+description: "Adichie describes how women are taught to shrink themselves, to make themselves smaller. I've seen this play out in product meetings - how female colleagues sometimes prefix their insights with \"I..."
 date: "2025-02-02T12:00:00.000Z"
 author: "Chimamanda Ngozi Adichie"
 rating: 8

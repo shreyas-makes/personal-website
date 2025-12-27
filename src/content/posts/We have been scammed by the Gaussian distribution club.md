@@ -1,5 +1,6 @@
 ---
 title: We have been scammed by the Gaussian distribution club
+description: "Taleb insists that we've been scammed by the Gaussian distribution club.  The gaussian distribution has become so ubiquitous in our daily jargons, oru day-to-day decisions even.  >\"We have been duped..."
 date: 2025-04-08
 slug: levy-stable-gaussian
 tags:

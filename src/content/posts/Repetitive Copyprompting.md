@@ -1,5 +1,6 @@
 ---
 title: Repetitive Copyprompting
+description: "While designing health campaigns for Noora health's work in Indonesia and Bangladesh, I was overseeing the health communications strategy for pregnant and newly-delivered mothers. There were messages..."
 date: 2024-11-15T16:07:35.000Z
 slug: repetitive-copyprompting
 tags:

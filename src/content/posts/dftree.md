@@ -1,5 +1,6 @@
 ---
 title: Directory Structure Visualizer
+description: "I wanted an easy way in which I could visualise any directory that i'm navigating on the CLI. Yes, you did have standard npm packages such as \"tree\" for example, but those were not very helpful for..."
 date: 2023-07-01
 slug: dftree
 tags:

@@ -1,5 +1,6 @@
 ---
 title: Why I prefer indie softwares
+description: "The greatest consumer software tools that exist out there are built by hobbyists and indie makers. I now prefer to write my notes on Obsidian. For scheduling tweets, I use Zlappo and Typefully. For..."
 date: 2023-12-01T14:47:00.000Z
 slug: why-i-prefer-indie-softwares
 tags:

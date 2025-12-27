@@ -1,5 +1,6 @@
 ---
 title: "Happy City"
+description: "Some ideas that I liked from the book: The Proximity Premium: Montgomery reveals how physical distance between daily needs creates \"dissatisfaction loops\" - the average American spends 19% of their..."
 date: "2025-01-15T12:00:00.000Z"
 author: "Charles Montgomery"
 rating: 6

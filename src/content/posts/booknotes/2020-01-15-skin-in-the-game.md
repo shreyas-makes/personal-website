@@ -1,5 +1,6 @@
 ---
 title: "Skin in the Game"
+description: "Some ideas that I liked from the book: Ancient rulers like Assyrian kings led charges wearing 60lbs of iron armor, embodying \"soul in the game\" (Taleb's upgrade to skin). Contrast with modern CEOs..."
 date: "2015-01-15T12:00:00.000Z"
 author: "Nassim Nicholas Taleb"
 rating: 8

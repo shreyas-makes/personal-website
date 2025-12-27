@@ -1,5 +1,6 @@
 ---
 title: The soul searching years
+description: "There are choices we make because we desire them deeply, and there are choices we make because the inertia of the world carries us into them. In the small towns and cities across India, engineering..."
 date: 2019-08-15T10:12:36.000Z
 slug: soul-searching
 tags:

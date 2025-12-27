@@ -1,5 +1,6 @@
 ---
 title: "Design is a confusing word"
+description: "As designers, we’re always asked to vouch for the user’s needs above anything else. But if the company takes a hit, all of our efforts might end in vain. To solve this dilemma, this note from Dan..."
 date: "2023-09-06T14:43:00.000Z"
 slug: "design-is-a-confusing-word"
 tags: [design, rough-notes]

@@ -1,5 +1,6 @@
 ---
 title: Understanding codebases without using code
+description: "Analysing codebase and understanding the patterns followed at a top level has become surprisingly easier nowadays with the help of tools such as Gemini (for larger context windows), Gitingest (to..."
 date: 2025-02-14
 slug: codebase-diagrams
 stage: seedling

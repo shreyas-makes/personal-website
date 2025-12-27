@@ -1,5 +1,6 @@
 ---
 title: It's computational everything
+description: "I was listening to a talk by Debbie Mcmahon from Financial Times recently at Productcon recently and I was surprised by the fact that even in journalism we're seeing tailwind trends more and more..."
 date: 2025-02-21
 slug: computational-everything
 tags:
