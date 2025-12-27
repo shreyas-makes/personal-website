@@ -3,163 +3,11 @@ import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { formatDate } from '../../utils/formatDate';
+import { clampText, createOgTemplate } from './template';
+import { fetchImageAsDataUrl } from './image-data';
+import { loadOgFonts } from './fonts';
 
-// Create the OG image template component
-function OGImageTemplate({ 
-  title, 
-  readingTime, 
-  date, 
-  stage,
-  authorImage,
-  excerpt
-}: {
-  title: string;
-  readingTime: string;
-  date: string;
-  stage?: string;
-  authorImage: string;
-  excerpt: string;
-}) {
-  return {
-    type: 'div',
-    props: {
-      style: {
-        height: '630px',
-        width: '1200px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        backgroundColor: '#0f0f10',
-        padding: '80px 80px 60px 80px', // More padding for mobile safety
-        fontFamily: 'system-ui, -apple-system, sans-serif',
-        position: 'relative',
-        background: 'linear-gradient(135deg, #0f0f10 0%, #1a1a1c 100%)'
-      },
-      children: [
-        // Header with date
-        {
-          type: 'div',
-          props: {
-            style: {
-              fontSize: '18px',
-              color: '#888892',
-              marginBottom: '20px',
-              fontWeight: '400',
-              textAlign: 'center'
-            },
-            children: date
-          }
-        },
-        
-        // Main content area
-        {
-          type: 'div',
-          props: {
-            style: {
-              flex: '1',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              gap: '32px'
-            },
-            children: [
-              // Main title
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: title.length > 60 ? '44px' : title.length > 40 ? '52px' : '60px',
-                    fontWeight: '700',
-                    color: '#ffffff',
-                    lineHeight: '1.15',
-                    letterSpacing: '-0.02em',
-                    maxWidth: '1040px', // Safe zone for mobile cropping
-                    textAlign: 'center',
-                    margin: '0 auto'
-                  },
-                  children: title
-                }
-              },
-
-              // Excerpt
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: '22px',
-                    color: '#a1a1aa',
-                    lineHeight: '1.5',
-                    maxWidth: '960px', // Safe zone for mobile cropping
-                    fontWeight: '400',
-                    textAlign: 'center',
-                    margin: '0 auto'
-                  },
-                  children: excerpt
-                }
-              }
-            ]
-          }
-        },
-
-        // Footer with metadata and site info
-        {
-          type: 'div',
-          props: {
-            style: {
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '40px',
-              marginTop: '40px'
-            },
-            children: [
-              // Reading time
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: '18px',
-                    color: '#888892',
-                    fontWeight: '500'
-                  },
-                  children: readingTime
-                }
-              },
-
-              // Separator
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: '18px',
-                    color: '#444449',
-                    fontWeight: '500'
-                  },
-                  children: '•'
-                }
-              },
-
-              // Site name
-              {
-                type: 'div',
-                props: {
-                  style: {
-                    fontSize: '18px',
-                    color: '#888892',
-                    fontWeight: '500'
-                  },
-                  children: 'shreyasprakash.com'
-                }
-              }
-            ]
-          }
-        }
-      ]
-    }
-  };
-}
-
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params, request }) => {
   try {
     const { slug } = params;
     
@@ -183,9 +31,12 @@ export const GET: APIRoute = async ({ params }) => {
 
     const readingTime = calculateReadingTime(post.body);
     const formattedDate = formatDate(post.data.date);
-    
-    // Author image URL - using your Gravatar
-    const authorImageUrl = 'https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256';
+    const baseUrl = new URL(request.url).origin;
+    const backgroundImageUrl = new URL('/images/og/serene-forest.jpg', baseUrl).toString();
+    const backgroundDataUrl = await fetchImageAsDataUrl(backgroundImageUrl);
+    const avatarUrl = new URL('/images/og/avatar.png', baseUrl).toString();
+    const avatarDataUrl = await fetchImageAsDataUrl(avatarUrl);
+    const fonts = await loadOgFonts(baseUrl);
 
     // Generate excerpt from post content
     const generateExcerpt = (content: string, maxLength: number = 280): string => {
@@ -215,32 +66,37 @@ export const GET: APIRoute = async ({ params }) => {
         : truncated + '...';
     };
 
-    const excerpt = generateExcerpt(post.body);
+    const rawDescription = post.data.description || post.data.summary || generateExcerpt(post.body);
+    const excerpt = clampText(rawDescription, 200);
 
     console.log('OG Image: Preparing modern design generation...');
     console.log('- Title:', post.data.title);
     console.log('- Reading time:', readingTime);
     console.log('- Date:', formattedDate);
     console.log('- Stage:', post.data.stage);
-    console.log('- Author image URL:', authorImageUrl);
     console.log('- Excerpt:', excerpt);
 
     try {
       console.log('OG Image: Generating SVG with Satori...');
       // Generate SVG using Satori
       const svg = await satori(
-        OGImageTemplate({
+        createOgTemplate({
           title: post.data.title,
-          readingTime,
-          date: formattedDate,
-          stage: post.data.stage,
-          authorImage: authorImageUrl,
-          excerpt
+          description: excerpt,
+          badge: `Stage / ${post.data.stage ?? 'seedling'}`.toUpperCase(),
+          meta: [
+            { label: 'Date', value: formattedDate },
+            { label: 'Read', value: readingTime },
+            { label: 'Stage', value: post.data.stage ?? 'seedling' }
+          ],
+          backgroundImageUrl: backgroundDataUrl,
+          align: 'left',
+          avatarUrl: avatarDataUrl
         }) as any,
         {
           width: 1200,
           height: 630,
-          // No custom fonts - use system defaults for Cloudflare compatibility
+          fonts
         }
       );
       
@@ -291,43 +147,52 @@ export const GET: APIRoute = async ({ params }) => {
     
     const personalizedSvg = `
       <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-        <!-- Background gradient -->
+        <!-- Background image -->
         <defs>
-          <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#0f0f10;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#1a1a1c;stop-opacity:1" />
+          <linearGradient id="overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:rgba(3,6,5,0.2)" />
+            <stop offset="55%" style="stop-color:rgba(4,7,6,0.55)" />
+            <stop offset="100%" style="stop-color:rgba(2,4,3,0.85)" />
           </linearGradient>
+          <clipPath id="avatar-clip">
+            <circle cx="980" cy="320" r="72" />
+          </clipPath>
         </defs>
         
-        <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+        <image href="${backgroundDataUrl}" width="1200" height="630" preserveAspectRatio="xMidYMid slice" />
+        <rect width="1200" height="630" fill="url(#overlay)"/>
+
+        <!-- Avatar -->
+        <image href="${avatarDataUrl}" x="908" y="248" width="144" height="144" clip-path="url(#avatar-clip)" />
+        <circle cx="980" cy="320" r="78" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" />
         
-        <!-- Date header - centered -->
-        <text x="600" y="120" font-family="system-ui, sans-serif" font-size="18" font-weight="400" fill="#888892" text-anchor="middle">
+        <!-- Date header -->
+        <text x="120" y="120" font-family="system-ui, sans-serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.75)">
           ${formattedDate}
         </text>
         
-        <!-- Title section - centered with better mobile spacing -->
+        <!-- Title section -->
         ${titleLines.map((line, index) => `
-          <text x="600" y="${200 + (index * 65)}" font-family="system-ui, sans-serif" font-size="${titleLines.length === 1 ? '60' : '52'}" font-weight="700" fill="#ffffff" letter-spacing="-0.02em" text-anchor="middle">
+          <text x="120" y="${210 + (index * 65)}" font-family="Georgia, serif" font-size="${titleLines.length === 1 ? '60' : '52'}" font-weight="600" fill="#f8fafc" letter-spacing="-0.02em">
             ${line}
           </text>
         `).join('')}
         
-        <!-- Excerpt section - centered with safe margins -->
+        <!-- Excerpt section -->
         ${excerptLines.slice(0, 2).map((line, index) => `
-          <text x="600" y="${340 + (index * 32)}" font-family="system-ui, sans-serif" font-size="22" font-weight="400" fill="#a1a1aa" text-anchor="middle">
+          <text x="120" y="${350 + (index * 32)}" font-family="system-ui, sans-serif" font-size="22" font-weight="400" fill="rgba(255,255,255,0.78)">
             ${line}
           </text>
         `).join('')}
         
-        <!-- Footer section - centered with separator -->
-        <text x="520" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892" text-anchor="middle">
+        <!-- Footer section -->
+        <text x="120" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="rgba(255,255,255,0.8)">
           ${readingTime}
         </text>
-        <text x="600" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#444449" text-anchor="middle">
+        <text x="240" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#444449">
           •
         </text>
-        <text x="680" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#888892" text-anchor="middle">
+        <text x="260" y="570" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="rgba(255,255,255,0.8)">
           shreyasprakash.com
         </text>
       </svg>
