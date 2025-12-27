@@ -25,7 +25,7 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Default OG image if none provided
-const defaultOGImage = `${Astro.site}og-images/landing.png`;
+const defaultOGImage = `${Astro.site}og/landing.png`;
 const finalOGImage = ogImage || defaultOGImage;
 const ogImageType = finalOGImage.endsWith('.png')
   ? 'image/png'
