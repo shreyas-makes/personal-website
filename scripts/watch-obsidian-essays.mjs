@@ -13,6 +13,8 @@ const getArg = (flag, fallback) => {
   return idx === -1 ? fallback : args[idx + 1];
 };
 
+const runOnce = args.includes('--once');
+
 const sourceDir = getArg(
   '--source',
   '/Users/shreyas/Desktop/Projects/Shreyas Personal/Essays'
@@ -57,11 +59,15 @@ const watchDir = (dir) => {
   }
 };
 
-console.log('Watching for Obsidian changes...');
-console.log(`Essays: ${sourceDir}`);
-console.log(`Attachments: ${attachmentsDir}`);
+if (runOnce) {
+  runSync();
+} else {
+  console.log('Watching for Obsidian changes...');
+  console.log(`Essays: ${sourceDir}`);
+  console.log(`Attachments: ${attachmentsDir}`);
 
-watchDir(sourceDir);
-watchDir(attachmentsDir);
+  watchDir(sourceDir);
+  watchDir(attachmentsDir);
 
-runSync();
+  runSync();
+}
