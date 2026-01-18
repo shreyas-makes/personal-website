@@ -128,12 +128,12 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
         </div>
       </div>
 
-      <KeepReadingFeed posts={allPosts} />
-      
       {/* Newsletter Section */}
       <div class="mt-16">
         <NewsletterFormWithHeaders />
       </div>
+
+      <KeepReadingFeed posts={allPosts} />
     </article>
   </div>
 </BaseLayout>
