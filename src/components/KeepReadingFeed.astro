@@ -28,24 +28,24 @@ for (const post of sortedPosts) {
 
 {sortedPosts.length > 0 && (
   <section class="mt-16 pt-10 border-t border-gray-200 dark:border-gray-800">
-    <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 shadow-sm p-6 sm:p-8">
-      <div class="space-y-10">
+    <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/40 shadow-sm p-5 sm:p-6">
+      <div class="space-y-8">
         {yearGroups.map((group) => (
-          <section class="space-y-4 border-t border-gray-200/70 dark:border-gray-800/70 pt-6 first:border-t-0 first:pt-0">
-            <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100">
+          <section class="space-y-3 border-t border-gray-200/70 dark:border-gray-800/70 pt-5 first:border-t-0 first:pt-0">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100">
               {group.year}
             </h3>
-            <ol class="space-y-3">
+            <ol class="space-y-2">
               {group.posts.map((post) => (
                 <li class="group">
                   <a
                     href={`/${post.slug}`}
-                    class="text-base font-medium text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-1 hover:decoration-2"
+                    class="text-sm sm:text-base font-medium text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-1 hover:decoration-2"
                   >
                     {post.data.title}
                   </a>
                   {post.data.summary && (
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    <p class="mt-1 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                       {post.data.summary}
                     </p>
                   )}
