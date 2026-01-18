@@ -138,6 +138,12 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
         <slot />
       </div>
 
+      <div class="post-divider" role="separator" aria-label="Post divider">
+        <span class="post-divider__line" aria-hidden="true"></span>
+        <span class="post-divider__label">End of post</span>
+        <span class="post-divider__line" aria-hidden="true"></span>
+      </div>
+
       <KeepReadingFeed posts={allPosts} />
       
       {/* Newsletter Section */}
@@ -179,5 +185,34 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
       font-size: 15px;
       line-height: 1.6;
     }
+  }
+
+  .post-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 3.75rem 0 3.25rem;
+    color: #111827;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  .post-divider__line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d1d5db, transparent);
+  }
+
+  .post-divider__label {
+    white-space: nowrap;
+  }
+
+  :global(.dark) .post-divider {
+    color: #9ca3af;
+  }
+
+  :global(.dark) .post-divider__line {
+    background: linear-gradient(90deg, transparent, #374151, transparent);
   }
 </style> 
