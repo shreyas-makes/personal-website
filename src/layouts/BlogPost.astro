@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import NewsletterFormWithHeaders from '../components/NewsletterFormWithHeaders.astro';
 import KeepReadingFeed from '../components/KeepReadingFeed.astro';
+import Upvoter from '../components/Upvoter.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { calculateReadingTime } from '../utils/readingTime';
 import { generateExcerpt } from '../utils/excerptUtils';
@@ -48,6 +49,15 @@ const postDescription =
     : `${title} - A new post on Shreyas Prakash's blog`);
 
 const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !id.startsWith('booknotes/'));
+
+const normalizedSlug = (slug ?? '').toLowerCase();
+const normalizedTags = (tags ?? []).map((tag) => tag.toLowerCase());
+const excludedKudosTags = new Set(['books', 'book-notes', 'projects', 'curiosities', 'prototypes']);
+const specialNonPostSlugs = new Set(['about', 'now', 'vibes']);
+const canReceiveKudos =
+  Boolean(slug) &&
+  !specialNonPostSlugs.has(normalizedSlug) &&
+  !normalizedTags.some((tag) => excludedKudosTags.has(tag));
 ---
 
 <BaseLayout 
@@ -90,6 +100,12 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
         <span class="post-divider__label">End of post</span>
         <span class="post-divider__line" aria-hidden="true"></span>
       </div>
+
+      {canReceiveKudos && slug && (
+        <div class="mb-8">
+          <Upvoter slug={slug} />
+        </div>
+      )}
 
       <div class="flex justify-center">
         <div class="flex items-center gap-3 text-gray-500 dark:text-gray-300">

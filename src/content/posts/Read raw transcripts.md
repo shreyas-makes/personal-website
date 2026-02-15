@@ -8,7 +8,7 @@ tags:
   - writing
 stage: plant
 ---
-I opened up Claude one day, and asked to summarise Dostoevsky's Crime and Punishment into one sentence; and it said:
+I opened up Claude one day, and asked to summarise [[Dostoevsky]]'s Crime and Punishment into one sentence; and it said:
 
 ```
 A young, impoverished ex-student named Raskolnikov murders an elderly pawnbroker to test his theory that extraordinary people are above moral law, only to be consumed by guilt and psychological torment until he confesses and finds redemption through love and spiritual awakening.
@@ -20,7 +20,7 @@ No, absolutely not. I don't think this tight compressed sentence is even a cheap
 
 I'll give another example: More recently, a few team members picked up on the Microsoft copilot usage; and have been using it to process raw transcripts from interviews by asking the agents to ; `"summarise all the transcripts, and then come up with 10 key insights you've identified.."`
 
-It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on Dostoevsky's Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time. 
+It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on [[Dostoevsky]]'s Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time. 
 
 **We can't just offload the insight generation process to the LLMs; they're not the same.**
 

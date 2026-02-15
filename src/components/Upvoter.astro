@@ -1,1 +1,217 @@
- 
+---
+interface Props {
+  slug: string;
+  initialCount?: number;
+}
+
+const { slug, initialCount = 0 } = Astro.props;
+---
+
+<section
+  class="kudos-widget"
+  data-kudos-widget
+  data-slug={slug}
+  data-initial-count={String(initialCount)}
+>
+  <div class="kudos-widget__inner">
+    <button
+      type="button"
+      class="kudos-widget__button"
+      data-kudos-button
+      aria-label="Send a wave"
+      aria-pressed="false"
+    >
+      <span aria-hidden="true">👋🏼</span>
+    </button>
+    <p class="kudos-widget__count" data-kudos-count>{initialCount}</p>
+  </div>
+</section>
+
+<script>
+  const KUDOS_GIVEN_KEY = 'sp_kudos_given_v1';
+  const KUDOS_COUNT_CACHE_KEY = 'sp_kudos_count_cache_v1';
+  const KUDOS_NAMESPACE_BASE = 'shreyasprakash-com-waves';
+
+  const getNamespace = () => {
+    const host = window.location.hostname.toLowerCase();
+    const isLocal = host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local');
+    return isLocal ? `${KUDOS_NAMESPACE_BASE}-dev` : KUDOS_NAMESPACE_BASE;
+  };
+
+  const parseStorageObject = (key) => {
+    try {
+      const raw = window.localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const writeStorageObject = (key, value) => {
+    try {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+      // Ignore storage write failures (private mode / quota).
+    }
+  };
+
+  const formatCount = (value) => new Intl.NumberFormat('en-US').format(Math.max(0, value));
+
+  const fetchKudosCount = async (slug) => {
+    const response = await fetch(`https://api.countapi.xyz/get/${getNamespace()}/${encodeURIComponent(slug)}`);
+    if (!response.ok) throw new Error('Unable to fetch kudos count');
+    const data = await response.json();
+    return typeof data.value === 'number' ? data.value : 0;
+  };
+
+  const hitKudosCount = async (slug) => {
+    const response = await fetch(`https://api.countapi.xyz/hit/${getNamespace()}/${encodeURIComponent(slug)}`);
+    if (!response.ok) throw new Error('Unable to submit kudos');
+    const data = await response.json();
+    return typeof data.value === 'number' ? data.value : null;
+  };
+
+  const widgets = document.querySelectorAll('[data-kudos-widget]');
+
+  widgets.forEach((widget) => {
+    const slug = widget.getAttribute('data-slug');
+    if (!slug) return;
+
+    const initialCount = Number.parseInt(widget.getAttribute('data-initial-count') || '0', 10) || 0;
+    const button = widget.querySelector('[data-kudos-button]') as HTMLButtonElement | null;
+    const countEl = widget.querySelector('[data-kudos-count]') as HTMLElement | null;
+
+    if (!button || !countEl) return;
+
+    const givenBySlug = parseStorageObject(KUDOS_GIVEN_KEY);
+    const countCacheBySlug = parseStorageObject(KUDOS_COUNT_CACHE_KEY);
+    const hasGivenKudos = Boolean(givenBySlug[slug]);
+
+    let currentCount = Math.max(initialCount, Number(countCacheBySlug[slug] || 0));
+
+    const syncButtonState = (isGiven, isSubmitting = false) => {
+      button.setAttribute('aria-pressed', String(isGiven));
+      button.disabled = isGiven || isSubmitting;
+      button.setAttribute('aria-label', isGiven ? 'Wave sent' : 'Send a wave');
+      button.classList.toggle('is-given', isGiven);
+      button.classList.toggle('is-submitting', isSubmitting);
+    };
+
+    const syncCount = (count) => {
+      currentCount = Math.max(0, count);
+      countEl.textContent = formatCount(currentCount);
+
+      const nextCache = parseStorageObject(KUDOS_COUNT_CACHE_KEY);
+      nextCache[slug] = currentCount;
+      writeStorageObject(KUDOS_COUNT_CACHE_KEY, nextCache);
+    };
+
+    syncCount(currentCount);
+    syncButtonState(hasGivenKudos);
+
+    fetchKudosCount(slug)
+      .then((value) => {
+        syncCount(value);
+      })
+      .catch(() => {
+        // Ignore network failures and keep local cached value.
+      });
+
+    button.addEventListener('click', async () => {
+      const latestGivenMap = parseStorageObject(KUDOS_GIVEN_KEY);
+      if (latestGivenMap[slug]) {
+        syncButtonState(true);
+        return;
+      }
+
+      syncButtonState(false, true);
+
+      try {
+        const nextCount = await hitKudosCount(slug);
+        syncCount(nextCount ?? currentCount + 1);
+      } catch {
+        syncCount(currentCount + 1);
+      } finally {
+        const updatedGivenMap = parseStorageObject(KUDOS_GIVEN_KEY);
+        updatedGivenMap[slug] = true;
+        writeStorageObject(KUDOS_GIVEN_KEY, updatedGivenMap);
+        syncButtonState(true, false);
+      }
+    });
+  });
+</script>
+
+<style>
+  .kudos-widget {
+    margin: 1.75rem auto 0;
+    max-width: 260px;
+  }
+
+  .kudos-widget__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .kudos-widget__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 1.5px solid #d1d5db;
+    color: #0f172a;
+    background: transparent;
+    font-size: 1.15rem;
+    line-height: 1;
+    transition: transform 150ms ease, border-color 150ms ease, background-color 150ms ease, opacity 150ms ease;
+  }
+
+  .kudos-widget__button:hover:not(:disabled) {
+    transform: scale(1.03);
+    border-color: #9ca3af;
+    background-color: #f9fafb;
+  }
+
+  .kudos-widget__button.is-given {
+    border-color: #86efac;
+    background-color: #f0fdf4;
+    cursor: default;
+  }
+
+  .kudos-widget__button.is-submitting {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  .kudos-widget__count {
+    margin: 0;
+    min-width: 1.5ch;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :global(.dark) .kudos-widget__button {
+    border-color: #374151;
+    background-color: #111827;
+  }
+
+  :global(.dark) .kudos-widget__button:hover:not(:disabled) {
+    border-color: #6b7280;
+    background-color: #1f2937;
+  }
+
+  :global(.dark) .kudos-widget__button.is-given {
+    border-color: #14532d;
+    background-color: #052e16;
+  }
+
+  :global(.dark) .kudos-widget__count {
+    color: #f3f4f6;
+  }
+</style>
