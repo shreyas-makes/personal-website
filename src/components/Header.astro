@@ -551,7 +551,7 @@ const isHomepage = pathname === '/';
     }
 
     // Close dropdown when clicking outside
-    function handleClickOutside(e) {
+    function handleDropdownClickOutside(e) {
       if (dropdownContainer && !dropdownContainer.contains(e.target)) {
         closeDropdown();
       }
@@ -559,7 +559,7 @@ const isHomepage = pathname === '/';
 
     // Add event listeners for dropdown
     dropdownButton?.addEventListener('click', toggleDropdown);
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('click', handleDropdownClickOutside);
     
     // Close dropdown on Escape key
     document.addEventListener('keydown', (e) => {
@@ -577,7 +577,7 @@ const isHomepage = pathname === '/';
     // Cleanup function
     return function cleanup() {
       dropdownButton?.removeEventListener('click', toggleDropdown);
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('click', handleDropdownClickOutside);
       themeToggle?.removeEventListener('click', toggleTheme);
       themeToggleDesktop?.removeEventListener('click', toggleTheme);
       menuToggle?.removeEventListener('click', toggleMobileMenu);
@@ -603,7 +603,7 @@ const isHomepage = pathname === '/';
   });
 
   // Make toggleSearch available globally
-  window.toggleSearch = function() {
+  (window as Window & { toggleSearch?: () => void }).toggleSearch = function() {
     const event = new CustomEvent('toggleSearch', { detail: true });
     document.dispatchEvent(event);
   };

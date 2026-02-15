@@ -123,7 +123,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     // Wait for marked.js to load
     let markedReady = false;
     const checkMarked = setInterval(() => {
-      if (window.marked) {
+      if ((window as any).marked) {
         markedReady = true;
         console.log('marked.js loaded');
         clearInterval(checkMarked);
@@ -139,7 +139,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     
     // Get DOM elements
     const feedContainer = document.getElementById('feed-container');
-    const loadMoreButton = document.getElementById('load-more-button');
+    const loadMoreButton = document.getElementById('load-more-button') as HTMLButtonElement | null;
     const loadingSpinner = document.getElementById('loading-spinner');
     const endMessage = document.getElementById('end-message');
     
@@ -186,21 +186,21 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     // Function to render markdown to HTML
     function renderMarkdown(markdown) {
       try {
-        if (!window.marked) {
+        if (!(window as any).marked) {
           // Fallback if marked isn't loaded yet
           return `<p>${markdown.substring(0, 300)}...</p>
                  <p><a href="#" class="inline-block mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">View Full Post</a></p>`;
         }
         
         // Configure marked options
-        marked.setOptions({
+        (window as any).marked.setOptions({
           breaks: true,
           gfm: true,
           headerIds: true,
           mangle: false
         });
         
-        return marked.parse(markdown);
+        return (window as any).marked.parse(markdown);
       } catch (error) {
         console.error('Error rendering markdown:', error);
         return `<p>Error rendering content.</p>`;
@@ -220,7 +220,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
       }
       
       // Wait for marked.js to be ready
-      if (!window.marked) {
+      if (!(window as any).marked) {
         console.log('marked.js not loaded yet, waiting...');
         setTimeout(loadMorePosts, 100);
         return;
@@ -357,7 +357,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
   // Also add a listener for Astro page-load event as a backup
   document.addEventListener('astro:page-load', () => {
     console.log('astro:page-load fired, checking for load more button');
-    const loadMoreButton = document.getElementById('load-more-button');
+    const loadMoreButton = document.getElementById('load-more-button') as HTMLButtonElement | null;
     if (loadMoreButton) {
       console.log('Found load more button after page load');
       loadMoreButton.onclick = function(e) {

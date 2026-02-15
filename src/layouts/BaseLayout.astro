@@ -358,8 +358,8 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
   <script>
     document.addEventListener('astro:page-load', () => {
       // Reinitialize Prism.js after page transitions
-      if (typeof Prism !== 'undefined') {
-        Prism.highlightAll();
+      if (typeof (window as any).Prism !== 'undefined') {
+        (window as any).Prism.highlightAll();
       }
 
       // Add command-line class to git and terminal commands
@@ -371,10 +371,10 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
       });
 
       // Process Mermaid diagrams in regular code blocks
-      if (typeof mermaid !== 'undefined') {
+      if (typeof (window as any).mermaid !== 'undefined') {
         try {
           // Initialize mermaid with configuration
-          mermaid.initialize({
+          (window as any).mermaid.initialize({
             startOnLoad: false,
             theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
             flowchart: {
@@ -402,7 +402,7 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
               preBlock.parentElement.replaceChild(diagramContainer, preBlock);
               
               // Render the diagram
-              mermaid.init(undefined, [diagramContainer]);
+              (window as any).mermaid.init(undefined, [diagramContainer]);
             }
           });
           
@@ -460,7 +460,7 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
                 
                 // Try to render the diagram
                 try {
-                  mermaid.init(undefined, [diagramContainer]);
+                  (window as any).mermaid.init(undefined, [diagramContainer]);
                   
                   // Add toggle functionality
                   toggleButton.addEventListener('click', function() {

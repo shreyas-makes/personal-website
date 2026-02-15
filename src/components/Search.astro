@@ -1,23 +1,43 @@
 ---
-// Client-side search component
-'use client';
-import { useState } from 'react';
 const posts = await Astro.glob('../content/posts/*.md');
 
-const [results, setResults] = useState([]);
-
-const search = (term) => {
-  setResults(posts.filter(post => 
-    post.frontmatter.title.toLowerCase().includes(term) ||
-    post.frontmatter.content.toLowerCase().includes(term)
-  ));
-};
+const searchIndex = posts.map((post) => ({
+  slug: (post.url ?? '').replace(/^\//, ''),
+  title: post.frontmatter?.title ?? '',
+  summary: post.frontmatter?.summary ?? post.frontmatter?.description ?? '',
+}));
 ---
+
 <div class="search-wrapper">
-  <input type="text" onInput={(e) => search(e.target.value)} />
-  <div class="results">
-    {results.map(post => (
-      <a href={`/posts/${post.slug}`}>{post.frontmatter.title}</a>
-    ))}
-  </div>
-</div> 
+  <input id="search-input" type="text" placeholder="Search posts..." />
+  <div id="search-results" class="results"></div>
+</div>
+
+<script define:vars={{ searchIndex }}>
+  const input = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+
+  if (input instanceof HTMLInputElement && results) {
+    input.addEventListener('input', () => {
+      const term = input.value.trim().toLowerCase();
+      if (!term) {
+        results.innerHTML = '';
+        return;
+      }
+
+      const matches = searchIndex
+        .filter((post) =>
+          post.title.toLowerCase().includes(term) ||
+          post.summary.toLowerCase().includes(term)
+        )
+        .slice(0, 10);
+
+      results.innerHTML = matches
+        .map(
+          (post) =>
+            `<a href="/${post.slug}" class="block py-1 hover:underline">${post.title}</a>`
+        )
+        .join('');
+    });
+  }
+</script>

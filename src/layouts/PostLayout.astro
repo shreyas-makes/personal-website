@@ -46,7 +46,7 @@ const allPosts = await getCollection('posts', ({ id, data }) => !data.draft);
 let popularPosts = [];
 try {
   // Attempt to get popular posts from the API
-  popularPosts = await getPopularPosts(5);
+  popularPosts = (await getPopularPosts()).slice(0, 5);
   
   // If we don't have enough popular posts, supplement with random ones
   if (popularPosts.length < 5) {
