@@ -128,14 +128,19 @@ const { slug, initialCount = 0 } = Astro.props;
 
       try {
         const nextCount = await hitKudosCount(slug);
-        syncCount(nextCount ?? currentCount + 1);
-      } catch {
-        syncCount(currentCount + 1);
-      } finally {
+        if (typeof nextCount === 'number') {
+          syncCount(nextCount);
+        } else {
+          throw new Error('Invalid counter response');
+        }
+
         const updatedGivenMap = parseStorageObject(KUDOS_GIVEN_KEY);
         updatedGivenMap[slug] = true;
         writeStorageObject(KUDOS_GIVEN_KEY, updatedGivenMap);
         syncButtonState(true, false);
+      } catch {
+        // Keep the vote available if backend persistence fails.
+        syncButtonState(false, false);
       }
     });
   });
