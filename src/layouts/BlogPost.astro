@@ -2,7 +2,6 @@
 import BaseLayout from './BaseLayout.astro';
 import NewsletterFormWithHeaders from '../components/NewsletterFormWithHeaders.astro';
 import KeepReadingFeed from '../components/KeepReadingFeed.astro';
-import Upvoter from '../components/Upvoter.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { calculateReadingTime } from '../utils/readingTime';
 import { generateExcerpt } from '../utils/excerptUtils';
@@ -14,12 +13,6 @@ type Props = CollectionEntry<'posts'>['data'] & {
 
 const {
   title,
-  date,
-  publishDate,
-  updatedDate,
-  heroImage,
-  tags,
-  stage = 'seedling',
   slug,
   body,
   description,
@@ -27,7 +20,6 @@ const {
 } = Astro.props;
 
 const readingTime = body ? calculateReadingTime(body) : null;
-const articleDate = publishDate ?? date ?? updatedDate ?? null;
 const authorAvatar = 'https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256';
 const authorName = 'Shreyas Prakash';
 const shareUrl = `${Astro.site}${slug}/`;
@@ -50,14 +42,6 @@ const postDescription =
 
 const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !id.startsWith('booknotes/'));
 
-const normalizedSlug = (slug ?? '').toLowerCase();
-const normalizedTags = (tags ?? []).map((tag) => tag.toLowerCase());
-const excludedKudosTags = new Set(['books', 'book-notes', 'projects', 'curiosities', 'prototypes']);
-const specialNonPostSlugs = new Set(['about', 'now', 'vibes']);
-const canReceiveKudos =
-  Boolean(slug) &&
-  !specialNonPostSlugs.has(normalizedSlug) &&
-  !normalizedTags.some((tag) => excludedKudosTags.has(tag));
 ---
 
 <BaseLayout 
@@ -100,12 +84,6 @@ const canReceiveKudos =
         <span class="post-divider__label">End of post</span>
         <span class="post-divider__line" aria-hidden="true"></span>
       </div>
-
-      {canReceiveKudos && slug && (
-        <div class="mb-8">
-          <Upvoter slug={slug} />
-        </div>
-      )}
 
       <div class="flex justify-center">
         <div class="flex items-center gap-3 text-gray-500 dark:text-gray-300">
