@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
-import type { CollectionEntry } from 'astro:content';
 import { useStore } from '@nanostores/react';
 import { isSearchOpen } from '../store/searchStore';
 
-interface SearchProps {
-  posts: CollectionEntry<'posts'>[];
-  isOpen: boolean;
-  onClose: () => void;
+interface SearchEntry {
+  title: string;
+  slug: string;
+  excerpt: string;
+  tags?: string[];
+  type: string;
+  searchableText: string;
 }
 
 interface SearchResult {
@@ -17,7 +19,7 @@ interface SearchResult {
   type: string;
 }
 
-export default function Search({ posts }: { posts: CollectionEntry<'posts'>[] }) {
+export default function Search({ searchIndex }: { searchIndex: SearchEntry[] }) {
   const $isSearchOpen = useStore(isSearchOpen);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -47,61 +49,36 @@ export default function Search({ posts }: { posts: CollectionEntry<'posts'>[] })
   }, []);
 
   const handleSearch = (searchQuery: string) => {
-    setQuery(searchQuery); // Set query first
+    setQuery(searchQuery);
+    const normalizedQuery = searchQuery.trim().toLowerCase();
     
     // Clear results if search is empty
-    if (!searchQuery.trim()) {
+    if (!normalizedQuery) {
       setResults([]);
       setSelectedIndex(0);
       return;
     }
 
     // Check cache
-    if (searchCache.current[searchQuery]) {
-      setResults(searchCache.current[searchQuery]);
+    if (searchCache.current[normalizedQuery]) {
+      setResults(searchCache.current[normalizedQuery]);
       return;
     }
 
-    const searchResults = posts
-      .filter(post => {
-        const searchContent = [
-          post.data.title,
-          post.data.tags?.join(' ') || '',
-          post.body,
-        ].join(' ').toLowerCase();
-        
-        return searchContent.includes(searchQuery.toLowerCase());
-      })
-      .map(post => {
-        // Find the position of the search term in the content
-        const searchIndex = post.body.toLowerCase().indexOf(searchQuery.toLowerCase());
-        let excerpt = '';
-        
-        if (searchIndex >= 0) {
-          // Get some context around where the search term appears
-          const start = Math.max(0, searchIndex - 60);
-          const end = Math.min(post.body.length, searchIndex + 100);
-          excerpt = post.body.slice(start, end);
-          
-          // Add ellipsis if we're not at the start/end
-          if (start > 0) excerpt = '...' + excerpt;
-          if (end < post.body.length) excerpt = excerpt + '...';
-        } else {
-          // If search term is not in content, show beginning of post
-          excerpt = post.body.slice(0, 150) + '...';
-        }
-
+    const searchResults = searchIndex
+      .filter((entry) => entry.searchableText.includes(normalizedQuery))
+      .map((entry) => {
         return {
-          title: post.data.title,
-          slug: post.slug,
-          excerpt,
-          tags: post.data.tags,
-          type: post.data.tags?.includes('books') ? 'book' : 'post'
+          title: entry.title,
+          slug: entry.slug,
+          excerpt: entry.excerpt,
+          tags: entry.tags,
+          type: entry.type
         };
       });
 
     setResults(searchResults);
-    searchCache.current[searchQuery] = searchResults;
+    searchCache.current[normalizedQuery] = searchResults;
     setSelectedIndex(0);
   };
 

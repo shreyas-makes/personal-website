@@ -2,11 +2,26 @@
 import { getCollection } from 'astro:content';
 import SearchButton from './SearchButton';
 import Search from './Search';
+import { generateExcerpt } from '../utils/excerptUtils';
 // Commenting out this import until we create the file
 // import ThemeToggle from './ThemeToggle.astro';
 
 // Get all posts for search
 const posts = await getCollection('posts', ({ data }) => !data.draft);
+const searchIndex = posts.map((post) => {
+  const tags = post.data.tags ?? [];
+  const summary = post.data.summary ?? post.data.description ?? '';
+  const excerpt = summary || generateExcerpt(post.body, 180);
+
+  return {
+    slug: post.slug,
+    title: post.data.title,
+    tags,
+    excerpt,
+    type: tags.includes('books') ? 'book' : 'post',
+    searchableText: [post.data.title, tags.join(' '), summary, excerpt].join(' ').toLowerCase()
+  };
+});
 
 // Get the specific posts for nav links
 const [nowPost, vibesPost] = await Promise.all([
@@ -325,9 +340,9 @@ const isHomepage = pathname === '/';
 
   <!-- Search component - conditionally load based on page type -->
   {isHomepage ? (
-    <Search posts={posts} client:idle />
+    <Search searchIndex={searchIndex} client:idle />
   ) : (
-    <Search posts={posts} client:visible />
+    <Search searchIndex={searchIndex} client:visible />
   )}
 </header>
 
