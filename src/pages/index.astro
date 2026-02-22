@@ -164,9 +164,9 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     <section class="my-8">
       <h2 class="text-2xl sm:text-3xl font-medium text-gray-600 dark:text-gray-400 mb-4">Themes</h2>
       <div class="flex flex-wrap items-center text-gray-800 dark:text-gray-200 leading-relaxed gap-y-2" style="word-break: break-word;">
-        {Object.keys(topTags).map((tag, index) => (
+        {Object.keys(topTags).map((tag) => (
           <span class="flex items-baseline gap-2 mr-4">
-            {index > 0 && <span class="text-gray-400 dark:text-gray-600" aria-hidden="true">•</span>}
+            <span class="text-gray-400 dark:text-gray-600" aria-hidden="true">•</span>
             <a 
               href={`/tags/${tag}`} 
               class="underline hover:no-underline text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"

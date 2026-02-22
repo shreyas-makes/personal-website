@@ -1,6 +1,6 @@
 ---
 title: India after gandhi
-description: "I started reading this more recently, right after the Independence day celebrations to know more about my great country. All that we've studied in the history textbooks has also been as if history..."
+description: I started reading this more recently, right after the Independence day celebrations to know more about my great country. All that we've studied in the history textbooks has also been as if history...
 date: 2023-01-15T12:00:00.000Z
 author: Ramachandra Guha
 rating: 7
