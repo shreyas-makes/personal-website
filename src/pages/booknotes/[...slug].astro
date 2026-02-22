@@ -44,7 +44,9 @@ const { Content } = await post.render();
 
 <BaseLayout title={post.data.title} showMainFooterSection={true}>
   <main class="max-w-3xl mx-auto px-4 py-8">
-    <Content />
+    <article class="prose prose-neutral dark:prose-invert max-w-none">
+      <Content />
+    </article>
     <div class="mt-16">
       <a 
         href="/books" 

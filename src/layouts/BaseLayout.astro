@@ -98,8 +98,8 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
   <style>
     /* Typography System */
     :root {
-      --font-primary: 'Verdana', Geneva, sans-serif;
-      --font-heading: 'Verdana', Geneva, sans-serif;
+      --font-primary: var(--font-body);
+      --font-heading: var(--font-body);
       --font-mono: 'JetBrains Mono', monospace;
       
       /* Font sizes */

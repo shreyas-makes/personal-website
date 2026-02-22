@@ -2,25 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Elstob';
+  src: url('/fonts/Elstob.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Elstob';
+  src: url('/fonts/Elstob-Italic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
-  --font-system: 'Verdana', Geneva, sans-serif;
-  --font-heading: 'Verdana', Geneva, sans-serif;
+  --font-body: 'Elstob', 'Verdana', 'Geneva', sans-serif;
+  --font-heading: 'Elstob', 'Verdana', 'Geneva', sans-serif;
+  --font-ui: 'Elstob', 'Verdana', 'Geneva', sans-serif;
   --background: #FFFFFF;
   --text: #000;
   --form-input-bg: #ffffff;
   --form-input-border: #e2e8f0;
   --form-button-bg: #2563eb;
   --form-button-hover: #1d4ed8;
-  font-family: 'Verdana', Geneva, sans-serif;
+  --font-size-body: 21px;
+  --line-height-body: 34px;
+  --font-size-prose: 24px;
+  --line-height-prose: 36px;
+  --font-weight-body: 410;
+  --font-weight-heading: 520;
+  --font-opsz-body: 18;
+  --font-opsz-heading: 36;
+  font-family: var(--font-body);
 }
 
 body {
-  font-family: 'Verdana', Geneva, sans-serif;
+  font-family: var(--font-body);
   background: var(--background);
   color: var(--text);
-  line-height: 29px;
-  font-size: 19px;
-  font-weight: 400;
+  line-height: var(--line-height-body);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  font-optical-sizing: auto;
+  font-variation-settings: "wght" var(--font-weight-body), "opsz" var(--font-opsz-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -87,16 +114,85 @@ video {
 
 /* Blog post content styles */
 .prose {
-  font-size: 19px;
-  line-height: 29px;
-  font-family: 'Verdana', Geneva, sans-serif;
-  font-weight: 400;
+  font-size: var(--font-size-prose);
+  line-height: var(--line-height-prose);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-body);
+  font-optical-sizing: auto;
+  font-variation-settings: "wght" var(--font-weight-body), "opsz" var(--font-opsz-body);
   color: var(--text);
+  max-width: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+  font-optical-sizing: auto;
+  font-variation-settings: "wght" var(--font-weight-heading), "opsz" var(--font-opsz-heading);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.prose strong {
+  font-weight: 560;
+  font-variation-settings: "wght" 560, "opsz" var(--font-opsz-body);
+}
+
+.prose h1 {
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.4;
+}
+
+.prose h2 {
+  font-size: 1.3em;
+  margin-top: 1.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose h3 {
+  font-size: 1.1em;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
 }
 
 /* Add paragraph spacing */
 .prose p {
   margin-bottom: 2.5em; /* Increased from 1.75em for more spacing between paragraphs */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.prose li {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  margin-bottom: 0.5em;
+}
+
+.prose blockquote {
+  border-left: 4px solid #e5e7eb;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  padding-right: 1rem;
+}
+
+.prose a {
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Dark mode prose styles */
@@ -205,13 +301,45 @@ video {
 
 /* Responsive adjustments for mobile */
 @media (max-width: 640px) {
+  :root {
+    --font-size-body: 18px;
+    --line-height-body: 29px;
+    --font-size-prose: 20px;
+    --line-height-prose: 32px;
+  }
+
   .prose {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: var(--font-size-prose);
+    line-height: var(--line-height-prose);
   }
   
   .prose p {
     margin-bottom: 2.5em; /* Maintain consistent spacing on mobile */
+  }
+
+  .prose h1 {
+    font-size: 1.3em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.4;
+  }
+
+  .prose h2 {
+    font-size: 1.2em;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose h3 {
+    font-size: 1.1em;
+    margin-top: 1.3em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 1rem;
   }
   
   .prose table {

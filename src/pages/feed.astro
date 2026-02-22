@@ -399,75 +399,6 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     animation: fadeIn 0.4s ease-out;
   }
   
-  /* Consistent prose styling matching PostLayout */
-  :global(.prose) {
-    max-width: none !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: normal;
-    hyphens: auto;
-    font-size: 16px;
-    line-height: 1.7;
-    font-family: 'Verdana', Geneva, sans-serif;
-    font-weight: 400;
-    overflow-x: hidden;
-  }
-  
-  /* Additional prose styling matching PostLayout */
-  :global(.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6) {
-    font-weight: 400;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    font-family: 'Verdana', Geneva, sans-serif;
-  }
-  
-  :global(.prose h1) {
-    font-size: 1.5em;
-    margin-top: 2em;
-    margin-bottom: 1em;
-    line-height: 1.4;
-  }
-  
-  :global(.prose h2) {
-    font-size: 1.3em;
-    margin-top: 1.75em;
-    margin-bottom: 0.75em;
-  }
-  
-  :global(.prose h3) {
-    font-size: 1.1em;
-    margin-top: 1.5em;
-    margin-bottom: 0.75em;
-  }
-  
-  :global(.prose p) {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    margin-bottom: 1.5em;
-  }
-
-  :global(.prose li) {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    margin-bottom: 0.5em;
-  }
-
-  :global(.prose blockquote) {
-    border-left: 4px solid #e5e7eb;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    padding-right: 1rem;
-  }
-
-  :global(.prose a) {
-    text-decoration-line: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-  }
-
   /* Make sure images stay within container */
   :global(.prose img) {
     max-width: 100%;
@@ -479,44 +410,6 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
 
   /* Responsive adjustments for mobile */
   @media (max-width: 640px) {
-    :global(.prose) {
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    
-    :global(.prose p) {
-      margin-bottom: 1.5em;
-    }
-    
-    :global(.prose li) {
-      margin-bottom: 0.5em;
-    }
-    
-    :global(.prose h1) {
-      font-size: 1.3em;
-      margin-top: 1.5em;
-      margin-bottom: 0.8em;
-      line-height: 1.4;
-    }
-    
-    :global(.prose h2) {
-      font-size: 1.2em;
-      margin-top: 1.5em;
-      margin-bottom: 0.75em;
-    }
-    
-    :global(.prose h3) {
-      font-size: 1.1em;
-      margin-top: 1.3em;
-      margin-bottom: 0.75em;
-    }
-    
-    :global(.prose blockquote) {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 1rem;
-    }
-    
     /* Adjust container padding on mobile */
     .max-w-4xl {
       padding-left: 1.25rem;

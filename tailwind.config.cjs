@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Verdana', 'Geneva', 'sans-serif'],
-        body: ['Verdana', 'Geneva', 'sans-serif'],
-        heading: ['Verdana', 'Geneva', 'sans-serif'],
+        sans: ['Elstob', 'Verdana', 'Geneva', 'sans-serif'],
+        body: ['Elstob', 'Verdana', 'Geneva', 'sans-serif'],
+        heading: ['Elstob', 'Verdana', 'Geneva', 'sans-serif'],
       },
       fontSize: {
         'title': '32px',

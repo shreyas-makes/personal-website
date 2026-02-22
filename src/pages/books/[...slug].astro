@@ -67,10 +67,10 @@ const formatDate = (date: string) => {
 
     <article class="mb-16">
       <header class="mb-12">
-        <h1 class="text-xl font-medium text-gray-900 dark:text-gray-100">
+        <h1 class="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-gray-100">
           {book.data.title}
         </h1>
-        <div class="mt-2 text-sm text-gray-600 dark:text-gray-400 space-x-2">
+        <div class="mt-2 text-lg text-gray-600 dark:text-gray-400 space-x-2">
           <span>By: {book.data.author}</span>
           <span>—</span>
           <span>Read: {formatDate(book.data.date)}</span>
@@ -87,7 +87,7 @@ const formatDate = (date: string) => {
         )}
       </header>
       
-      <div class="prose prose-sm dark:prose-invert prose-neutral max-w-none book-content-prose
+      <div class="prose dark:prose-invert prose-neutral max-w-none book-content-prose
                   prose-headings:font-medium prose-headings:text-gray-900 dark:prose-headings:text-gray-100
                   prose-p:text-gray-800 dark:prose-p:text-gray-300
                   prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
@@ -102,7 +102,7 @@ const formatDate = (date: string) => {
     </article>
 
     <section class="mt-16 mb-32 pt-8 border-t border-gray-200 dark:border-gray-800">
-      <h2 class="text-xl font-medium text-gray-900 dark:text-gray-100 mb-8">
+      <h2 class="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-8">
         Other books
       </h2>
       
@@ -122,7 +122,7 @@ const formatDate = (date: string) => {
                   />
                 </div>
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-xl font-medium text-gray-900 dark:text-gray-100">
+                  <h3 class="text-2xl font-medium text-gray-900 dark:text-gray-100">
                     <a href={`/books/${otherBook.slug.replace('booknotes/', '')}`} class="hover:underline">
                       {otherBook.title}
                     </a>
@@ -130,7 +130,7 @@ const formatDate = (date: string) => {
                   <p class="mt-1 text-gray-600 dark:text-gray-400">
                     {otherBook.author}
                   </p>
-                  <p class="mt-1 text-sm text-gray-500">
+                  <p class="mt-1 text-lg text-gray-500">
                     Read: {formatDate(otherBook.date)} — Rating: {otherBook.rating}/10
                   </p>
                   {otherBook.summary && (
@@ -150,50 +150,50 @@ const formatDate = (date: string) => {
 <style>
   /* Make book content font size smaller and more consistent */
   .book-content-prose {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.8;
   }
   
   .book-content-prose p {
-    font-size: 0.95rem !important;
-    margin-bottom: 1rem;
+    font-size: inherit !important;
+    margin-bottom: 1.25rem;
   }
   
   .book-content-prose h1 {
-    font-size: 1.3rem !important;
+    font-size: 1.75rem !important;
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
   
   .book-content-prose h2 {
-    font-size: 1.2rem !important;
+    font-size: 1.5rem !important;
     margin-top: 1.8rem;
     margin-bottom: 0.8rem;
   }
   
   .book-content-prose h3 {
-    font-size: 1.1rem !important;
+    font-size: 1.3rem !important;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
   }
   
   .book-content-prose h4, .book-content-prose h5, .book-content-prose h6 {
-    font-size: 1rem !important;
+    font-size: 1.2rem !important;
     margin-top: 1.3rem;
     margin-bottom: 0.6rem;
   }
   
   .book-content-prose ul, .book-content-prose ol {
-    font-size: 0.95rem;
+    font-size: inherit;
   }
   
   .book-content-prose li {
-    font-size: 0.95rem !important;
+    font-size: inherit !important;
     margin-bottom: 0.5rem;
   }
   
   .book-content-prose blockquote {
-    font-size: 0.95rem !important;
+    font-size: inherit !important;
     font-style: italic;
     padding: 1rem;
     margin: 1.5rem 0;

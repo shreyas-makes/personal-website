@@ -53,8 +53,8 @@ const isHomepage = pathname === '/';
       <a href="/" class="block">
         <div class="header-section flex items-center justify-center gap-6 sm:gap-8 hover:opacity-80 transition-opacity">
           <div class="header-frame text-center sm:text-left">
-            <h1 class="text-xl sm:text-2xl font-normal text-gray-900 dark:text-gray-100 mb-1">Shreyas Prakash</h1>
-            <h2 class="text-lg text-gray-600 dark:text-gray-400">Product Manager from London</h2>
+            <h1 class="text-3xl sm:text-4xl font-normal text-gray-900 dark:text-gray-100 mb-1">Shreyas Prakash</h1>
+            <h2 class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">Product Manager from London</h2>
           </div>
           <div class="img-frame flex-shrink-0">
             <img 
@@ -80,7 +80,7 @@ const isHomepage = pathname === '/';
     <!-- Desktop layout - centered navigation -->
     <div class="hidden md:flex md:justify-center md:py-2">
       <!-- Centered navigation -->
-      <nav class="flex gap-6 text-sm" id="desktop-navigation">
+      <nav class="flex gap-6 text-base sm:text-lg" id="desktop-navigation">
         <!-- Now Tab -->
         <a 
           href={`/${nowSlug}`}
@@ -627,9 +627,10 @@ const isHomepage = pathname === '/';
 <style>
   /* Navigation styles */
   .nav-item {
-    padding: 0.375rem 0.75rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 9999px;
     color: rgb(107, 114, 128); /* gray-500 for light mode */
+    font-size: 1.25rem;
   }
   
   .nav-item:hover {
@@ -637,17 +638,19 @@ const isHomepage = pathname === '/';
   }
   
   .nav-item-active {
-    padding: 0.375rem 0.75rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 9999px;
     background-color: rgb(243, 244, 246); /* gray-100 for light mode */
     color: rgb(17, 24, 39); /* gray-900 for light mode */
     font-weight: 500;
+    font-size: 1.25rem;
   }
   
   .mobile-nav-item {
-    padding: 0.375rem 0.75rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 9999px;
     color: rgb(107, 114, 128); /* gray-500 for light mode */
+    font-size: 1.2rem;
   }
   
   .mobile-nav-item:hover {
@@ -655,11 +658,34 @@ const isHomepage = pathname === '/';
   }
   
   .mobile-nav-item-active {
-    padding: 0.375rem 0.75rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 9999px;
     background-color: rgb(243, 244, 246); /* gray-100 for light mode */
     color: rgb(17, 24, 39); /* gray-900 for light mode */
     font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  .nav-item svg,
+  .nav-item-active svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .mobile-nav-item svg,
+  .mobile-nav-item-active svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  #desktop-navigation > div svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  #desktop-navigation > div a,
+  #desktop-navigation > div button {
+    padding: 0.35rem;
   }
   
   /* Dark mode styles */

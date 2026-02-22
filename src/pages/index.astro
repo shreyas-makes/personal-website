@@ -162,7 +162,7 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     </section>
 
     <section class="my-8">
-      <h2 class="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">Themes</h2>
+      <h2 class="text-2xl sm:text-3xl font-medium text-gray-600 dark:text-gray-400 mb-4">Themes</h2>
       <div class="flex flex-wrap items-center text-gray-800 dark:text-gray-200 leading-relaxed gap-y-2" style="word-break: break-word;">
         {Object.keys(topTags).map((tag, index) => (
           <span class="flex items-baseline gap-2 mr-4">
@@ -180,18 +180,18 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
         <!-- Latest section -->
     <section class="mt-12 pt-10 mb-16 border-t border-gray-200 dark:border-gray-800">
-      <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Recently published</h2>
+      <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Recently published</h2>
       <div class="space-y-8 sm:space-y-12">
         {latestPosts.map((post) => (
           <article class="group">
             <a href={`/${post.slug}`} class="block space-y-2">
-              <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
+              <h3 class="text-2xl sm:text-3xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
                 {post.data.title}
               </h3>
-              <div class="text-gray-600 dark:text-gray-400 text-sm">
+              <div class="text-gray-600 dark:text-gray-400 text-base sm:text-lg">
                 {formatDate(post.data.date)} — {post.readingTime}
               </div>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-xs sm:text-sm">
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-lg sm:text-xl">
                 {post.excerpt}
               </p>
             </a>
@@ -206,8 +206,8 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
     <section class="mt-12">
       <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Essays</h2>
-        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400">Essays</h2>
+        <div class="flex items-center text-base sm:text-lg text-gray-500 dark:text-gray-400">
           <span>{posts.regular.length} posts</span>
           {posts.regular.length > 13 && (
             <>
@@ -226,12 +226,12 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
           
           return (
             <div class="flex items-baseline gap-4">
-              <span class="text-gray-500 dark:text-gray-400 text-sm font-mono tabular-nums min-w-fit">
+              <span class="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-mono tabular-nums min-w-fit">
                 {year}
               </span>
               <a 
                 href={`/${post.slug}`} 
-                class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                class="text-xl sm:text-2xl text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
               >
                 {post.data.title}
               </a>
@@ -248,8 +248,8 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     {interviews.length > 0 && (
       <section class="mb-16">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Interviews</h2>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400">Interviews</h2>
+          <div class="flex items-center text-base sm:text-lg text-gray-500 dark:text-gray-400">
             <span>{interviews.length} interviews</span>
             <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
             <a href="/interviews" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
@@ -264,12 +264,12 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             
             return (
               <div class="flex items-baseline gap-4">
-                <span class="text-gray-500 dark:text-gray-400 text-sm font-mono tabular-nums min-w-fit">
+                <span class="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-mono tabular-nums min-w-fit">
                   {year}
                 </span>
                 <a 
                   href={`/${interview.slug}`} 
-                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                  class="text-xl sm:text-2xl text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
                 >
                   {interview.data.title}
                 </a>
@@ -287,8 +287,8 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     {posts.roughNotes.length > 0 && (
       <section class="mb-16">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-xl font-normal text-gray-600 dark:text-gray-400">Notes</h2>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+          <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400">Notes</h2>
+          <div class="flex items-center text-base sm:text-lg text-gray-500 dark:text-gray-400">
             <span>{posts.roughNotes.length} posts</span>
             {posts.roughNotes.length > 20 && (
               <>
@@ -307,12 +307,12 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             
             return (
               <div class="flex items-baseline gap-4">
-                <span class="text-gray-500 dark:text-gray-400 text-sm font-mono tabular-nums min-w-fit">
+                <span class="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-mono tabular-nums min-w-fit">
                   {year}
                 </span>
                 <a 
                   href={`/${post.slug}`} 
-                  class="text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                  class="text-xl sm:text-2xl text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
                 >
                   {post.data.title}
                 </a>
@@ -334,18 +334,15 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     --hover-color: #555;
   }
 
-  /* Use Verdana as the font */
   main {
     color: var(--text-primary);
-    line-height: 1.4;
-    font-family: 'Verdana', Geneva, sans-serif;
-    font-size: 15px;
+    font-size: var(--font-size-prose);
+    line-height: var(--line-height-prose);
   }
 
   h1 {
     font-weight: 400;
     color: var(--text-primary);
-    font-family: 'Verdana', Geneva, sans-serif;
   }
 
   /* Only apply hover effects on larger screens */
@@ -366,13 +363,6 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
       --text-primary: #e1e1e1;
       --text-secondary: #a1a1a1;
       --hover-color: #fff;
-    }
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 640px) {
-    main {
-      font-size: 14px;
     }
   }
 
