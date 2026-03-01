@@ -3,6 +3,128 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { ViewTransitions } from 'astro:transitions';
 
 export const prerender = true;
+
+const openSourceProjects = [
+  {
+    emoji: '💬',
+    name: 'candor-teams',
+    description: 'Public feedback board for transparent teams.',
+    url: 'https://github.com/shreyas-makes/candor-teams',
+    category: "Vision built"
+  },
+  {
+    emoji: '✍️',
+    name: 'signify-app',
+    description: 'Writing platform to share 100% human-verified content.',
+    url: 'https://github.com/shreyas-makes/signify-app',
+    category: "Vision built"
+  },
+  {
+    emoji: '🎬',
+    name: 'mmmmh',
+    description: 'Make YouTube videos snappier by removing silences and filler speech.',
+    url: 'https://github.com/shreyas-makes/mmmmh',
+    category: "Vision built"
+  },
+  {
+    emoji: '🧼',
+    name: 'deslopify',
+    description: 'Make AI writing sound more humane.',
+    url: 'https://github.com/shreyas-makes/deslopify',
+    category: 'LLM workflow'
+  },
+  {
+    emoji: '🖼️',
+    name: 'asciify',
+    description: 'Generate ASCII-first visual output workflows.',
+    url: 'https://github.com/shreyas-makes/asciify',
+    category: 'LLM workflow'
+  },
+  {
+    emoji: '🔎',
+    name: 'semantic-search',
+    description: 'Do fully local semantic search over your Obsidian vault.',
+    url: 'https://github.com/shreyas-makes/semantic-search',
+    category: 'LLM workflow'
+  },
+  {
+    emoji: '🧰',
+    name: 'codex-skills',
+    description: 'Personal library of reusable Codex skills and workflows.',
+    url: 'https://github.com/shreyas-makes/codex-skills',
+    category: 'LLM workflow'
+  },
+  {
+    emoji: '📐',
+    name: 'polygonfit',
+    description: 'Rhino plugin for eliminating topology errors in polygons.',
+    url: 'https://github.com/shreyas-makes/polygonfit',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '😵',
+    name: 'kaomoji-generator',
+    description: 'Quickly export kaomojis for instant messaging.',
+    url: 'https://github.com/shreyas-makes/kaomoji-generator',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '♟️',
+    name: 'chesscoach',
+    description: 'AI chess coach for improving gameplay strategy.',
+    url: 'https://github.com/shreyas-makes/chesscoach',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '🧩',
+    name: 'twitter-to-trello',
+    description: 'Convert Twitter bookmarks into Trello TODO items.',
+    url: 'https://github.com/shreyas-makes/twitter-to-trello',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '☁️',
+    name: 'xp-clouds',
+    description: 'Playful cloud wallpaper experience for the web.',
+    url: 'https://github.com/shreyas-makes/xp-clouds',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '👻',
+    name: 'astro-blog-ghost',
+    description: 'Personal website on Astro.',
+    url: 'https://github.com/shreyas-makes/astro-blog-ghost',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '🧱',
+    name: 'dftree',
+    description: 'Generate a visual unicode file tree for any directory.',
+    url: 'https://github.com/shreyas-makes/dftree',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '🧾',
+    name: 'git-commit-summarizer',
+    description: 'Summarize codebase updates from git commits.',
+    url: 'https://github.com/shreyas-makes/git-commit-summarizer',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '🌐',
+    name: 'simple-wiki-converter',
+    description: 'Convert Wikipedia URLs into clean, reference-free text.',
+    url: 'https://github.com/shreyas-makes/simple-wiki-converter',
+    category: 'N=1 tool'
+  },
+  {
+    emoji: '☎️',
+    name: 'papercup-ai',
+    description: 'Make internet calls to international phone numbers.',
+    url: 'https://github.com/shreyas-makes/papercup-ai',
+    category: "Vision built"
+  }
+];
 ---
 
 <BaseLayout title="Work - Shreyas" showMainFooterSection={false}>
@@ -60,41 +182,28 @@ export const prerender = true;
     <!-- Open Source Tools and Side Quests -->
     <section class="mb-16">
       <h2 class="text-2xl sm:text-3xl font-medium text-gray-800 dark:text-gray-300 mb-2">Open source quests</h2>
-      <div class="mt-8 space-y-10 text-gray-700 dark:text-gray-300">
-        <div>
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 dark:text-gray-100">Visions I've dreamt of, and which I built..</h3>
-          <ul class="mt-4 space-y-3 text-base sm:text-lg">
-            <li>💬 <a href="https://github.com/shreyas-makes/candor-teams" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">candor-teams</a> - Public feedback board for transparent teams.</li>
-            <li>✍️ <a href="https://github.com/shreyas-makes/signify-app" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">signify-app</a> - Writing platform to share 100% human-verified content.</li>
-            <li>🎬 <a href="https://github.com/shreyas-makes/mmmmh" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">mmmmh</a> - One-click production ready YouTube videos, add captions, remove silences, and filler texts..</li>
-            <li>♟️ <a href="https://github.com/shreyas-makes/chesscoach" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">chesscoach</a> - AI chess coach for improving gameplay strategy.</li>
-            <li>☎️ <a href="https://github.com/shreyas-makes/papercup-ai" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">papercup-ai</a> - Make internet calls to international phone numbers.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 dark:text-gray-100">Agentic workflow improvements to help me build better with LLMs..</h3>
-          <ul class="mt-4 space-y-3 text-base sm:text-lg">
-            <li>🧼 <a href="https://github.com/shreyas-makes/deslopify" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">deslopify</a> - Make AI writing sound more humane.</li>
-            <li>🖼️ <a href="https://github.com/shreyas-makes/asciify" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">asciify</a> - Generate ASCII diagrams for communicating UI visuals with LLMs</li>
-            <li>🔎 <a href="https://github.com/shreyas-makes/semantic-search" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">semantic-search</a> - Do fully local semantic search over your Obsidian vault.</li>
-            <li>🧰 <a href="https://github.com/shreyas-makes/codex-skills" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">codex-skills</a> - Personal library of reusable Codex skills and workflows.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 dark:text-gray-100">Niche tools for my own N=1 use cases..</h3>
-          <ul class="mt-4 space-y-3 text-base sm:text-lg">
-            <li>📐 <a href="https://github.com/shreyas-makes/polygonfit" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">polygonfit</a> - Rhino plugin for eliminating topology errors in polygons.</li>
-            <li>😵 <a href="https://github.com/shreyas-makes/kaomoji-generator" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">kaomoji-generator</a> - Quickly export kaomojis for instant messaging.</li>
-            <li>🧩 <a href="https://github.com/shreyas-makes/twitter-to-trello" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">twitter-to-trello</a> - Convert Twitter bookmarks into Trello TODO items.</li>
-            <li>☁️ <a href="https://github.com/shreyas-makes/xp-clouds" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">xp-clouds</a> - Playful cloud wallpaper experience for the web.</li>
-            <li>👻 <a href="https://github.com/shreyas-makes/astro-blog-ghost" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">astro-blog-ghost</a> - Personal website</li>
-            <li>🧱 <a href="https://github.com/shreyas-makes/dftree" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">dftree</a> - Generate a visual unicode file tree for any directory.</li>
-            <li>🧾 <a href="https://github.com/shreyas-makes/git-commit-summarizer" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">git-commit-summarizer</a> - Summarize codebase updates from git commits.</li>
-            <li>🌐 <a href="https://github.com/shreyas-makes/simple-wiki-converter" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">simple-wiki-converter</a> - Convert Wikipedia URLs into clean, reference-free text.</li>
-          </ul>
-        </div>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
+        {openSourceProjects.map((project) => (
+          <a
+            href={project.url}
+            aria-label={`Open ${project.name} on GitHub`}
+            class="quest-card group h-full rounded-2xl border border-gray-200/90 dark:border-gray-800 bg-white/95 dark:bg-gray-900/90 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 p-4 sm:p-5 flex flex-col"
+          >
+            <div class="mb-3">
+              <h3 class="quest-title text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
+                <span class="mr-2" aria-hidden="true">{project.emoji}</span>{project.name}
+              </h3>
+            </div>
+            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed flex-1">
+              {project.description}
+            </p>
+            <div class="mt-4">
+              <span class="quest-tag inline-flex text-xs sm:text-sm font-medium px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+                {project.category}
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
 
@@ -252,6 +361,41 @@ export const prerender = true;
     padding-bottom: 0;
   }
 
+  .quest-card {
+    position: relative;
+    overflow: hidden;
+    border-color: rgb(251 191 36 / 0.45);
+    background: linear-gradient(to bottom, rgb(255 251 235 / 0.96), rgb(255 255 255 / 0.98));
+  }
+
+  .quest-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: rgb(217 119 6);
+    opacity: 0.85;
+  }
+
+  .quest-card:hover {
+    border-color: rgb(217 119 6 / 0.7);
+    box-shadow: 0 10px 24px -14px rgb(217 119 6 / 0.7);
+    color: inherit;
+  }
+
+  .quest-card .quest-title {
+    transition: color 0.2s ease;
+  }
+
+  .quest-card:hover .quest-title {
+    color: rgb(180 83 9);
+  }
+
+  .quest-tag {
+    background: rgb(254 243 199 / 0.95);
+    color: rgb(146 64 14);
+  }
+
   /* Only apply hover effects on larger screens */
   @media (min-width: 640px) {
     a:hover {
@@ -274,6 +418,16 @@ export const prerender = true;
 
     .experience-item {
       border-bottom-color: rgb(31 41 55 / 0.9);
+    }
+
+    .quest-card {
+      border-color: rgb(245 158 11 / 0.45);
+      background: linear-gradient(to bottom, rgb(60 47 18 / 0.9), rgb(31 24 12 / 0.95));
+    }
+
+    .quest-tag {
+      background: rgb(120 53 15 / 0.55);
+      color: rgb(254 243 199);
     }
   }
 
