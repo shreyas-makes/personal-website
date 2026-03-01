@@ -7,7 +7,7 @@ Shreyas Prakash publishes essays, notes, and practical writing on modern softwar
 - Name: Shreyas Prakash
 - Website: https://shreyasprakash.com/
 - LinkedIn: https://www.linkedin.com/in/shreyasprakash/
-- X: https://x.com/shreyas_makes
+- GitHub: https://github.com/shreyas-makes
 
 ## Content characteristics
 - Mostly first-person, experience-based writing.
