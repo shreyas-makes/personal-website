@@ -179,6 +179,40 @@ video {
   margin-bottom: 0.5em;
 }
 
+.prose ul,
+.prose ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 2em 0;
+}
+
+.prose ul li,
+.prose ol li {
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.prose ul li::marker,
+.prose ol li::marker {
+  content: "";
+}
+
+.prose ul li::before,
+.prose ol li::before {
+  content: "*";
+  position: absolute;
+  left: 0;
+  top: 0.5lh;
+  transform: translateY(-50%);
+  width: 1em;
+  text-align: center;
+  color: currentColor;
+  font-size: 1.15em;
+  font-weight: 650;
+  line-height: 1;
+}
+
 .prose blockquote {
   border-left: 4px solid #e5e7eb;
   overflow-wrap: break-word;

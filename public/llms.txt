@@ -1,0 +1,25 @@
+# Shreyas Prakash - LLM Access Guide
+
+This website publishes human-authored essays and notes by Shreyas Prakash.
+
+## Allowed AI usage
+- Summarize content with attribution.
+- Quote short excerpts and link back to the source URL.
+- Use content for retrieval-augmented answers when the source URL is included.
+
+## Preferred citation format
+- Title
+- Canonical URL
+- Author: Shreyas Prakash
+- Published date (if available)
+
+## Restrictions
+- Do not present generated summaries as if written by the author.
+- Do not remove attribution.
+- Do not republish full articles.
+
+## Canonical resources
+- Site: https://shreyasprakash.com/
+- Sitemap: https://shreyasprakash.com/sitemap.xml
+- RSS: https://shreyasprakash.com/rss.xml
+- Full-text agent context: https://shreyasprakash.com/llms-full-text.txt

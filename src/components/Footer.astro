@@ -13,6 +13,53 @@ const totalWords = posts.reduce((acc, post) => {
   return acc + wordCount;
 }, 0);
 
+const SUMMARY_LABELS: Record<string, string> = {
+  design: 'Design systems, product taste, and visual thinking.',
+  'ai-coding': 'AI-assisted building, experimentation, and shipping fast.',
+  writing: 'Writing as a tool for thinking, clarity, and memory.',
+  software: 'Software workflows, tools, and practical engineering tradeoffs.',
+  product: 'Product strategy, decisions, and outcome-driven execution.'
+};
+
+const SUMMARY_ICONS: Record<string, 'spark' | 'code' | 'pen'> = {
+  design: 'spark',
+  'ai-coding': 'code',
+  writing: 'pen',
+  software: 'code',
+  product: 'spark'
+};
+
+const EXCLUDED_SUMMARY_TAGS = new Set(['rough-notes', 'books', 'curiosities', 'projects']);
+const tagCounts: Record<string, number> = {};
+for (const post of posts) {
+  const tags = (post.data.tags || []) as string[];
+  for (const tag of tags) {
+    tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+  }
+}
+
+const aiSummaryThemes = Object.entries(tagCounts)
+  .filter(([tag]) => !EXCLUDED_SUMMARY_TAGS.has(tag))
+  .sort(([, a], [, b]) => b - a)
+  .slice(0, 3)
+  .map(([tag]) => ({
+    tag,
+    summary: SUMMARY_LABELS[tag] || `${tag.replace(/-/g, ' ')} shows up often across the archive.`,
+    icon: SUMMARY_ICONS[tag] || 'spark'
+  }));
+
+const latestPostDate = posts
+  .map((post) => new Date(post.data.date))
+  .sort((a, b) => b.getTime() - a.getTime())[0];
+const summaryUpdatedAt = new Date().toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric'
+});
+const summarySourceDate = latestPostDate
+  ? latestPostDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  : null;
+
 // Format numbers with commas
 const formatNumber = (num: number) => num.toLocaleString();
 
@@ -43,6 +90,44 @@ const currentYear = new Date().getFullYear();
             This website is built in a way the internet was meant to be. This means a simple, content-first website, sharing thoughts and knowledge for free.
           </p>
         </div>
+
+        {aiSummaryThemes.length > 0 && (
+          <div class="max-w-4xl mx-auto rounded-2xl border border-gray-300/80 dark:border-gray-700/80 bg-gray-50/80 dark:bg-[#1c1c1f] px-4 py-5 md:px-6 md:py-6">
+            <p class="text-xs uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 text-center mb-4">AI Summary</p>
+            <p class="text-xs text-center text-gray-500 dark:text-gray-400 mb-4">
+              Generated from recent posts
+              {summarySourceDate && <> (latest: {summarySourceDate})</>}
+              . Refreshed {summaryUpdatedAt}.
+            </p>
+            <div class="grid gap-3 md:grid-cols-3">
+              {aiSummaryThemes.map((theme) => (
+                <article class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-[#202025] p-4 text-left">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                      {theme.icon === 'code' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 9l-3 3 3 3m8-6l3 3-3 3m-6 4l4-14" />
+                        </svg>
+                      )}
+                      {theme.icon === 'pen' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16.862 4.487a2.1 2.1 0 113.03 2.912L9.5 18.5 5 19l.5-4.5 11.362-10.013z" />
+                        </svg>
+                      )}
+                      {theme.icon === 'spark' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3zm6 10l.9 2.1L21 16l-2.1.9L18 19l-.9-2.1L15 16l2.1-.9L18 13zM5 14l.8 1.8L8 16.5l-2.2.7L5 19l-.8-1.8L2 16.5l2.2-.7L5 14z" />
+                        </svg>
+                      )}
+                    </span>
+                    <h3 class="text-base font-medium text-gray-900 dark:text-gray-100 capitalize">{theme.tag.replace(/-/g, ' ')}</h3>
+                  </div>
+                  <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">{theme.summary}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
         
         <div class="text-center text-lg md:text-xl">
           <p>©{currentYear} Shreyas Prakash</p>

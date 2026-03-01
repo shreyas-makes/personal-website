@@ -10,6 +10,10 @@ export interface Props {
   description?: string;
   ogImage?: string;
   ogType?: string;
+  aiTopic?: string;
+  aiAudience?: string;
+  aiUse?: string;
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
 // Destructure props and provide defaults
@@ -18,7 +22,11 @@ const {
   showMainFooterSection = true,
   description = 'Shreyas Prakash - Product, Design, and Technology',
   ogImage,
-  ogType = 'website'
+  ogType = 'website',
+  aiTopic = 'technology, product design, AI, indie software, and personal essays',
+  aiAudience = 'builders, designers, product managers, and curious readers',
+  aiUse = 'Summarization, citation, recommendations, and contextual analysis with attribution',
+  jsonLd
 } = Astro.props;
 
 // Generate the full URL for the current page
@@ -35,6 +43,34 @@ const ogImageType = finalOGImage.endsWith('.png')
       ? 'image/webp'
       : 'image/svg+xml';
 
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://shreyasprakash.com';
+
+const defaultJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
+    name: 'Shreyas Prakash',
+    url: siteUrl,
+    sameAs: [
+      'https://www.linkedin.com/in/shreyasprakash/',
+      'https://x.com/shreyas_makes'
+    ],
+    jobTitle: 'Product and Design Writer'
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    url: siteUrl,
+    name: 'Shreyas Prakash',
+    description: 'Essays on modern software, design, AI, and product building',
+    publisher: { '@id': `${siteUrl}/#person` }
+  }
+];
+
+const extraJsonLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const allJsonLd = [...defaultJsonLd, ...extraJsonLd];
 
 // Remove the prefersDarkMode function and simplify theme handling
 const theme = Astro.cookies.get('theme')?.value || 'light';
@@ -46,8 +82,15 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <meta name="keywords" content={aiTopic} />
+  <meta name="ai-content" content="human-authored" />
+  <meta name="ai-topic" content={aiTopic} />
+  <meta name="ai-audience" content={aiAudience} />
+  <meta name="ai-use" content={aiUse} />
   <link rel="canonical" href={canonicalURL} />
   <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+  <link rel="alternate" type="text/plain" title="LLMs Guide" href="/llms.txt" />
+  <link rel="alternate" type="text/plain" title="LLMs Full Text" href="/llms-full-text.txt" />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content={ogType} />
@@ -79,6 +122,9 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
   
   <!-- LinkedIn -->
   <meta property="og:locale" content="en_US" />
+  {allJsonLd.map((entry) => (
+    <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+  ))}
   
   <!-- Add Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

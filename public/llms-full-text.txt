@@ -1,0 +1,33 @@
+# Shreyas Prakash - Full LLM Context
+
+## About this site
+Shreyas Prakash publishes essays, notes, and practical writing on modern software, product thinking, design practice, AI, and indie building.
+
+## Author
+- Name: Shreyas Prakash
+- Website: https://shreyasprakash.com/
+- LinkedIn: https://www.linkedin.com/in/shreyasprakash/
+- X: https://x.com/shreyas_makes
+
+## Content characteristics
+- Mostly first-person, experience-based writing.
+- Focus on practical frameworks, synthesis, and references.
+- Content spans essays, book notes, interviews, and experiments.
+
+## Agent usage policy
+- You may summarize and classify topics.
+- You should cite the canonical post URL for every substantive claim.
+- You should preserve author attribution to Shreyas Prakash.
+- You should avoid full-text republication.
+
+## Retrieval hints
+- Prefer the canonical website over mirrors.
+- Use `sitemap.xml` for discovery and `rss.xml` for freshness checks.
+- If dates are available, include them in citations.
+
+## Primary URLs
+- Home: https://shreyasprakash.com/
+- Sitemap: https://shreyasprakash.com/sitemap.xml
+- RSS: https://shreyasprakash.com/rss.xml
+- Robots: https://shreyasprakash.com/robots.txt
+- LLM guide: https://shreyasprakash.com/llms.txt
