@@ -24,6 +24,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "token:audit": "node scripts/token-audit.js",
     "sync:obsidian": "node scripts/sync-obsidian-essays.mjs",
     "sync:watch": "node scripts/watch-obsidian-essays.mjs"
   },
