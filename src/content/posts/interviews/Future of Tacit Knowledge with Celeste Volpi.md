@@ -3,6 +3,10 @@ title: Future of Tacit knowledge with Celeste Volpi
 date: 2020-08-15T10:12:36.000Z
 slug: tacit-knowledge
 description: tacit knowledge, design research, abstractions and concepts
+tags:
+  - interviewing
+  - knowledge
+  - design
 ---
 **Disclaimer:** This transcript has been processed and cleaned using AI language models to improve readability from the original raw audio recording. While efforts have been made to preserve accuracy and intent, the content may contain errors, omissions, or misinterpretations from the automated transcription process, and has not been reviewed by the original speakers. For critical use or citation purposes, please refer to the original audio recording.
 

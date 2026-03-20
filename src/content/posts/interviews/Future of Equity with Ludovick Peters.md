@@ -3,6 +3,10 @@ title: Future of Equity with Ludovick Peters
 date: 2020-08-15T10:12:36.000Z
 slug: equity
 description: rationalism, education and shelter for albino children
+tags:
+  - interviewing
+  - social-design
+  - education
 ---
 
 

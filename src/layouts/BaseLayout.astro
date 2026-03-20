@@ -2,6 +2,7 @@
 // All server-side code goes inside this frontmatter block
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AgentationToolbar from '../components/react/AgentationToolbar';
 import '../styles/tokens.css';
 import '../styles/global.css';
 
@@ -73,8 +74,9 @@ const defaultJsonLd = [
 const extraJsonLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 const allJsonLd = [...defaultJsonLd, ...extraJsonLd];
 
-// Remove the prefersDarkMode function and simplify theme handling
-const theme = Astro.cookies.get('theme')?.value || 'light';
+// Static pages cannot read request cookies during prerender.
+const theme = 'light';
+const showAgentation = import.meta.env.DEV;
 ---
 <!DOCTYPE html>
 <html lang="en" class:list={['scroll-smooth', theme]} data-theme={theme} data-astro-transition-persist>
@@ -386,6 +388,7 @@ const theme = Astro.cookies.get('theme')?.value || 'light';
     <slot />
   </main>
   <Footer showMainSection={showMainFooterSection} />
+  {showAgentation && <AgentationToolbar client:load />}
 
   <!-- Prism.js Script - Load deferred -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>

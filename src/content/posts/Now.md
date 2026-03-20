@@ -3,7 +3,9 @@ title: "Now"
 description: "Jan 2025 2025 is the year of AI. I'm aligning my professional goals to get ahead on this S-curve. My thesis for product management is that it would become more of prototype management. There would be..."
 date: "2024-07-23T21:52:30.000Z"
 slug: "now"
-tags: []
+tags:
+  - lifestyle
+  - personal-branding
 stage: "seedling"
 ---
 

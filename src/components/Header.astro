@@ -51,20 +51,10 @@ const isHomepage = pathname === '/';
   {isHomepage && (
     <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
       <a href="/" class="block">
-        <div class="header-section flex items-center justify-center gap-6 sm:gap-8 hover:opacity-80 transition-opacity">
-          <div class="header-frame text-center sm:text-left">
+        <div class="header-section flex items-center justify-center hover:opacity-80 transition-opacity">
+          <div class="header-frame text-center">
             <h1 class="text-3xl sm:text-4xl font-normal text-gray-900 dark:text-gray-100 mb-1">Shreyas Prakash</h1>
             <h2 class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">Product Manager from London</h2>
-          </div>
-          <div class="img-frame flex-shrink-0">
-            <img 
-              id="propic"
-              src="https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256"
-              width="120"
-              height="120"
-              alt="Shreyas Prakash"
-              class="rounded-full border-2 border-gray-900 dark:border-black"
-            >
           </div>
         </div>
       </a>
@@ -153,6 +143,24 @@ const isHomepage = pathname === '/';
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
           </svg>
           <span>Work</span>
+        </a>
+
+        <a 
+          href="/changelog"
+          class:list={[
+            "flex items-center gap-2 transition-colors",
+            currentPath === "changelog"
+              ? "nav-item-active"
+              : "nav-item"
+          ]}
+          data-path="changelog"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 12h8M8 17h5" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2Z" />
+          </svg>
+          <span>Changelog</span>
         </a>
         
         <!-- Interviews Tab -->
@@ -320,6 +328,22 @@ const isHomepage = pathname === '/';
           <span>Work</span>
         </a>
         
+        <a 
+          href="/changelog"
+          class:list={[
+            "flex items-center gap-2 transition-colors mobile-nav-item",
+            currentPath === "changelog" && "mobile-nav-item-active"
+          ]}
+          data-path="changelog"
+          data-astro-prefetch="hover"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 12h8M8 17h5" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2Z" />
+          </svg>
+          <span>Changelog</span>
+        </a>
+
         <a 
           href="/interviews"
           class:list={[

@@ -1,0 +1,696 @@
+{
+  "generatedAt": "2026-03-20T21:00:04.537Z",
+  "username": "shreyas-makes",
+  "windowDays": 14,
+  "historyMonths": 3,
+  "cutoffDate": "2025-12-20T21:00:04.537Z",
+  "coverageLabel": "20 Dec 2025 - 20 Mar 2026",
+  "periods": [
+    {
+      "periodStart": "2025-12-20T21:00:04.537Z",
+      "periodEnd": "2026-01-03T21:00:04.537Z",
+      "periodLabel": "20 Dec 2025 - 03 Jan 2026"
+    },
+    {
+      "periodStart": "2026-01-03T21:00:04.537Z",
+      "periodEnd": "2026-01-17T21:00:04.537Z",
+      "periodLabel": "03 Jan 2026 - 17 Jan 2026"
+    },
+    {
+      "periodStart": "2026-01-17T21:00:04.537Z",
+      "periodEnd": "2026-01-31T21:00:04.537Z",
+      "periodLabel": "17 Jan 2026 - 31 Jan 2026"
+    },
+    {
+      "periodStart": "2026-01-31T21:00:04.537Z",
+      "periodEnd": "2026-02-14T21:00:04.537Z",
+      "periodLabel": "31 Jan 2026 - 14 Feb 2026"
+    },
+    {
+      "periodStart": "2026-02-14T21:00:04.537Z",
+      "periodEnd": "2026-02-28T21:00:04.537Z",
+      "periodLabel": "14 Feb 2026 - 28 Feb 2026"
+    },
+    {
+      "periodStart": "2026-02-28T21:00:04.537Z",
+      "periodEnd": "2026-03-14T21:00:04.537Z",
+      "periodLabel": "28 Feb 2026 - 14 Mar 2026"
+    },
+    {
+      "periodStart": "2026-03-14T21:00:04.537Z",
+      "periodEnd": "2026-03-20T21:00:04.537Z",
+      "periodLabel": "14 Mar 2026 - 20 Mar 2026"
+    }
+  ],
+  "projectCount": 10,
+  "projects": [
+    {
+      "name": "Ghost In A Shell",
+      "repository": "ghost-in-a-shell",
+      "fullName": "shreyas-makes/ghost-in-a-shell",
+      "url": "https://github.com/shreyas-makes/ghost-in-a-shell",
+      "homepage": null,
+      "description": "Mac OS first, Ghostty-native workspace orchestrator",
+      "language": "Rust",
+      "stars": 1,
+      "commitCount": 10,
+      "pushedAt": "2026-03-20T17:32:46Z",
+      "latestCommitAt": "2026-03-20T17:32:46Z",
+      "updateCount": 1,
+      "updates": [
+        {
+          "periodStart": "2026-03-14T21:00:04.537Z",
+          "periodEnd": "2026-03-20T21:00:04.537Z",
+          "periodLabel": "14 Mar 2026 - 20 Mar 2026",
+          "latestCommitAt": "2026-03-20T17:32:46Z",
+          "commitCount": 10,
+          "headline": "Hardening the core experience",
+          "narrative": "Ghost In A Shell had a tightening-the-screws fortnight. The commits stayed close to the core experience, with reliability work and clearer documentation moving in parallel so the tool feels more operational than fragile.",
+          "valueUnlocked": "The product becomes safer to rely on for actual work, which is usually the threshold between “interesting” and “worth keeping around.”",
+          "focusBullets": [
+            "Clarified the README and setup guidance",
+            "Stabilized core behaviour so the product is more reliable"
+          ],
+          "commitMessages": [
+            "Fix README formatting and image references",
+            "Update README.md",
+            "updated docs",
+            "updated readme",
+            "finally works",
+            "fixed ghostty persistence",
+            "v0 based on plan.md and shaping doc on rust",
+            "Add C x R summary to shaping doc",
+            "Update README.md",
+            "Add image to README for visual context"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "Fix README formatting and image references",
+        "Update README.md",
+        "updated docs",
+        "updated readme",
+        "finally works",
+        "fixed ghostty persistence",
+        "v0 based on plan.md and shaping doc on rust",
+        "Add C x R summary to shaping doc",
+        "Update README.md",
+        "Add image to README for visual context"
+      ]
+    },
+    {
+      "name": "Deslopify",
+      "repository": "deslopify",
+      "fullName": "shreyas-makes/deslopify",
+      "url": "https://github.com/shreyas-makes/deslopify",
+      "homepage": null,
+      "description": "Make the AI writing sound more humane",
+      "language": "Python",
+      "stars": 3,
+      "commitCount": 10,
+      "pushedAt": "2026-03-15T09:29:58Z",
+      "latestCommitAt": "2026-03-15T09:29:54Z",
+      "updateCount": 3,
+      "updates": [
+        {
+          "periodStart": "2026-03-14T21:00:04.537Z",
+          "periodEnd": "2026-03-20T21:00:04.537Z",
+          "periodLabel": "14 Mar 2026 - 20 Mar 2026",
+          "latestCommitAt": "2026-03-15T09:29:54Z",
+          "commitCount": 2,
+          "headline": "From script to shippable tool",
+          "narrative": "Deslopify had a packaging-and-operations fortnight. The work pushed make the AI writing sound more humane closer to something people can reliably install, run, and keep in their workflow without extra hand-holding.",
+          "valueUnlocked": "It is easier to drop the tool into a real workflow instead of treating it like a one-off demo or side script.",
+          "focusBullets": [
+            "Made the command-line workflow more usable",
+            "Packaged a clearer public release"
+          ],
+          "commitMessages": [
+            "improved deslopify into a cli",
+            "Release v0.2.0: CLI, diagnostics mode, presets, and protected-span filtering"
+          ]
+        },
+        {
+          "periodStart": "2026-02-14T21:00:04.537Z",
+          "periodEnd": "2026-02-28T21:00:04.537Z",
+          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "latestCommitAt": "2026-02-22T14:47:40Z",
+          "commitCount": 2,
+          "headline": "Making the project more legible",
+          "narrative": "Deslopify had a documentation-heavy fortnight, but in the useful sense. The work makes make the AI writing sound more humane easier to approach, easier to understand, and less dependent on private context living in your head.",
+          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
+          "focusBullets": [
+            "Clarified how the skill should be used"
+          ],
+          "commitMessages": [
+            "Merge origin/main into main (keep local README)",
+            "updated skill deslopify"
+          ]
+        },
+        {
+          "periodStart": "2026-01-03T21:00:04.537Z",
+          "periodEnd": "2026-01-17T21:00:04.537Z",
+          "periodLabel": "03 Jan 2026 - 17 Jan 2026",
+          "latestCommitAt": "2026-01-14T17:02:48Z",
+          "commitCount": 6,
+          "headline": "Making the project more legible",
+          "narrative": "Deslopify had a documentation-heavy fortnight, but in the useful sense. The work makes make the AI writing sound more humane easier to approach, easier to understand, and less dependent on private context living in your head.",
+          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
+          "focusBullets": [
+            "Clarified the README and setup guidance",
+            "Simplified the project structure to reduce maintenance overhead",
+            "Tighten “preserve structure” rules by explicitly listing hard‑no‑touch elements (code blocks, quoted text, URLs, link text, numbers, citations/footnotes) to reduce"
+          ],
+          "commitMessages": [
+            "Update README.md",
+            "x",
+            "formatting for README",
+            "removed blog",
+            "Tighten “preserve structure” rules by explicitly listing hard‑no‑touch elements (code blocks, quoted text, URLs, link text, numbers, citations/footnotes) to reduce",
+            "x"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "improved deslopify into a cli",
+        "Release v0.2.0: CLI, diagnostics mode, presets, and protected-span filtering",
+        "Merge origin/main into main (keep local README)",
+        "updated skill deslopify",
+        "Update README.md",
+        "x",
+        "formatting for README",
+        "removed blog",
+        "Tighten “preserve structure” rules by explicitly listing hard‑no‑touch elements (code blocks, quoted text, URLs, link text, numbers, citations/footnotes) to reduce",
+        "x"
+      ]
+    },
+    {
+      "name": "Thinking Cap",
+      "repository": "thinking-cap",
+      "fullName": "shreyas-makes/thinking-cap",
+      "url": "https://github.com/shreyas-makes/thinking-cap",
+      "homepage": null,
+      "description": "terminal sidecar for avoiding cognitive debt while you delegate all the code to AI agents",
+      "language": "JavaScript",
+      "stars": 1,
+      "commitCount": 4,
+      "pushedAt": "2026-03-15T08:15:54Z",
+      "latestCommitAt": "2026-03-15T08:15:52Z",
+      "updateCount": 2,
+      "updates": [
+        {
+          "periodStart": "2026-03-14T21:00:04.537Z",
+          "periodEnd": "2026-03-20T21:00:04.537Z",
+          "periodLabel": "14 Mar 2026 - 20 Mar 2026",
+          "latestCommitAt": "2026-03-15T08:15:52Z",
+          "commitCount": 1,
+          "headline": "Pushing the product forward",
+          "narrative": "Thinking Cap moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making terminal sidecar for avoiding cognitive debt while you delegate all the code to AI agents more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The interaction cost drops, which matters because semi-frequent tasks live or die on friction more than on feature count.",
+          "focusBullets": [
+            "Smoothed the day-to-day user experience"
+          ],
+          "commitMessages": [
+            "improved the flashcard loading"
+          ]
+        },
+        {
+          "periodStart": "2026-02-28T21:00:04.537Z",
+          "periodEnd": "2026-03-14T21:00:04.537Z",
+          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "latestCommitAt": "2026-03-14T07:14:29Z",
+          "commitCount": 3,
+          "headline": "Pushing the product forward",
+          "narrative": "Thinking Cap moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making terminal sidecar for avoiding cognitive debt while you delegate all the code to AI agents more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The project moves closer to public-adoption shape: clearer install paths, cleaner release boundaries, and less hidden context.",
+          "focusBullets": [
+            "Smoothed the day-to-day user experience",
+            "Prepared the project for broader adoption",
+            "Laid down the first public version of the integration"
+          ],
+          "commitMessages": [
+            "made it to target a specific repo more precisely",
+            "Prepare Thinking Cap for GitHub",
+            "Initial commit for thinking-cap OpenCode plugin"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "improved the flashcard loading",
+        "made it to target a specific repo more precisely",
+        "Prepare Thinking Cap for GitHub",
+        "Initial commit for thinking-cap OpenCode plugin"
+      ]
+    },
+    {
+      "name": "Asciify",
+      "repository": "asciify",
+      "fullName": "shreyas-makes/asciify",
+      "url": "https://github.com/shreyas-makes/asciify",
+      "homepage": null,
+      "description": "",
+      "language": "TypeScript",
+      "stars": 1,
+      "commitCount": 7,
+      "pushedAt": "2026-03-13T21:46:26Z",
+      "latestCommitAt": "2026-03-01T17:56:03Z",
+      "updateCount": 2,
+      "updates": [
+        {
+          "periodStart": "2026-02-28T21:00:04.537Z",
+          "periodEnd": "2026-03-14T21:00:04.537Z",
+          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "latestCommitAt": "2026-03-01T17:56:03Z",
+          "commitCount": 5,
+          "headline": "Making the project more legible",
+          "narrative": "Asciify had a documentation-heavy fortnight, but in the useful sense. The work makes the product easier to approach, easier to understand, and less dependent on private context living in your head.",
+          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
+          "focusBullets": [
+            "Clarified the README and setup guidance",
+            "Sharpened the working interface"
+          ],
+          "commitMessages": [
+            "Update README.md",
+            "yes",
+            "improved UI of canvas",
+            "Remove detailed sections from README",
+            "Add image to README for visual enhancement"
+          ]
+        },
+        {
+          "periodStart": "2026-02-14T21:00:04.537Z",
+          "periodEnd": "2026-02-28T21:00:04.537Z",
+          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "latestCommitAt": "2026-02-27T23:20:33Z",
+          "commitCount": 2,
+          "headline": "Pushing the product forward",
+          "narrative": "Asciify moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making the product more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "focusBullets": [
+            "Refined the project framing and supporting documentation",
+            "Refined the project internals"
+          ],
+          "commitMessages": [
+            "updated REAME",
+            "updated asciify"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "Update README.md",
+        "yes",
+        "improved UI of canvas",
+        "Remove detailed sections from README",
+        "Add image to README for visual enhancement",
+        "updated REAME",
+        "updated asciify"
+      ]
+    },
+    {
+      "name": "Codex Skills",
+      "repository": "codex-skills",
+      "fullName": "shreyas-makes/codex-skills",
+      "url": "https://github.com/shreyas-makes/codex-skills",
+      "homepage": null,
+      "description": "Personal list of codex skills I frequently use",
+      "language": "JavaScript",
+      "stars": 2,
+      "commitCount": 8,
+      "pushedAt": "2026-03-10T19:46:11Z",
+      "latestCommitAt": "2026-03-10T19:46:08Z",
+      "updateCount": 2,
+      "updates": [
+        {
+          "periodStart": "2026-02-28T21:00:04.537Z",
+          "periodEnd": "2026-03-14T21:00:04.537Z",
+          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "latestCommitAt": "2026-03-10T19:46:08Z",
+          "commitCount": 6,
+          "headline": "Making the project more legible",
+          "narrative": "Codex Skills had a documentation-heavy fortnight, but in the useful sense. The work makes personal list of codex skills I frequently use easier to approach, easier to understand, and less dependent on private context living in your head.",
+          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
+          "focusBullets": [
+            "Simplified the project structure to reduce maintenance overhead",
+            "Clarified the README and setup guidance",
+            "Refined the project framing and supporting documentation"
+          ],
+          "commitMessages": [
+            "removed submodules",
+            "Remove notes section from README",
+            "updated REAME",
+            "updated skill sets",
+            "updated skill sets",
+            "Add design-audit skill and update skill inventory"
+          ]
+        },
+        {
+          "periodStart": "2026-02-14T21:00:04.537Z",
+          "periodEnd": "2026-02-28T21:00:04.537Z",
+          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "latestCommitAt": "2026-02-23T21:05:36Z",
+          "commitCount": 2,
+          "headline": "Cleaning the foundation for the next wave",
+          "narrative": "Codex Skills had an internal cleanup fortnight. It is the sort of structural work that does not look flashy in a screenshot, but usually pays off by making future iteration faster and less brittle.",
+          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "focusBullets": [
+            "Simplified the project structure to reduce maintenance overhead",
+            "Set up the repository foundation for future iteration"
+          ],
+          "commitMessages": [
+            "removed ovh skill",
+            "initialised repo of skills"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "removed submodules",
+        "Remove notes section from README",
+        "updated REAME",
+        "updated skill sets",
+        "updated skill sets",
+        "Add design-audit skill and update skill inventory",
+        "removed ovh skill",
+        "initialised repo of skills"
+      ]
+    },
+    {
+      "name": "Dicto",
+      "repository": "dicto",
+      "fullName": "shreyas-makes/dicto",
+      "url": "https://github.com/shreyas-makes/dicto",
+      "homepage": null,
+      "description": "Open source AI transcription app that runs on Mac locally",
+      "language": "Python",
+      "stars": 1,
+      "commitCount": 2,
+      "pushedAt": "2026-03-04T22:52:39Z",
+      "latestCommitAt": "2026-03-04T22:52:39Z",
+      "updateCount": 1,
+      "updates": [
+        {
+          "periodStart": "2026-02-28T21:00:04.537Z",
+          "periodEnd": "2026-03-14T21:00:04.537Z",
+          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "latestCommitAt": "2026-03-04T22:52:39Z",
+          "commitCount": 2,
+          "headline": "Making the project more legible",
+          "narrative": "Dicto had a documentation-heavy fortnight, but in the useful sense. The work makes open source AI transcription app that runs on Mac locally easier to approach, easier to understand, and less dependent on private context living in your head.",
+          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
+          "focusBullets": [
+            "Clarified the README and setup guidance"
+          ],
+          "commitMessages": [
+            "Update README.md",
+            "Update README.md"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "Update README.md",
+        "Update README.md"
+      ]
+    },
+    {
+      "name": "Mmmmh",
+      "repository": "mmmmh",
+      "fullName": "shreyas-makes/mmmmh",
+      "url": "https://github.com/shreyas-makes/mmmmh",
+      "homepage": null,
+      "description": "Make your Youtube videos snappier by removing silences, and non-lexical fillers",
+      "language": "Python",
+      "stars": 1,
+      "commitCount": 10,
+      "pushedAt": "2026-03-04T22:45:53Z",
+      "latestCommitAt": "2026-03-04T22:45:53Z",
+      "updateCount": 2,
+      "updates": [
+        {
+          "periodStart": "2026-02-28T21:00:04.537Z",
+          "periodEnd": "2026-03-14T21:00:04.537Z",
+          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "latestCommitAt": "2026-03-04T22:45:53Z",
+          "commitCount": 7,
+          "headline": "Making the project more legible",
+          "narrative": "Mmmmh had a documentation-heavy fortnight, but in the useful sense. The work makes make your Youtube videos snappier by removing silences, and non-lexical fillers easier to approach, easier to understand, and less dependent on private context living in your head.",
+          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
+          "focusBullets": [
+            "Clarified the README and setup guidance",
+            "Packaged a clearer public release",
+            "Simplify editing flow to silence-only with pause slider"
+          ],
+          "commitMessages": [
+            "Update README with app features and banner image",
+            "Merge release-v0.1.1-clean with simplified README",
+            "Simplify README for non-technical users",
+            "Update README with new title format and image",
+            "Add Electron onboarding, setup scripts, and macOS release workflow",
+            "Simplify editing flow to silence-only with pause slider",
+            "Update pipeline and tests"
+          ]
+        },
+        {
+          "periodStart": "2025-12-20T21:00:04.537Z",
+          "periodEnd": "2026-01-03T21:00:04.537Z",
+          "periodLabel": "20 Dec 2025 - 03 Jan 2026",
+          "latestCommitAt": "2026-01-03T18:47:10Z",
+          "commitCount": 3,
+          "headline": "Pushing the product forward",
+          "narrative": "Mmmmh moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making make your Youtube videos snappier by removing silences, and non-lexical fillers more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "focusBullets": [
+            "Improved defaults",
+            "Added transitions between cuts",
+            "Added breathing space between cuts"
+          ],
+          "commitMessages": [
+            "improved defaults",
+            "added transitions between cuts",
+            "added breathing space between cuts"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "Update README with app features and banner image",
+        "Merge release-v0.1.1-clean with simplified README",
+        "Simplify README for non-technical users",
+        "Update README with new title format and image",
+        "Add Electron onboarding, setup scripts, and macOS release workflow",
+        "Simplify editing flow to silence-only with pause slider",
+        "Update pipeline and tests",
+        "improved defaults",
+        "added transitions between cuts",
+        "added breathing space between cuts"
+      ]
+    },
+    {
+      "name": "Signify App",
+      "repository": "signify-app",
+      "fullName": "shreyas-makes/signify-app",
+      "url": "https://github.com/shreyas-makes/signify-app",
+      "homepage": "https://www.signifywriting.com/",
+      "description": "Writing platform to share 100% human verified content",
+      "language": "TypeScript",
+      "stars": 1,
+      "commitCount": 10,
+      "pushedAt": "2026-03-04T22:05:51Z",
+      "latestCommitAt": "2026-03-04T21:59:43Z",
+      "updateCount": 4,
+      "updates": [
+        {
+          "periodStart": "2026-02-28T21:00:04.537Z",
+          "periodEnd": "2026-03-14T21:00:04.537Z",
+          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "latestCommitAt": "2026-03-04T21:59:43Z",
+          "commitCount": 1,
+          "headline": "Pushing the product forward",
+          "narrative": "Signify App moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making writing platform to share 100% human verified content more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The project moves closer to public-adoption shape: clearer install paths, cleaner release boundaries, and less hidden context.",
+          "focusBullets": [
+            "Packaged a clearer public release"
+          ],
+          "commitMessages": [
+            "finalize release defaults and privacy controls"
+          ]
+        },
+        {
+          "periodStart": "2026-02-14T21:00:04.537Z",
+          "periodEnd": "2026-02-28T21:00:04.537Z",
+          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "latestCommitAt": "2026-02-15T14:54:46Z",
+          "commitCount": 1,
+          "headline": "Pushing the product forward",
+          "narrative": "Signify App moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making writing platform to share 100% human verified content more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "focusBullets": [],
+          "commitMessages": [
+            "x"
+          ]
+        },
+        {
+          "periodStart": "2026-01-17T21:00:04.537Z",
+          "periodEnd": "2026-01-31T21:00:04.537Z",
+          "periodLabel": "17 Jan 2026 - 31 Jan 2026",
+          "latestCommitAt": "2026-01-31T11:52:35Z",
+          "commitCount": 4,
+          "headline": "Pushing the product forward",
+          "narrative": "Signify App moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making writing platform to share 100% human verified content more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The project moves closer to public-adoption shape: clearer install paths, cleaner release boundaries, and less hidden context.",
+          "focusBullets": [
+            "Updated the specs",
+            "Optimised and pivoted to a chrome extension, setup backend auth",
+            "Video on landing page is on autoplay"
+          ],
+          "commitMessages": [
+            "updated the specs",
+            "optimised and pivoted to a chrome extension, setup backend auth",
+            "video on landing page is on autoplay",
+            "added"
+          ]
+        },
+        {
+          "periodStart": "2025-12-20T21:00:04.537Z",
+          "periodEnd": "2026-01-03T21:00:04.537Z",
+          "periodLabel": "20 Dec 2025 - 03 Jan 2026",
+          "latestCommitAt": "2025-12-30T17:15:01Z",
+          "commitCount": 4,
+          "headline": "Pushing the product forward",
+          "narrative": "Signify App moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making writing platform to share 100% human verified content more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "focusBullets": [
+            "Redesign",
+            "Added buttons to landing page",
+            "Added icons to slash menu"
+          ],
+          "commitMessages": [
+            "x",
+            "redesign",
+            "added buttons to landing page",
+            "added icons to slash menu"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "finalize release defaults and privacy controls",
+        "x",
+        "updated the specs",
+        "optimised and pivoted to a chrome extension, setup backend auth",
+        "video on landing page is on autoplay",
+        "added",
+        "x",
+        "redesign",
+        "added buttons to landing page",
+        "added icons to slash menu"
+      ]
+    },
+    {
+      "name": "Personal Website",
+      "repository": "personal-website",
+      "fullName": "shreyas-makes/personal-website",
+      "url": "https://github.com/shreyas-makes/personal-website",
+      "homepage": null,
+      "description": "Created a Ghost blog on Astro framework",
+      "language": "Astro",
+      "stars": 2,
+      "commitCount": 10,
+      "pushedAt": "2026-03-04T21:45:14Z",
+      "latestCommitAt": "2026-03-04T21:45:10Z",
+      "updateCount": 2,
+      "updates": [
+        {
+          "periodStart": "2026-02-28T21:00:04.537Z",
+          "periodEnd": "2026-03-14T21:00:04.537Z",
+          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "latestCommitAt": "2026-03-04T21:45:10Z",
+          "commitCount": 7,
+          "headline": "Pushing the product forward",
+          "narrative": "Personal Website moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making created a Ghost blog on Astro framework more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "focusBullets": [
+            "Apply design token system updates",
+            "Changed titles",
+            "Improved footer"
+          ],
+          "commitMessages": [
+            "apply design token system updates",
+            "x",
+            "x",
+            "changed titles",
+            "new",
+            "improved footer",
+            "added llms text, added and improved footer with llm linkage"
+          ]
+        },
+        {
+          "periodStart": "2026-02-14T21:00:04.537Z",
+          "periodEnd": "2026-02-28T21:00:04.537Z",
+          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "latestCommitAt": "2026-02-22T15:22:06Z",
+          "commitCount": 3,
+          "headline": "Cleaning the foundation for the next wave",
+          "narrative": "Personal Website had an internal cleanup fortnight. It is the sort of structural work that does not look flashy in a screenshot, but usually pays off by making future iteration faster and less brittle.",
+          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "focusBullets": [
+            "New book added",
+            "Updated font from verdana to elstob as primary",
+            "Simplified the project structure to reduce maintenance overhead"
+          ],
+          "commitMessages": [
+            "new book added",
+            "updated font from verdana to elstob as primary",
+            "removed kudos pattern"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "apply design token system updates",
+        "x",
+        "x",
+        "changed titles",
+        "new",
+        "improved footer",
+        "added llms text, added and improved footer with llm linkage",
+        "new book added",
+        "updated font from verdana to elstob as primary",
+        "removed kudos pattern"
+      ]
+    },
+    {
+      "name": "Semantic Search",
+      "repository": "semantic-search",
+      "fullName": "shreyas-makes/semantic-search",
+      "url": "https://github.com/shreyas-makes/semantic-search",
+      "homepage": null,
+      "description": "Do semantic search on your Obsidian vault with fully-local qmd search",
+      "language": "TypeScript",
+      "stars": 1,
+      "commitCount": 2,
+      "pushedAt": "2026-02-27T23:10:18Z",
+      "latestCommitAt": "2026-02-27T23:07:56Z",
+      "updateCount": 1,
+      "updates": [
+        {
+          "periodStart": "2026-02-14T21:00:04.537Z",
+          "periodEnd": "2026-02-28T21:00:04.537Z",
+          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "latestCommitAt": "2026-02-27T23:07:56Z",
+          "commitCount": 2,
+          "headline": "Pushing the product forward",
+          "narrative": "Semantic Search moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making do semantic search on your Obsidian vault with fully-local qmd search more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The product becomes safer to rely on for actual work, which is usually the threshold between “interesting” and “worth keeping around.”",
+          "focusBullets": [
+            "Fix ItemView onOpen/onClose lint warnings",
+            "Packaged a clearer public release"
+          ],
+          "commitMessages": [
+            "Fix ItemView onOpen/onClose lint warnings",
+            "Initial release 1.0.1"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "Fix ItemView onOpen/onClose lint warnings",
+        "Initial release 1.0.1"
+      ]
+    }
+  ]
+}

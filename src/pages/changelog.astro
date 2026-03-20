@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import changelog from '../data/project-changelog.json';
+
+const generatedAtLabel = new Date(changelog.generatedAt).toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+});
+
+function getIsoWeekParts(value: string) {
+  const date = new Date(value);
+  const utcDate = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  const isoDay = utcDate.getUTCDay() || 7;
+
+  utcDate.setUTCDate(utcDate.getUTCDate() + 4 - isoDay);
+
+  const isoYear = utcDate.getUTCFullYear();
+  const yearStart = new Date(Date.UTC(isoYear, 0, 1));
+  const weekNumber = Math.ceil((((utcDate.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
+
+  return { isoYear, weekNumber };
+}
+
+function formatUpdatePeriod(periodEnd: string, fallbackLabel: string) {
+  if (!periodEnd) return fallbackLabel;
+
+  const { isoYear, weekNumber } = getIsoWeekParts(periodEnd);
+  return `Week ${weekNumber}, ${isoYear}`;
+}
+
+function toSentenceCase(value: string) {
+  if (!value) return value;
+  return value.charAt(0) + value.slice(1).toLowerCase();
+}
+---
+
+<BaseLayout
+  title="Open Source Changelog"
+  description="A rolling, bi-weekly narrative changelog of Shreyas Prakash's open source projects."
+>
+  <main class="changelog-shell">
+    <section class="changelog-hero">
+      <div class="changelog-hero__titleblock">
+        <p class="changelog-eyebrow">Open Source Changelog</p>
+        <h1 class="changelog-title">A bi-weekly field report from my open source work.</h1>
+        <p class="changelog-intro">
+          Fortnightly updates on all the open source projects I've been shipping.
+        </p>
+      </div>
+
+      <div class="changelog-meta" aria-label="Changelog metadata">
+        <div class="changelog-meta__item">
+          <span>Updated {generatedAtLabel}</span>
+        </div>
+        <div class="changelog-meta__item">
+          <span>{changelog.projectCount} active projects</span>
+        </div>
+      </div>
+    </section>
+
+    {changelog.projects.length > 0 ? (
+      <section class="project-list" aria-label="Project changelog">
+        {changelog.projects.map((project, index) => (
+          <article class:list={['project-band', index === 0 && 'project-band--lead']}>
+            <div class="project-band__masthead">
+              <div class="project-band__identity">
+                <h2 class="project-band__title">
+                  <a href={project.url} target="_blank" rel="noreferrer">{toSentenceCase(project.name)}</a>
+                </h2>
+                {project.description && <p class="project-band__description">{project.description}</p>}
+              </div>
+
+              <dl class="project-band__stats">
+                <div>
+                  <dt>Commits</dt>
+                  <dd>{project.commitCount} in {changelog.historyMonths} months</dd>
+                </div>
+                <div>
+                  <dt>Updates</dt>
+                  <dd>{project.updateCount} fortnights</dd>
+                </div>
+              </dl>
+            </div>
+
+            <ol class="project-band__timeline">
+              {project.updates.map((update) => (
+                <li class="update-card">
+                  <div class="update-card__period">
+                    <p class="update-card__eyebrow" aria-label={update.periodLabel} title={update.periodLabel}>
+                      {formatUpdatePeriod(update.periodEnd, update.periodLabel)}
+                    </p>
+                    <span class="update-card__commitcount">{update.commitCount} commits</span>
+                  </div>
+
+                  <div class="update-card__body">
+                    <p class="update-card__narrative">{update.narrative}</p>
+
+                    <ul class="update-card__bullets" aria-label={`Changes in ${update.periodLabel}`}>
+                      {update.focusBullets.map((bullet) => (
+                        <li>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </article>
+        ))}
+      </section>
+    ) : (
+      <section class="project-band">
+        <h2 class="project-band__title">No recent project activity</h2>
+        <p class="project-band__description">
+          Nothing starred and public has moved inside the current three-month window, so there is nothing worth narrating yet.
+        </p>
+      </section>
+    )}
+  </main>
+</BaseLayout>
+
+<style>
+  .changelog-shell {
+    width: min(100%, 56rem);
+    margin: 0 auto;
+    padding: var(--space-300) var(--space-200) var(--space-500);
+    color: var(--color-text-primary);
+  }
+
+  .changelog-hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-250);
+    align-items: start;
+    padding: var(--space-350) 0 var(--space-400);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  .changelog-hero__titleblock {
+    display: grid;
+    gap: var(--space-150);
+    width: 100%;
+    max-width: none;
+  }
+
+  .changelog-eyebrow,
+  .update-card__eyebrow {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-ui-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .changelog-title {
+    margin: 0;
+    max-width: none;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(2.3rem, 4.9vw, 4.5rem);
+    font-weight: var(--font-weight-heading);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    text-wrap: pretty;
+  }
+
+  .changelog-intro,
+  .project-band__description,
+  .update-card__narrative,
+  .update-card__bullets li {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: clamp(1.05rem, 1.6vw, 1.24rem);
+    line-height: 1.72;
+  }
+
+  .changelog-intro {
+    max-width: 48rem;
+  }
+
+  .changelog-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-100);
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .changelog-meta__item {
+    display: inline-flex;
+    align-items: center;
+    min-height: calc(var(--space-200) + var(--space-100));
+    padding: var(--space-50) var(--space-150);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-pill);
+    background: var(--color-bg-surface);
+  }
+
+  .project-list {
+    display: grid;
+    gap: var(--space-400);
+    padding-top: var(--space-400);
+  }
+
+  .project-band {
+    display: grid;
+    gap: var(--space-250);
+    padding-top: var(--space-300);
+    border-top: 1px solid var(--color-border-default);
+  }
+
+  .project-band--lead {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .project-band__masthead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-250);
+    align-items: start;
+  }
+
+  .project-band__identity {
+    display: grid;
+    gap: var(--space-100);
+  }
+
+  .project-band__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+  }
+
+  .project-band__title {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+  }
+
+  .project-band__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .project-band__title a:hover,
+  .project-band__title a:focus-visible {
+    color: var(--color-action-primary);
+  }
+
+  .project-band__timeline {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-band__stats {
+    display: grid;
+    gap: var(--space-150);
+    min-width: 15rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .project-band__stats div {
+    display: grid;
+    gap: var(--space-25);
+  }
+
+  .project-band__stats dt {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-ui-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .project-band__stats dd {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .update-card {
+    display: grid;
+    grid-template-columns: minmax(12rem, 14rem) minmax(0, 1fr);
+    gap: var(--space-250);
+    align-items: start;
+    padding: var(--space-250) 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .update-card__period,
+  .update-card__body {
+    display: grid;
+    gap: var(--space-100);
+  }
+
+  .update-card__commitcount {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .update-card__bullets {
+    margin: 0;
+    padding-left: var(--space-150);
+    max-width: 42rem;
+    list-style: disc;
+    list-style-position: outside;
+  }
+
+  .update-card__bullets li + li {
+    margin-top: var(--space-100);
+  }
+
+  @media (max-width: 64rem) {
+    .project-band__masthead,
+    .update-card {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .changelog-shell {
+      padding-inline: var(--space-150);
+    }
+
+    .changelog-meta {
+      gap: var(--space-75);
+    }
+
+    .project-band__stats {
+      min-width: 0;
+    }
+  }
+</style>

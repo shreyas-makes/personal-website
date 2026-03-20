@@ -3,6 +3,10 @@ title: Future of work with Laetitia Vitaud
 date: 2020-08-15T10:12:36.000Z
 slug: future-of-work
 description: post modern feminism, anti-natalism, culture eating technology for breakfast
+tags:
+  - interviewing
+  - careers
+  - trends
 ---
 **Disclaimer:** This transcript has been processed and cleaned using AI language models to improve readability from the original raw audio recording. While efforts have been made to preserve accuracy and intent, the content may contain errors, omissions, or misinterpretations from the automated transcription process, and has not been reviewed by the original speakers. For critical use or citation purposes, please refer to the original audio recording.
 

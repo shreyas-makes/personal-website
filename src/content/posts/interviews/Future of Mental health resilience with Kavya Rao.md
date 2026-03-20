@@ -3,6 +3,10 @@ title: Future of Mental Health with Kavya Rao
 date: 2020-08-15T10:12:36.000Z
 slug: mental-health
 description: mental health resilience, suicide prevention helplines, rural health
+tags:
+  - interviewing
+  - digital-health
+  - education
 ---
 **Disclaimer:** This transcript has been processed and cleaned using AI language models to improve readability from the original raw audio recording. While efforts have been made to preserve accuracy and intent, the content may contain errors, omissions, or misinterpretations from the automated transcription process, and has not been reviewed by the original speakers. For critical use or citation purposes, please refer to the original audio recording.
 

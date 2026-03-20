@@ -152,13 +152,23 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 <BaseLayout title="Shreyas" showMainFooterSection={false}>
   <ViewTransitions client:only />
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
-    <section class="mt-8 mb-12 max-w-4xl">
-      <div class="text-gray-800 dark:text-gray-200 leading-relaxed space-y-4">
-        <p>Hi! I'm Shreyas. I'm a Product Manager working at <a href="https://nature.com/" class="underline hover:no-underline" target="_blank" rel="noopener noreferrer">Springer Nature</a>. I like trying to understand the world, building things that improve it, and talking about it on the Internet.</p> 
+    <section class="homepage-intro mt-8 mb-12 max-w-4xl">
+      <div class="intro-copy text-gray-800 dark:text-gray-200 leading-relaxed space-y-4">
+        <p>Hi! I'm Shreyas. I'm a Product Manager working at <a href="https://nature.com/" class="underline hover:no-underline" target="_blank" rel="noopener noreferrer">Springer Nature</a>. I like trying to understand the world, building things that improve it, and talking about it on the Internet.</p>
         <p>I like creating things—essays, websites, scripts, products. Anything which is positive sum, and impactful.</p>
         <p>Writing is thinking. It's something I deeply enjoy. 10 years from now, or a 100, It might probably outlive me. This is an attempt at that posterity. I write about what I'm building, what I'm learning, and the ideas I'm exploring:</p>
-
       </div>
+      <figure class="intro-portrait">
+        <img
+          id="propic"
+          src="/images/og/avatar-circle.png"
+          width="480"
+          height="480"
+          alt="Portrait of Shreyas Prakash"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
     </section>
 
     <section class="my-8">
@@ -325,6 +335,52 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
   </main>
 </BaseLayout>
+
+<style>
+  .homepage-intro {
+    display: grid;
+    gap: var(--space-200);
+    align-items: start;
+  }
+
+  .intro-copy {
+    min-width: 0;
+  }
+
+  .intro-portrait {
+    order: -1;
+    margin: 0 auto;
+    width: min(100%, 14rem);
+  }
+
+  .intro-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-pill);
+  }
+
+  @media (min-width: 768px) {
+    .homepage-intro {
+      grid-template-columns: minmax(0, 1fr) minmax(16rem, 1fr);
+      gap: var(--space-400);
+    }
+
+    .intro-portrait {
+      order: 0;
+      justify-self: end;
+      align-self: start;
+      width: min(100%, 44rem);
+      margin: 0;
+      position: sticky;
+      top: var(--space-200);
+    }
+
+    .intro-portrait img {
+      max-width: 36rem;
+    }
+  }
+</style>
 
 <style>
   /* Clean, minimal styling */

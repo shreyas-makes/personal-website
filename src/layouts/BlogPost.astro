@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 
 const readingTime = body ? calculateReadingTime(body) : null;
-const authorAvatar = 'https://0.gravatar.com/avatar/991d6680b622c30f9c9e06b25ab884e4e6a18dd35deac1a61f7c9464e1a6d1c3?size=256';
+const authorAvatar = '/images/og/avatar-circle.png';
 const authorName = 'Shreyas Prakash';
 const shareUrl = `${Astro.site}${slug}/`;
 const shareTitle = title ?? 'Post';
@@ -58,20 +58,15 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
           {title}
         </h1>
 
-        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-6">
-          <div class="flex-shrink-0">
-            <img
-              src={authorAvatar}
-              alt={`${authorName} headshot`}
-              width="80"
-              height="80"
-              class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-gray-900 dark:border-gray-100 object-cover"
-            />
-          </div>
-
-          <div class="flex flex-col items-center gap-3 text-gray-900 dark:text-gray-100 sm:items-start">
-            <p class="text-lg font-semibold">{authorName}</p>
-          </div>
+        <div class="author-lockup mt-10">
+          <img
+            src={authorAvatar}
+            alt={`${authorName} headshot`}
+            width="80"
+            height="80"
+            class="author-lockup__avatar"
+          />
+          <p class="author-lockup__name">{authorName}</p>
         </div>
       </header>
       
@@ -139,6 +134,46 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
     margin: 2rem auto;
     border-radius: 8px;
     display: block;
+  }
+
+  .author-lockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-200);
+  }
+
+  .author-lockup__avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    margin: 0;
+  }
+
+  .author-lockup__name {
+    margin: 0;
+    padding-left: var(--space-150);
+    border-left: 1px solid var(--color-border-default);
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 0.95rem + 0.45vw, 1.3rem);
+    line-height: 1.1;
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 640px) {
+    .author-lockup {
+      flex-direction: column;
+      gap: var(--space-150);
+    }
+
+    .author-lockup__name {
+      padding-left: 0;
+      padding-top: var(--space-150);
+      border-left: 0;
+      border-top: 1px solid var(--color-border-default);
+      text-align: center;
+    }
   }
 
   .post-divider {
