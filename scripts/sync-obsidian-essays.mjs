@@ -14,13 +14,20 @@ const getArg = (flag, fallback) => {
 
 const dryRun = args.includes('--dry-run');
 
+const defaultSourceDir =
+  process.env.OBSIDIAN_ESSAYS_DIR ??
+  '/Users/shreyas/Desktop/Shreyas Personal/Essays';
+const defaultAttachmentsDir =
+  process.env.OBSIDIAN_ATTACHMENTS_DIR ??
+  '/Users/shreyas/Desktop/Shreyas Personal/Attachments';
+
 const sourceDir = getArg(
   '--source',
-  '/Users/shreyas/Desktop/Projects/Shreyas Personal/Essays'
+  defaultSourceDir
 );
 const sourceAttachmentsDir = getArg(
   '--attachments',
-  '/Users/shreyas/Desktop/Projects/Shreyas Personal/Attachments'
+  defaultAttachmentsDir
 );
 const destPostsDir = getArg(
   '--dest',
@@ -88,6 +95,11 @@ const copyIfNewer = async (src, dest) => {
 };
 
 const sync = async () => {
+  const sourceStat = await fs.stat(sourceDir).catch(() => null);
+  if (!sourceStat?.isDirectory()) {
+    throw new Error(`Source directory not found at ${sourceDir}`);
+  }
+
   await ensureDir(destPostsDir);
   await ensureDir(destAttachmentsDir);
 

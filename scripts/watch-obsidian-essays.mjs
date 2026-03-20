@@ -15,13 +15,20 @@ const getArg = (flag, fallback) => {
 
 const runOnce = args.includes('--once');
 
+const defaultSourceDir =
+  process.env.OBSIDIAN_ESSAYS_DIR ??
+  '/Users/shreyas/Desktop/Shreyas Personal/Essays';
+const defaultAttachmentsDir =
+  process.env.OBSIDIAN_ATTACHMENTS_DIR ??
+  '/Users/shreyas/Desktop/Shreyas Personal/Attachments';
+
 const sourceDir = getArg(
   '--source',
-  '/Users/shreyas/Desktop/Projects/Shreyas Personal/Essays'
+  defaultSourceDir
 );
 const attachmentsDir = getArg(
   '--attachments',
-  '/Users/shreyas/Desktop/Projects/Shreyas Personal/Attachments'
+  defaultAttachmentsDir
 );
 
 let debounceTimer = null;
@@ -66,8 +73,17 @@ if (runOnce) {
   console.log(`Essays: ${sourceDir}`);
   console.log(`Attachments: ${attachmentsDir}`);
 
-  watchDir(sourceDir);
-  watchDir(attachmentsDir);
+  if (fs.existsSync(sourceDir)) {
+    watchDir(sourceDir);
+  } else {
+    console.log(`Skipping essays watch: directory not found at ${sourceDir}`);
+  }
+
+  if (fs.existsSync(attachmentsDir)) {
+    watchDir(attachmentsDir);
+  } else {
+    console.log(`Skipping attachments watch: directory not found at ${attachmentsDir}`);
+  }
 
   runSync();
 }
