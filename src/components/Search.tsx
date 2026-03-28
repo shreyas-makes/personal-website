@@ -104,19 +104,11 @@ export default function Search({ searchIndex }: { searchIndex: SearchEntry[] }) 
       const url = getUrl(results[selectedIndex]);
       isSearchOpen.set(false);
 
-      // Get current theme before navigation
-      const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-
       if (document.startViewTransition) {
         document.startViewTransition(async () => {
-          // Preserve the current theme state
-          localStorage.setItem('theme', currentTheme);
-          document.cookie = `theme=${currentTheme};path=/;max-age=31536000`;
           window.location.href = url;
         });
       } else {
-        localStorage.setItem('theme', currentTheme);
-        document.cookie = `theme=${currentTheme};path=/;max-age=31536000`;
         window.location.href = url;
       }
     }
@@ -126,20 +118,12 @@ export default function Search({ searchIndex }: { searchIndex: SearchEntry[] }) 
     e.preventDefault();
     const url = getUrl(result);
     isSearchOpen.set(false);
-    
-    // Get current theme before navigation
-    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    
+
     if (document.startViewTransition) {
       document.startViewTransition(async () => {
-        // Preserve the current theme state
-        localStorage.setItem('theme', currentTheme);
-        document.cookie = `theme=${currentTheme};path=/;max-age=31536000`;
         window.location.href = url;
       });
     } else {
-      localStorage.setItem('theme', currentTheme);
-      document.cookie = `theme=${currentTheme};path=/;max-age=31536000`;
       window.location.href = url;
     }
   };
@@ -150,17 +134,17 @@ export default function Search({ searchIndex }: { searchIndex: SearchEntry[] }) 
     <div className={`fixed inset-0 ${$isSearchOpen ? 'block' : 'hidden'} z-[100] px-4 sm:px-6 md:px-8`}>
       {/* Overlay - update background color to match theme */}
       <div 
-        className="fixed inset-0 bg-[#FFFFFF] dark:bg-gray-900/75 transition-opacity"
+        className="fixed inset-0 bg-[#FFFFFF] transition-opacity"
         onClick={() => isSearchOpen.set(false)}
       />
       
       {/* Search modal */}
-      <div className="relative mx-auto max-w-3xl transform divide-y divide-gray-200 dark:divide-gray-800 overflow-hidden rounded-lg bg-[#FFFFFF] dark:bg-[#161618] shadow-2xl ring-2 ring-black dark:ring-white transition-all mt-16">
+      <div className="relative mx-auto max-w-3xl transform divide-y divide-gray-200 overflow-hidden rounded-lg bg-[#FFFFFF] shadow-2xl ring-2 ring-black transition-all mt-16">
         <div className="relative">
           <input
             ref={searchInputRef}
             type="text"
-            className="block w-full border-0 bg-transparent py-4 pl-6 pr-12 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-0 focus:outline-none focus:border-black dark:focus:border-white sm:text-sm"
+            className="block w-full border-0 bg-transparent py-4 pl-6 pr-12 text-gray-900 placeholder:text-gray-500 focus:ring-0 focus:outline-none focus:border-black sm:text-sm"
             placeholder="Search posts..."
             value={query}
             onChange={(e) => handleSearch(e.target.value)}
@@ -176,20 +160,20 @@ export default function Search({ searchIndex }: { searchIndex: SearchEntry[] }) 
           {query && (
             <div className="px-6 py-3">
               {results.length > 0 ? (
-                <ul className="divide-y divide-gray-100 dark:divide-gray-800">
+                <ul className="divide-y divide-gray-100 ">
                   {results.map((result, index) => (
                     <li key={result.slug}>
                       <a 
                         href={getUrl(result)}
-                        className="block px-6 py-4 hover:bg-gray-100 dark:hover:bg-gray-800 -mx-6 transition-colors duration-150"
+                        className="block px-6 py-4 hover:bg-gray-100 -mx-6 transition-colors duration-150"
                         onClick={(e) => handleResultClick(e, result)}
                         data-astro-prefetch="viewport"
                       >
-                        <h3 className="text-base font-normal text-gray-900 dark:text-gray-100">
+                        <h3 className="text-base font-normal text-gray-900 ">
                           {result.title}
                         </h3>
                         {result.tags && (
-                          <div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                          <div className="mt-1 text-sm text-gray-500 ">
                             {result.tags.join(', ')}
                           </div>
                         )}
@@ -198,7 +182,7 @@ export default function Search({ searchIndex }: { searchIndex: SearchEntry[] }) 
                   ))}
                 </ul>
               ) : (
-                <p className="text-center text-gray-500 dark:text-gray-400 py-12">
+                <p className="text-center text-gray-500 py-12">
                   No results found for "{query}"
                 </p>
               )}

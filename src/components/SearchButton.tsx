@@ -4,7 +4,7 @@ export default function SearchButton() {
   return (
     <button
       onClick={() => isSearchOpen.set(true)}
-      className="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+      className="p-2 text-gray-500 hover:text-gray-800 transition-colors"
       aria-label="Search"
     >
       <svg 

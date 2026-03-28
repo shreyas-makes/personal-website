@@ -153,33 +153,22 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
   <ViewTransitions client:only />
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
     <section class="homepage-intro mt-8 mb-12 max-w-4xl">
-      <div class="intro-copy text-gray-800 dark:text-gray-200 leading-relaxed space-y-4">
+      <div class="intro-copy text-gray-800 leading-relaxed space-y-4">
         <p>Hi! I'm Shreyas. I'm a Product Manager working at <a href="https://nature.com/" class="underline hover:no-underline" target="_blank" rel="noopener noreferrer">Springer Nature</a>. I like trying to understand the world, building things that improve it, and talking about it on the Internet.</p>
         <p>I like creating things—essays, websites, scripts, products. Anything which is positive sum, and impactful.</p>
         <p>Writing is thinking. It's something I deeply enjoy. 10 years from now, or a 100, It might probably outlive me. This is an attempt at that posterity. I write about what I'm building, what I'm learning, and the ideas I'm exploring:</p>
       </div>
-      <figure class="intro-portrait">
-        <img
-          id="propic"
-          src="/images/og/avatar-circle.png"
-          width="480"
-          height="480"
-          alt="Portrait of Shreyas Prakash"
-          loading="eager"
-          decoding="async"
-        />
-      </figure>
     </section>
 
     <section class="my-8">
-      <h2 class="text-2xl sm:text-3xl font-medium text-gray-600 dark:text-gray-400 mb-4">Themes</h2>
-      <div class="flex flex-wrap items-center text-gray-800 dark:text-gray-200 leading-relaxed gap-y-2" style="word-break: break-word;">
+      <h2 class="text-2xl sm:text-3xl font-medium text-gray-600 mb-4">Themes</h2>
+      <div class="flex flex-wrap items-center text-gray-800 leading-relaxed gap-y-2" style="word-break: break-word;">
         {Object.keys(topTags).map((tag) => (
           <span class="flex items-baseline gap-2 mr-4">
-            <span class="text-gray-400 dark:text-gray-600" aria-hidden="true">•</span>
+            <span class="text-gray-400 " aria-hidden="true">•</span>
             <a 
               href={`/tags/${tag}`} 
-              class="underline hover:no-underline text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+              class="underline hover:no-underline text-gray-800 hover:text-gray-600 "
               style="text-decoration-skip-ink: auto; text-underline-position: under;"
               title={`View posts tagged "${tag}"`}
             >{tag}</a>
@@ -189,19 +178,19 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     </section>
 
         <!-- Latest section -->
-    <section class="mt-12 pt-10 mb-16 border-t border-gray-200 dark:border-gray-800">
-      <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400 mb-6 sm:mb-8">Recently published</h2>
+    <section class="mt-12 pt-10 mb-16 border-t border-gray-200 ">
+      <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 mb-6 sm:mb-8">Recently published</h2>
       <div class="space-y-8 sm:space-y-12">
         {latestPosts.map((post) => (
           <article class="group">
             <a href={`/${post.slug}`} class="block space-y-2">
-              <h3 class="text-2xl sm:text-3xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 underline underline-offset-4 decoration-1">
+              <h3 class="text-2xl sm:text-3xl font-normal text-gray-900 group-hover:text-gray-600 underline underline-offset-4 decoration-1">
                 {post.data.title}
               </h3>
-              <div class="text-gray-600 dark:text-gray-400 text-base sm:text-lg">
+              <div class="text-gray-600 text-base sm:text-lg">
                 {formatDate(post.data.date)} — {post.readingTime}
               </div>
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-lg sm:text-xl">
+              <p class="text-gray-600 leading-relaxed text-lg sm:text-xl">
                 {post.excerpt}
               </p>
             </a>
@@ -212,17 +201,17 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
 
     <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <section class="mt-12">
       <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400">Essays</h2>
-        <div class="flex items-center text-base sm:text-lg text-gray-500 dark:text-gray-400">
+        <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 ">Essays</h2>
+        <div class="flex items-center text-base sm:text-lg text-gray-500 ">
           <span>{posts.regular.length} posts</span>
           {posts.regular.length > 13 && (
             <>
-              <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
-              <a href="/posts" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+              <span class="mx-2 text-gray-300 ">|</span>
+              <a href="/posts" class="text-gray-600 hover:text-gray-900 underline underline-offset-4">
                 More essays →
               </a>
             </>
@@ -236,12 +225,12 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
           
           return (
             <div class="flex items-baseline gap-4">
-              <span class="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-mono tabular-nums min-w-fit">
+              <span class="text-gray-500 text-base sm:text-lg font-mono tabular-nums min-w-fit">
                 {year}
               </span>
               <a 
                 href={`/${post.slug}`} 
-                class="text-xl sm:text-2xl text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                class="text-xl sm:text-2xl text-gray-900 hover:text-gray-600 underline underline-offset-4 decoration-1"
               >
                 {post.data.title}
               </a>
@@ -252,17 +241,17 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     </section>
 
     <!-- Add visual separator before interviews -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <!-- Interviews Section -->
     {interviews.length > 0 && (
       <section class="mb-16">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400">Interviews</h2>
-          <div class="flex items-center text-base sm:text-lg text-gray-500 dark:text-gray-400">
+          <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 ">Interviews</h2>
+          <div class="flex items-center text-base sm:text-lg text-gray-500 ">
             <span>{interviews.length} interviews</span>
-            <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
-            <a href="/interviews" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+            <span class="mx-2 text-gray-300 ">|</span>
+            <a href="/interviews" class="text-gray-600 hover:text-gray-900 underline underline-offset-4">
               View all →
             </a>
           </div>
@@ -274,12 +263,12 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             
             return (
               <div class="flex items-baseline gap-4">
-                <span class="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-mono tabular-nums min-w-fit">
+                <span class="text-gray-500 text-base sm:text-lg font-mono tabular-nums min-w-fit">
                   {year}
                 </span>
                 <a 
                   href={`/${interview.slug}`} 
-                  class="text-xl sm:text-2xl text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                  class="text-xl sm:text-2xl text-gray-900 hover:text-gray-600 underline underline-offset-4 decoration-1"
                 >
                   {interview.data.title}
                 </a>
@@ -291,19 +280,19 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     )}
 
     <!-- Add visual separator before rough notes -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
      <!-- Rough Notes Section -->
     {posts.roughNotes.length > 0 && (
       <section class="mb-16">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 dark:text-gray-400">Notes</h2>
-          <div class="flex items-center text-base sm:text-lg text-gray-500 dark:text-gray-400">
+          <h2 class="text-2xl sm:text-3xl font-normal text-gray-600 ">Notes</h2>
+          <div class="flex items-center text-base sm:text-lg text-gray-500 ">
             <span>{posts.roughNotes.length} posts</span>
             {posts.roughNotes.length > 20 && (
               <>
-                <span class="mx-2 text-gray-300 dark:text-gray-700">|</span>
-                <a href="/tags/rough-notes" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                <span class="mx-2 text-gray-300 ">|</span>
+                <a href="/tags/rough-notes" class="text-gray-600 hover:text-gray-900 underline underline-offset-4">
                   Read notes →
                 </a>
               </>
@@ -317,12 +306,12 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
             
             return (
               <div class="flex items-baseline gap-4">
-                <span class="text-gray-500 dark:text-gray-400 text-base sm:text-lg font-mono tabular-nums min-w-fit">
+                <span class="text-gray-500 text-base sm:text-lg font-mono tabular-nums min-w-fit">
                   {year}
                 </span>
                 <a 
                   href={`/${post.slug}`} 
-                  class="text-xl sm:text-2xl text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 underline underline-offset-4 decoration-1"
+                  class="text-xl sm:text-2xl text-gray-900 hover:text-gray-600 underline underline-offset-4 decoration-1"
                 >
                   {post.data.title}
                 </a>
@@ -338,47 +327,13 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
 <style>
   .homepage-intro {
-    display: grid;
-    gap: var(--space-200);
-    align-items: start;
+    display: block;
   }
 
   .intro-copy {
     min-width: 0;
-  }
-
-  .intro-portrait {
-    order: -1;
-    margin: 0 auto;
-    width: min(100%, 14rem);
-  }
-
-  .intro-portrait img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: var(--radius-pill);
-  }
-
-  @media (min-width: 768px) {
-    .homepage-intro {
-      grid-template-columns: minmax(0, 1fr) minmax(16rem, 1fr);
-      gap: var(--space-400);
-    }
-
-    .intro-portrait {
-      order: 0;
-      justify-self: end;
-      align-self: start;
-      width: min(100%, 44rem);
-      margin: 0;
-      position: sticky;
-      top: var(--space-200);
-    }
-
-    .intro-portrait img {
-      max-width: 36rem;
-    }
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
   }
 </style>
 
@@ -411,15 +366,6 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
   ul {
     list-style: none;
     padding: 0;
-  }
-
-  /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-primary: #e1e1e1;
-      --text-secondary: #a1a1a1;
-      --hover-color: #fff;
-    }
   }
 
 </style> 

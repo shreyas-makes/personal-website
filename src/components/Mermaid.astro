@@ -20,7 +20,7 @@ const { title = "" } = Astro.props;
     // Initialize mermaid with configuration
     (window as any).mermaid.initialize({
       startOnLoad: true,
-      theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+      theme: 'default',
       flowchart: {
         htmlLabels: true,
         useMaxWidth: false
@@ -41,32 +41,6 @@ const { title = "" } = Astro.props;
         useMaxWidth: false
       }
     });
-  });
-
-  // Re-render diagrams on theme change
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (
-        mutation.type === 'attributes' && 
-        mutation.attributeName === 'class' &&
-        (mutation.target as Element).classList.contains('dark') !== undefined
-      ) {
-        try {
-          (window as any).mermaid.initialize({
-            theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default'
-          });
-          (window as any).mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-        } catch (error) {
-          console.error('Error re-rendering mermaid diagrams:', error);
-        }
-      }
-    });
-  });
-
-  // Watch for theme changes
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class']
   });
 
   // Re-render diagrams on page transitions

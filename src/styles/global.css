@@ -190,28 +190,6 @@ video {
   word-break: break-word;
 }
 
-.dark .prose {
-  color: var(--color-text-primary);
-}
-
-.dark .prose h1,
-.dark .prose h2,
-.dark .prose h3,
-.dark .prose h4,
-.dark .prose h5,
-.dark .prose h6,
-.dark .prose p,
-.dark .prose li,
-.dark .prose strong,
-.dark .prose a {
-  color: var(--color-text-primary);
-}
-
-.dark .prose blockquote {
-  color: var(--color-text-muted);
-  border-left-color: var(--color-border-strong);
-}
-
 .prose table {
   width: 100%;
   margin: var(--space-400) var(--space-0);
@@ -255,29 +233,6 @@ video {
 
 .prose table thead {
   white-space: nowrap;
-}
-
-.dark .prose table {
-  box-shadow: var(--shadow-sm-strong);
-}
-
-.dark .prose table th {
-  background-color: var(--color-bg-surface);
-  border-bottom: var(--space-25) solid var(--color-border-strong);
-  color: var(--color-table-text);
-}
-
-.dark .prose table td {
-  border-bottom: 1px solid var(--color-border-strong);
-  color: var(--color-table-text);
-}
-
-.dark .prose table tr:nth-child(even) {
-  background-color: var(--color-bg-muted);
-}
-
-.dark .prose table tr:hover {
-  background-color: var(--color-bg-hover);
 }
 
 @media (max-width: 640px) {
@@ -361,11 +316,6 @@ video {
   transition: opacity var(--motion-duration-fast) var(--motion-easing-standard);
 }
 
-.dark .mermaid-source-toggle {
-  background: var(--color-bg-overlay);
-  color: var(--color-text-on-overlay);
-}
-
 .mermaid-source-toggle:hover {
   opacity: 1;
 }
@@ -393,29 +343,7 @@ video {
   font-size: var(--font-size-mono-sm) !important;
 }
 
-.dark .mermaid .label {
-  color: var(--color-border-default) !important;
-}
-
-.dark .mermaid .edgeLabel {
-  background-color: var(--color-bg-hover) !important;
-  color: var(--color-border-default) !important;
-}
-
-.mermaid .cluster rect,
-.dark .mermaid .cluster rect {
+.mermaid .cluster rect {
   rx: var(--radius-md);
   ry: var(--radius-md);
-}
-
-.dark .mermaid {
-  overflow: auto;
-  text-align: center;
-  max-width: 100%;
-  margin: var(--space-mermaid-y) var(--space-0);
-}
-
-.dark .mermaid svg {
-  max-width: 100%;
-  height: auto;
 }

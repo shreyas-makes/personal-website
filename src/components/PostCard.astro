@@ -14,11 +14,11 @@ const visibleTags = post.data.tags?.filter((tag: string) => tag !== 'rough-notes
 
 <article class="group">
   <a href={`/${post.slug}`} class="block space-y-3">
-    <h3 class="text-lg sm:text-xl font-normal text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-400 leading-snug transition-colors">
+    <h3 class="text-lg sm:text-xl font-normal text-gray-900 group-hover:text-gray-600 leading-snug transition-colors">
       {post.data.title}
     </h3>
     
-    <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+    <div class="flex items-center gap-3 text-xs text-gray-500 ">
       <span>{formattedDate}</span>
       <span>·</span>
       <span>{readingTime}</span>
@@ -30,7 +30,7 @@ const visibleTags = post.data.tags?.filter((tag: string) => tag !== 'rough-notes
       )}
     </div>
     
-    <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm line-clamp-2">
+    <p class="text-gray-600 leading-relaxed text-sm line-clamp-2">
       {excerpt}
     </p>
   </a>

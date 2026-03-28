@@ -35,8 +35,7 @@ Use semantic color aliases from `src/styles/tokens.css`. Components never use ra
 Not applicable.
 
 ## States
-- Default: light theme token values from `:root`
-- Dark: overrides from `:root.dark`
+- Default: token values from `:root`
 - Hover: use `--color-bg-hover` and `--color-action-primary-hover`
 - Focus: inherited from component-level focus styles
 - Disabled: use text/border muted variants where needed

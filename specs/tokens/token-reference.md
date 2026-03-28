@@ -9,7 +9,7 @@ Master map for `src/styles/tokens.css`.
 
 ## Overview
 Layer model:
-1. Layer 1: `--ds-*` primitives and dark-mode overrides
+1. Layer 1: `--ds-*` primitives
 2. Layer 2: semantic aliases consumed by components
 3. Layer 3: component CSS in `src/styles/global.css` only uses Layer 2
 
@@ -65,7 +65,6 @@ Not applicable.
 
 ## States
 - Default: alias resolves to `:root` primitives
-- Dark mode: alias resolves to `:root.dark` primitive overrides
 - Mobile: body/prose/heading aliases resolve to media-query primitive overrides
 
 ## Code example

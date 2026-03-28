@@ -74,12 +74,10 @@ const defaultJsonLd = [
 const extraJsonLd = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 const allJsonLd = [...defaultJsonLd, ...extraJsonLd];
 
-// Static pages cannot read request cookies during prerender.
-const theme = 'light';
 const showAgentation = import.meta.env.DEV;
 ---
 <!DOCTYPE html>
-<html lang="en" class:list={['scroll-smooth', theme]} data-theme={theme} data-astro-transition-persist>
+<html lang="en" class="scroll-smooth" data-astro-transition-persist>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -175,15 +173,6 @@ const showAgentation = import.meta.env.DEV;
       --color-bg-secondary: #F9FAFB;
     }
     
-    /* Dark mode variables */
-    .dark {
-      --color-text-primary: #F9FAFB;
-      --color-text-secondary: #D1D5DB;
-      --color-text-tertiary: #9CA3AF;
-      --color-bg-primary: #161618;
-      --color-bg-secondary: #1F2937;
-    }
-    
     body {
       font-family: var(--font-primary);
       font-size: var(--text-base);
@@ -243,20 +232,12 @@ const showAgentation = import.meta.env.DEV;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
     
-    .dark pre[class*="language-"] {
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.18);
-    }
-
     code[class*="language-"] {
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
       font-size: 0.9em;
       padding: 0.2em 0.4em;
       border-radius: 0.25rem;
       background: rgba(0, 0, 0, 0.06);
-    }
-
-    .dark code[class*="language-"] {
-      background: rgba(255, 255, 255, 0.1);
     }
 
     /* Enhanced inline code styling */
@@ -275,13 +256,6 @@ const showAgentation = import.meta.env.DEV;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
-    .dark :not(pre) > code {
-      background: rgba(45, 55, 72, 0.8);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
     /* Special styling for command-line code */
     code.command-line {
       background: #2d3748 !important;
@@ -289,11 +263,6 @@ const showAgentation = import.meta.env.DEV;
       border: 1px solid #4a5568 !important;
     }
 
-    .dark code.command-line {
-      background: #1a202c !important;
-      color: #ffffff !important;
-      border: 1px solid #2d3748 !important;
-    }
   </style>
   <!-- Add transitions directly via directive -->
   <meta name="astro:transition" content="persist" />
@@ -301,88 +270,13 @@ const showAgentation = import.meta.env.DEV;
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://www.youtube-nocookie.com">
-  <script>
-    // Immediate theme detection to prevent flash - runs before DOM is ready
-    (function() {
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
-      
-      // Immediately apply theme to prevent flash
-      if (typeof document !== 'undefined') {
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(theme);
-        document.documentElement.setAttribute('data-theme', theme);
-      }
-    })();
-    
-    // Full theme handling function
-    function handleTheme() {
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
-      
-      // Apply theme to document
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(theme);
-      document.documentElement.setAttribute('data-theme', theme);
-      
-      // Store theme
-      if (typeof localStorage !== 'undefined') {
-        localStorage.setItem('theme', theme);
-      }
-      document.cookie = `theme=${theme};path=/;max-age=31536000`; // 1 year expiry
-    }
-
-    // Run on DOM content loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', handleTheme);
-    } else {
-      handleTheme();
-    }
-
-    // Run after each view transition - before swap to prevent flash
-    document.addEventListener('astro:before-swap', (ev) => {
-      // Preserve theme during transitions
-      const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-      ev.newDocument.documentElement.classList.remove('light', 'dark');
-      ev.newDocument.documentElement.classList.add(currentTheme);
-      ev.newDocument.documentElement.setAttribute('data-theme', currentTheme);
-    });
-
-    // Also run after swap as backup
-    document.addEventListener('astro:after-swap', handleTheme);
-
-    // Watch for system theme changes
-    if (typeof window !== 'undefined') {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-          document.documentElement.classList.remove('light', 'dark');
-          document.documentElement.classList.add(e.matches ? 'dark' : 'light');
-          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-        }
-      });
-    }
-  </script>
   <!-- Add favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <!-- Remove non-existent font preload -->
   <link rel="modulepreload" href="/src/components/Header.astro">
 </head>
-<body class="min-h-screen flex flex-col bg-[#FFFFFF] dark:bg-[#161618] text-gray-900 dark:text-gray-100 transition-colors duration-300 overflow-x-hidden">
+<body class="min-h-screen flex flex-col bg-[#FFFFFF] text-gray-900 transition-colors duration-300 overflow-x-hidden">
   <Header />
   <main class="flex-grow w-full overflow-x-hidden">
     <slot />
@@ -426,7 +320,7 @@ const showAgentation = import.meta.env.DEV;
           // Initialize mermaid with configuration
           (window as any).mermaid.initialize({
             startOnLoad: false,
-            theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+            theme: 'default',
             flowchart: {
               htmlLabels: true,
               useMaxWidth: false
@@ -546,7 +440,7 @@ const showAgentation = import.meta.env.DEV;
 
   <div 
     id="loading-indicator" 
-    class="fixed top-0 left-0 right-0 h-1 bg-gray-900 dark:bg-gray-100 transform scale-x-0 transition-transform duration-300 z-50 hidden opacity-80"
+    class="fixed top-0 left-0 right-0 h-1 bg-gray-900 transform scale-x-0 transition-transform duration-300 z-50 hidden opacity-80"
     transition:persist
   >
   </div>

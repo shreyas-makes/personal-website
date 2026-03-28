@@ -202,13 +202,13 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
         {/* Updated Header Section - Consistent with BlogPost layout */}
         <div class="mb-3 text-center">
           {/* Title - Consistent sizing */}
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-6">
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
             {post.data.title}
           </h1>
           
           {/* Optional metadata below title */}
-          <div class="flex justify-center items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
-            <div class="flex items-center gap-1 px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full">
+          <div class="flex justify-center items-center gap-4 text-xs text-gray-500 ">
+            <div class="flex items-center gap-1 px-2 py-1 bg-gray-50 rounded-full">
               <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -222,20 +222,20 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
                 return visibleTags.length > 0 ? (
                   <a
                     href={`/tags/${visibleTags[0]}`}
-                    class="hidden sm:block px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    class="hidden sm:block px-2 py-1 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors"
                   >
                     #{visibleTags[0]}
                   </a>
                 ) : null;
               })()
             )}
-            <time datetime={post.data.date.toISOString()} class="hidden sm:block px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded-full">
+            <time datetime={post.data.date.toISOString()} class="hidden sm:block px-2 py-1 bg-gray-50 rounded-full">
               {formattedDate}
             </time>
           </div>
         </div>
         
-        <div class="prose prose-neutral dark:prose-invert max-w-none">
+        <div class="prose prose-neutral max-w-none">
           <slot />
         </div>
 
@@ -246,13 +246,13 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
           <div class="max-w-2xl mx-auto">
             <!-- GitHub PR Section -->
             <div class="text-center py-2">
-              <p class="text-sm text-gray-600 dark:text-gray-400">
+              <p class="text-sm text-gray-600 ">
                 Found a typo or want to suggest changes? 
                 <a 
                   href={getGitHubEditUrl(post)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 underline underline-offset-2 decoration-1 transition-colors"
+                  class="text-gray-700 hover:text-gray-900 underline underline-offset-2 decoration-1 transition-colors"
                 >
                   Send a PR on GitHub
                 </a>
@@ -261,13 +261,13 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
             
             <!-- Subtle Divider -->
             <div class="flex items-center justify-center py-2">
-              <div class="flex-1 border-t border-gray-200 dark:border-gray-800"></div>
+              <div class="flex-1 border-t border-gray-200 "></div>
               <div class="px-4">
-                <svg class="w-4 h-4 text-gray-300 dark:text-gray-700" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-4 h-4 text-gray-300 " fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <div class="flex-1 border-t border-gray-200 dark:border-gray-800"></div>
+              <div class="flex-1 border-t border-gray-200 "></div>
             </div>
           </div>
           
@@ -289,10 +289,10 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
           
             
             <!-- Divider -->
-            <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
+            <div class="border-t border-gray-200 my-4"></div>
             
           <div class="text-sm">
-            <h3 class="font-medium text-gray-900 dark:text-gray-200 mb-3">Popular Posts</h3>
+            <h3 class="font-medium text-gray-900 mb-3">Popular Posts</h3>
             <ul class="space-y-2">
               {(() => {
                 // Get popular posts first, excluding certain tags
@@ -325,7 +325,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
                   <li>
                     <a 
                       href={`/${postItem.slug}`}
-                      class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-200 underline underline-offset-2 decoration-1 hover:decoration-2"
+                      class="text-gray-600 hover:text-gray-800 transition-colors duration-200 underline underline-offset-2 decoration-1 hover:decoration-2"
                     >
                       {postItem.data.title}
                     </a>
@@ -335,7 +335,7 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
             </ul>
              
             <!-- Divider -->
-            <div class="border-t border-gray-200 dark:border-gray-700 my-4"></div>
+            <div class="border-t border-gray-200 my-4"></div>
           </div>
           </nav>
         </div>
@@ -595,34 +595,6 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     }
   }
 
-  /* Dark mode overrides with higher specificity */
-  :global(html.dark .prose h1),
-  :global(html.dark .prose h2),
-  :global(html.dark .prose h3),
-  :global(html.dark .prose h4),
-  :global(html.dark .prose h5),
-  :global(html.dark .prose h6) {
-    /* Color will be handled by Tailwind's prose-invert class */
-  }
-
-  :global(html.dark .prose p),
-  :global(html.dark .prose li) {
-    /* Color will be handled by Tailwind's prose-invert class */
-  }
-
-  :global(html.dark .prose blockquote) {
-    color: #9ca3af;
-    border-left-color: #374151;
-  }
-
-  :global(html.dark .prose strong) {
-    /* Color will be handled by Tailwind's prose-invert class */
-  }
-
-  :global(html.dark .prose a) {
-    /* Color will be handled by Tailwind's prose-invert class */
-  }
-
   /* Copy button styles */
   :global(.copy-button) {
     position: absolute;
@@ -683,11 +655,6 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     color: #6b7280;
   }
 
-  :global(.dark .prose .footnotes) {
-    border-top-color: #374151;
-    color: #9ca3af;
-  }
-
   :global(.prose .footnotes ol) {
     padding-left: 1rem;
     margin: 0;
@@ -714,17 +681,9 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     padding: 0 0.1rem;
   }
 
-  :global(.dark .prose a[href^="#fn-"]) {
-    color: #818cf8;
-  }
-
   :global(.prose a[href^="#fn-"]:hover) {
     color: #3730a3;
     text-decoration: underline;
-  }
-
-  :global(.dark .prose a[href^="#fn-"]:hover) {
-    color: #c7d2fe;
   }
 
   /* Footnote back-references */
@@ -739,18 +698,11 @@ console.log("Stage value in PostLayout:", post.data.stage); // Debug log
     content: " ↩";
   }
 
-  :global(.dark .prose .footnotes a[href^="#fnref-"]) {
-    color: #9ca3af;
-  }
-
   :global(.prose .footnotes a[href^="#fnref-"]:hover) {
     color: #374151;
     text-decoration: underline;
   }
 
-  :global(.dark .prose .footnotes a[href^="#fnref-"]:hover) {
-    color: #d1d5db;
-  }
 </style>
 
 <script set:html={prismCopyButtonScript} /> 

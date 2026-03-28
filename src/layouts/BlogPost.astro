@@ -20,7 +20,7 @@ const {
 } = Astro.props;
 
 const readingTime = body ? calculateReadingTime(body) : null;
-const authorAvatar = '/images/og/avatar-circle.png';
+const authorAvatar = '/12.png';
 const authorName = 'Shreyas Prakash';
 const shareUrl = `${Astro.site}${slug}/`;
 const shareTitle = title ?? 'Post';
@@ -54,7 +54,7 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
   <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-8 sm:pt-16 pb-16">
     <article class="max-w-4xl mx-auto">
       <header class="mb-16 text-center">
-        <h1 class="text-3xl sm:text-4xl font-semibold text-gray-900 dark:text-gray-100 leading-tight">
+        <h1 class="text-3xl sm:text-4xl font-semibold text-gray-900 leading-tight">
           {title}
         </h1>
 
@@ -70,7 +70,7 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
         </div>
       </header>
       
-      <div class="prose prose-neutral dark:prose-invert max-w-none">
+      <div class="prose prose-neutral max-w-none">
         <slot />
       </div>
 
@@ -81,10 +81,10 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
       </div>
 
       <div class="flex justify-center">
-        <div class="flex items-center gap-3 text-gray-500 dark:text-gray-300">
+        <div class="flex items-center gap-3 text-gray-500 ">
           <a
             href={shareLinkedIn}
-            class="p-2 rounded-full border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
+            class="p-2 rounded-full border border-transparent hover:border-gray-300 transition-colors"
             aria-label="Share on LinkedIn"
             target="_blank"
             rel="noopener noreferrer"
@@ -95,7 +95,7 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
           </a>
           <a
             href={shareTwitter}
-            class="p-2 rounded-full border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
+            class="p-2 rounded-full border border-transparent hover:border-gray-300 transition-colors"
             aria-label="Share on Twitter"
             target="_blank"
             rel="noopener noreferrer"
@@ -106,7 +106,7 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
           </a>
           <a
             href={shareEmail}
-            class="p-2 rounded-full border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
+            class="p-2 rounded-full border border-transparent hover:border-gray-300 transition-colors"
             aria-label="Share via email"
           >
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
@@ -146,7 +146,7 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
   .author-lockup__avatar {
     width: 4rem;
     height: 4rem;
-    border-radius: 9999px;
+    border-radius: var(--radius-pill);
     object-fit: cover;
     margin: 0;
   }
@@ -197,11 +197,4 @@ const allPosts = await getCollection('posts', ({ data, id }) => !data.draft && !
     white-space: nowrap;
   }
 
-  :global(.dark) .post-divider {
-    color: #9ca3af;
-  }
-
-  :global(.dark) .post-divider__line {
-    background: linear-gradient(90deg, transparent, #374151, transparent);
-  }
-</style> 
+</style>

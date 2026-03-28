@@ -131,45 +131,45 @@ const openSourceProjects = [
   <ViewTransitions client:only />
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
     <section class="mt-2 sm:mt-12 md:mt-20 mb-12 max-w-4xl">
-      <div class="text-gray-800 dark:text-gray-200 leading-relaxed space-y-4">
-        <h1 class="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-gray-100 mb-8">Work</h1>
+      <div class="text-gray-800 leading-relaxed space-y-4">
+        <h1 class="text-3xl sm:text-4xl font-medium text-gray-900 mb-8">Work</h1>
         <p>I've built digital products used by millions of people across India and South East Asia. Previously worked across femtech, healthtech and edutech domains for the past decade, now in scientific publishing.</p>
       </div>
     </section>
 
     <!-- Notable Work Experiences -->
     <section class="mb-16">
-      <h2 class="text-2xl sm:text-3xl font-medium text-gray-800 dark:text-gray-300 mb-6">Notable experiences</h2>
+      <h2 class="text-2xl sm:text-3xl font-medium text-gray-800 mb-6">Notable experiences</h2>
       
       <div class="space-y-6">
         <div class="experience-item">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 dark:text-gray-100 mb-1">Springer Nature</h3>
-          <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-2">Product Manager, Author Experience (2024-Present)</p>
-          <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 mb-1">Springer Nature</h3>
+          <p class="text-base sm:text-lg text-gray-600 mb-2">Product Manager, Author Experience (2024-Present)</p>
+          <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
             Springer Nature is the second largest scientific publisher in the world, founded in 1842 with more than 500K+ articles and books published annually. As the Product Manager for the Author Experience team, I lead a team of 15+ focused on improving the author experience after their manuscript is accepted. My key responsibilities include creating better pathways for authors to get funding, increasing transparency around licensing and rights, as well as in building infrastructure to support article processing cost payments and so on.
           </p>
         </div>
 
         <div class="experience-item">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 dark:text-gray-100 mb-1">Noora Health</h3>
-          <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-2">Lead Product Manager (2021-2024)</p>
-          <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 mb-1">Noora Health</h3>
+          <p class="text-base sm:text-lg text-gray-600 mb-2">Lead Product Manager (2021-2024)</p>
+          <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
             At Noora Health, I led the end-to-end design and successful launch of the Remote Engagement Service (RES), a transformative digital companion app. As Lead Product Manager for RES, I drove product strategy and development to deliver engaging health support for millions of patients and caregivers across India, Bangladesh, and Indonesia. My role involved overseeing the product's vision, coordinating cross-functional teams, and ensuring the platform's scalability and relevance in culturally diverse settings.
           </p>
         </div>
 
         <div class="experience-item">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 dark:text-gray-100 mb-1">Design Verse Labs</h3>
-          <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-2">Co-founder (2020-2021)</p>
-          <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 mb-1">Design Verse Labs</h3>
+          <p class="text-base sm:text-lg text-gray-600 mb-2">Co-founder (2020-2021)</p>
+          <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
             Co-founder of Dverse Labs, an healthcare startup involved in preventing the spread of hospital-acquired infections. The IoT device has been instrumental in reducing the risk of infections for 100+ healthcare workers and 3000+ patients everyday across 5 hospitals in South India.
           </p>
         </div>
 
         <div class="experience-item">
-          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 dark:text-gray-100 mb-1">Lead by Design Foundation</h3>
-          <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-2">Founding Director (2017-2020)</p>
-          <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          <h3 class="text-xl sm:text-2xl font-medium text-gray-900 mb-1">Lead by Design Foundation</h3>
+          <p class="text-base sm:text-lg text-gray-600 mb-2">Founding Director (2017-2020)</p>
+          <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
             As a director of this educational non-profit, I helped rural children invent for social good. I led various in-person and digital mentorship programmes for rural children to build contextual solutions with technology. More than 2000+ students of age 8-15 drove 12+ social innovations in their communities.
           </p>
         </div>
@@ -177,28 +177,28 @@ const openSourceProjects = [
     </section>
 
     <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <!-- Open Source Tools and Side Quests -->
     <section class="mb-16">
-      <h2 class="text-2xl sm:text-3xl font-medium text-gray-800 dark:text-gray-300 mb-2">Open source quests</h2>
+      <h2 class="text-2xl sm:text-3xl font-medium text-gray-800 mb-2">Open source quests</h2>
       <div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
         {openSourceProjects.map((project) => (
           <a
             href={project.url}
             aria-label={`Open ${project.name} on GitHub`}
-            class="quest-card group h-full rounded-2xl border border-gray-200/90 dark:border-gray-800 bg-white/95 dark:bg-gray-900/90 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 p-4 sm:p-5 flex flex-col"
+            class="quest-card group h-full rounded-2xl border border-gray-200/90 bg-white/95 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 p-4 sm:p-5 flex flex-col"
           >
             <div class="mb-3">
-              <h3 class="quest-title text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
+              <h3 class="quest-title text-lg sm:text-xl font-semibold text-gray-900 tracking-tight">
                 <span class="mr-2" aria-hidden="true">{project.emoji}</span>{project.name}
               </h3>
             </div>
-            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed flex-1">
+            <p class="text-sm sm:text-base text-gray-700 leading-relaxed flex-1">
               {project.description}
             </p>
             <div class="mt-4">
-              <span class="quest-tag inline-flex text-xs sm:text-sm font-medium px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300">
+              <span class="quest-tag inline-flex text-xs sm:text-sm font-medium px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 ">
                 {project.category}
               </span>
             </div>
@@ -208,129 +208,129 @@ const openSourceProjects = [
     </section>
 
     <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <!-- Awards and Recognition -->
     <section class="mb-16">
-      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 dark:text-gray-300 mb-8">Awards and recognitions</h2>
+      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 mb-8">Awards and recognitions</h2>
       <div class="space-y-4">
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          <a href="https://adplist.org/certifications/160035" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">ADPlist mentorship award</a> — 1000+ mentorship minutes (2021)
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          <a href="https://adplist.org/certifications/160035" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">ADPlist mentorship award</a> — 1000+ mentorship minutes (2021)
         </div>
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          <a href="https://ifdesign.com/en/winner-ranking/project/equarun/304328" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">iF Design Award – Project Equarun</a> (2020)
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          <a href="https://ifdesign.com/en/winner-ranking/project/equarun/304328" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">iF Design Award – Project Equarun</a> (2020)
         </div>
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          Advisory board panellist for Creative Arts and Education — <a href="https://hundred.org/en" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Hundred innovations, Helsinki</a> (2021)
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          Advisory board panellist for Creative Arts and Education — <a href="https://hundred.org/en" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Hundred innovations, Helsinki</a> (2021)
         </div>
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          <a href="https://www.tudelft.nl/onderwijs/studievoorlichting/praktische-zaken/scholarships/justus-louise-van-effen-excellence-scholarships" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Justus and Louise van Effen Excellence Scholarship</a> — TU Delft (2018)
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          <a href="https://www.tudelft.nl/onderwijs/studievoorlichting/praktische-zaken/scholarships/justus-louise-van-effen-excellence-scholarships" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Justus and Louise van Effen Excellence Scholarship</a> — TU Delft (2018)
         </div>
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          <a href="https://www.mitacs.ca/our-programs/globalink-research-internship-students/" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Mitacs Globalink Scholar</a> (2015)
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          <a href="https://www.mitacs.ca/our-programs/globalink-research-internship-students/" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Mitacs Globalink Scholar</a> (2015)
         </div>
       </div>
     </section>
 
     <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <!-- Notable Media Mentions -->
     <section class="mb-16">
-      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 dark:text-gray-300 mb-8">Notable media mentions</h2>
+      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 mb-8">Notable media mentions</h2>
       
       <!-- Articles & Blog Posts -->
       <div class="mb-10">
-        <h3 class="text-xl sm:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-4">Articles & Blog Posts</h3>
+        <h3 class="text-xl sm:text-2xl font-medium text-gray-700 mb-4">Articles & Blog Posts</h3>
         <div class="space-y-3">
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://sive.rs/met/40" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Derek Sivers blog post mention</a> on Shreyas Prakash profile
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://sive.rs/met/40" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Derek Sivers blog post mention</a> on Shreyas Prakash profile
           </div>
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://www.mitacs.ca/news/toronto-star-international-students-add-brainpower-to-research-projects/" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">International students add brainpower to research projects</a> — Toronto Star
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://www.mitacs.ca/news/toronto-star-international-students-add-brainpower-to-research-projects/" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">International students add brainpower to research projects</a> — Toronto Star
           </div>
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://www.digit.in/features/general/dverse-labs-makes-hospitals-safer-with-uvfy-their-smart-modular-sterilization-tech-60139.html" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">dVERSE Labs makes hospitals safer with UVFY</a> — Digit.in
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://www.digit.in/features/general/dverse-labs-makes-hospitals-safer-with-uvfy-their-smart-modular-sterilization-tech-60139.html" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">dVERSE Labs makes hospitals safer with UVFY</a> — Digit.in
           </div>
         </div>
       </div>
 
       <!-- Podcasts -->
       <div class="mb-10">
-        <h3 class="text-xl sm:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-4">Podcasts</h3>
+        <h3 class="text-xl sm:text-2xl font-medium text-gray-700 mb-4">Podcasts</h3>
         <div class="space-y-3">
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://open.spotify.com/show/6XiyWZpCDYaLCREPa0ZhfX?si=ORSYAXOlQ32ax-Wwc_G6uQ" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Shake up the world podcast</a> (8 episodes with futurists in impact tech, 2020)
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://open.spotify.com/show/6XiyWZpCDYaLCREPa0ZhfX?si=ORSYAXOlQ32ax-Wwc_G6uQ" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Shake up the world podcast</a> (8 episodes with futurists in impact tech, 2020)
           </div>
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://open.spotify.com/episode/2UxJgG7CT5P13OGRZQN6zd" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Paul Lecrone's Penguin Latte podcast episode</a>
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://open.spotify.com/episode/2UxJgG7CT5P13OGRZQN6zd" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Paul Lecrone's Penguin Latte podcast episode</a>
           </div>
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://open.spotify.com/episode/4Jtp6LHa648XcipSnnSPzH?si=rpmlyFZWQ2arZ0uEKohQ_A" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Effective practises of design thinking</a> — The Untextbook Project
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://open.spotify.com/episode/4Jtp6LHa648XcipSnnSPzH?si=rpmlyFZWQ2arZ0uEKohQ_A" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Effective practises of design thinking</a> — The Untextbook Project
           </div>
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://open.spotify.com/episode/2366jLCrMuPEA4a1GUEXmQ?si=2Bint0bARruBOgwJAjkxpQ" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Design thinking and education</a> — Reinvent Podcast
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://open.spotify.com/episode/2366jLCrMuPEA4a1GUEXmQ?si=2Bint0bARruBOgwJAjkxpQ" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Design thinking and education</a> — Reinvent Podcast
           </div>
         </div>
       </div>
 
       <!-- Video Content -->
       <div>
-        <h3 class="text-xl sm:text-2xl font-medium text-gray-700 dark:text-gray-300 mb-4">Video Content</h3>
+        <h3 class="text-xl sm:text-2xl font-medium text-gray-700 mb-4">Video Content</h3>
         <div class="space-y-3">
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://youtu.be/CizvI9rqn_k?si=3n9VYJDbmRn9xE_v" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Building useful, usable and desirable products</a> — Seekwise
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://youtu.be/CizvI9rqn_k?si=3n9VYJDbmRn9xE_v" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Building useful, usable and desirable products</a> — Seekwise
           </div>
-          <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            <a href="https://www.youtube.com/watch?v=PQXGC2hRapQ" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Generative Art with AI</a> — YouTube session
+          <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+            <a href="https://www.youtube.com/watch?v=PQXGC2hRapQ" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Generative Art with AI</a> — YouTube session
           </div>
         </div>
       </div>
     </section>
 
     <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <!-- Teaching and Mentoring -->
     <section class="mb-16">
-      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 dark:text-gray-300 mb-8">Teaching and mentoring</h2>
+      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 mb-8">Teaching and mentoring</h2>
       <div class="space-y-4">
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          <a href="https://adplist.org/mentors/shreyas" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">ADPlist award for mentorship hours</a>
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          <a href="https://adplist.org/mentors/shreyas" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">ADPlist award for mentorship hours</a>
         </div>
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          Mentor and judge at <a href="https://www.buildschool.net/" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Buildschool</a> and Buildcamps hackathons
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          Mentor and judge at <a href="https://www.buildschool.net/" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Buildschool</a> and Buildcamps hackathons
         </div>
       </div>
     </section>
 
     <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <!-- Research and Publications -->
     <section class="mb-16">
-      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 dark:text-gray-300 mb-8">Research and publications</h2>
+      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 mb-8">Research and publications</h2>
       <div class="space-y-4">
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
           Persaud, S., Prakash, S., & Flipsen, B. (2021). Dialogue for design teams: A case study of generative conversations for dealing with diversity. In <em>DS 110: Proceedings of the 23rd International Conference on Engineering and Product Design Education (E&PDE 2021), VIA Design, VIA University in Herning, Denmark. 9th-10th September 2021</em>.
         </div>
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          <a href="https://resolver.tudelft.nl/uuid:81155d92-38e7-4eaf-9782-ff442cd84477" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Using soft robotics as a medium for gender accessible education of preschoolers</a>, TU Delft
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          <a href="https://resolver.tudelft.nl/uuid:81155d92-38e7-4eaf-9782-ff442cd84477" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Using soft robotics as a medium for gender accessible education of preschoolers</a>, TU Delft
         </div>
-        <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          Citation profile: <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9jGv5FkAAAAJ&citation_for_view=9jGv5FkAAAAJ:u5HHmVD_uO8C" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Google Scholar</a>
+        <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+          Citation profile: <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9jGv5FkAAAAJ&citation_for_view=9jGv5FkAAAAJ:u5HHmVD_uO8C" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Google Scholar</a>
         </div>
       </div>
     </section>
 
     <!-- Add visual separator -->
-    <div class="my-20 border-t border-gray-200 dark:border-gray-800"></div>
+    <div class="my-20 border-t border-gray-200 "></div>
 
     <!-- Books Published -->
     <section class="mb-16">
-      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 dark:text-gray-300 mb-8">Books published</h2>
-      <div class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-        <a href="https://archive.org/details/ruraldesigntoolkit" class="font-semibold text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-200 underline underline-offset-4 decoration-1">Rural design toolkit</a> by Shreyas Prakash, Krishna Thiruvengadam
+      <h2 class="text-3xl sm:text-4xl font-medium text-gray-800 mb-8">Books published</h2>
+      <div class="text-base sm:text-lg text-gray-700 leading-relaxed">
+        <a href="https://archive.org/details/ruraldesigntoolkit" class="font-semibold text-gray-900 hover:text-gray-700 underline underline-offset-4 decoration-1">Rural design toolkit</a> by Shreyas Prakash, Krishna Thiruvengadam
       </div>
     </section>
 
@@ -406,29 +406,6 @@ const openSourceProjects = [
   ul {
     list-style: none;
     padding: 0;
-  }
-
-  /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-primary: #e1e1e1;
-      --text-secondary: #a1a1a1;
-      --hover-color: #fff;
-    }
-
-    .experience-item {
-      border-bottom-color: rgb(31 41 55 / 0.9);
-    }
-
-    .quest-card {
-      border-color: rgb(245 158 11 / 0.45);
-      background: linear-gradient(to bottom, rgb(60 47 18 / 0.9), rgb(31 24 12 / 0.95));
-    }
-
-    .quest-tag {
-      background: rgb(120 53 15 / 0.55);
-      color: rgb(254 243 199);
-    }
   }
 
 </style>

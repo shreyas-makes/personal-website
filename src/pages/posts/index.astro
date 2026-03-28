@@ -75,8 +75,8 @@ function getFirstTag(tags: string[] | undefined): string | null {
 <BaseLayout title="Essays | Shreyas" showMainFooterSection={true}>
   <main class="max-w-4xl mx-auto px-4 sm:px-5 pt-8 sm:pt-12 pb-4 sm:pb-6">
     <div class="flex items-baseline justify-between mb-8">
-      <h1 class="text-3xl font-normal text-gray-800 dark:text-gray-200">Essays</h1>
-      <span class="text-sm text-gray-500 dark:text-gray-400">
+      <h1 class="text-3xl font-normal text-gray-800 ">Essays</h1>
+      <span class="text-sm text-gray-500 ">
         {sortedPosts.length} posts
       </span>
     </div>
@@ -94,15 +94,15 @@ function getFirstTag(tags: string[] | undefined): string | null {
           <li class="flex flex-col gap-1">
             <div class="flex flex-col space-y-1">
               <a href={`/${post.slug}`} 
-                 class="text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 block underline underline-offset-4 decoration-1">
+                 class="text-gray-800 hover:text-gray-600 block underline underline-offset-4 decoration-1">
                 <span class="block text-ellipsis overflow-hidden">
                   {post.data.title}
                 </span>
               </a>
-              <span class="text-gray-500 dark:text-gray-400 text-xs">
+              <span class="text-gray-500 text-xs">
                 {readingTime} <span class="mx-2"> — </span> {formattedDate}
               </span>
-              <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              <p class="text-gray-600 text-sm leading-relaxed">
                 {summary}
               </p>
             </div>
@@ -112,7 +112,7 @@ function getFirstTag(tags: string[] | undefined): string | null {
     </ul>
 
     <div class="mt-12">
-      <a href="/" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 text-sm underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700">
+      <a href="/" class="text-gray-600 hover:text-gray-900 text-sm underline underline-offset-4 decoration-gray-300 ">
         ← Back to home
       </a>
     </div>
@@ -149,12 +149,4 @@ function getFirstTag(tags: string[] | undefined): string | null {
     padding: 0;
   }
 
-  /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-primary: #e1e1e1;
-      --text-secondary: #a1a1a1;
-      --hover-color: #fff;
-    }
-  }
 </style> 

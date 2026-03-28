@@ -12,7 +12,7 @@ Do not use as an inline section header.
 ## 3. Anatomy
 - Site title/brand area
 - Primary nav links
-- Theme/search controls
+- Search/utility controls
 - Mobile navigation container
 
 ## 4. Tokens used
@@ -24,7 +24,7 @@ Do not use as an inline section header.
 - Astro component, no required public props.
 
 ## 6. States
-- Default, hover, active link, focus-visible, mobile-expanded, dark mode
+- Default, hover, active link, focus-visible, mobile-expanded
 
 ## 7. Code example
 ```astro
@@ -32,5 +32,4 @@ Do not use as an inline section header.
 ```
 
 ## 8. Cross-references
-- `specs/components/theme-toggle.md`
 - `specs/components/search.md`

@@ -44,7 +44,7 @@ const isHomepage = pathname === '/';
 
   <header 
     id="main-header"
-    class="bg-[#FFFFFF] dark:bg-[#161618] py-8 sm:py-12"
+    class="bg-[#FFFFFF] py-8 sm:py-12"
     transition:persist="header"
     transition:animate="none"
   >
@@ -53,8 +53,8 @@ const isHomepage = pathname === '/';
       <a href="/" class="block">
         <div class="header-section flex items-center justify-center hover:opacity-80 transition-opacity">
           <div class="header-frame text-center">
-            <h1 class="text-3xl sm:text-4xl font-normal text-gray-900 dark:text-gray-100 mb-1">Shreyas Prakash</h1>
-            <h2 class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">Product Manager from London</h2>
+            <h1 class="text-3xl sm:text-4xl font-normal text-gray-900 mb-1">Shreyas Prakash</h1>
+            <h2 class="text-xl sm:text-2xl text-gray-600 ">Product Manager from London</h2>
           </div>
         </div>
       </a>
@@ -182,22 +182,14 @@ const isHomepage = pathname === '/';
         </a>
         
         <!-- Utility items as part of nav -->
-        <div class="flex items-center gap-4 ml-6 pl-6 border-l border-gray-200 dark:border-gray-600">
-          <a href="/" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-label="Home">
+        <div class="flex items-center gap-4 ml-6 pl-6 border-l border-gray-200">
+          <a href="/" class="p-1 text-gray-500 hover:text-gray-800" aria-label="Home">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 11 9-8 9 8M5 10v10h5v-6h4v6h5V10" />
             </svg>
           </a>
           <SearchButton client:load />
-          <button id="theme-toggle-desktop" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
-            <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-            </svg>
-            <svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-            </svg>
-          </button>
-          <a href="/rss.xml" class="p-1 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+          <a href="/rss.xml" class="p-1 text-gray-500 hover:text-gray-800">
             <span class="sr-only">RSS Feed</span>
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
@@ -211,28 +203,20 @@ const isHomepage = pathname === '/';
     <div class="md:hidden flex justify-center py-2">
       <!-- Mobile controls - centered -->
       <div class="flex items-center gap-4">
-        <a href="/" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" aria-label="Home">
+        <a href="/" class="p-2 text-gray-500 hover:text-gray-800" aria-label="Home">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 11 9-8 9 8M5 10v10h5v-6h4v6h5V10" />
           </svg>
         </a>
         <SearchButton client:load />
-        <button id="theme-toggle" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
-          <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-          </svg>
-          <svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-          </svg>
-        </button>
-        <a href="/rss.xml" class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200">
+        <a href="/rss.xml" class="p-2 text-gray-500 hover:text-gray-800">
           <span class="sr-only">RSS Feed</span>
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11c3.87 0 7 3.13 7 7M6 17h.01"/>
           </svg>
         </a>
         <button id="menu-toggle" 
-          class="p-2 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+          class="p-2 text-gray-500 hover:text-gray-800"
           aria-expanded="false"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +230,7 @@ const isHomepage = pathname === '/';
   <!-- Mobile menu -->
   <div 
     id="mobile-menu" 
-    class="hidden md:hidden bg-[#FFFFFF] dark:bg-[#161618] border-t border-gray-200 dark:border-gray-600 transition-all duration-200 ease-in-out"
+    class="hidden md:hidden bg-[#FFFFFF] border-t border-gray-200 transition-all duration-200 ease-in-out"
   >
     <div class="px-8 py-6 space-y-4">
       <nav class="flex flex-col space-y-3" id="mobile-navigation">
@@ -385,8 +369,6 @@ const isHomepage = pathname === '/';
   });
 
   function setupUI() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     let isSearchOpen = false;
@@ -431,21 +413,6 @@ const isHomepage = pathname === '/';
           }
         });
       }
-    }
-
-    // Theme toggle function
-    function toggleTheme(e) {
-      e.preventDefault();
-      const isCurrentlyDark = document.documentElement.classList.contains('dark');
-      const newTheme = isCurrentlyDark ? 'light' : 'dark';
-      
-      // Update classes
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(newTheme);
-      
-      // Store preference
-      localStorage.setItem('theme', newTheme);
-      document.cookie = `theme=${newTheme};path=/;max-age=31536000`;
     }
 
     // Mobile menu toggle function - improved to track state with aria-expanded
@@ -504,8 +471,6 @@ const isHomepage = pathname === '/';
     }
 
     // Add event listeners
-    themeToggle?.addEventListener('click', toggleTheme);
-    themeToggleDesktop?.addEventListener('click', toggleTheme);
     menuToggle?.addEventListener('click', toggleMobileMenu);
     document.addEventListener('click', handleClickOutside);
 
@@ -617,8 +582,6 @@ const isHomepage = pathname === '/';
     return function cleanup() {
       dropdownButton?.removeEventListener('click', toggleDropdown);
       document.removeEventListener('click', handleDropdownClickOutside);
-      themeToggle?.removeEventListener('click', toggleTheme);
-      themeToggleDesktop?.removeEventListener('click', toggleTheme);
       menuToggle?.removeEventListener('click', toggleMobileMenu);
       document.removeEventListener('keydown', handleKeydown);
       document.removeEventListener('astro:after-swap', handleAfterSwap);
@@ -712,33 +675,6 @@ const isHomepage = pathname === '/';
     padding: 0.35rem;
   }
   
-  /* Dark mode styles */
-  .dark .nav-item {
-    color: rgb(156, 163, 175); /* gray-400 for dark mode */
-  }
-  
-  .dark .nav-item:hover {
-    color: rgb(209, 213, 219); /* gray-300 for dark mode */
-  }
-  
-  .dark .nav-item-active {
-    background-color: rgb(55, 65, 81); /* gray-700 for dark mode */
-    color: rgb(255, 255, 255); /* white for dark mode */
-  }
-  
-  .dark .mobile-nav-item {
-    color: rgb(156, 163, 175); /* gray-400 for dark mode */
-  }
-  
-  .dark .mobile-nav-item:hover {
-    color: rgb(209, 213, 219); /* gray-300 for dark mode */
-  }
-  
-  .dark .mobile-nav-item-active {
-    background-color: rgb(55, 65, 81); /* gray-700 for dark mode */
-    color: rgb(255, 255, 255); /* white for dark mode */
-  }
-
   /* Header responsive layout */
   @media (max-width: 640px) {
     .header-section {

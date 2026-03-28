@@ -1,111 +1,82 @@
 {
-  "generatedAt": "2026-03-20T22:27:33.006Z",
+  "generatedAt": "2026-03-28T17:54:59.465Z",
   "username": "shreyas-makes",
   "windowDays": 14,
   "historyMonths": 3,
-  "cutoffDate": "2025-12-20T22:27:33.006Z",
-  "coverageLabel": "20 Dec 2025 - 20 Mar 2026",
+  "cutoffDate": "2025-12-28T17:54:59.465Z",
+  "coverageLabel": "28 Dec 2025 - 28 Mar 2026",
   "periods": [
     {
-      "periodStart": "2025-12-20T22:27:33.006Z",
-      "periodEnd": "2026-01-03T22:27:33.006Z",
-      "periodLabel": "20 Dec 2025 - 03 Jan 2026"
+      "periodStart": "2025-12-28T17:54:59.465Z",
+      "periodEnd": "2026-01-11T17:54:59.465Z",
+      "periodLabel": "28 Dec 2025 - 11 Jan 2026"
     },
     {
-      "periodStart": "2026-01-03T22:27:33.006Z",
-      "periodEnd": "2026-01-17T22:27:33.006Z",
-      "periodLabel": "03 Jan 2026 - 17 Jan 2026"
+      "periodStart": "2026-01-11T17:54:59.465Z",
+      "periodEnd": "2026-01-25T17:54:59.465Z",
+      "periodLabel": "11 Jan 2026 - 25 Jan 2026"
     },
     {
-      "periodStart": "2026-01-17T22:27:33.006Z",
-      "periodEnd": "2026-01-31T22:27:33.006Z",
-      "periodLabel": "17 Jan 2026 - 31 Jan 2026"
+      "periodStart": "2026-01-25T17:54:59.465Z",
+      "periodEnd": "2026-02-08T17:54:59.465Z",
+      "periodLabel": "25 Jan 2026 - 08 Feb 2026"
     },
     {
-      "periodStart": "2026-01-31T22:27:33.006Z",
-      "periodEnd": "2026-02-14T22:27:33.006Z",
-      "periodLabel": "31 Jan 2026 - 14 Feb 2026"
+      "periodStart": "2026-02-08T17:54:59.465Z",
+      "periodEnd": "2026-02-22T17:54:59.465Z",
+      "periodLabel": "08 Feb 2026 - 22 Feb 2026"
     },
     {
-      "periodStart": "2026-02-14T22:27:33.006Z",
-      "periodEnd": "2026-02-28T22:27:33.006Z",
-      "periodLabel": "14 Feb 2026 - 28 Feb 2026"
+      "periodStart": "2026-02-22T17:54:59.465Z",
+      "periodEnd": "2026-03-08T17:54:59.465Z",
+      "periodLabel": "22 Feb 2026 - 08 Mar 2026"
     },
     {
-      "periodStart": "2026-02-28T22:27:33.006Z",
-      "periodEnd": "2026-03-14T22:27:33.006Z",
-      "periodLabel": "28 Feb 2026 - 14 Mar 2026"
+      "periodStart": "2026-03-08T17:54:59.465Z",
+      "periodEnd": "2026-03-22T17:54:59.465Z",
+      "periodLabel": "08 Mar 2026 - 22 Mar 2026"
     },
     {
-      "periodStart": "2026-03-14T22:27:33.006Z",
-      "periodEnd": "2026-03-20T22:27:33.006Z",
-      "periodLabel": "14 Mar 2026 - 20 Mar 2026"
+      "periodStart": "2026-03-22T17:54:59.465Z",
+      "periodEnd": "2026-03-28T17:54:59.465Z",
+      "periodLabel": "22 Mar 2026 - 28 Mar 2026"
     }
   ],
   "projectCount": 10,
   "projects": [
     {
-      "name": "Asciify",
-      "repository": "asciify",
-      "fullName": "shreyas-makes/asciify",
-      "url": "https://github.com/shreyas-makes/asciify",
+      "name": "Agent Skills",
+      "repository": "agent-skills",
+      "fullName": "shreyas-makes/agent-skills",
+      "url": "https://github.com/shreyas-makes/agent-skills",
       "homepage": null,
-      "description": "",
-      "language": "TypeScript",
+      "description": "Collection of agent skills I frequently use",
+      "language": "Python",
       "stars": 1,
-      "commitCount": 7,
-      "pushedAt": "2026-03-20T21:45:38Z",
-      "latestCommitAt": "2026-03-01T17:56:03Z",
-      "updateCount": 2,
+      "commitCount": 1,
+      "pushedAt": "2026-03-22T18:20:15Z",
+      "latestCommitAt": "2026-03-22T18:19:37Z",
+      "updateCount": 1,
       "updates": [
         {
-          "periodStart": "2026-02-28T22:27:33.006Z",
-          "periodEnd": "2026-03-14T22:27:33.006Z",
-          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
-          "latestCommitAt": "2026-03-01T17:56:03Z",
-          "commitCount": 5,
-          "headline": "Making the project more legible",
-          "narrative": "Asciify had a documentation-heavy fortnight, but in the useful sense. The work makes the product easier to approach, easier to understand, and less dependent on private context living in your head.",
-          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
-          "focusBullets": [
-            "Clarified the README and setup guidance",
-            "Sharpened the working interface"
-          ],
-          "commitMessages": [
-            "Update README.md",
-            "yes",
-            "improved UI of canvas",
-            "Remove detailed sections from README",
-            "Add image to README for visual enhancement"
-          ]
-        },
-        {
-          "periodStart": "2026-02-14T22:27:33.006Z",
-          "periodEnd": "2026-02-28T22:27:33.006Z",
-          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
-          "latestCommitAt": "2026-02-27T23:20:33Z",
-          "commitCount": 2,
+          "periodStart": "2026-03-22T17:54:59.465Z",
+          "periodEnd": "2026-03-28T17:54:59.465Z",
+          "periodLabel": "22 Mar 2026 - 28 Mar 2026",
+          "latestCommitAt": "2026-03-22T18:19:37Z",
+          "commitCount": 1,
           "headline": "Pushing the product forward",
-          "narrative": "Asciify moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making the product more usable, more legible, and easier to trust.",
-          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
+          "narrative": "Agent Skills moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making collection of agent skills I frequently use more usable, more legible, and easier to trust.",
+          "valueUnlocked": "The project moves closer to public-adoption shape: clearer install paths, cleaner release boundaries, and less hidden context.",
           "focusBullets": [
-            "Refined the project framing and supporting documentation",
-            "Refined the project internals"
+            "Agent skills setup with domain-action etymology"
           ],
           "commitMessages": [
-            "updated REAME",
-            "updated asciify"
+            "agent skills setup with domain-action etymology"
           ]
         }
       ],
       "commitMessages": [
-        "Update README.md",
-        "yes",
-        "improved UI of canvas",
-        "Remove detailed sections from README",
-        "Add image to README for visual enhancement",
-        "updated REAME",
-        "updated asciify"
+        "agent skills setup with domain-action etymology"
       ]
     },
     {
@@ -118,16 +89,16 @@
       "language": "Astro",
       "stars": 2,
       "commitCount": 10,
-      "pushedAt": "2026-03-20T21:13:07Z",
-      "latestCommitAt": "2026-03-20T21:12:56Z",
-      "updateCount": 3,
+      "pushedAt": "2026-03-20T22:27:50Z",
+      "latestCommitAt": "2026-03-20T22:27:32Z",
+      "updateCount": 2,
       "updates": [
         {
-          "periodStart": "2026-03-14T22:27:33.006Z",
-          "periodEnd": "2026-03-20T22:27:33.006Z",
-          "periodLabel": "14 Mar 2026 - 20 Mar 2026",
-          "latestCommitAt": "2026-03-20T21:12:56Z",
-          "commitCount": 2,
+          "periodStart": "2026-03-08T17:54:59.465Z",
+          "periodEnd": "2026-03-22T17:54:59.465Z",
+          "periodLabel": "08 Mar 2026 - 22 Mar 2026",
+          "latestCommitAt": "2026-03-20T22:27:32Z",
+          "commitCount": 3,
           "headline": "Pushing the product forward",
           "narrative": "Personal Website moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making created a Ghost blog on Astro framework more usable, more legible, and easier to trust.",
           "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
@@ -136,14 +107,15 @@
             "Updated"
           ],
           "commitMessages": [
+            "x",
             "Did the actual path of the obsidian vault to the comet hook.",
             "updated"
           ]
         },
         {
-          "periodStart": "2026-02-28T22:27:33.006Z",
-          "periodEnd": "2026-03-14T22:27:33.006Z",
-          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "periodStart": "2026-02-22T17:54:59.465Z",
+          "periodEnd": "2026-03-08T17:54:59.465Z",
+          "periodLabel": "22 Feb 2026 - 08 Mar 2026",
           "latestCommitAt": "2026-03-04T21:45:10Z",
           "commitCount": 7,
           "headline": "Pushing the product forward",
@@ -163,25 +135,10 @@
             "improved footer",
             "added llms text, added and improved footer with llm linkage"
           ]
-        },
-        {
-          "periodStart": "2026-02-14T22:27:33.006Z",
-          "periodEnd": "2026-02-28T22:27:33.006Z",
-          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
-          "latestCommitAt": "2026-02-22T15:22:06Z",
-          "commitCount": 1,
-          "headline": "Pushing the product forward",
-          "narrative": "Personal Website moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making created a Ghost blog on Astro framework more usable, more legible, and easier to trust.",
-          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
-          "focusBullets": [
-            "New book added"
-          ],
-          "commitMessages": [
-            "new book added"
-          ]
         }
       ],
       "commitMessages": [
+        "x",
         "Did the actual path of the obsidian vault to the comet hook.",
         "updated",
         "apply design token system updates",
@@ -190,8 +147,56 @@
         "changed titles",
         "new",
         "improved footer",
-        "added llms text, added and improved footer with llm linkage",
-        "new book added"
+        "added llms text, added and improved footer with llm linkage"
+      ]
+    },
+    {
+      "name": "Asciify",
+      "repository": "asciify",
+      "fullName": "shreyas-makes/asciify",
+      "url": "https://github.com/shreyas-makes/asciify",
+      "homepage": null,
+      "description": "",
+      "language": "TypeScript",
+      "stars": 1,
+      "commitCount": 7,
+      "pushedAt": "2026-03-20T21:45:38Z",
+      "latestCommitAt": "2026-03-01T17:56:03Z",
+      "updateCount": 1,
+      "updates": [
+        {
+          "periodStart": "2026-02-22T17:54:59.465Z",
+          "periodEnd": "2026-03-08T17:54:59.465Z",
+          "periodLabel": "22 Feb 2026 - 08 Mar 2026",
+          "latestCommitAt": "2026-03-01T17:56:03Z",
+          "commitCount": 7,
+          "headline": "Making the project more legible",
+          "narrative": "Asciify had a documentation-heavy fortnight, but in the useful sense. The work makes the product easier to approach, easier to understand, and less dependent on private context living in your head.",
+          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
+          "focusBullets": [
+            "Clarified the README and setup guidance",
+            "Sharpened the working interface",
+            "Refined the project framing and supporting documentation"
+          ],
+          "commitMessages": [
+            "Update README.md",
+            "yes",
+            "improved UI of canvas",
+            "Remove detailed sections from README",
+            "Add image to README for visual enhancement",
+            "updated REAME",
+            "updated asciify"
+          ]
+        }
+      ],
+      "commitMessages": [
+        "Update README.md",
+        "yes",
+        "improved UI of canvas",
+        "Remove detailed sections from README",
+        "Add image to README for visual enhancement",
+        "updated REAME",
+        "updated asciify"
       ]
     },
     {
@@ -209,9 +214,9 @@
       "updateCount": 1,
       "updates": [
         {
-          "periodStart": "2026-03-14T22:27:33.006Z",
-          "periodEnd": "2026-03-20T22:27:33.006Z",
-          "periodLabel": "14 Mar 2026 - 20 Mar 2026",
+          "periodStart": "2026-03-08T17:54:59.465Z",
+          "periodEnd": "2026-03-22T17:54:59.465Z",
+          "periodLabel": "08 Mar 2026 - 22 Mar 2026",
           "latestCommitAt": "2026-03-20T17:32:46Z",
           "commitCount": 10,
           "headline": "Hardening the core experience",
@@ -263,9 +268,9 @@
       "updateCount": 3,
       "updates": [
         {
-          "periodStart": "2026-03-14T22:27:33.006Z",
-          "periodEnd": "2026-03-20T22:27:33.006Z",
-          "periodLabel": "14 Mar 2026 - 20 Mar 2026",
+          "periodStart": "2026-03-08T17:54:59.465Z",
+          "periodEnd": "2026-03-22T17:54:59.465Z",
+          "periodLabel": "08 Mar 2026 - 22 Mar 2026",
           "latestCommitAt": "2026-03-15T09:29:54Z",
           "commitCount": 2,
           "headline": "From script to shippable tool",
@@ -281,9 +286,9 @@
           ]
         },
         {
-          "periodStart": "2026-02-14T22:27:33.006Z",
-          "periodEnd": "2026-02-28T22:27:33.006Z",
-          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "periodStart": "2026-02-08T17:54:59.465Z",
+          "periodEnd": "2026-02-22T17:54:59.465Z",
+          "periodLabel": "08 Feb 2026 - 22 Feb 2026",
           "latestCommitAt": "2026-02-22T14:47:40Z",
           "commitCount": 2,
           "headline": "Making the project more legible",
@@ -298,9 +303,9 @@
           ]
         },
         {
-          "periodStart": "2026-01-03T22:27:33.006Z",
-          "periodEnd": "2026-01-17T22:27:33.006Z",
-          "periodLabel": "03 Jan 2026 - 17 Jan 2026",
+          "periodStart": "2026-01-11T17:54:59.465Z",
+          "periodEnd": "2026-01-25T17:54:59.465Z",
+          "periodLabel": "11 Jan 2026 - 25 Jan 2026",
           "latestCommitAt": "2026-01-14T17:02:48Z",
           "commitCount": 6,
           "headline": "Making the project more legible",
@@ -346,32 +351,16 @@
       "commitCount": 4,
       "pushedAt": "2026-03-15T08:15:54Z",
       "latestCommitAt": "2026-03-15T08:15:52Z",
-      "updateCount": 2,
+      "updateCount": 1,
       "updates": [
         {
-          "periodStart": "2026-03-14T22:27:33.006Z",
-          "periodEnd": "2026-03-20T22:27:33.006Z",
-          "periodLabel": "14 Mar 2026 - 20 Mar 2026",
+          "periodStart": "2026-03-08T17:54:59.465Z",
+          "periodEnd": "2026-03-22T17:54:59.465Z",
+          "periodLabel": "08 Mar 2026 - 22 Mar 2026",
           "latestCommitAt": "2026-03-15T08:15:52Z",
-          "commitCount": 1,
-          "headline": "Pushing the product forward",
-          "narrative": "Thinking Cap moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making terminal sidecar for avoiding cognitive debt while you delegate all the code to AI agents more usable, more legible, and easier to trust.",
-          "valueUnlocked": "The interaction cost drops, which matters because semi-frequent tasks live or die on friction more than on feature count.",
-          "focusBullets": [
-            "Smoothed the day-to-day user experience"
-          ],
-          "commitMessages": [
-            "improved the flashcard loading"
-          ]
-        },
-        {
-          "periodStart": "2026-02-28T22:27:33.006Z",
-          "periodEnd": "2026-03-14T22:27:33.006Z",
-          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
-          "latestCommitAt": "2026-03-14T07:14:29Z",
-          "commitCount": 3,
-          "headline": "Pushing the product forward",
-          "narrative": "Thinking Cap moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making terminal sidecar for avoiding cognitive debt while you delegate all the code to AI agents more usable, more legible, and easier to trust.",
+          "commitCount": 4,
+          "headline": "Reducing friction and setup debt",
+          "narrative": "Thinking Cap had an adoption-focused fortnight. The attention went into smoothing rough edges and reducing setup ambiguity, which is exactly the work that helps an interesting prototype become something repeatable.",
           "valueUnlocked": "The project moves closer to public-adoption shape: clearer install paths, cleaner release boundaries, and less hidden context.",
           "focusBullets": [
             "Smoothed the day-to-day user experience",
@@ -379,6 +368,7 @@
             "Laid down the first public version of the integration"
           ],
           "commitMessages": [
+            "improved the flashcard loading",
             "made it to target a specific repo more precisely",
             "Prepare Thinking Cap for GitHub",
             "Initial commit for thinking-cap OpenCode plugin"
@@ -390,73 +380,6 @@
         "made it to target a specific repo more precisely",
         "Prepare Thinking Cap for GitHub",
         "Initial commit for thinking-cap OpenCode plugin"
-      ]
-    },
-    {
-      "name": "Codex Skills",
-      "repository": "codex-skills",
-      "fullName": "shreyas-makes/codex-skills",
-      "url": "https://github.com/shreyas-makes/codex-skills",
-      "homepage": null,
-      "description": "Personal list of codex skills I frequently use",
-      "language": "JavaScript",
-      "stars": 2,
-      "commitCount": 8,
-      "pushedAt": "2026-03-10T19:46:11Z",
-      "latestCommitAt": "2026-03-10T19:46:08Z",
-      "updateCount": 2,
-      "updates": [
-        {
-          "periodStart": "2026-02-28T22:27:33.006Z",
-          "periodEnd": "2026-03-14T22:27:33.006Z",
-          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
-          "latestCommitAt": "2026-03-10T19:46:08Z",
-          "commitCount": 6,
-          "headline": "Making the project more legible",
-          "narrative": "Codex Skills had a documentation-heavy fortnight, but in the useful sense. The work makes personal list of codex skills I frequently use easier to approach, easier to understand, and less dependent on private context living in your head.",
-          "valueUnlocked": "The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.",
-          "focusBullets": [
-            "Simplified the project structure to reduce maintenance overhead",
-            "Clarified the README and setup guidance",
-            "Refined the project framing and supporting documentation"
-          ],
-          "commitMessages": [
-            "removed submodules",
-            "Remove notes section from README",
-            "updated REAME",
-            "updated skill sets",
-            "updated skill sets",
-            "Add design-audit skill and update skill inventory"
-          ]
-        },
-        {
-          "periodStart": "2026-02-14T22:27:33.006Z",
-          "periodEnd": "2026-02-28T22:27:33.006Z",
-          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
-          "latestCommitAt": "2026-02-23T21:05:36Z",
-          "commitCount": 2,
-          "headline": "Cleaning the foundation for the next wave",
-          "narrative": "Codex Skills had an internal cleanup fortnight. It is the sort of structural work that does not look flashy in a screenshot, but usually pays off by making future iteration faster and less brittle.",
-          "valueUnlocked": "The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.",
-          "focusBullets": [
-            "Simplified the project structure to reduce maintenance overhead",
-            "Set up the repository foundation for future iteration"
-          ],
-          "commitMessages": [
-            "removed ovh skill",
-            "initialised repo of skills"
-          ]
-        }
-      ],
-      "commitMessages": [
-        "removed submodules",
-        "Remove notes section from README",
-        "updated REAME",
-        "updated skill sets",
-        "updated skill sets",
-        "Add design-audit skill and update skill inventory",
-        "removed ovh skill",
-        "initialised repo of skills"
       ]
     },
     {
@@ -474,9 +397,9 @@
       "updateCount": 1,
       "updates": [
         {
-          "periodStart": "2026-02-28T22:27:33.006Z",
-          "periodEnd": "2026-03-14T22:27:33.006Z",
-          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "periodStart": "2026-02-22T17:54:59.465Z",
+          "periodEnd": "2026-03-08T17:54:59.465Z",
+          "periodLabel": "22 Feb 2026 - 08 Mar 2026",
           "latestCommitAt": "2026-03-04T22:52:39Z",
           "commitCount": 2,
           "headline": "Making the project more legible",
@@ -511,9 +434,9 @@
       "updateCount": 2,
       "updates": [
         {
-          "periodStart": "2026-02-28T22:27:33.006Z",
-          "periodEnd": "2026-03-14T22:27:33.006Z",
-          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "periodStart": "2026-02-22T17:54:59.465Z",
+          "periodEnd": "2026-03-08T17:54:59.465Z",
+          "periodLabel": "22 Feb 2026 - 08 Mar 2026",
           "latestCommitAt": "2026-03-04T22:45:53Z",
           "commitCount": 7,
           "headline": "Making the project more legible",
@@ -535,9 +458,9 @@
           ]
         },
         {
-          "periodStart": "2025-12-20T22:27:33.006Z",
-          "periodEnd": "2026-01-03T22:27:33.006Z",
-          "periodLabel": "20 Dec 2025 - 03 Jan 2026",
+          "periodStart": "2025-12-28T17:54:59.465Z",
+          "periodEnd": "2026-01-11T17:54:59.465Z",
+          "periodLabel": "28 Dec 2025 - 11 Jan 2026",
           "latestCommitAt": "2026-01-03T18:47:10Z",
           "commitCount": 3,
           "headline": "Pushing the product forward",
@@ -583,9 +506,9 @@
       "updateCount": 4,
       "updates": [
         {
-          "periodStart": "2026-02-28T22:27:33.006Z",
-          "periodEnd": "2026-03-14T22:27:33.006Z",
-          "periodLabel": "28 Feb 2026 - 14 Mar 2026",
+          "periodStart": "2026-02-22T17:54:59.465Z",
+          "periodEnd": "2026-03-08T17:54:59.465Z",
+          "periodLabel": "22 Feb 2026 - 08 Mar 2026",
           "latestCommitAt": "2026-03-04T21:59:43Z",
           "commitCount": 1,
           "headline": "Pushing the product forward",
@@ -599,9 +522,9 @@
           ]
         },
         {
-          "periodStart": "2026-02-14T22:27:33.006Z",
-          "periodEnd": "2026-02-28T22:27:33.006Z",
-          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "periodStart": "2026-02-08T17:54:59.465Z",
+          "periodEnd": "2026-02-22T17:54:59.465Z",
+          "periodLabel": "08 Feb 2026 - 22 Feb 2026",
           "latestCommitAt": "2026-02-15T14:54:46Z",
           "commitCount": 1,
           "headline": "Pushing the product forward",
@@ -613,9 +536,9 @@
           ]
         },
         {
-          "periodStart": "2026-01-17T22:27:33.006Z",
-          "periodEnd": "2026-01-31T22:27:33.006Z",
-          "periodLabel": "17 Jan 2026 - 31 Jan 2026",
+          "periodStart": "2026-01-25T17:54:59.465Z",
+          "periodEnd": "2026-02-08T17:54:59.465Z",
+          "periodLabel": "25 Jan 2026 - 08 Feb 2026",
           "latestCommitAt": "2026-01-31T11:52:35Z",
           "commitCount": 4,
           "headline": "Pushing the product forward",
@@ -634,9 +557,9 @@
           ]
         },
         {
-          "periodStart": "2025-12-20T22:27:33.006Z",
-          "periodEnd": "2026-01-03T22:27:33.006Z",
-          "periodLabel": "20 Dec 2025 - 03 Jan 2026",
+          "periodStart": "2025-12-28T17:54:59.465Z",
+          "periodEnd": "2026-01-11T17:54:59.465Z",
+          "periodLabel": "28 Dec 2025 - 11 Jan 2026",
           "latestCommitAt": "2025-12-30T17:15:01Z",
           "commitCount": 4,
           "headline": "Pushing the product forward",
@@ -683,9 +606,9 @@
       "updateCount": 1,
       "updates": [
         {
-          "periodStart": "2026-02-14T22:27:33.006Z",
-          "periodEnd": "2026-02-28T22:27:33.006Z",
-          "periodLabel": "14 Feb 2026 - 28 Feb 2026",
+          "periodStart": "2026-02-22T17:54:59.465Z",
+          "periodEnd": "2026-03-08T17:54:59.465Z",
+          "periodLabel": "22 Feb 2026 - 08 Mar 2026",
           "latestCommitAt": "2026-02-27T23:07:56Z",
           "commitCount": 2,
           "headline": "Pushing the product forward",

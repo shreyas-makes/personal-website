@@ -43,13 +43,13 @@ const formatDate = (date: string | Date): string => {
 <BaseLayout title="Rough notes | Shreyas" showMainFooterSection={true}>
   <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 sm:pt-32 pb-6 sm:pb-8">
     <div class="flex items-baseline justify-between mb-12">
-      <h1 class="text-3xl font-normal text-gray-800 dark:text-gray-200">Rough Notes</h1>
-      <span class="text-sm text-gray-500 dark:text-gray-400">
+      <h1 class="text-3xl font-normal text-gray-800 ">Rough Notes</h1>
+      <span class="text-sm text-gray-500 ">
         {roughNotes.length} notes
       </span>
     </div>
 
-    <div class="prose prose-neutral dark:prose-invert max-w-none mb-12">
+    <div class="prose prose-neutral max-w-none mb-12">
       <p>
         These are quick, unpolished thoughts. Think of them as seedlings in my digital garden - they might grow into fully-formed essays over time.
       </p>
@@ -67,11 +67,11 @@ const formatDate = (date: string | Date): string => {
           <li class="group">
             <div class="mb-1 flex items-center space-x-2">
               {mainTag && (
-                <a href={`/tags/${mainTag}`} class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight hover:text-gray-800 dark:hover:text-gray-200">
+                <a href={`/tags/${mainTag}`} class="text-xs text-gray-500 font-['JetBrains_Mono'] tracking-tight hover:text-gray-800 ">
                   {mainTag}
                 </a>
               )}
-              <span class="text-xs text-gray-500 dark:text-gray-400">
+              <span class="text-xs text-gray-500 ">
                 {stageEmoji && <span class="mr-1">{stageEmoji}</span>}
                 {readingTime} — {formattedDate}
               </span>
@@ -79,12 +79,12 @@ const formatDate = (date: string | Date): string => {
             <div class="mb-2">
               <a 
                 href={`/${post.slug}`} 
-                class="text-xl font-normal text-gray-800 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400"
+                class="text-xl font-normal text-gray-800 group-hover:text-gray-600 "
               >
                 {post.data.title}
               </a>
             </div>
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="text-gray-600 ">
               {summary}
             </p>
           </li>
@@ -93,7 +93,7 @@ const formatDate = (date: string | Date): string => {
     </ul>
 
     <div class="mt-16">
-      <a href="/" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 text-sm underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700">
+      <a href="/" class="text-gray-600 hover:text-gray-900 text-sm underline underline-offset-4 decoration-gray-300 ">
         ← Back to home
       </a>
     </div>
@@ -130,12 +130,4 @@ const formatDate = (date: string | Date): string => {
     padding: 0;
   }
 
-  /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-primary: #e1e1e1;
-      --text-secondary: #a1a1a1;
-      --hover-color: #fff;
-    }
-  }
 </style> 

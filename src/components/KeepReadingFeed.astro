@@ -15,7 +15,7 @@ const sortedPosts = posts.sort(
 {sortedPosts.length > 0 && (
   <section class="mt-16 pt-10">
     <div class="max-w-4xl">
-      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100">Read more</h2>
+      <h2 class="text-3xl font-semibold text-gray-900 ">Read more</h2>
       <ol class="mt-8 space-y-5">
         {sortedPosts.map((post) => {
           const visibleTag = post.data.tags?.find((tag) => tag !== 'rough-notes');
@@ -26,11 +26,11 @@ const sortedPosts = posts.sort(
                 href={`/${post.slug}`}
                 class="group flex items-start justify-between gap-4"
               >
-                <span class="text-lg sm:text-xl font-medium text-gray-900 dark:text-gray-100 underline underline-offset-4 decoration-1 transition-colors group-hover:text-gray-700 dark:group-hover:text-gray-300">
+                <span class="text-lg sm:text-xl font-medium text-gray-900 underline underline-offset-4 decoration-1 transition-colors group-hover:text-gray-700 ">
                   {post.data.title}
                 </span>
                 {visibleTag && (
-                  <span class="shrink-0 whitespace-nowrap text-xs sm:text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                  <span class="shrink-0 whitespace-nowrap text-xs sm:text-sm uppercase tracking-wide text-gray-500 ">
                     {visibleTag}
                   </span>
                 )}

@@ -55,6 +55,7 @@ npm run fix-frontmatter
 3. Optional: `slug`, `draft`, `summary`, `stage`, `rating`, `cover`
 4. Slug auto-generated from title if not provided
 
+
 ### Tag System
 - **Special Tags**: 
   - `projects` → redirects to special project layout

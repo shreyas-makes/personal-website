@@ -32,4 +32,3 @@ Not applicable.
 
 ## Cross-references
 - `specs/tokens/token-reference.md`
-- `specs/components/theme-toggle.md`

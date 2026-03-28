@@ -27,11 +27,11 @@ export default function Books({ books }: BooksProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   
   // Adjust dimensions to ensure perfect alignment
-  const width = 40;  // Base spine width
-  const height = 220;  // Fixed height
+  const width = 40; // Base spine width
+  const height = 220; // Fixed height
   const spineWidth = `${width}px`;
-  const coverWidth = `${width * 3}px`;  // Cover is 3x spine width
-  const bookWidth = `${width * 4}px`;   // Total width should match spine + cover
+  const coverWidth = `${width * 3}px`; // Cover is 3x spine width
+  const bookWidth = `${width * 4}px`; // Total width should match spine + cover
   
   // Add this state to track the maximum scroll value
   const [maxScroll, setMaxScroll] = useState(0);
@@ -296,8 +296,8 @@ export default function Books({ books }: BooksProps) {
         <button 
           onClick={() => handleScroll('right')}
           className="absolute right-0 top-1/2 -translate-y-1/2 z-10 
-                     bg-white/80 dark:bg-gray-800/80 rounded-l-lg p-2
-                     hover:bg-white dark:hover:bg-gray-800"
+                     bg-white/80 rounded-l-lg p-2
+                     hover:bg-white "
           aria-label="Scroll right"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -311,8 +311,8 @@ export default function Books({ books }: BooksProps) {
         <button 
           onClick={() => handleScroll('left')}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 
-                     bg-white/80 dark:bg-gray-800/80 rounded-r-lg p-2
-                     hover:bg-white dark:hover:bg-gray-800"
+                     bg-white/80 rounded-r-lg p-2
+                     hover:bg-white "
           aria-label="Scroll left"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

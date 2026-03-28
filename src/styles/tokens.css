@@ -96,24 +96,6 @@
   --ds-motion-easing-standard: ease;
 }
 
-:root.dark {
-  --ds-color-bg-body: #161618;
-  --ds-color-bg-surface: #1f2937;
-  --ds-color-bg-muted: #111827;
-  --ds-color-bg-hover: #1e293b;
-  --ds-color-bg-overlay: rgba(255, 255, 255, 0.1);
-  --ds-color-text-primary: #e1e1e1;
-  --ds-color-text-secondary: #d1d5db;
-  --ds-color-text-muted: #9ca3af;
-  --ds-color-text-on-overlay: #dddddd;
-  --ds-color-border-default: #374151;
-  --ds-color-border-subtle: #374151;
-  --ds-color-border-strong: #374151;
-  --ds-color-action-primary: #3b82f6;
-  --ds-color-action-primary-hover: #2563eb;
-  --ds-color-table-text: #e5e7eb;
-}
-
 @media (max-width: 640px) {
   :root {
     --ds-font-size-body: 18px;

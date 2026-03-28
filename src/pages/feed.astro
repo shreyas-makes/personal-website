@@ -54,19 +54,19 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     <!-- Feed container -->
     <div id="feed-container" class="w-full space-y-12 sm:space-y-16 mb-16">
       {postsWithMetadata.map((post) => (
-        <article class="post-item pb-8 border-b border-gray-200 dark:border-gray-800 w-full">
+        <article class="post-item pb-8 border-b border-gray-200 w-full">
           <div class="mb-4 text-center">
             <a href={`/${post.slug}`}>
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2 leading-tight">
+              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 hover:text-gray-600 mb-2 leading-tight">
                 {post.data.title}
               </h2>
             </a>
-            <div class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+            <div class="text-gray-600 text-sm mb-4">
               {post.readingTime}
             </div>
             <div class="flex items-center justify-center gap-2 mb-4">
               {post.data.tags && post.data.tags.length > 0 && (
-                <span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
+                <span class="text-xs text-gray-500 font-['JetBrains_Mono'] tracking-tight">
                   {post.data.tags[0]}
                 </span>
               )}
@@ -74,12 +74,12 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
           </div>
           
           <!-- Full blog content -->
-          <div class="prose prose-neutral dark:prose-invert prose-content">
+          <div class="prose prose-neutral prose-content">
             <post.Content />
           </div>
           
           <div class="mt-4">
-            <a href={`/${post.slug}`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+            <a href={`/${post.slug}`} class="text-sm text-gray-600 hover:text-gray-900 underline underline-offset-4">
               View original post →
             </a>
           </div>
@@ -90,12 +90,12 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     <!-- Loading section with load more button -->
     <div id="loading-section" class="flex flex-col items-center py-8 space-y-4">
       {hasMore && (
-        <button id="load-more-button" class="px-6 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+        <button id="load-more-button" class="px-6 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors">
           Load More Posts
         </button>
       )}
-      <div id="loading-spinner" class="w-8 h-8 border-4 border-gray-300 dark:border-gray-700 border-t-gray-600 dark:border-t-gray-300 rounded-full animate-spin hidden"></div>
-      <div id="end-message" class="text-center py-4 text-gray-500 dark:text-gray-400 hidden">
+      <div id="loading-spinner" class="w-8 h-8 border-4 border-gray-300 border-t-gray-600 rounded-full animate-spin hidden"></div>
+      <div id="end-message" class="text-center py-4 text-gray-500 hidden">
         You've reached the end of all posts
       </div>
     </div>
@@ -189,7 +189,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
         if (!(window as any).marked) {
           // Fallback if marked isn't loaded yet
           return `<p>${markdown.substring(0, 300)}...</p>
-                 <p><a href="#" class="inline-block mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">View Full Post</a></p>`;
+                 <p><a href="#" class="inline-block mt-4 px-4 py-2 bg-gray-200 rounded">View Full Post</a></p>`;
         }
         
         // Configure marked options
@@ -253,7 +253,7 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
             
             // Create post element
             const postElement = document.createElement('article');
-            postElement.className = 'post-item pb-8 border-b border-gray-200 dark:border-gray-800 mt-12 sm:mt-16 w-full';
+            postElement.className = 'post-item pb-8 border-b border-gray-200 mt-12 sm:mt-16 w-full';
             
             // Format date
             const date = new Date(post.date);
@@ -270,16 +270,16 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
             postElement.innerHTML = `
               <div class="mb-4 text-center">
                 <a href="/${post.slug}">
-                  <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 mb-2 leading-tight">
+                  <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 hover:text-gray-600 mb-2 leading-tight">
                     ${post.title}
                   </h2>
                 </a>
-                <div class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <div class="text-gray-600 text-sm mb-4">
                   ${post.readingTime}
                 </div>
                 <div class="flex items-center justify-center gap-2 mb-4">
                   ${post.tags && post.tags.length > 0 ? 
-                    `<span class="text-xs text-gray-500 dark:text-gray-400 font-['JetBrains_Mono'] tracking-tight">
+                    `<span class="text-xs text-gray-500 font-['JetBrains_Mono'] tracking-tight">
                       ${post.tags[0]}
                     </span>` : ''}
                 </div>
@@ -291,12 +291,12 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
                 </div>
               ` : ''}
               
-              <div class="prose prose-neutral dark:prose-invert prose-content">
+              <div class="prose prose-neutral prose-content">
                 ${renderedContent}
               </div>
               
               <div class="mt-4">
-                <a href="/${post.slug}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 underline underline-offset-4">
+                <a href="/${post.slug}" class="text-sm text-gray-600 hover:text-gray-900 underline underline-offset-4">
                   View original post →
                 </a>
               </div>
@@ -378,14 +378,6 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     --hover-color: #555;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --text-primary: #e1e1e1;
-      --text-secondary: #d1d5db;
-      --hover-color: #fff;
-    }
-  }
-
   .post-item:last-child {
     border-bottom: none;
   }
@@ -424,9 +416,4 @@ const remainingPosts = sortedPosts.slice(initialBatch.length).map(post => ({
     }
   }
 
-  /* Dark mode overrides with higher specificity */
-  :global(html.dark .prose blockquote) {
-    color: #9ca3af;
-    border-left-color: #374151;
-  }
 </style> 

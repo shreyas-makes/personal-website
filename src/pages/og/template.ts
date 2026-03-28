@@ -274,14 +274,14 @@ export const createOgTemplate = ({
                 style: {
                   maxWidth: '1040px',
                   display: 'flex',
-                  flexDirection: isCentered ? 'column' : 'row',
-                  alignItems: 'center',
-                  justifyContent: isCentered ? 'center' : 'space-between',
-                  gap: isCentered ? '22px' : '40px'
-                },
-                children: mainContentChildren
-              }
-            },
+                   flexDirection: isCentered ? 'column' : 'row',
+                   alignItems: 'center',
+                   justifyContent: isCentered ? 'center' : 'space-between',
+                   gap: isCentered ? '22px' : '40px'
+                 },
+                   children: mainContentChildren
+               }
+             },
             {
               type: 'div',
               props: {

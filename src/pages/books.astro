@@ -69,7 +69,7 @@ const formatDate = (date: string) => {
             <img
               src={book.cover || '/images/placeholder-book-cover.jpg'}
               alt={`Cover of ${book.title}`}
-              class="h-full w-full object-cover border border-gray-200 dark:border-gray-800"
+              class="h-full w-full object-cover border border-gray-200 "
               loading="lazy"
               decoding="async"
               width="200"
@@ -77,18 +77,18 @@ const formatDate = (date: string) => {
             />
           </div>
           <div class="book-content">
-            <h2 id={book.slug} class="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-gray-100 scroll-mt-32">
+            <h2 id={book.slug} class="text-2xl sm:text-3xl font-medium text-gray-900 scroll-mt-32">
               <a href={`/books/${book.slug.replace('booknotes/', '')}`} class="hover:underline">
                 {book.title}
               </a>
             </h2>
-            <p class="mt-1 text-gray-600 dark:text-gray-400">
+            <p class="mt-1 text-gray-600 ">
               {book.author}
             </p>
             <p class="mt-1 text-lg text-gray-500">
               Read: {formatDate(book.date)} — Rating: {book.rating}/10
             </p>
-            <div class="mt-6 prose dark:prose-invert max-w-none book-prose">
+            <div class="mt-6 prose max-w-none book-prose">
               <book.Content />
             </div>
           </div>
@@ -176,14 +176,4 @@ const formatDate = (date: string) => {
     }
   }
 
-  /* Dark mode support for borders */
-  @media (prefers-color-scheme: dark) {
-    .book-container {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .book-content h2 {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
-    }
-  }
 </style> 

@@ -10,7 +10,7 @@ Use shadow tokens for depth. Components should not define raw `box-shadow` value
 
 ## Anatomy
 - Base soft elevation
-- Stronger dark-surface elevation
+- Optional stronger emphasis elevation
 
 ## Tokens used
 - `--shadow-sm`
@@ -21,14 +21,14 @@ Not applicable.
 
 ## States
 - Default: `--shadow-sm`
-- Dark mode: `--shadow-sm-strong`
+- Emphasis: `--shadow-sm-strong`
 
 ## Code example
 ```css
 .table-container {
   box-shadow: var(--shadow-sm);
 }
-.dark .table-container {
+.table-container--emphasis {
   box-shadow: var(--shadow-sm-strong);
 }
 ```

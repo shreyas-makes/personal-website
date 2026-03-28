@@ -44,13 +44,13 @@ const { Content } = await post.render();
 
 <BaseLayout title={post.data.title} showMainFooterSection={true}>
   <main class="max-w-3xl mx-auto px-4 py-8">
-    <article class="prose prose-neutral dark:prose-invert max-w-none">
+    <article class="prose prose-neutral max-w-none">
       <Content />
     </article>
     <div class="mt-16">
       <a 
         href="/books" 
-        class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 transition-colors underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700"
+        class="text-gray-500 hover:text-gray-800 transition-colors underline underline-offset-4 decoration-gray-300 "
       >
         ← Back to books
       </a>

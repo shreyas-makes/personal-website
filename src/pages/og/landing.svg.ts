@@ -10,7 +10,7 @@ export const GET: APIRoute = async ({ request }) => {
     const baseUrl = new URL(request.url).origin;
     const backgroundImageUrl = new URL('/images/og/serene-forest.jpg', baseUrl).toString();
     const backgroundDataUrl = await fetchImageAsDataUrl(backgroundImageUrl);
-    const avatarUrl = new URL('/images/og/avatar.png', baseUrl).toString();
+    const avatarUrl = new URL('/12.png', baseUrl).toString();
     const avatarDataUrl = await fetchImageAsDataUrl(avatarUrl);
     const fonts = await loadOgFonts(baseUrl);
     const formattedDate = formatDate(new Date());

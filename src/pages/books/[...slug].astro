@@ -67,10 +67,10 @@ const formatDate = (date: string) => {
 
     <article class="mb-16">
       <header class="mb-12">
-        <h1 class="text-3xl sm:text-4xl font-medium text-gray-900 dark:text-gray-100">
+        <h1 class="text-3xl sm:text-4xl font-medium text-gray-900 ">
           {book.data.title}
         </h1>
-        <div class="mt-2 text-lg text-gray-600 dark:text-gray-400 space-x-2">
+        <div class="mt-2 text-lg text-gray-600 space-x-2">
           <span>By: {book.data.author}</span>
           <span>—</span>
           <span>Read: {formatDate(book.data.date)}</span>
@@ -79,38 +79,38 @@ const formatDate = (date: string) => {
         </div>
         
         {book.data.summary && (
-          <div class="mt-6 p-4 border border-gray-300 dark:border-gray-700 rounded-lg">
-            <p class="text-gray-700 dark:text-gray-300">
+          <div class="mt-6 p-4 border border-gray-300 rounded-lg">
+            <p class="text-gray-700 ">
               {book.data.summary}
             </p>
           </div>
         )}
       </header>
       
-      <div class="prose dark:prose-invert prose-neutral max-w-none book-content-prose
-                  prose-headings:font-medium prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-                  prose-p:text-gray-800 dark:prose-p:text-gray-300
-                  prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
-                  prose-strong:font-medium prose-strong:text-gray-900 dark:prose-strong:text-gray-100
-                  prose-code:text-gray-900 dark:prose-code:text-gray-100
-                  prose-pre:bg-gray-100 dark:prose-pre:bg-gray-800
-                  prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-400
-                  prose-hr:border-gray-200 dark:prose-hr:border-gray-800
-                  prose-li:text-gray-800 dark:prose-li:text-gray-300">
+      <div class="prose prose-neutral max-w-none book-content-prose
+                  prose-headings:font-medium prose-headings:text-gray-900 
+                  prose-p:text-gray-800 
+                  prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
+                  prose-strong:font-medium prose-strong:text-gray-900 
+                  prose-code:text-gray-900 
+                  prose-pre:bg-gray-100 
+                  prose-blockquote:text-gray-700 
+                  prose-hr:border-gray-200 
+                  prose-li:text-gray-800 ">
         <Content />
       </div>
     </article>
 
-    <section class="mt-16 mb-32 pt-8 border-t border-gray-200 dark:border-gray-800">
-      <h2 class="text-2xl sm:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-8">
+    <section class="mt-16 mb-32 pt-8 border-t border-gray-200 ">
+      <h2 class="text-2xl sm:text-3xl font-medium text-gray-900 mb-8">
         Other books
       </h2>
       
       <div class="space-y-12">
         {allBooks
           .filter(otherBook => otherBook.slug !== book.slug)
-          .sort(() => Math.random() - 0.5)  // Randomize the order
-          .slice(0, 3)  // Show only 3 random books
+          .sort(() => Math.random() - 0.5) // Randomize the order
+          .slice(0, 3) // Show only 3 random books
           .map((otherBook) => (
             <article class="group">
               <div class="flex gap-6">
@@ -118,23 +118,23 @@ const formatDate = (date: string) => {
                   <img
                     src={otherBook.cover || '/images/placeholder-book-cover.jpg'}
                     alt={otherBook.title}
-                    class="h-full w-full object-cover border border-gray-200 dark:border-gray-800"
+                    class="h-full w-full object-cover border border-gray-200 "
                   />
                 </div>
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-2xl font-medium text-gray-900 dark:text-gray-100">
+                  <h3 class="text-2xl font-medium text-gray-900 ">
                     <a href={`/books/${otherBook.slug.replace('booknotes/', '')}`} class="hover:underline">
                       {otherBook.title}
                     </a>
                   </h3>
-                  <p class="mt-1 text-gray-600 dark:text-gray-400">
+                  <p class="mt-1 text-gray-600 ">
                     {otherBook.author}
                   </p>
                   <p class="mt-1 text-lg text-gray-500">
                     Read: {formatDate(otherBook.date)} — Rating: {otherBook.rating}/10
                   </p>
                   {otherBook.summary && (
-                    <p class="mt-3 text-gray-600 dark:text-gray-400 line-clamp-3">
+                    <p class="mt-3 text-gray-600 line-clamp-3">
                       {otherBook.summary}
                     </p>
                   )}
