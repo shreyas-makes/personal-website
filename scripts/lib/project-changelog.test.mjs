@@ -82,12 +82,12 @@ test('summary helpers keep the copy high-level for semi-technical readers', () =
 
   assert.equal(
     buildSummary(repo, commits),
-    'Deslopify had a packaging-and-operations fortnight. The work pushed make the AI writing sound more humane closer to something people can reliably install, run, and keep in their workflow without extra hand-holding.'
+    'Deslopify became easier to install, run, and keep in a real workflow. For users, that means less setup friction and a shorter path from trying the tool to depending on it.'
   );
 
   assert.equal(
     buildValueUnlocked(repo, commits),
-    'It is easier to drop the tool into a real workflow instead of treating it like a one-off demo or side script.'
+    'People can try the tool faster and keep using it without turning setup into a side quest.'
   );
 });
 
@@ -121,6 +121,6 @@ test('buildProjectUpdates groups commit activity into fortnightly narrative upda
 
   assert.equal(updates.length, 2);
   assert.equal(updates[0].commitCount, 2);
-  assert.match(updates[0].narrative, /reliability|operational|fragile/i);
+  assert.match(updates[0].narrative, /reliable|rough edges|understand/i);
   assert.equal(updates[1].periodLabel, '28 Feb 2026 - 14 Mar 2026');
 });

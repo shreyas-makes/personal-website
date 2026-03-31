@@ -23,6 +23,10 @@ export function cleanCommitMessage(message) {
     .trim();
 }
 
+function isTooGeneric(message) {
+  return /^(x|yes|ok|wip|updated?|added?|new|misc)$/i.test(message);
+}
+
 export function sentenceCase(text) {
   if (!text) return text;
   return text.charAt(0).toUpperCase() + text.slice(1);
@@ -55,8 +59,60 @@ export function summarizeCommit(message) {
     return null;
   }
 
-  if (/^(x|yes|ok|wip)$/i.test(cleaned) || /^merge\b/i.test(cleaned)) {
+  if (isTooGeneric(cleaned) || /^merge\b/i.test(cleaned)) {
     return null;
+  }
+
+  if (/\bprivacy\b|\bdefaults?\b|\bcontrols?\b/.test(lower)) {
+    return 'Added safer defaults and clearer controls for users';
+  }
+
+  if (/\bobsidian\b|\bvault\b|\bhook\b|\bcomet\b/.test(lower)) {
+    return 'Improved content sync so publishing updates land more reliably';
+  }
+
+  if (/\bdesign token\b/.test(lower)) {
+    return 'Improved visual consistency across the product';
+  }
+
+  if (/\btitles?\b/.test(lower)) {
+    return 'Made labels and titles clearer to scan';
+  }
+
+  if (/\bllm\b|\bllms\b/.test(lower)) {
+    return 'Made supporting resources and related paths easier to find';
+  }
+
+  if (/\bredesign\b|\blanding page\b|\bimproved ui\b|\binterface\b/.test(lower)) {
+    return 'Refined the interface so the product feels clearer and more polished';
+  }
+
+  if (/\bfooter\b|\bbuttons?\b|\bicons?\b|\bnavigation\b/.test(lower)) {
+    return 'Made key actions and supporting links easier to discover';
+  }
+
+  if (/\bautoplay\b|\bvideo\b/.test(lower)) {
+    return 'Made the product story easier to grasp from the first screen';
+  }
+
+  if (/\bdefaults?\b/.test(lower)) {
+    return 'Improved defaults so the product works better out of the box';
+  }
+
+  if (/\btransition(s)?\b|\bbreathing space\b|\bsilence-only\b|\bpause slider\b/.test(lower)) {
+    return 'Improved editing controls so results feel smoother with less manual cleanup';
+  }
+
+  if (/\bchrome extension\b|\bauth\b/.test(lower)) {
+    return 'Expanded the workflow so the product fits more naturally into real usage';
+  }
+
+  if (/\bspecs?\b|\bplan\b|\bshaping\b/.test(lower)) {
+    return 'Clarified the product direction behind the next round of work';
+  }
+
+  if (/\blint\b|\btests?\b|\bpipeline\b|\bworkflow\b/.test(lower)) {
+    return 'Strengthened quality checks so releases are safer to trust';
   }
 
   if (/\bnew priors\b|\bupdated reame\b/.test(lower)) {
@@ -99,10 +155,6 @@ export function summarizeCommit(message) {
     return 'Clarified how the skill should be used';
   }
 
-  if (/\bimproved ui\b/.test(lower)) {
-    return 'Sharpened the working interface';
-  }
-
   if (/\binitialis(ed|ed) repo\b|\binitialized repo\b/.test(lower)) {
     return 'Set up the repository foundation for future iteration';
   }
@@ -129,44 +181,42 @@ export function buildFocusBullets(commits) {
 export function buildSummary(repo, commits) {
   const signals = classifySignals(commits);
   const repoName = toTitleFromSlug(repo.name);
-  const description = repo.description?.trim();
-  const subject = description ? description.charAt(0).toLowerCase() + description.slice(1) : 'the product';
 
   if (signals.cli && signals.release) {
-    return `${repoName} had a packaging-and-operations fortnight. The work pushed ${subject} closer to something people can reliably install, run, and keep in their workflow without extra hand-holding.`;
+    return `${repoName} became easier to install, run, and keep in a real workflow. For users, that means less setup friction and a shorter path from trying the tool to depending on it.`;
   }
 
   if (signals.stability && signals.docs) {
-    return `${repoName} had a tightening-the-screws fortnight. The commits stayed close to the core experience, with reliability work and clearer documentation moving in parallel so the tool feels more operational than fragile.`;
+    return `${repoName} got more reliable while also becoming easier to understand. Users should spend less time fighting rough edges and less time guessing how the product is supposed to work.`;
   }
 
   if (signals.ux && signals.setup) {
-    return `${repoName} had an adoption-focused fortnight. The attention went into smoothing rough edges and reducing setup ambiguity, which is exactly the work that helps an interesting prototype become something repeatable.`;
+    return `${repoName} reduced setup friction and smoothed important interaction points. That makes the product easier to adopt for first-time users and less annoying for returning ones.`;
   }
 
   if (signals.docs) {
-    return `${repoName} had a documentation-heavy fortnight, but in the useful sense. The work makes ${subject} easier to approach, easier to understand, and less dependent on private context living in your head.`;
+    return `${repoName} got clearer onboarding and explanation. People should be able to understand the value faster and get started without relying on private builder context.`;
   }
 
   if (signals.cleanup) {
-    return `${repoName} had an internal cleanup fortnight. It is the sort of structural work that does not look flashy in a screenshot, but usually pays off by making future iteration faster and less brittle.`;
+    return `${repoName} simplified part of its foundation in ways that support a steadier product. Users may not see the change directly, but it reduces the odds of future work feeling brittle or inconsistent.`;
   }
 
-  return `${repoName} moved forward with a practical fortnight of product work. The changes were not ornamental; they were aimed at making ${subject} more usable, more legible, and easier to trust.`;
+  return `${repoName} moved in a practical direction that improves usability and trust. The recent work reads less like maintenance churn and more like sharpening the product people actually touch.`;
 }
 
 export function buildValueUnlocked(repo, commits) {
   const signals = classifySignals(commits);
   const values = [];
 
-  if (signals.cli) values.push('It is easier to drop the tool into a real workflow instead of treating it like a one-off demo or side script.');
-  if (signals.stability) values.push('The product becomes safer to rely on for actual work, which is usually the threshold between “interesting” and “worth keeping around.”');
-  if (signals.docs) values.push('The onboarding tax comes down, so more of the product value is available without needing a tour from the builder.');
-  if (signals.release || signals.setup) values.push('The project moves closer to public-adoption shape: clearer install paths, cleaner release boundaries, and less hidden context.');
-  if (signals.ux) values.push('The interaction cost drops, which matters because semi-frequent tasks live or die on friction more than on feature count.');
+  if (signals.cli) values.push('People can try the tool faster and keep using it without turning setup into a side quest.');
+  if (signals.stability) values.push('Users can trust the core flow more, which is what turns a neat demo into something worth depending on.');
+  if (signals.docs) values.push('New users get to value faster because the product now asks for less guesswork up front.');
+  if (signals.release || signals.setup) values.push('Adoption gets easier with clearer install paths, clearer defaults, and less hidden builder knowledge.');
+  if (signals.ux) values.push('Common tasks take less effort, which matters more than feature count for tools people return to.');
 
   if (values.length === 0) {
-    return 'The recent work looks aimed at keeping the product useful and legible, not just active for activity’s sake.';
+    return 'The recent work looks aimed at making the product more useful in practice, not just more active on GitHub.';
   }
 
   return values[0];

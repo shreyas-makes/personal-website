@@ -37,15 +37,15 @@ function toSentenceCase(value: string) {
 
 <BaseLayout
   title="Open Source Changelog"
-  description="A rolling, bi-weekly narrative changelog of Shreyas Prakash's open source projects."
+  description="A rolling, bi-weekly changelog of what shipped across Shreyas Prakash's active open source projects."
 >
   <main class="changelog-shell">
     <section class="changelog-hero">
       <div class="changelog-hero__titleblock">
         <p class="changelog-eyebrow">Open Source Changelog</p>
-        <h1 class="changelog-title">A bi-weekly field report from my open source work.</h1>
+        <h1 class="changelog-title">What shipped across my active projects lately.</h1>
         <p class="changelog-intro">
-          Fortnightly updates on all the open source projects I've been shipping.
+          Pulled from recent GitHub activity, then rewritten around what the work means for people using the product.
         </p>
       </div>
 
@@ -94,7 +94,9 @@ function toSentenceCase(value: string) {
                   </div>
 
                   <div class="update-card__body">
+                    <p class="update-card__headline">{update.headline}</p>
                     <p class="update-card__narrative">{update.narrative}</p>
+                    <p class="update-card__value">Why it matters: {update.valueUnlocked}</p>
 
                     <ul class="update-card__bullets" aria-label={`Changes in ${update.periodLabel}`}>
                       {update.focusBullets.map((bullet) => (
@@ -167,7 +169,9 @@ function toSentenceCase(value: string) {
 
   .changelog-intro,
   .project-band__description,
+  .update-card__headline,
   .update-card__narrative,
+  .update-card__value,
   .update-card__bullets li {
     margin: 0;
     color: var(--color-text-secondary);
@@ -305,6 +309,18 @@ function toSentenceCase(value: string) {
   .update-card__commitcount {
     color: var(--color-text-secondary);
     font-size: 0.95rem;
+  }
+
+  .update-card__headline {
+    color: var(--color-text-primary);
+    font-family: var(--font-ui);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-ui);
+    line-height: var(--line-height-heading);
+  }
+
+  .update-card__value {
+    font-size: var(--font-size-body);
   }
 
   .update-card__bullets {
