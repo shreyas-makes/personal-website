@@ -16,10 +16,10 @@ const dryRun = args.includes('--dry-run');
 
 const defaultSourceDir =
   process.env.OBSIDIAN_ESSAYS_DIR ??
-  '/Users/shreyas/Desktop/Shreyas Personal/Essays';
+  '/Users/shreyas/Desktop/Shreyas Files/Essays';
 const defaultAttachmentsDir =
   process.env.OBSIDIAN_ATTACHMENTS_DIR ??
-  '/Users/shreyas/Desktop/Shreyas Personal/Attachments';
+  '/Users/shreyas/Desktop/Shreyas Files/Attachments';
 
 const sourceDir = getArg(
   '--source',

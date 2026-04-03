@@ -2,12 +2,14 @@ import { defineCollection, z } from 'astro:content';
 import { slugify } from '../utils/slugify';
 
 const dateSchema = z.coerce.date();
+const blankToUndefined = (value: unknown) => value === null ? undefined : value;
+const blankArrayToEmpty = (value: unknown) => value === null ? [] : value;
 
 const blogSchema = z.object({
   title: z.string(),
   date: dateSchema,
-  slug: z.string().optional(),
-  tags: z.array(z.string()).default([]),
+  slug: z.preprocess(blankToUndefined, z.string().optional()),
+  tags: z.preprocess(blankArrayToEmpty, z.array(z.string()).default([])),
   draft: z.boolean().optional().default(false),
   author: z.string().optional(),
   rating: z.number().min(1).max(10).optional(),
