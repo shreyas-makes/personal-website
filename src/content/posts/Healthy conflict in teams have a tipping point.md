@@ -5,15 +5,21 @@ slug:
 tags:
 stage: seedling
 ---
-I used to think the healthiest teams were the ones that argued the hardest. If people were pushing back, asking uncomfortable questions, and refusing to nod along too quickly, that seemed like a sign of maturity. It felt like the opposite of politeness, politics, and fake harmony. It felt like what Patrick Lencioni was pointing toward in _The Five Dysfunctions of a Team_: trust strong enough to survive conflict.
+I used to think the healthiest teams were the ones that argued the hardest. 
 
-But lately I've started wondering whether some teams don't fail because they avoid conflict. **They fail because they never learn when conflict has stopped being useful.**
+heathy arguments are one of such rituals which broke free from some of the pretentiousness of politeness, politics, and fake harmony. My impressions were majorly influenced by Patrick Lencioni and his book, _The Five Dysfunctions of a Team_: where we trust the team strong enough to survive conflict (and also be antifragile in a way by growing from it)
+
+If people were pushing back, asking uncomfortable questions, and refusing to nod along too quickly, that seemed like a sign of maturity right? Right.
+
+Lately I've started wondering whether some teams don't fail BECAUSE they avoid conflict. **They fail BECAUSE they never learn when conflict has stopped being useful.**
 
 Most startup teams already know that fake agreement is dangerous. Everyone has seen the meeting where people stay quiet, the decision gets made too quickly, and the real objections emerge in the hallway later. So we teach the opposite lesson: speak up, challenge assumptions, don't be a passenger. This is level 1, according to the Patrick Lencioni, and most European teams get this right.
 
 The problem is that some teams internalize only the first half of the lesson. They become good at voicing opinions and bad at converging. They confuse the responsibility to contribute with the responsibility to commit. And once that happens, "healthy conflict" quietly mutates into something else. Not louder conflict. It leads to worser conflict.
 
-I've seen teams argue through a real question, give everyone room to make their case, and still end with uneven conviction. That's normal. Alignment doesn't require agreement. It requires closure. But then comes the part that reveals whether the team is actually a team. The decision gets made. The room moves on. And one person keeps resurfacing their original view to stakeholders as if the discussion is still open. Now the stakeholder is hearing two positions: the team's position, and this person's position. Except that distinction doesn't stay clean for long. Very quickly it becomes unclear whether the team has a stance at all.
+I've seen teams argue through a real question, give everyone room to make their case, and still end with uneven conviction. That to me has been a great benchmark setting expectations for what an alpha team should do. 
+
+Alignment doesn't require agreement. It requires closure. But then comes the part that reveals whether the team is actually a team. The decision gets made. The room moves on. And one person keeps resurfacing their original view to stakeholders as if the discussion is still open. Now the stakeholder is hearing two positions: the team's position, and this person's position. Except that distinction doesn't stay clean for long. Very quickly it becomes unclear whether the team has a stance at all.
 
 You can feel the slippage in the language. "I think we should..." "My view is..." "I'm not convinced by what the team decided..." Maybe all of that is intellectually honest. It is not operationally honest. **At that point, the conflict is no longer improving the decision. It's competing with the decision.** It leaks out of the room as side-channel lobbying. It turns internal disagreement into external ambiguity. What looked like courage starts looking more like an inability to commit.
 

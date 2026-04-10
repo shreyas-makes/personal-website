@@ -63,45 +63,46 @@ export const { getStaticPaths, GET } = OGImageRoute({
   param: 'slug',
   pages,
   getSlug: (path) => path,
-  getImageOptions: (_path, page) => {
+  getImageOptions: (path, page) => {
     const titleLength = page.title.length;
     const titleSize = titleLength > 70 ? 56 : titleLength > 52 ? 62 : 70;
     const descriptionSize = titleLength > 70 ? 22 : 24;
+    const isLandingPage = path === 'landing';
 
     return {
       title: page.title,
       description: page.description,
-    bgImage: {
-      path: './public/images/og/serene-forest.jpg',
-      fit: 'cover'
-    },
-    logo: {
-      path: './public/12.png',
-      size: [110]
-    },
-    padding: 60,
-    font: {
-      title: {
-        size: titleSize,
-        lineHeight: 1.05,
-        weight: 'Bold',
-        families: ['Inter']
+      bgImage: {
+        path: './public/images/og/serene-forest.jpg',
+        fit: 'cover'
       },
-      description: {
-        size: descriptionSize,
-        lineHeight: 1.35,
-        weight: 'Normal',
-        families: ['Inter']
+      logo: {
+        path: isLandingPage ? './public/shreyas-1.jpg' : './public/12.png',
+        size: [110]
+      },
+      padding: 60,
+      font: {
+        title: {
+          size: titleSize,
+          lineHeight: 1.05,
+          weight: 'Bold',
+          families: ['Inter']
+        },
+        description: {
+          size: descriptionSize,
+          lineHeight: 1.35,
+          weight: 'Normal',
+          families: ['Inter']
+        }
+      },
+      fonts: [
+        './public/images/og/fonts/inter-400.woff',
+        './public/images/og/fonts/inter-700.woff'
+      ],
+      border: {
+        color: [255, 255, 255],
+        width: 0
       }
-    },
-    fonts: [
-      './public/images/og/fonts/inter-400.woff',
-      './public/images/og/fonts/inter-700.woff'
-    ],
-    border: {
-      color: [255, 255, 255],
-      width: 0
-    }
     };
   }
 });
