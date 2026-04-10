@@ -77,7 +77,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
         fit: 'cover'
       },
       logo: {
-        path: isLandingPage ? './public/shreyas-1.jpg' : './public/12.png',
+        path: './public/images/2024/12/shreyas-06-12-2024-at-15.16.44@2x.jpg',
         size: [110]
       },
       padding: 60,
