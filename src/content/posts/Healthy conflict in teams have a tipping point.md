@@ -7,17 +7,17 @@ stage: seedling
 ---
 I used to think the healthiest teams were the ones that argued the hardest. 
 
-heathy arguments are one of such rituals which broke free from some of the pretentiousness of politeness, politics, and fake harmony. My impressions were majorly influenced by Patrick Lencioni and his book, _The Five Dysfunctions of a Team_: where we trust the team strong enough to survive conflict (and also be antifragile in a way by growing from it)
+Healthy arguments are one of such rituals which broke free from the earlier pretentiousness of politeness, and fake harmony artificially induced to maintain the statis. This impression was majorly influenced by Patrick Lencioni and his book, _The Five Dysfunctions of a Team_ where he says to trust the team strong enough to even survive serious conflict. This way you're antifragile to the chaos, and keep growing in a way.
 
 If people were pushing back, asking uncomfortable questions, and refusing to nod along too quickly, that seemed like a sign of maturity right? Right.
 
-Lately I've started wondering whether some teams don't fail BECAUSE they avoid conflict. **They fail BECAUSE they never learn when conflict has stopped being useful.**
+Lately I've started wondering whether some teams don't fail BECAUSE they avoid conflict. I think, **they fail BECAUSE they never learn when conflict has stopped being useful.**
 
-Most startup teams already know that fake agreement is dangerous. Everyone has seen the meeting where people stay quiet, the decision gets made too quickly, and the real objections emerge in the hallway later. So we teach the opposite lesson: speak up, challenge assumptions, don't be a passenger. This is level 1, according to the Patrick Lencioni, and most European teams get this right.
+Most startup teams already know that fake agreement is dangerous. Everyone has seen the meeting where people stay quiet, the decision gets made too quickly, and the real objections emerge in the hallway later. So the idea here is to do exactly the opposite: speak up, challenge assumptions, don't be a passenger. This is level 1, according to the Patrick Lencioni.
 
-The problem is that some teams internalize only the first half of the lesson. They become good at voicing opinions and bad at converging. They confuse the responsibility to contribute with the responsibility to commit. And once that happens, "healthy conflict" quietly mutates into something else. Not louder conflict. It leads to worser conflict.
+The problem is that some teams internalize only the first half of the lesson. They become good at voicing opinions and bad at converging. They confuse the responsibility to **contribute** with the responsibility to **commit**. And once that happens, "healthy conflict" quietly mutates into something else, leaving the state to be worser than before.
 
-I've seen teams argue through a real question, give everyone room to make their case, and still end with uneven conviction. That to me has been a great benchmark setting expectations for what an alpha team should do. 
+I've seen teams argue through a real question, give everyone room to make their case, and still end with uneven conviction. The team doens't buy it, and it gets stuck. That to me has been a great benchmark setting expectations for what an alpha team should do. 
 
 Alignment doesn't require agreement. It requires closure. But then comes the part that reveals whether the team is actually a team. The decision gets made. The room moves on. And one person keeps resurfacing their original view to stakeholders as if the discussion is still open. Now the stakeholder is hearing two positions: the team's position, and this person's position. Except that distinction doesn't stay clean for long. Very quickly it becomes unclear whether the team has a stance at all.
 
