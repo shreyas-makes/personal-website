@@ -145,24 +145,6 @@ const isHomepage = pathname === '/';
           <span>Work</span>
         </a>
 
-        <a 
-          href="/changelog"
-          class:list={[
-            "flex items-center gap-2 transition-colors",
-            currentPath === "changelog"
-              ? "nav-item-active"
-              : "nav-item"
-          ]}
-          data-path="changelog"
-          data-astro-prefetch="hover"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 12h8M8 17h5" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2Z" />
-          </svg>
-          <span>Changelog</span>
-        </a>
-        
         <!-- Interviews Tab -->
         <a 
           href="/interviews"
@@ -312,22 +294,6 @@ const isHomepage = pathname === '/';
           <span>Work</span>
         </a>
         
-        <a 
-          href="/changelog"
-          class:list={[
-            "flex items-center gap-2 transition-colors mobile-nav-item",
-            currentPath === "changelog" && "mobile-nav-item-active"
-          ]}
-          data-path="changelog"
-          data-astro-prefetch="hover"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 12h8M8 17h5" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 3h12a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2Z" />
-          </svg>
-          <span>Changelog</span>
-        </a>
-
         <a 
           href="/interviews"
           class:list={[

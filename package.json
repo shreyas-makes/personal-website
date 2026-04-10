@@ -26,8 +26,6 @@
     "check": "astro check",
     "prepare": "node scripts/install-hooks.mjs",
     "hooks:install": "node scripts/install-hooks.mjs",
-    "changelog:update": "node scripts/update-project-changelog.mjs",
-    "test:changelog": "node --test scripts/lib/project-changelog.test.mjs",
     "token:audit": "node scripts/token-audit.js",
     "sync:obsidian": "node scripts/sync-obsidian-essays.mjs",
     "sync:watch": "node scripts/watch-obsidian-essays.mjs"
