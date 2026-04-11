@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { getCoverUrl } from '../utils/bookCovers';
-import type { ImageMetadata } from 'astro';
 
 interface Book {
   title: string;
   slug: string;
   cover?: string;
-  spineColor: string;
+  spineStyle: {
+    background: string;
+    border: string;
+    shadow: string;
+  };
   isbn?: string;
 }
 
@@ -26,57 +28,87 @@ export default function Books({ books }: BooksProps) {
   const [isScrolling, setIsScrolling] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
   
-  // Adjust dimensions to ensure perfect alignment
-  const width = 40; // Base spine width
-  const height = 220; // Fixed height
+  const width = 56;
+  const height = 300;
+  const selectedSpacing = 64;
   const spineWidth = `${width}px`;
-  const coverWidth = `${width * 3}px`; // Cover is 3x spine width
-  const bookWidth = `${width * 4}px`; // Total width should match spine + cover
+  const coverWidth = `${width * 3}px`;
+  const bookWidth = `${width * 4}px`;
   
-  // Add this state to track the maximum scroll value
-  const [maxScroll, setMaxScroll] = useState(0);
-  
-  // Create infinite repeating books array
   const createInfiniteBooks = (books: Book[]) => {
-    // Repeat the books array 3 times to create an infinite effect
     return [...books, ...books, ...books];
   };
 
-  const getRandomSpineColor = () => {
-    const colors = [
-      'bg-red-900', 'bg-blue-900', 'bg-green-900', 
-      'bg-purple-900', 'bg-indigo-900', 'bg-yellow-900'
+  const getLoopWidth = () => books.length * width;
+
+  const normalizeScroll = (value: number) => {
+    const loopWidth = getLoopWidth();
+
+    if (loopWidth === 0) return 0;
+
+    if (value < loopWidth) {
+      return value + loopWidth;
+    }
+
+    if (value >= loopWidth * 2) {
+      return value - loopWidth;
+    }
+
+    return value;
+  };
+
+  const getRandomSpineStyle = () => {
+    const styles = [
+      {
+        background:
+          'linear-gradient(180deg, hsl(12 70% 52%) 0%, hsl(6 64% 34%) 100%)',
+        border: 'color-mix(in srgb, var(--color-bg-body) 22%, transparent)',
+        shadow: 'hsla(12 70% 40% / 0.24)',
+      },
+      {
+        background:
+          'linear-gradient(180deg, hsl(218 58% 45%) 0%, hsl(228 52% 28%) 100%)',
+        border: 'color-mix(in srgb, var(--color-bg-body) 20%, transparent)',
+        shadow: 'hsla(222 60% 28% / 0.24)',
+      },
+      {
+        background:
+          'linear-gradient(180deg, hsl(146 46% 40%) 0%, hsl(154 42% 24%) 100%)',
+        border: 'color-mix(in srgb, var(--color-bg-body) 22%, transparent)',
+        shadow: 'hsla(150 42% 22% / 0.24)',
+      },
+      {
+        background:
+          'linear-gradient(180deg, hsl(278 48% 46%) 0%, hsl(286 42% 29%) 100%)',
+        border: 'color-mix(in srgb, var(--color-bg-body) 14%, transparent)',
+        shadow: 'hsla(282 42% 26% / 0.24)',
+      },
+      {
+        background:
+          'linear-gradient(180deg, hsl(42 76% 56%) 0%, hsl(31 72% 36%) 100%)',
+        border: 'color-mix(in srgb, var(--color-bg-body) 18%, transparent)',
+        shadow: 'hsla(34 72% 34% / 0.24)',
+      },
+      {
+        background:
+          'linear-gradient(180deg, hsl(342 62% 54%) 0%, hsl(334 54% 34%) 100%)',
+        border: 'color-mix(in srgb, var(--color-bg-body) 18%, transparent)',
+        shadow: 'hsla(336 56% 32% / 0.24)',
+      },
     ];
-    return colors[Math.floor(Math.random() * colors.length)];
+    return styles[Math.floor(Math.random() * styles.length)];
   };
 
   useEffect(() => {
     const booksWithStyles = books.map(book => ({
       ...book,
-      spineColor: getRandomSpineColor()
+      spineStyle: getRandomSpineStyle()
     }));
     const infiniteBooks = createInfiniteBooks(booksWithStyles);
     setBooksWithCovers(infiniteBooks);
+    setSelectedIndex(-1);
+    setScroll(getLoopWidth());
   }, [books]);
-
-  // Add this useEffect to calculate maxScroll when books or viewport changes
-  useEffect(() => {
-    const calculateMaxScroll = () => {
-      if (!viewportRef.current) return;
-      
-      // Calculate total width of all books (spines only)
-      const totalBooksWidth = booksWithCovers.length * width;
-      const viewportWidth = viewportRef.current.clientWidth;
-      
-      // Set max scroll to ensure we can see all books
-      const newMaxScroll = Math.max(0, totalBooksWidth - viewportWidth + 100); // Add padding
-      setMaxScroll(newMaxScroll);
-    };
-
-    calculateMaxScroll();
-    window.addEventListener('resize', calculateMaxScroll);
-    return () => window.removeEventListener('resize', calculateMaxScroll);
-  }, [booksWithCovers, width]);
 
   const handleScroll = (direction: 'left' | 'right') => {
     setIsScrolling(true);
@@ -106,7 +138,7 @@ export default function Books({ books }: BooksProps) {
       if (viewportRef.current) {
         const viewportWidth = viewportRef.current.clientWidth;
         const bookPosition = newIndex * width;
-        const expandedBookWidth = width * 4 + 48; // spine + cover + margin
+        const expandedBookWidth = width * 4 + selectedSpacing;
         
         // Calculate the center position for infinite scroll
         const targetScroll = bookPosition - (viewportWidth / 2) + (expandedBookWidth / 2);
@@ -116,10 +148,10 @@ export default function Books({ books }: BooksProps) {
       // If no book is selected, just scroll
       const scrollAmount = width * 4;
       setScroll(prevScroll => {
-        const newScroll = direction === 'left' 
+        const newScroll = direction === 'left'
           ? prevScroll - scrollAmount
           : prevScroll + scrollAmount;
-        return newScroll;
+        return normalizeScroll(newScroll);
       });
     }
 
@@ -136,18 +168,18 @@ export default function Books({ books }: BooksProps) {
       // Center the selected book in the viewport
       const bookPosition = selectedIndex * width;
       const viewportWidth = viewportRef.current.clientWidth;
-      const expandedBookWidth = width * 4 + 48; // spine + cover + margin
+      const expandedBookWidth = width * 4 + selectedSpacing;
       
       // Calculate the center position for infinite scroll
       const targetScroll = bookPosition - (viewportWidth / 2) + (expandedBookWidth / 2);
       
       // For infinite scroll, we don't need to worry about boundaries
       // The books repeat, so we can always center any book
-      setScroll(targetScroll);
+      setScroll(normalizeScroll(targetScroll));
     }
-  }, [selectedIndex]);
+  }, [selectedIndex, books.length]);
 
-  const handleBookClick = (index: number, slug: string) => {
+  const handleBookClick = (index: number) => {
     if (index === selectedIndex) {
       // If clicking the same book again, navigate to its page
       // For infinite scroll, we need to get the original slug from the middle section
@@ -165,11 +197,11 @@ export default function Books({ books }: BooksProps) {
         if (viewportRef.current) {
           const viewportWidth = viewportRef.current.clientWidth;
           const bookPosition = index * width;
-          const expandedBookWidth = width * 4 + 48;
+          const expandedBookWidth = width * 4 + selectedSpacing;
           
           // Calculate the center position for infinite scroll
           const targetScroll = bookPosition - (viewportWidth / 2) + (expandedBookWidth / 2);
-          setScroll(targetScroll);
+          setScroll(normalizeScroll(targetScroll));
         }
         
         // Then scroll to the detailed section below, but keep the bookshelf visible and centered
@@ -180,7 +212,7 @@ export default function Books({ books }: BooksProps) {
         const element = document.getElementById(originalSlug);
         if (element) {
           // Calculate position to show both bookshelf and details
-          const bookshelfHeight = 250; // Approximate height of bookshelf
+          const bookshelfHeight = height + 72;
           const elementTop = element.offsetTop;
           
           // Scroll to position the details section below the bookshelf
@@ -195,11 +227,45 @@ export default function Books({ books }: BooksProps) {
   };
 
   return (
-    <div className={`relative w-full ${selectedIndex !== -1 ? 'ring-2 ring-blue-500 ring-opacity-25 p-2' : ''}`}>
+    <div
+      className="relative w-full"
+      style={{
+        padding: 'var(--space-100) 0 var(--space-150)',
+      }}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-4"
+        style={{
+          height: '18px',
+          marginInline: 'var(--space-400)',
+          borderRadius: 'var(--radius-pill)',
+          background:
+            'linear-gradient(180deg, color-mix(in srgb, var(--color-text-primary) 10%, var(--color-bg-body) 90%) 0%, color-mix(in srgb, var(--color-text-primary) 18%, var(--color-bg-body) 82%) 100%)',
+          boxShadow: '0 10px 22px color-mix(in srgb, var(--color-text-primary) 12%, transparent)',
+        }}
+      />
       <div 
         ref={viewportRef}
-        className="overflow-hidden"
+        className="overflow-hidden relative"
+        style={{ padding: 'var(--space-150) var(--space-400) var(--space-300)' }}
       >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10"
+          style={{
+            width: '56px',
+            background: 'linear-gradient(90deg, var(--color-bg-body) 0%, color-mix(in srgb, var(--color-bg-body) 55%, transparent) 52%, transparent 100%)',
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10"
+          style={{
+            width: '56px',
+            background: 'linear-gradient(270deg, var(--color-bg-body) 0%, color-mix(in srgb, var(--color-bg-body) 55%, transparent) 52%, transparent 100%)',
+          }}
+        />
         <div 
           className="flex"
           style={{ 
@@ -207,55 +273,78 @@ export default function Books({ books }: BooksProps) {
             transition: isScrolling ? 'transform 300ms ease-in-out' : 'none',
             gap: '0px',
             width: 'fit-content',
-            padding: '8px 0'
+            padding: '12px 0 20px',
+            minHeight: `${height + 36}px`,
+            alignItems: 'flex-end'
           }}
         >
           {booksWithCovers.map((book, index) => (
             <button
-              key={book.title}
-              onClick={() => handleBookClick(index, book.slug)}
+              key={`${book.slug}-${index}`}
+              onClick={() => handleBookClick(index)}
               className="flex-shrink-0 flex items-center relative"
+              aria-label={`Open ${book.title}`}
               style={{
-                width: index === selectedIndex ? `calc(${bookWidth} + 48px)` : spineWidth,
+                width: index === selectedIndex ? `calc(${bookWidth} + ${selectedSpacing}px)` : spineWidth,
                 height: `${height}px`,
                 transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
                 transformStyle: 'preserve-3d',
                 marginRight: '0px',
                 perspective: '1000px',
-                padding: index === selectedIndex ? '8px 0' : '0',
+                padding: index === selectedIndex ? '10px 0' : '0',
                 zIndex: index === selectedIndex ? 10 : 1,
+                transform: index === selectedIndex ? 'translateY(-6px)' : 'translateY(0)',
               }}
             >
-              {/* Book spine */}
               <div
-                className={`h-full flex items-start justify-center ${book.spineColor} ${index === selectedIndex ? 'ring-2 ring-blue-500 ring-opacity-75' : ''}`}
+                className="h-full flex items-start justify-center"
                 style={{
                   width: spineWidth,
                   transformOrigin: 'right',
                   transform: `rotateY(${index === selectedIndex ? '-60deg' : '0deg'})`,
                   transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
-                  boxShadow: index === selectedIndex 
-                    ? '-2px 0 4px rgba(0,0,0,0.2)' 
-                    : 'none',
+                  boxShadow: index === selectedIndex
+                    ? `-10px 10px 22px ${book.spineStyle.shadow}`
+                    : `0 8px 18px ${book.spineStyle.shadow}`,
                   position: 'absolute',
                   left: '0',
                   zIndex: 2,
-                  backgroundColor: index === selectedIndex ? 'rgba(59, 130, 246, 0.1)' : undefined,
+                  background: book.spineStyle.background,
+                  borderTopLeftRadius: 'var(--radius-md)',
+                  borderBottomLeftRadius: 'var(--radius-md)',
+                  borderTop: `1px solid ${book.spineStyle.border}`,
+                  borderLeft: `1px solid ${book.spineStyle.border}`,
+                  borderBottom: `1px solid color-mix(in srgb, ${book.spineStyle.border} 75%, transparent)`,
+                  overflow: 'hidden',
                 }}
               >
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    background:
+                      'linear-gradient(90deg, color-mix(in srgb, var(--color-bg-body) 20%, transparent) 0%, transparent 24%, transparent 76%, color-mix(in srgb, var(--color-text-primary) 14%, transparent) 100%)',
+                  }}
+                />
                 <span 
-                  className="writing-vertical-rl whitespace-nowrap overflow-hidden text-sm font-medium text-white mt-3 px-2"
+                  className="writing-vertical-rl whitespace-nowrap overflow-hidden mt-4 px-2"
                   style={{ 
                     transform: 'rotate(180deg)',
-                    maxHeight: '180px',
-                    textOverflow: 'ellipsis'
+                    maxHeight: '240px',
+                    textOverflow: 'ellipsis',
+                    color: 'var(--color-bg-body)',
+                    fontSize: 'calc(var(--font-size-ui-sm) + 2px)',
+                    fontWeight: 'var(--font-weight-strong)',
+                    letterSpacing: '0.08em',
+                    lineHeight: 1.1,
+                    textShadow: '0 1px 2px color-mix(in srgb, var(--color-text-primary) 35%, transparent)',
                   }}
                 >
                   {book.title}
                 </span>
               </div>
 
-              {/* Book cover */}
               <div
                 style={{
                   width: coverWidth,
@@ -265,14 +354,14 @@ export default function Books({ books }: BooksProps) {
                   transformOrigin: 'left',
                   transform: index === selectedIndex ? 'rotateY(0deg)' : 'rotateY(90deg)',
                   transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
-                  backgroundColor: '#fff',
+                  backgroundColor: 'var(--color-bg-body)',
                   overflow: 'hidden',
-                  borderRadius: '0',
-                  boxShadow: index === selectedIndex 
-                    ? '4px 4px 8px rgba(0,0,0,0.2), 0 0 4px rgba(0,0,0,0.1)' 
+                  borderRadius: '0 var(--radius-md) var(--radius-md) 0',
+                  boxShadow: index === selectedIndex
+                    ? '18px 20px 36px color-mix(in srgb, var(--color-text-primary) 24%, transparent), 0 0 0 1px color-mix(in srgb, var(--color-text-primary) 8%, transparent)'
                     : 'none',
                   zIndex: 1,
-                  marginRight: index === selectedIndex ? '48px' : '0',
+                  marginRight: index === selectedIndex ? `${selectedSpacing}px` : '0',
                 }}
               >
                 <img
@@ -280,9 +369,18 @@ export default function Books({ books }: BooksProps) {
                   alt={book.title}
                   className="w-full h-full"
                   style={{
-                    objectFit: 'fill',
+                    objectFit: 'cover',
                     backfaceVisibility: 'hidden',
-                    borderRadius: '0',
+                    borderRadius: '0 var(--radius-md) var(--radius-md) 0',
+                  }}
+                />
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    inset: '0',
+                    background:
+                      'linear-gradient(180deg, color-mix(in srgb, var(--color-bg-body) 16%, transparent) 0%, transparent 22%, transparent 76%, color-mix(in srgb, var(--color-text-primary) 18%, transparent) 100%)',
                   }}
                 />
               </div>
@@ -292,12 +390,18 @@ export default function Books({ books }: BooksProps) {
       </div>
 
       {/* Show right scroll button if there are more books to show or if we're not at the last book */}
-      {(scroll < maxScroll || (selectedIndex !== -1 && selectedIndex < booksWithCovers.length - 1)) && (
+      {books.length > 1 && (
         <button 
           onClick={() => handleScroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 
-                     bg-white/80 rounded-l-lg p-2
-                     hover:bg-white "
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20"
+          style={{
+            background: 'color-mix(in srgb, var(--color-bg-body) 82%, transparent)',
+            color: 'var(--color-text-primary)',
+            borderRadius: 'var(--radius-pill)',
+            padding: 'var(--space-150)',
+            boxShadow: '0 10px 24px color-mix(in srgb, var(--color-text-primary) 14%, transparent)',
+            border: '1px solid color-mix(in srgb, var(--color-border-default) 72%, transparent)',
+          }}
           aria-label="Scroll right"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -307,12 +411,18 @@ export default function Books({ books }: BooksProps) {
       )}
 
       {/* Show left scroll button if we can scroll left or if we're not at the first book */}
-      {(scroll > 0 || (selectedIndex !== -1 && selectedIndex > 0)) && (
+      {books.length > 1 && (
         <button 
           onClick={() => handleScroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 
-                     bg-white/80 rounded-r-lg p-2
-                     hover:bg-white "
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20"
+          style={{
+            background: 'color-mix(in srgb, var(--color-bg-body) 82%, transparent)',
+            color: 'var(--color-text-primary)',
+            borderRadius: 'var(--radius-pill)',
+            padding: 'var(--space-150)',
+            boxShadow: '0 10px 24px color-mix(in srgb, var(--color-text-primary) 14%, transparent)',
+            border: '1px solid color-mix(in srgb, var(--color-border-default) 72%, transparent)',
+          }}
           aria-label="Scroll left"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
