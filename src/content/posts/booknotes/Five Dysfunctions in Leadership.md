@@ -22,5 +22,4 @@ I've been reading the book, Five dysfunctions of leadership and have taken some 
 - **lack of accountability.** Even in cases you have people committing to decisions, you don't stick up to it, and ensure it delivers on the promised. 
 - **inattention to results.** All these would be meaningless if everyone is focussed on the self, and not prioritise the team's outcomes over their own personal development. When a pattern emerges that decisions are being made, and there is no accountability, everyone starts prioritising the self, as there is no "healthy peer pressure".. so the team's goals such as OKRs, and objectives get deprioritised. It also happens when you have too many goals, and there is no sense of focus provided by the leadership board. in such cases, it's important to have one clear "overarching goal" for helping teams get more clarity.
 
-![[Pasted image 20260222112507.png]]
 
