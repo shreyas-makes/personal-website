@@ -1,8 +1,8 @@
 ---
 title: Deslopify AI writing
-date: 2026-01-12
-slug:
-tags:
+date: 2026-01-12T00:00:00.000Z
+slug: null
+tags: null
 stage: seedling
 ---
 I recently launched a skill that can be used to deslopify AI content of any form. I built it to remove AI tells from writing so it reads more human, without erasing the author behind it. I found it a bit weird to build this skill, as I was using AI to make it anti-AI, all I can say now is that this is more of an art experiment to see how much AI can strip itself out of any AI-ness in its words and essay outputs.

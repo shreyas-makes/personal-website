@@ -18,6 +18,9 @@ const runOnce = args.includes('--once');
 const defaultSourceDir =
   process.env.OBSIDIAN_ESSAYS_DIR ??
   '/Users/shreyas/Desktop/Shreyas Files/Essays';
+const defaultBookNotesDir =
+  process.env.OBSIDIAN_BOOK_NOTES_DIR ??
+  '/Users/shreyas/Desktop/Shreyas Files/Books/Book notes';
 const defaultAttachmentsDir =
   process.env.OBSIDIAN_ATTACHMENTS_DIR ??
   '/Users/shreyas/Desktop/Shreyas Files/Attachments';
@@ -29,6 +32,10 @@ const sourceDir = getArg(
 const attachmentsDir = getArg(
   '--attachments',
   defaultAttachmentsDir
+);
+const bookNotesDir = getArg(
+  '--book-notes',
+  defaultBookNotesDir
 );
 
 let debounceTimer = null;
@@ -71,6 +78,7 @@ if (runOnce) {
 } else {
   console.log('Watching for Obsidian changes...');
   console.log(`Essays: ${sourceDir}`);
+  console.log(`Book notes: ${bookNotesDir}`);
   console.log(`Attachments: ${attachmentsDir}`);
 
   if (fs.existsSync(sourceDir)) {
@@ -83,6 +91,12 @@ if (runOnce) {
     watchDir(attachmentsDir);
   } else {
     console.log(`Skipping attachments watch: directory not found at ${attachmentsDir}`);
+  }
+
+  if (fs.existsSync(bookNotesDir)) {
+    watchDir(bookNotesDir);
+  } else {
+    console.log(`Skipping book notes watch: directory not found at ${bookNotesDir}`);
   }
 
   runSync();

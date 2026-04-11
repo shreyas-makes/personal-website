@@ -1,8 +1,9 @@
 ---
 title: Healthy conflict in teams have a tipping point
-date: 2026-02-06
-slug:
+date: 2026-02-06T00:00:00.000Z
+slug: null
 tags:
+  - rough-notes
 stage: seedling
 ---
 I used to think the healthiest teams were the ones that argued the hardest. 
