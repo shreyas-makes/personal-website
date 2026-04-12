@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -27,32 +28,18 @@ const defaultVaultDir =
 const defaultAttachmentsDir =
   process.env.OBSIDIAN_ATTACHMENTS_DIR ??
   '/Users/shreyas/Desktop/Shreyas Files/Attachments';
+const defaultStateFile = path.join(repoRoot, '.sync', 'obsidian-sync-state.json');
 
-const sourceDir = getArg(
-  '--source',
-  defaultSourceDir
-);
-const sourceAttachmentsDir = getArg(
-  '--attachments',
-  defaultAttachmentsDir
-);
-const sourceVaultDir = getArg(
-  '--vault',
-  defaultVaultDir
-);
-const sourceBookNotesDir = getArg(
-  '--book-notes',
-  defaultBookNotesDir
-);
-const destPostsDir = getArg(
-  '--dest',
-  path.join(repoRoot, 'src/content/posts')
-);
+const sourceDir = getArg('--source', defaultSourceDir);
+const sourceAttachmentsDir = getArg('--attachments', defaultAttachmentsDir);
+const sourceVaultDir = getArg('--vault', defaultVaultDir);
+const sourceBookNotesDir = getArg('--book-notes', defaultBookNotesDir);
+const destPostsDir = getArg('--dest', path.join(repoRoot, 'src/content/posts'));
+const stateFile = getArg('--state', defaultStateFile);
 const destAttachmentsDir = path.join(destPostsDir, 'Attachments');
 const destBookNotesDir = path.join(destPostsDir, 'booknotes');
 const destBookCoversDir = path.join(repoRoot, 'public/images/books');
 
-const encodeFilename = (name) => encodeURIComponent(name).replace(/%2F/g, '/');
 const attachmentExtensions = new Set([
   '.png',
   '.jpg',
@@ -68,6 +55,24 @@ const attachmentExtensions = new Set([
   '.wav',
   '.m4a',
 ]);
+
+const encodeFilename = (name) => encodeURIComponent(name).replace(/%2F/g, '/');
+const decodeFilename = (name) => {
+  try {
+    return decodeURIComponent(name);
+  } catch {
+    return name;
+  }
+};
+
+const hashContent = (value) => crypto.createHash('sha1').update(value).digest('hex');
+const hashBuffer = (value) => crypto.createHash('sha1').update(value).digest('hex');
+const normalizeLookupKey = (value) => value.replace(/\\/g, '/').toLowerCase();
+const slugify = (value) => value
+  .toLowerCase()
+  .replace(/\s+/g, '-')
+  .replace(/[^\w-]+/g, '')
+  .replace(/--+/g, '-');
 
 const parseEmbed = (raw) => {
   let target = raw;
@@ -100,12 +105,55 @@ const parseReference = (raw) => {
 
 const parseWikiTarget = (raw) => parseEmbed(raw).target;
 
-const normalizeLookupKey = (value) => value.replace(/\\/g, '/').toLowerCase();
-const slugify = (value) => value
-  .toLowerCase()
-  .replace(/\s+/g, '-')
-  .replace(/[^\w-]+/g, '')
-  .replace(/--+/g, '-');
+const normalizeCover = (cover) => {
+  if (typeof cover !== 'string') {
+    return undefined;
+  }
+
+  const trimmed = cover.trim();
+  if (!trimmed) {
+    return undefined;
+  }
+
+  if (trimmed.startsWith('[[') && trimmed.endsWith(']]')) {
+    return path.basename(parseWikiTarget(trimmed.slice(2, -2)));
+  }
+
+  return path.basename(trimmed);
+};
+
+const normalizeFrontmatter = (data) => {
+  const normalized = { ...data };
+
+  if (Array.isArray(normalized.author)) {
+    normalized.author = normalized.author.join(', ');
+  }
+
+  if (normalized.cover !== undefined) {
+    normalized.cover = normalizeCover(normalized.cover);
+  }
+
+  return normalized;
+};
+
+const cleanFrontmatterForVault = (data) => {
+  const cleaned = {};
+
+  for (const [key, value] of Object.entries(normalizeFrontmatter(data))) {
+    if (value === null || value === undefined || value === '') {
+      continue;
+    }
+
+    if (value instanceof Date) {
+      cleaned[key] = value.toISOString().slice(0, 10);
+      continue;
+    }
+
+    cleaned[key] = value;
+  }
+
+  return cleaned;
+};
 
 const headingMatches = (line, heading) => {
   const match = line.match(/^(#{1,6})\s+(.*)$/);
@@ -127,7 +175,7 @@ const extractHeadingSection = (content, heading) => {
       continue;
     }
 
-    if (match[2].trim().toLowerCase() === heading.trim().toLowerCase()) {
+    if (headingMatches(line, heading)) {
       startIndex = index;
       headingLevel = match[1].length;
       break;
@@ -188,126 +236,54 @@ const extractEmbeddedContent = (content, reference) => {
   return extractHeadingSection(content, reference.subpath);
 };
 
-const normalizeCover = (cover) => {
-  if (typeof cover !== 'string') {
-    return undefined;
-  }
-
-  const trimmed = cover.trim();
-  if (!trimmed) {
-    return undefined;
-  }
-
-  if (trimmed.startsWith('[[') && trimmed.endsWith(']]')) {
-    return path.basename(parseWikiTarget(trimmed.slice(2, -2)));
-  }
-
-  return path.basename(trimmed);
-};
-
-const normalizeFrontmatter = (data) => {
-  const normalized = { ...data };
-
-  if (Array.isArray(normalized.author)) {
-    normalized.author = normalized.author.join(', ');
-  }
-
-  if (normalized.cover !== undefined) {
-    normalized.cover = normalizeCover(normalized.cover);
-  }
-
-  return normalized;
-};
-
-const getNoteMetadata = async (notePath, cache) => {
-  const cacheKey = normalizeLookupKey(notePath);
-  if (cache.has(cacheKey)) {
-    return cache.get(cacheKey);
-  }
-
-  const raw = await fs.readFile(notePath, 'utf8');
-  const parsed = matter(raw);
-  const metadata = {
-    data: normalizeFrontmatter(parsed.data),
-    content: parsed.content,
-  };
-
-  cache.set(cacheKey, metadata);
-  return metadata;
-};
-
-const getPublishedUrl = async (notePath, context) => {
-  const normalizedPath = normalizeLookupKey(notePath);
-  const essaysRoot = normalizeLookupKey(sourceDir);
-  const bookNotesRoot = normalizeLookupKey(sourceBookNotesDir);
-  const { data } = await getNoteMetadata(notePath, context.noteCache);
-  const fallbackTitle = path.basename(notePath, '.md');
-  const slug = (data.slug || slugify(data.title || fallbackTitle)).replace(/\//g, '-');
-
-  if (normalizedPath === essaysRoot || normalizedPath.startsWith(`${essaysRoot}/`)) {
-    return `/${slug}`;
-  }
-
-  if (normalizedPath === bookNotesRoot || normalizedPath.startsWith(`${bookNotesRoot}/`)) {
-    return `/books/${slug}`;
-  }
-
-  return null;
-};
-
-const replaceWikiLinks = async (content, context) => {
-  const pattern = /(?<!!)\[\[([^\]]+)\]\]/g;
-  let result = '';
-  let lastIndex = 0;
-
-  for (const match of content.matchAll(pattern)) {
-    const [fullMatch, raw] = match;
-    result += content.slice(lastIndex, match.index);
-    const reference = parseReference(raw);
-    const linkText = reference.alt || reference.file || reference.target;
-    const notePath = resolveNotePath(reference, context.vaultIndex);
-
-    if (!notePath) {
-      result += linkText;
-      lastIndex = match.index + fullMatch.length;
-      continue;
-    }
-
-    const url = await getPublishedUrl(notePath, context);
-    if (!url) {
-      result += linkText;
-      lastIndex = match.index + fullMatch.length;
-      continue;
-    }
-
-    if (reference.subpath && reference.subpathType === 'heading') {
-      result += `[${linkText}](${url}#${slugify(reference.subpath)})`;
-    } else {
-      result += `[${linkText}](${url})`;
-    }
-
-    lastIndex = match.index + fullMatch.length;
-  }
-
-  result += content.slice(lastIndex);
-  return result;
-};
-
 const ensureDir = async (dir) => {
   if (dryRun) {
     return;
   }
+
   await fs.mkdir(dir, { recursive: true });
 };
 
-const readDirFiles = async (dir) => {
+const pathExists = async (targetPath) => {
+  const stats = await fs.stat(targetPath).catch(() => null);
+  return Boolean(stats);
+};
+
+const readTextFile = async (filePath) => fs.readFile(filePath, 'utf8').catch(() => null);
+const readBinaryFile = async (filePath) => fs.readFile(filePath).catch(() => null);
+
+const listMarkdownFiles = async (dir) => {
+  const exists = await pathExists(dir);
+  if (!exists) {
+    return [];
+  }
+
   const entries = await fs.readdir(dir, { withFileTypes: true });
   return entries
     .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-    .map((entry) => entry.name);
+    .map((entry) => entry.name)
+    .sort();
+};
+
+const listAssetFiles = async (dir) => {
+  const exists = await pathExists(dir);
+  if (!exists) {
+    return [];
+  }
+
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  return entries
+    .filter((entry) => entry.isFile() && !entry.name.startsWith('.'))
+    .map((entry) => entry.name)
+    .sort();
 };
 
 const walkMarkdownFiles = async (dir, baseDir = dir) => {
+  const exists = await pathExists(dir);
+  if (!exists) {
+    return [];
+  }
+
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const files = [];
 
@@ -382,6 +358,80 @@ const resolveNotePath = (reference, vaultIndex) => {
   }
 
   return null;
+};
+
+const getNoteMetadata = async (notePath, cache) => {
+  const cacheKey = normalizeLookupKey(notePath);
+  if (cache.has(cacheKey)) {
+    return cache.get(cacheKey);
+  }
+
+  const raw = await fs.readFile(notePath, 'utf8');
+  const parsed = matter(raw);
+  const metadata = {
+    data: normalizeFrontmatter(parsed.data),
+    content: parsed.content,
+  };
+
+  cache.set(cacheKey, metadata);
+  return metadata;
+};
+
+const getPublishedUrl = async (notePath, context) => {
+  const normalizedPath = normalizeLookupKey(notePath);
+  const essaysRoot = normalizeLookupKey(sourceDir);
+  const bookNotesRoot = normalizeLookupKey(sourceBookNotesDir);
+  const { data } = await getNoteMetadata(notePath, context.noteCache);
+  const fallbackTitle = path.basename(notePath, '.md');
+  const slug = (data.slug || slugify(data.title || fallbackTitle)).replace(/\//g, '-');
+
+  if (normalizedPath === essaysRoot || normalizedPath.startsWith(`${essaysRoot}/`)) {
+    return `/${slug}`;
+  }
+
+  if (normalizedPath === bookNotesRoot || normalizedPath.startsWith(`${bookNotesRoot}/`)) {
+    return `/books/${slug}`;
+  }
+
+  return null;
+};
+
+const replaceWikiLinks = async (content, context) => {
+  const pattern = /(?<!!)\[\[([^\]]+)\]\]/g;
+  let result = '';
+  let lastIndex = 0;
+
+  for (const match of content.matchAll(pattern)) {
+    const [fullMatch, raw] = match;
+    result += content.slice(lastIndex, match.index);
+    const reference = parseReference(raw);
+    const linkText = reference.alt || reference.file || reference.target;
+    const notePath = resolveNotePath(reference, context.vaultIndex);
+
+    if (!notePath) {
+      result += linkText;
+      lastIndex = match.index + fullMatch.length;
+      continue;
+    }
+
+    const url = await getPublishedUrl(notePath, context);
+    if (!url) {
+      result += linkText;
+      lastIndex = match.index + fullMatch.length;
+      continue;
+    }
+
+    if (reference.subpath && reference.subpathType === 'heading') {
+      result += `[${linkText}](${url}#${slugify(reference.subpath)})`;
+    } else {
+      result += `[${linkText}](${url})`;
+    }
+
+    lastIndex = match.index + fullMatch.length;
+  }
+
+  result += content.slice(lastIndex);
+  return result;
 };
 
 const isAttachmentReference = async (reference) => {
@@ -459,174 +509,418 @@ const replaceEmbeds = async (content, context) => {
   return result;
 };
 
-const copyIfNewer = async (src, dest) => {
-  const srcStat = await fs.stat(src);
-  const destStat = await fs.stat(dest).catch(() => null);
-  if (!destStat || srcStat.mtimeMs > destStat.mtimeMs + 1) {
-    if (dryRun) {
-      return 'copied';
-    }
-    await fs.copyFile(src, dest);
-    return 'copied';
-  }
-  return 'skipped';
-};
-
-const syncDirectory = async ({
-  sourceDir,
-  destDir,
-  required = false,
-  syncBookCovers = false,
-  vaultIndex,
-}) => {
-  const sourceStat = await fs.stat(sourceDir).catch(() => null);
-  if (!sourceStat?.isDirectory()) {
-    if (required) {
-      throw new Error(`Source directory not found at ${sourceDir}`);
-    }
-
-    return {
-      skipped: true,
-      postsUpdated: 0,
-      postsSkipped: 0,
-      attachmentsCopied: 0,
-      attachmentsSkipped: 0,
-      coversCopied: 0,
-      coversSkipped: 0,
-      missingAttachments: new Set(),
-    };
-  }
-
-  await ensureDir(destDir);
-  await ensureDir(destAttachmentsDir);
-
-  if (syncBookCovers) {
-    await ensureDir(destBookCoversDir);
-  }
-
-  const files = await readDirFiles(sourceDir);
-  let postsUpdated = 0;
-  let postsSkipped = 0;
-  let attachmentsCopied = 0;
-  let attachmentsSkipped = 0;
-  let coversCopied = 0;
-  let coversSkipped = 0;
-  const missingAttachments = new Set();
-
-  for (const file of files) {
-    const sourcePath = path.join(sourceDir, file);
-    const destPath = path.join(destDir, file);
-    const raw = await fs.readFile(sourcePath, 'utf8');
-    const parsed = matter(raw);
-    const normalizedData = normalizeFrontmatter(parsed.data);
-    const context = {
-      attachments: new Set(),
-      embedStack: new Set([normalizeLookupKey(sourcePath)]),
-      noteCache: new Map(),
-      vaultIndex,
-    };
-    const withEmbeds = await replaceEmbeds(parsed.content, context);
-    const updatedContent = await replaceWikiLinks(withEmbeds, context);
-    const updated = matter.stringify(updatedContent, normalizedData);
-
-    let shouldWrite = true;
-    const existing = await fs.readFile(destPath, 'utf8').catch(() => null);
-    if (existing !== null && existing === updated) {
-      shouldWrite = false;
-    }
-
-    if (shouldWrite) {
-      if (!dryRun) {
-        await fs.writeFile(destPath, updated);
-      }
-      postsUpdated += 1;
-    } else {
-      postsSkipped += 1;
-    }
-
-    for (const attachment of context.attachments) {
-      const srcAttachmentPath = path.join(sourceAttachmentsDir, attachment);
-      const destAttachmentPath = path.join(destAttachmentsDir, attachment);
-      try {
-        const result = await copyIfNewer(srcAttachmentPath, destAttachmentPath);
-        if (result === 'copied') {
-          attachmentsCopied += 1;
-        } else {
-          attachmentsSkipped += 1;
-        }
-      } catch (error) {
-        missingAttachments.add(attachment);
-      }
-    }
-
-    if (syncBookCovers && normalizedData.cover) {
-      const srcCoverPath = path.join(sourceAttachmentsDir, normalizedData.cover);
-      const destCoverPath = path.join(destBookCoversDir, normalizedData.cover);
-
-      try {
-        const result = await copyIfNewer(srcCoverPath, destCoverPath);
-        if (result === 'copied') {
-          coversCopied += 1;
-        } else {
-          coversSkipped += 1;
-        }
-      } catch (error) {
-        missingAttachments.add(normalizedData.cover);
-      }
-    }
-  }
+const renderObsidianNoteForRepo = async (notePath, vaultIndex) => {
+  const raw = await fs.readFile(notePath, 'utf8');
+  const parsed = matter(raw);
+  const normalizedData = normalizeFrontmatter(parsed.data);
+  const context = {
+    attachments: new Set(),
+    embedStack: new Set([normalizeLookupKey(notePath)]),
+    noteCache: new Map(),
+    vaultIndex,
+  };
+  const withEmbeds = await replaceEmbeds(parsed.content, context);
+  const updatedContent = await replaceWikiLinks(withEmbeds, context);
 
   return {
-    skipped: false,
-    postsUpdated,
-    postsSkipped,
-    attachmentsCopied,
-    attachmentsSkipped,
-    coversCopied,
-    coversSkipped,
-    missingAttachments,
+    rendered: matter.stringify(updatedContent, normalizedData),
+    attachments: context.attachments,
+    cover: normalizedData.cover,
   };
 };
 
-const sync = async () => {
-  const vaultIndex = await buildVaultIndex(sourceVaultDir);
-  const essayResults = await syncDirectory({
-    sourceDir,
-    destDir: destPostsDir,
-    required: true,
-    vaultIndex,
-  });
-  const bookResults = await syncDirectory({
-    sourceDir: sourceBookNotesDir,
-    destDir: destBookNotesDir,
-    syncBookCovers: true,
-    vaultIndex,
-  });
+const collectRepoAttachmentRefs = (content) => {
+  const attachments = new Set();
+  const pattern = /!?\[[^\]]*\]\((?:\.\/)?Attachments\/([^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
 
-  const missingAttachments = new Set([
-    ...essayResults.missingAttachments,
-    ...bookResults.missingAttachments,
-  ]);
-
-  const summary = [
-    `Posts updated: ${essayResults.postsUpdated}`,
-    `Posts unchanged: ${essayResults.postsSkipped}`,
-    `Book notes updated: ${bookResults.postsUpdated}`,
-    `Book notes unchanged: ${bookResults.postsSkipped}`,
-    `Attachments copied: ${essayResults.attachmentsCopied + bookResults.attachmentsCopied}`,
-    `Attachments skipped: ${essayResults.attachmentsSkipped + bookResults.attachmentsSkipped}`,
-    `Book covers copied: ${bookResults.coversCopied}`,
-    `Book covers skipped: ${bookResults.coversSkipped}`,
-  ];
-
-  if (bookResults.skipped) {
-    summary.push(`Book notes skipped: source directory not found at ${sourceBookNotesDir}`);
+  for (const match of content.matchAll(pattern)) {
+    attachments.add(decodeFilename(match[1]));
   }
 
-  if (missingAttachments.size > 0) {
-    summary.push(
-      `Missing attachments: ${Array.from(missingAttachments).join(', ')}`
-    );
+  return attachments;
+};
+
+const restoreAttachmentLinksForVault = (content) => {
+  const imagePattern = /!\[([^\]]*)\]\((?:\.\/)?Attachments\/([^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
+  const linkPattern = /(?<!!)\[([^\]]+)\]\((?:\.\/)?Attachments\/([^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
+
+  const withEmbeds = content.replace(imagePattern, (_, alt, filename) => {
+    const decoded = decodeFilename(filename);
+    return alt ? `![[${decoded}|${alt}]]` : `![[${decoded}]]`;
+  });
+
+  return withEmbeds.replace(linkPattern, (_, text, filename) => {
+    const decoded = decodeFilename(filename);
+    return text ? `[[${decoded}|${text}]]` : `[[${decoded}]]`;
+  });
+};
+
+const renderRepoNoteForVault = async (notePath) => {
+  const raw = await fs.readFile(notePath, 'utf8');
+  const parsed = matter(raw);
+  const attachments = collectRepoAttachmentRefs(parsed.content);
+  const restoredContent = restoreAttachmentLinksForVault(parsed.content);
+  const cleanedData = cleanFrontmatterForVault(parsed.data);
+
+  return {
+    rendered: matter.stringify(restoredContent, cleanedData),
+    attachments,
+    cover: cleanedData.cover,
+  };
+};
+
+const defaultState = () => ({
+  version: 1,
+  essays: {},
+  bookNotes: {},
+  attachments: {},
+  bookCovers: {},
+});
+
+const loadState = async () => {
+  const raw = await readTextFile(stateFile);
+  if (!raw) {
+    return defaultState();
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    return {
+      ...defaultState(),
+      ...parsed,
+      essays: parsed.essays ?? {},
+      bookNotes: parsed.bookNotes ?? {},
+      attachments: parsed.attachments ?? {},
+      bookCovers: parsed.bookCovers ?? {},
+    };
+  } catch {
+    return defaultState();
+  }
+};
+
+const saveState = async (state) => {
+  if (dryRun) {
+    return;
+  }
+
+  await ensureDir(path.dirname(stateFile));
+  await fs.writeFile(stateFile, `${JSON.stringify(state, null, 2)}\n`);
+};
+
+const writeTextIfChanged = async (filePath, nextContent, existingContent) => {
+  if (existingContent === nextContent) {
+    return false;
+  }
+
+  if (!dryRun) {
+    await fs.writeFile(filePath, nextContent);
+  }
+
+  return true;
+};
+
+const writeBufferIfChanged = async (filePath, nextBuffer, existingBuffer) => {
+  if (existingBuffer && Buffer.compare(existingBuffer, nextBuffer) === 0) {
+    return false;
+  }
+
+  if (!dryRun) {
+    await fs.copyFile(nextBuffer.sourcePath, filePath);
+  }
+
+  return true;
+};
+
+const syncMarkdownCollection = async ({
+  label,
+  stateKey,
+  obsidianDir,
+  repoDir,
+  vaultIndex,
+  state,
+}) => {
+  const obsidianFiles = await listMarkdownFiles(obsidianDir);
+  const repoFiles = await listMarkdownFiles(repoDir);
+  const previous = state[stateKey] ?? {};
+  const nextState = {};
+  const names = new Set([...obsidianFiles, ...repoFiles, ...Object.keys(previous)]);
+  const summary = {
+    toRepo: 0,
+    toVault: 0,
+    unchanged: 0,
+    conflicts: 0,
+  };
+
+  for (const name of Array.from(names).sort()) {
+    const obsidianPath = path.join(obsidianDir, name);
+    const repoPath = path.join(repoDir, name);
+    const obsidianRaw = await readTextFile(obsidianPath);
+    const repoRaw = await readTextFile(repoPath);
+    const obsidianExists = obsidianRaw !== null;
+    const repoExists = repoRaw !== null;
+
+    if (!obsidianExists && !repoExists) {
+      continue;
+    }
+
+    const previousEntry = previous[name];
+    const obsidianHash = obsidianExists ? hashContent(obsidianRaw) : null;
+    const repoHash = repoExists ? hashContent(repoRaw) : null;
+
+    let action = 'none';
+    if (obsidianExists && repoExists) {
+      if (!previousEntry) {
+        action = 'to-repo';
+      } else {
+        const obsidianChanged = previousEntry.obsidianHash !== obsidianHash;
+        const repoChanged = previousEntry.repoHash !== repoHash;
+
+        if (obsidianChanged && repoChanged) {
+          action = 'to-repo';
+          summary.conflicts += 1;
+        } else if (obsidianChanged) {
+          action = 'to-repo';
+        } else if (repoChanged) {
+          action = 'to-vault';
+        }
+      }
+    } else if (obsidianExists) {
+      action = 'to-repo';
+    } else if (repoExists) {
+      action = 'to-vault';
+    }
+
+    if (action === 'to-repo') {
+      await ensureDir(repoDir);
+      const { rendered } = await renderObsidianNoteForRepo(obsidianPath, vaultIndex);
+      const wrote = await writeTextIfChanged(repoPath, rendered, repoRaw);
+      nextState[name] = {
+        obsidianHash,
+        repoHash: hashContent(rendered),
+      };
+      if (wrote) {
+        summary.toRepo += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    if (action === 'to-vault') {
+      await ensureDir(obsidianDir);
+      const { rendered } = await renderRepoNoteForVault(repoPath);
+      const wrote = await writeTextIfChanged(obsidianPath, rendered, obsidianRaw);
+      nextState[name] = {
+        obsidianHash: hashContent(rendered),
+        repoHash,
+      };
+      if (wrote) {
+        summary.toVault += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    nextState[name] = {
+      obsidianHash,
+      repoHash,
+    };
+    summary.unchanged += 1;
+  }
+
+  return { label, summary, nextState };
+};
+
+const syncAssetCollection = async ({
+  label,
+  stateKey,
+  obsidianDir,
+  repoDir,
+  state,
+  names,
+}) => {
+  const previous = state[stateKey] ?? {};
+  const obsidianFiles = names ?? await listAssetFiles(obsidianDir);
+  const repoFiles = names ?? await listAssetFiles(repoDir);
+  const nextState = {};
+  const allNames = new Set([
+    ...(names ?? []),
+    ...obsidianFiles,
+    ...repoFiles,
+    ...Object.keys(previous),
+  ]);
+  const summary = {
+    toRepo: 0,
+    toVault: 0,
+    unchanged: 0,
+    conflicts: 0,
+  };
+
+  for (const name of Array.from(allNames).sort()) {
+    const obsidianPath = path.join(obsidianDir, name);
+    const repoPath = path.join(repoDir, name);
+    const obsidianRaw = await readBinaryFile(obsidianPath);
+    const repoRaw = await readBinaryFile(repoPath);
+    const obsidianExists = obsidianRaw !== null;
+    const repoExists = repoRaw !== null;
+
+    if (!obsidianExists && !repoExists) {
+      continue;
+    }
+
+    const previousEntry = previous[name];
+    const obsidianHash = obsidianExists ? hashBuffer(obsidianRaw) : null;
+    const repoHash = repoExists ? hashBuffer(repoRaw) : null;
+
+    let action = 'none';
+    if (obsidianExists && repoExists) {
+      if (!previousEntry) {
+        action = 'to-repo';
+      } else {
+        const obsidianChanged = previousEntry.obsidianHash !== obsidianHash;
+        const repoChanged = previousEntry.repoHash !== repoHash;
+
+        if (obsidianChanged && repoChanged) {
+          action = 'to-repo';
+          summary.conflicts += 1;
+        } else if (obsidianChanged) {
+          action = 'to-repo';
+        } else if (repoChanged) {
+          action = 'to-vault';
+        }
+      }
+    } else if (obsidianExists) {
+      action = 'to-repo';
+    } else if (repoExists) {
+      action = 'to-vault';
+    }
+
+    if (action === 'to-repo') {
+      await ensureDir(repoDir);
+      const nextBuffer = Object.assign(obsidianRaw, { sourcePath: obsidianPath });
+      const wrote = await writeBufferIfChanged(repoPath, nextBuffer, repoRaw);
+      nextState[name] = {
+        obsidianHash,
+        repoHash: obsidianHash,
+      };
+      if (wrote) {
+        summary.toRepo += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    if (action === 'to-vault') {
+      await ensureDir(obsidianDir);
+      const nextBuffer = Object.assign(repoRaw, { sourcePath: repoPath });
+      const wrote = await writeBufferIfChanged(obsidianPath, nextBuffer, obsidianRaw);
+      nextState[name] = {
+        obsidianHash: repoHash,
+        repoHash,
+      };
+      if (wrote) {
+        summary.toVault += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    nextState[name] = {
+      obsidianHash,
+      repoHash,
+    };
+    summary.unchanged += 1;
+  }
+
+  return { label, summary, nextState };
+};
+
+const collectReferencedCovers = async (directories) => {
+  const covers = new Set();
+
+  for (const dir of directories) {
+    for (const file of await listMarkdownFiles(dir)) {
+      const raw = await readTextFile(path.join(dir, file));
+      if (!raw) {
+        continue;
+      }
+
+      const parsed = matter(raw);
+      const normalizedData = normalizeFrontmatter(parsed.data);
+      if (normalizedData.cover) {
+        covers.add(normalizedData.cover);
+      }
+    }
+  }
+
+  return Array.from(covers).sort();
+};
+
+const sync = async () => {
+  const state = await loadState();
+  const vaultIndex = await buildVaultIndex(sourceVaultDir);
+
+  const essays = await syncMarkdownCollection({
+    label: 'Essays',
+    stateKey: 'essays',
+    obsidianDir: sourceDir,
+    repoDir: destPostsDir,
+    vaultIndex,
+    state,
+  });
+
+  const bookNotes = await syncMarkdownCollection({
+    label: 'Book notes',
+    stateKey: 'bookNotes',
+    obsidianDir: sourceBookNotesDir,
+    repoDir: destBookNotesDir,
+    vaultIndex,
+    state,
+  });
+
+  const attachments = await syncAssetCollection({
+    label: 'Attachments',
+    stateKey: 'attachments',
+    obsidianDir: sourceAttachmentsDir,
+    repoDir: destAttachmentsDir,
+    state,
+  });
+
+  const coverNames = await collectReferencedCovers([sourceBookNotesDir, destBookNotesDir]);
+  const bookCovers = await syncAssetCollection({
+    label: 'Book covers',
+    stateKey: 'bookCovers',
+    obsidianDir: sourceAttachmentsDir,
+    repoDir: destBookCoversDir,
+    state,
+    names: coverNames,
+  });
+
+  const nextState = {
+    version: 1,
+    essays: essays.nextState,
+    bookNotes: bookNotes.nextState,
+    attachments: attachments.nextState,
+    bookCovers: bookCovers.nextState,
+  };
+
+  await saveState(nextState);
+
+  const sections = [essays, bookNotes, attachments, bookCovers];
+  const summary = [];
+
+  for (const section of sections) {
+    summary.push(`${section.label} -> repo: ${section.summary.toRepo}`);
+    summary.push(`${section.label} -> vault: ${section.summary.toVault}`);
+    summary.push(`${section.label} unchanged: ${section.summary.unchanged}`);
+    summary.push(`${section.label} conflicts resolved in favor of Obsidian: ${section.summary.conflicts}`);
+  }
+
+  if (dryRun) {
+    summary.push('Dry run: no files were written');
   }
 
   console.log(summary.join('\n'));

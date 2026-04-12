@@ -37,6 +37,10 @@ const bookNotesDir = getArg(
   '--book-notes',
   defaultBookNotesDir
 );
+const repoPostsDir = path.resolve(scriptDir, '../src/content/posts');
+const repoAttachmentsDir = path.join(repoPostsDir, 'Attachments');
+const repoBookNotesDir = path.join(repoPostsDir, 'booknotes');
+const repoBookCoversDir = path.resolve(scriptDir, '../public/images/books');
 
 let debounceTimer = null;
 let running = false;
@@ -80,6 +84,10 @@ if (runOnce) {
   console.log(`Essays: ${sourceDir}`);
   console.log(`Book notes: ${bookNotesDir}`);
   console.log(`Attachments: ${attachmentsDir}`);
+  console.log(`Repo posts: ${repoPostsDir}`);
+  console.log(`Repo book notes: ${repoBookNotesDir}`);
+  console.log(`Repo attachments: ${repoAttachmentsDir}`);
+  console.log(`Repo book covers: ${repoBookCoversDir}`);
 
   if (fs.existsSync(sourceDir)) {
     watchDir(sourceDir);
@@ -97,6 +105,30 @@ if (runOnce) {
     watchDir(bookNotesDir);
   } else {
     console.log(`Skipping book notes watch: directory not found at ${bookNotesDir}`);
+  }
+
+  if (fs.existsSync(repoPostsDir)) {
+    watchDir(repoPostsDir);
+  } else {
+    console.log(`Skipping repo posts watch: directory not found at ${repoPostsDir}`);
+  }
+
+  if (fs.existsSync(repoAttachmentsDir)) {
+    watchDir(repoAttachmentsDir);
+  } else {
+    console.log(`Skipping repo attachments watch: directory not found at ${repoAttachmentsDir}`);
+  }
+
+  if (fs.existsSync(repoBookNotesDir)) {
+    watchDir(repoBookNotesDir);
+  } else {
+    console.log(`Skipping repo book notes watch: directory not found at ${repoBookNotesDir}`);
+  }
+
+  if (fs.existsSync(repoBookCoversDir)) {
+    watchDir(repoBookCoversDir);
+  } else {
+    console.log(`Skipping repo book covers watch: directory not found at ${repoBookCoversDir}`);
   }
 
   runSync();

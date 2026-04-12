@@ -39,7 +39,7 @@ In practice, Deslopify behaves like a careful editor. It does not add new ideas.
 
 4) It refreshes the Wikipedia tells list when network access is available, otherwise uses cached or fallback lists.
 
-## I tried initially for a simple paragraph: this was related to an excerpt on global warming, and I wanted to see how it generated an output deslopified
+I tried initially for a simple paragraph: this was related to an excerpt on global warming, and I wanted to see how it generated an output deslopified
 
 Original (excerpt):
 
@@ -59,6 +59,5 @@ Addressing global warming requires coordinated action at every level. Shifting f
 The scale is daunting, but there are reasons for hope. Renewable energy costs have dropped sharply, making clean power more competitive. Public concern has risen, especially among younger generations pushing for action. Cities, businesses, and regional governments are adopting ambitious climate policies even when national efforts lag. The transition to a sustainable economy can also bring innovation, jobs, cleaner air, and better health. The choices made in the coming years will shape what kind of world we leave behind.
 ```
 
-Comments:
 
-This is still premium-mediocre at best. It also reads a bit like a school grade essay, with a very bland problem <> solution arrangement.
+This is still premium-mediocre at best. There is no granulated texture to the writing, it lacks the soul and that's something which only humans can replicate. But at least it removes the usual trite cliches which AI generated writing is commonly used to. So that's at least like one step lesser to remove all the dirty laundry from the writing.

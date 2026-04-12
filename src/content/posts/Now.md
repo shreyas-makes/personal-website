@@ -1,15 +1,21 @@
 ---
-title: "Now"
-description: "Jan 2025 2025 is the year of AI. I'm aligning my professional goals to get ahead on this S-curve. My thesis for product management is that it would become more of prototype management. There would be..."
-date: "2024-07-23T21:52:30.000Z"
-slug: "now"
+title: Now
+description: >-
+  Jan 2025 2025 is the year of AI. I'm aligning my professional goals to get
+  ahead on this S-curve. My thesis for product management is that it would
+  become more of prototype management. There would be...
+date: '2024-07-23T21:52:30.000Z'
+slug: now
 tags:
   - lifestyle
   - personal-branding
-stage: "seedling"
+stage: seedling
 ---
+## April 2026
 
-### Jan 2025
+It's been a while since I updated the /now page. It's surprising to see that in Jan 2025 had already predicted that it would be the year of AI and it's already coming to an existence and we can see the rise of various agents being used by technical, semi-technical, and even non-technical folks who know have a vague idea of how to deal with agents.
+
+## Jan 2025
 
 2025 is the year of AI. I'm aligning my professional goals to get ahead on this S-curve.
 
