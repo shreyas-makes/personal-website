@@ -153,10 +153,21 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
   <ViewTransitions client:only />
   <main class="max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
     <section class="homepage-intro mt-8 mb-12 max-w-4xl">
-      <div class="intro-copy text-gray-800 leading-relaxed space-y-4">
-        <p>Hi! I'm Shreyas. I'm a Product Manager working at <a href="https://nature.com/" class="underline hover:no-underline" target="_blank" rel="noopener noreferrer">Springer Nature</a>. I like trying to <mark class="landing-marker landing-marker--soft" data-highlight-style="landing-marker">understand the world</mark>, <mark class="landing-marker" data-highlight-style="landing-marker">building things that improve it</mark>, and talking about it on the Internet.</p>
-        <p>I like creating things&mdash;essays, websites, scripts, products. Anything which is <mark class="landing-marker landing-marker--warm" data-highlight-style="landing-marker">positive sum, and impactful</mark>.</p>
-        <p><mark class="landing-marker" data-highlight-style="landing-marker">Writing is thinking.</mark> It's something I deeply enjoy. 10 years from now, or a 100, It might probably outlive me. This is an attempt at that posterity. I write about <mark class="landing-marker landing-marker--soft" data-highlight-style="landing-marker">what I'm building, what I'm learning, and the ideas I'm exploring</mark>:</p>
+      <div class="homepage-intro__grid">
+        <div class="intro-copy text-gray-800 leading-relaxed space-y-4">
+          <p>Hi! I'm Shreyas. I'm a Product Manager working at <a href="https://nature.com/" class="underline hover:no-underline" target="_blank" rel="noopener noreferrer">Springer Nature</a>. I like trying to <mark class="landing-marker landing-marker--soft" data-highlight-style="landing-marker">understand the world</mark>, <mark class="landing-marker" data-highlight-style="landing-marker">building things that improve it</mark>, and talking about it on the Internet.</p>
+          <p>I like creating things&mdash;essays, websites, scripts, products. Anything which is <mark class="landing-marker landing-marker--warm" data-highlight-style="landing-marker">positive sum, and impactful</mark>.</p>
+          <p><mark class="landing-marker" data-highlight-style="landing-marker">Writing is thinking.</mark> It's something I deeply enjoy. 10 years from now, or a 100, It might probably outlive me. This is an attempt at that posterity. I write about <mark class="landing-marker landing-marker--soft" data-highlight-style="landing-marker">what I'm building, what I'm learning, and the ideas I'm exploring</mark>:</p>
+        </div>
+
+        <figure class="homepage-intro__media">
+          <img
+            src="/shreyas-1.jpg"
+            alt="Portrait of Shreyas smiling outdoors"
+            class="homepage-intro__image"
+            loading="eager"
+          />
+        </figure>
       </div>
     </section>
 
@@ -330,10 +341,32 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
     display: block;
   }
 
+  .homepage-intro__grid {
+    display: grid;
+    gap: var(--space-300);
+    align-items: start;
+  }
+
   .intro-copy {
     min-width: 0;
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
+  }
+
+  .homepage-intro__media {
+    margin: var(--space-0);
+    width: 100%;
+  }
+
+  .homepage-intro__image {
+    display: block;
+    width: 100%;
+    max-width: 32rem;
+    margin-inline: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius-lg);
   }
 
   .intro-copy mark.landing-marker {
@@ -349,6 +382,22 @@ const getCleanSlug = (slug: string) => slug.split('-').slice(3).join('-');
 
   .intro-copy mark.landing-marker--warm {
     background-color: color-mix(in srgb, var(--color-bg-hover) 55%, var(--color-border-default));
+  }
+
+  @media (min-width: 960px) {
+    .homepage-intro__grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.9fr);
+      gap: var(--space-400);
+    }
+
+    .homepage-intro__media {
+      position: sticky;
+      top: var(--space-200);
+    }
+
+    .homepage-intro__image {
+      max-width: 100%;
+    }
   }
 </style>
 

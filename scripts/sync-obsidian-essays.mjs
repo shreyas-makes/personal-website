@@ -274,7 +274,11 @@ const listAssetFiles = async (dir) => {
 
   const entries = await fs.readdir(dir, { withFileTypes: true });
   return entries
-    .filter((entry) => entry.isFile() && !entry.name.startsWith('.'))
+    .filter(
+      (entry) => entry.isFile()
+        && !entry.name.startsWith('.')
+        && attachmentExtensions.has(path.extname(entry.name).toLowerCase())
+    )
     .map((entry) => entry.name)
     .sort();
 };
@@ -850,9 +854,10 @@ const syncAssetCollection = async ({
   state,
   names,
 }) => {
+  const desiredNames = names ? new Set(names) : null;
   const previous = state[stateKey] ?? {};
   const obsidianFiles = names ?? await listAssetFiles(obsidianDir);
-  const repoFiles = names ?? await listAssetFiles(repoDir);
+  const repoFiles = await listAssetFiles(repoDir);
   const nextState = {};
   const allNames = new Set([
     ...(names ?? []),
@@ -870,10 +875,23 @@ const syncAssetCollection = async ({
   };
 
   for (const name of Array.from(allNames).sort()) {
+    const shouldSync = !desiredNames || desiredNames.has(name);
     const obsidianPath = path.join(obsidianDir, name);
     const repoPath = path.join(repoDir, name);
-    const obsidianRaw = await readBinaryFile(obsidianPath);
     const repoRaw = await readBinaryFile(repoPath);
+    if (!shouldSync) {
+      if (repoRaw !== null) {
+        const deleted = await deleteIfExists(repoPath);
+        if (deleted) {
+          summary.deletedFromRepo += 1;
+        } else {
+          summary.unchanged += 1;
+        }
+      }
+      continue;
+    }
+
+    const obsidianRaw = await readBinaryFile(obsidianPath);
     const obsidianExists = obsidianRaw !== null;
     const repoExists = repoRaw !== null;
 
@@ -1030,6 +1048,25 @@ const collectReferencedPublishedImages = async (directories) => {
   return Array.from(images).sort();
 };
 
+const collectReferencedAttachments = async (directories) => {
+  const attachments = new Set();
+
+  for (const dir of directories) {
+    for (const file of await listMarkdownFiles(dir)) {
+      const raw = await readTextFile(path.join(dir, file));
+      if (!raw) {
+        continue;
+      }
+
+      for (const attachment of collectRepoAttachmentRefs(raw)) {
+        attachments.add(attachment);
+      }
+    }
+  }
+
+  return Array.from(attachments).sort();
+};
+
 const sync = async () => {
   const state = await loadState();
   const vaultIndex = await buildVaultIndex(sourceVaultDir);
@@ -1052,12 +1089,14 @@ const sync = async () => {
     state,
   });
 
+  const attachmentNames = await collectReferencedAttachments([destPostsDir, destBookNotesDir]);
   const attachments = await syncAssetCollection({
     label: 'Attachments',
     stateKey: 'attachments',
     obsidianDir: sourceAttachmentsDir,
     repoDir: destAttachmentsDir,
     state,
+    names: attachmentNames,
   });
 
   const coverNames = await collectReferencedCovers([sourceBookNotesDir, destBookNotesDir]);
