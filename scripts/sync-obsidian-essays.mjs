@@ -38,6 +38,7 @@ const destPostsDir = getArg('--dest', path.join(repoRoot, 'src/content/posts'));
 const stateFile = getArg('--state', defaultStateFile);
 const destAttachmentsDir = path.join(destPostsDir, 'Attachments');
 const destBookNotesDir = path.join(destPostsDir, 'booknotes');
+const destPublicDir = path.join(repoRoot, 'public');
 const destBookCoversDir = path.join(repoRoot, 'public/images/books');
 
 const attachmentExtensions = new Set([
@@ -447,9 +448,22 @@ const isAttachmentReference = async (reference) => {
 };
 
 const renderAttachment = (reference, attachments) => {
-  const filename = path.basename(reference.file);
-  attachments.add(filename);
-  const encoded = encodeFilename(filename);
+  const relativePath = reference.file
+    .replace(/\\/g, '/')
+    .replace(/^\.\//, '')
+    .replace(/^Attachments\//, '')
+    .trim();
+
+  attachments.add(relativePath);
+  const encoded = encodeFilename(relativePath);
+
+  if (relativePath.startsWith('images/')) {
+    if (reference.alt) {
+      return `![${reference.alt}](/${encoded})`;
+    }
+
+    return `![](/${encoded})`;
+  }
 
   if (reference.alt) {
     return `![${reference.alt}](Attachments/${encoded})`;
@@ -540,6 +554,17 @@ const collectRepoAttachmentRefs = (content) => {
   return attachments;
 };
 
+const collectRepoPublishedImageRefs = (content) => {
+  const attachments = new Set();
+  const pattern = /!?\[[^\]]*\]\((\/images\/[^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
+
+  for (const match of content.matchAll(pattern)) {
+    attachments.add(decodeFilename(match[1].replace(/^\//, '')));
+  }
+
+  return attachments;
+};
+
 const restoreAttachmentLinksForVault = (content) => {
   const imagePattern = /!\[([^\]]*)\]\((?:\.\/)?Attachments\/([^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
   const linkPattern = /(?<!!)\[([^\]]+)\]\((?:\.\/)?Attachments\/([^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
@@ -555,11 +580,31 @@ const restoreAttachmentLinksForVault = (content) => {
   });
 };
 
+const restorePublishedImageLinksForVault = (content) => {
+  const imagePattern = /!\[([^\]]*)\]\((\/images\/[^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
+  const linkPattern = /(?<!!)\[([^\]]+)\]\((\/images\/[^)#?]+)(?:#[^)]+)?(?:\?[^)]*)?\)/g;
+
+  const withEmbeds = content.replace(imagePattern, (_, alt, imagePath) => {
+    const decoded = decodeFilename(imagePath.replace(/^\//, ''));
+    return alt ? `![[Attachments/${decoded}|${alt}]]` : `![[Attachments/${decoded}]]`;
+  });
+
+  return withEmbeds.replace(linkPattern, (_, text, imagePath) => {
+    const decoded = decodeFilename(imagePath.replace(/^\//, ''));
+    return text ? `[[Attachments/${decoded}|${text}]]` : `[[Attachments/${decoded}]]`;
+  });
+};
+
 const renderRepoNoteForVault = async (notePath) => {
   const raw = await fs.readFile(notePath, 'utf8');
   const parsed = matter(raw);
-  const attachments = collectRepoAttachmentRefs(parsed.content);
-  const restoredContent = restoreAttachmentLinksForVault(parsed.content);
+  const attachments = new Set([
+    ...collectRepoAttachmentRefs(parsed.content),
+    ...collectRepoPublishedImageRefs(parsed.content),
+  ]);
+  const restoredContent = restorePublishedImageLinksForVault(
+    restoreAttachmentLinksForVault(parsed.content)
+  );
   const cleanedData = cleanFrontmatterForVault(parsed.data);
 
   return {
@@ -575,6 +620,7 @@ const defaultState = () => ({
   bookNotes: {},
   attachments: {},
   bookCovers: {},
+  publishedImages: {},
 });
 
 const loadState = async () => {
@@ -592,6 +638,7 @@ const loadState = async () => {
       bookNotes: parsed.bookNotes ?? {},
       attachments: parsed.attachments ?? {},
       bookCovers: parsed.bookCovers ?? {},
+      publishedImages: parsed.publishedImages ?? {},
     };
   } catch {
     return defaultState();
@@ -631,6 +678,19 @@ const writeBufferIfChanged = async (filePath, nextBuffer, existingBuffer) => {
   return true;
 };
 
+const deleteIfExists = async (filePath) => {
+  const exists = await pathExists(filePath);
+  if (!exists) {
+    return false;
+  }
+
+  if (!dryRun) {
+    await fs.unlink(filePath);
+  }
+
+  return true;
+};
+
 const syncMarkdownCollection = async ({
   label,
   stateKey,
@@ -647,6 +707,8 @@ const syncMarkdownCollection = async ({
   const summary = {
     toRepo: 0,
     toVault: 0,
+    deletedFromRepo: 0,
+    deletedFromVault: 0,
     unchanged: 0,
     conflicts: 0,
   };
@@ -666,6 +728,7 @@ const syncMarkdownCollection = async ({
     const previousEntry = previous[name];
     const obsidianHash = obsidianExists ? hashContent(obsidianRaw) : null;
     const repoHash = repoExists ? hashContent(repoRaw) : null;
+    let renderedForVault = null;
 
     let action = 'none';
     if (obsidianExists && repoExists) {
@@ -685,9 +748,28 @@ const syncMarkdownCollection = async ({
         }
       }
     } else if (obsidianExists) {
-      action = 'to-repo';
+      if (!previousEntry) {
+        action = 'to-repo';
+      } else if (previousEntry.obsidianHash === null) {
+        action = 'to-repo';
+      } else {
+        action = 'delete-repo';
+      }
     } else if (repoExists) {
-      action = 'to-vault';
+      if (!previousEntry) {
+        action = 'to-vault';
+      } else if (previousEntry.repoHash === null) {
+        action = 'to-vault';
+      } else {
+        action = 'delete-vault';
+      }
+    }
+
+    if (action === 'none' && obsidianExists && repoExists) {
+      renderedForVault = await renderRepoNoteForVault(repoPath);
+      if (renderedForVault.rendered !== obsidianRaw) {
+        action = 'to-vault';
+      }
     }
 
     if (action === 'to-repo') {
@@ -708,7 +790,7 @@ const syncMarkdownCollection = async ({
 
     if (action === 'to-vault') {
       await ensureDir(obsidianDir);
-      const { rendered } = await renderRepoNoteForVault(repoPath);
+      const { rendered } = renderedForVault ?? await renderRepoNoteForVault(repoPath);
       const wrote = await writeTextIfChanged(obsidianPath, rendered, obsidianRaw);
       nextState[name] = {
         obsidianHash: hashContent(rendered),
@@ -716,6 +798,34 @@ const syncMarkdownCollection = async ({
       };
       if (wrote) {
         summary.toVault += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    if (action === 'delete-repo') {
+      const deleted = await deleteIfExists(repoPath);
+      nextState[name] = {
+        obsidianHash,
+        repoHash: null,
+      };
+      if (deleted) {
+        summary.deletedFromRepo += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    if (action === 'delete-vault') {
+      const deleted = await deleteIfExists(obsidianPath);
+      nextState[name] = {
+        obsidianHash: null,
+        repoHash,
+      };
+      if (deleted) {
+        summary.deletedFromVault += 1;
       } else {
         summary.unchanged += 1;
       }
@@ -753,6 +863,8 @@ const syncAssetCollection = async ({
   const summary = {
     toRepo: 0,
     toVault: 0,
+    deletedFromRepo: 0,
+    deletedFromVault: 0,
     unchanged: 0,
     conflicts: 0,
   };
@@ -791,13 +903,25 @@ const syncAssetCollection = async ({
         }
       }
     } else if (obsidianExists) {
-      action = 'to-repo';
+      if (!previousEntry) {
+        action = 'to-repo';
+      } else if (previousEntry.obsidianHash === null) {
+        action = 'to-repo';
+      } else {
+        action = 'delete-repo';
+      }
     } else if (repoExists) {
-      action = 'to-vault';
+      if (!previousEntry) {
+        action = 'to-vault';
+      } else if (previousEntry.repoHash === null) {
+        action = 'to-vault';
+      } else {
+        action = 'delete-vault';
+      }
     }
 
     if (action === 'to-repo') {
-      await ensureDir(repoDir);
+      await ensureDir(path.dirname(repoPath));
       const nextBuffer = Object.assign(obsidianRaw, { sourcePath: obsidianPath });
       const wrote = await writeBufferIfChanged(repoPath, nextBuffer, repoRaw);
       nextState[name] = {
@@ -813,7 +937,7 @@ const syncAssetCollection = async ({
     }
 
     if (action === 'to-vault') {
-      await ensureDir(obsidianDir);
+      await ensureDir(path.dirname(obsidianPath));
       const nextBuffer = Object.assign(repoRaw, { sourcePath: repoPath });
       const wrote = await writeBufferIfChanged(obsidianPath, nextBuffer, obsidianRaw);
       nextState[name] = {
@@ -822,6 +946,34 @@ const syncAssetCollection = async ({
       };
       if (wrote) {
         summary.toVault += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    if (action === 'delete-repo') {
+      const deleted = await deleteIfExists(repoPath);
+      nextState[name] = {
+        obsidianHash,
+        repoHash: null,
+      };
+      if (deleted) {
+        summary.deletedFromRepo += 1;
+      } else {
+        summary.unchanged += 1;
+      }
+      continue;
+    }
+
+    if (action === 'delete-vault') {
+      const deleted = await deleteIfExists(obsidianPath);
+      nextState[name] = {
+        obsidianHash: null,
+        repoHash,
+      };
+      if (deleted) {
+        summary.deletedFromVault += 1;
       } else {
         summary.unchanged += 1;
       }
@@ -857,6 +1009,25 @@ const collectReferencedCovers = async (directories) => {
   }
 
   return Array.from(covers).sort();
+};
+
+const collectReferencedPublishedImages = async (directories) => {
+  const images = new Set();
+
+  for (const dir of directories) {
+    for (const file of await listMarkdownFiles(dir)) {
+      const raw = await readTextFile(path.join(dir, file));
+      if (!raw) {
+        continue;
+      }
+
+      for (const image of collectRepoPublishedImageRefs(raw)) {
+        images.add(image);
+      }
+    }
+  }
+
+  return Array.from(images).sort();
 };
 
 const sync = async () => {
@@ -899,22 +1070,35 @@ const sync = async () => {
     names: coverNames,
   });
 
+  const publishedImageNames = await collectReferencedPublishedImages([destPostsDir, destBookNotesDir]);
+  const publishedImages = await syncAssetCollection({
+    label: 'Published images',
+    stateKey: 'publishedImages',
+    obsidianDir: sourceAttachmentsDir,
+    repoDir: destPublicDir,
+    state,
+    names: publishedImageNames,
+  });
+
   const nextState = {
     version: 1,
     essays: essays.nextState,
     bookNotes: bookNotes.nextState,
     attachments: attachments.nextState,
     bookCovers: bookCovers.nextState,
+    publishedImages: publishedImages.nextState,
   };
 
   await saveState(nextState);
 
-  const sections = [essays, bookNotes, attachments, bookCovers];
+  const sections = [essays, bookNotes, attachments, bookCovers, publishedImages];
   const summary = [];
 
   for (const section of sections) {
     summary.push(`${section.label} -> repo: ${section.summary.toRepo}`);
     summary.push(`${section.label} -> vault: ${section.summary.toVault}`);
+    summary.push(`${section.label} deleted from repo: ${section.summary.deletedFromRepo}`);
+    summary.push(`${section.label} deleted from vault: ${section.summary.deletedFromVault}`);
     summary.push(`${section.label} unchanged: ${section.summary.unchanged}`);
     summary.push(`${section.label} conflicts resolved in favor of Obsidian: ${section.summary.conflicts}`);
   }

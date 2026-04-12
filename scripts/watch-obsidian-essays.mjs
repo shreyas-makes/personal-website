@@ -40,6 +40,7 @@ const bookNotesDir = getArg(
 const repoPostsDir = path.resolve(scriptDir, '../src/content/posts');
 const repoAttachmentsDir = path.join(repoPostsDir, 'Attachments');
 const repoBookNotesDir = path.join(repoPostsDir, 'booknotes');
+const repoPublicImagesDir = path.resolve(scriptDir, '../public/images');
 const repoBookCoversDir = path.resolve(scriptDir, '../public/images/books');
 
 let debounceTimer = null;
@@ -87,6 +88,7 @@ if (runOnce) {
   console.log(`Repo posts: ${repoPostsDir}`);
   console.log(`Repo book notes: ${repoBookNotesDir}`);
   console.log(`Repo attachments: ${repoAttachmentsDir}`);
+  console.log(`Repo public images: ${repoPublicImagesDir}`);
   console.log(`Repo book covers: ${repoBookCoversDir}`);
 
   if (fs.existsSync(sourceDir)) {
@@ -123,6 +125,12 @@ if (runOnce) {
     watchDir(repoBookNotesDir);
   } else {
     console.log(`Skipping repo book notes watch: directory not found at ${repoBookNotesDir}`);
+  }
+
+  if (fs.existsSync(repoPublicImagesDir)) {
+    watchDir(repoPublicImagesDir);
+  } else {
+    console.log(`Skipping repo public images watch: directory not found at ${repoPublicImagesDir}`);
   }
 
   if (fs.existsSync(repoBookCoversDir)) {

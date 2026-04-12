@@ -13,4 +13,4 @@ function run(command, args) {
 
 console.log('Running Obsidian sync...');
 run('npm', ['run', '-s', 'sync:obsidian']);
-run('git', ['add', '-A', 'src/content/posts', 'src/content/posts/Attachments', 'public/images/books']);
+run('git', ['add', '-A', 'src/content/posts', 'src/content/posts/Attachments', 'public/images']);

@@ -5,7 +5,7 @@ date: 2026-02-15T12:00:00.000Z
 author: Patrick Lencioni
 rating: 7
 summary: team-building
-cover: five-dysfunctions.png
+cover: five-dysfunctions.jpg
 tags:
   - leadership
   - books
@@ -21,5 +21,4 @@ I've been reading the book, Five dysfunctions of leadership and have taken some 
 - **lack of commitment.** you have leaders making decisions, but then there is no buy-in.. so even though decision making is faster, without that commitment, you see those disagreements coming up again and again. the key foundational maxim is "disagree but commit". good decisions are seldom made when it's through a popular vote. Populism doesn't always work. And in certain cases, "a decision" is better than no decision.. atleast you take a decision, make mistakes, move on and learn from mistakes. If you're constantly engaged in decision analysis paralysis, there is no progress, and nothing moves forward. especially when situations reach stasis, it's important for the leaders to make it more forward and pave the direction. And in certain situations, the leader can draw a line, and establish the decision. Lack of commitment can also happen when teams lack clarity in defining what the next steps should be.
 - **lack of accountability.** Even in cases you have people committing to decisions, you don't stick up to it, and ensure it delivers on the promised. 
 - **inattention to results.** All these would be meaningless if everyone is focussed on the self, and not prioritise the team's outcomes over their own personal development. When a pattern emerges that decisions are being made, and there is no accountability, everyone starts prioritising the self, as there is no "healthy peer pressure".. so the team's goals such as OKRs, and objectives get deprioritised. It also happens when you have too many goals, and there is no sense of focus provided by the leadership board. in such cases, it's important to have one clear "overarching goal" for helping teams get more clarity.
-
 

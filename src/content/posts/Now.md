@@ -13,7 +13,11 @@ stage: seedling
 ---
 ## April 2026
 
-It's been a while since I updated the /now page. It's surprising to see that in Jan 2025 had already predicted that it would be the year of AI and it's already coming to an existence and we can see the rise of various agents being used by technical, semi-technical, and even non-technical folks who know have a vague idea of how to deal with agents.
+The biggest change since I last wrote here is that AI stopped feeling speculative. The broad thesis held: this really has become the period when agents entered ordinary work. For me, that shift was personal too. I moved from casually testing prototypes to using Claude Code, Codex, and related tools as part of how I actually build, think, and work. What used to feel like AI for demos now feels more like a new literacy.
+
+That change spilled into both my side projects and my day job. I spent much of the past year building and shipping a small cluster of N=1 apps: Signify, a writing platform built around proof-of-human authorship; Dicto, a voice dictation tool with diarization and custom dictionary support; Papercup, for placing international phone calls from the browser; EditNext, an Obsidian plugin to help me identify the roughest essay draft worth improving next; and a rebuilt personal website that feels far more like my own taste. Doing this repeatedly gave me much sharper opinions on how to steer AI-assisted software instead of merely admiring it. At work too, AI stopped being an abstract trend report and became part of the texture of product conversations, workflows, and future-facing decisions. The bottleneck feels less like technical syntax now, and more like taste, judgment, and knowing what is actually worth building.
+
+Outside of that, life has become more settled and more legible. London feels less like a temporary backdrop and more like a real home now, complete with routines, furniture, errands, visitors, and its own emotional weather. Writing has come back to the center of things as well. I still think writing is thinking, but now I also have better tools to search my note archive, recover old threads, and turn them into essays with less friction. So the mood these days is to build more, publish more, and stop hesitating at the edge of the work I already know I want to do.
 
 ## Jan 2025
 
