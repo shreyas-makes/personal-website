@@ -23,7 +23,7 @@ interface BooksProps {
 
 export default function Books({ books }: BooksProps) {
   const [booksWithCovers, setBooksWithCovers] = useState<Book[]>([]);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [selectedBookIndex, setSelectedBookIndex] = useState(-1);
   const [scroll, setScroll] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -37,6 +37,33 @@ export default function Books({ books }: BooksProps) {
   
   const createInfiniteBooks = (books: Book[]) => {
     return [...books, ...books, ...books];
+  };
+
+  const getMiddleSectionIndex = (index: number) => {
+    if (books.length === 0) return -1;
+    return (index % books.length + books.length) % books.length + books.length;
+  };
+
+  const getOriginalBookIndex = (index: number) => {
+    if (books.length === 0) return -1;
+    return (index % books.length + books.length) % books.length;
+  };
+
+  const getRenderedSelectedIndex = (bookIndex: number, anchorScroll = scroll) => {
+    if (bookIndex === -1 || books.length === 0) return -1;
+
+    const candidates = [bookIndex, bookIndex + books.length, bookIndex + books.length * 2];
+    const viewportWidth = viewportRef.current?.clientWidth ?? 0;
+    const expandedBookWidth = width * 4 + selectedSpacing;
+    const centeredIndexEstimate = viewportWidth > 0
+      ? (anchorScroll + viewportWidth / 2 - expandedBookWidth / 2) / width
+      : books.length;
+
+    return candidates.reduce((closest, candidate) => {
+      return Math.abs(candidate - centeredIndexEstimate) < Math.abs(closest - centeredIndexEstimate)
+        ? candidate
+        : closest;
+    }, candidates[0]);
   };
 
   const getLoopWidth = () => books.length * width;
@@ -106,33 +133,37 @@ export default function Books({ books }: BooksProps) {
     }));
     const infiniteBooks = createInfiniteBooks(booksWithStyles);
     setBooksWithCovers(infiniteBooks);
-    setSelectedIndex(-1);
+    setSelectedBookIndex(-1);
     setScroll(getLoopWidth());
   }, [books]);
 
   const handleScroll = (direction: 'left' | 'right') => {
     setIsScrolling(true);
     
-    if (selectedIndex !== -1) {
+    if (selectedBookIndex !== -1) {
       // If a book is selected, move to next/previous book
       const originalBooksLength = books.length;
-      let newIndex;
+      let newBookIndex;
       
       if (direction === 'left') {
-        newIndex = selectedIndex - 1;
-        // If we go below 0, wrap to the end of the middle section
-        if (newIndex < originalBooksLength) {
-          newIndex = originalBooksLength * 2 - 1;
-        }
+        newBookIndex = (selectedBookIndex - 1 + originalBooksLength) % originalBooksLength;
       } else {
-        newIndex = selectedIndex + 1;
-        // If we go above the end, wrap to the beginning of the middle section
-        if (newIndex >= originalBooksLength * 2) {
-          newIndex = originalBooksLength;
+        newBookIndex = (selectedBookIndex + 1) % originalBooksLength;
+      }
+
+      const currentRenderedIndex = getRenderedSelectedIndex(selectedBookIndex);
+      let newIndex = getRenderedSelectedIndex(newBookIndex);
+
+      if (currentRenderedIndex !== -1) {
+        const expectedStep = direction === 'left' ? -1 : 1;
+        const directStep = newIndex - currentRenderedIndex;
+
+        if (Math.sign(directStep) !== Math.sign(expectedStep) || Math.abs(directStep) > 1) {
+          newIndex += direction === 'left' ? -originalBooksLength : originalBooksLength;
         }
       }
       
-      setSelectedIndex(newIndex);
+      setSelectedBookIndex(newBookIndex);
       
       // Calculate scroll position to center the selected book
       if (viewportRef.current) {
@@ -164,9 +195,13 @@ export default function Books({ books }: BooksProps) {
   useEffect(() => {
     if (!viewportRef.current) return;
     
-    if (selectedIndex !== -1) {
+    if (selectedBookIndex !== -1) {
+      const renderedSelectedIndex = getRenderedSelectedIndex(selectedBookIndex);
+
+      if (renderedSelectedIndex === -1) return;
+
       // Center the selected book in the viewport
-      const bookPosition = selectedIndex * width;
+      const bookPosition = renderedSelectedIndex * width;
       const viewportWidth = viewportRef.current.clientWidth;
       const expandedBookWidth = width * 4 + selectedSpacing;
       
@@ -177,26 +212,29 @@ export default function Books({ books }: BooksProps) {
       // The books repeat, so we can always center any book
       setScroll(normalizeScroll(targetScroll));
     }
-  }, [selectedIndex, books.length]);
+  }, [selectedBookIndex, books.length, scroll]);
 
   const handleBookClick = (index: number) => {
-    if (index === selectedIndex) {
+    const bookIndex = getOriginalBookIndex(index);
+    const renderedIndex = getRenderedSelectedIndex(bookIndex, scroll);
+
+    if (bookIndex === selectedBookIndex) {
       // If clicking the same book again, navigate to its page
       // For infinite scroll, we need to get the original slug from the middle section
       const originalBooksLength = books.length;
-      const originalIndex = index % originalBooksLength;
+      const originalIndex = bookIndex % originalBooksLength;
       const originalSlug = books[originalIndex].slug;
       window.location.href = `/books/${originalSlug.replace('booknotes/', '')}`;
     } else {
       // If clicking a different book, expand it in the bookshelf
-      setSelectedIndex(index);
+      setSelectedBookIndex(bookIndex);
       
       // Add a delay to ensure the expansion animation completes, then scroll to center both
       setTimeout(() => {
         // First, ensure the bookshelf is positioned correctly
-        if (viewportRef.current) {
+        if (viewportRef.current && renderedIndex !== -1) {
           const viewportWidth = viewportRef.current.clientWidth;
-          const bookPosition = index * width;
+          const bookPosition = renderedIndex * width;
           const expandedBookWidth = width * 4 + selectedSpacing;
           
           // Calculate the center position for infinite scroll
@@ -207,7 +245,7 @@ export default function Books({ books }: BooksProps) {
         // Then scroll to the detailed section below, but keep the bookshelf visible and centered
         // For infinite scroll, we need to get the original slug from the middle section
         const originalBooksLength = books.length;
-        const originalIndex = index % originalBooksLength;
+        const originalIndex = bookIndex % originalBooksLength;
         const originalSlug = books[originalIndex].slug;
         const element = document.getElementById(originalSlug);
         if (element) {
@@ -233,18 +271,6 @@ export default function Books({ books }: BooksProps) {
         padding: 'var(--space-100) 0 var(--space-150)',
       }}
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-4"
-        style={{
-          height: '18px',
-          marginInline: 'var(--space-400)',
-          borderRadius: 'var(--radius-pill)',
-          background:
-            'linear-gradient(180deg, color-mix(in srgb, var(--color-text-primary) 10%, var(--color-bg-body) 90%) 0%, color-mix(in srgb, var(--color-text-primary) 18%, var(--color-bg-body) 82%) 100%)',
-          boxShadow: '0 10px 22px color-mix(in srgb, var(--color-text-primary) 12%, transparent)',
-        }}
-      />
       <div 
         ref={viewportRef}
         className="overflow-hidden relative"
@@ -285,15 +311,17 @@ export default function Books({ books }: BooksProps) {
               className="flex-shrink-0 flex items-center relative"
               aria-label={`Open ${book.title}`}
               style={{
-                width: index === selectedIndex ? `calc(${bookWidth} + ${selectedSpacing}px)` : spineWidth,
+                width: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex)
+                  ? `calc(${bookWidth} + ${selectedSpacing}px)`
+                  : spineWidth,
                 height: `${height}px`,
                 transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
                 transformStyle: 'preserve-3d',
                 marginRight: '0px',
                 perspective: '1000px',
-                padding: index === selectedIndex ? '10px 0' : '0',
-                zIndex: index === selectedIndex ? 10 : 1,
-                transform: index === selectedIndex ? 'translateY(-6px)' : 'translateY(0)',
+                padding: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex) ? '10px 0' : '0',
+                zIndex: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex) ? 10 : 1,
+                transform: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex) ? 'translateY(-6px)' : 'translateY(0)',
               }}
             >
               <div
@@ -301,9 +329,9 @@ export default function Books({ books }: BooksProps) {
                 style={{
                   width: spineWidth,
                   transformOrigin: 'right',
-                  transform: `rotateY(${index === selectedIndex ? '-60deg' : '0deg'})`,
+                  transform: `rotateY(${getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex) ? '-60deg' : '0deg'})`,
                   transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
-                  boxShadow: index === selectedIndex
+                  boxShadow: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex)
                     ? `-10px 10px 22px ${book.spineStyle.shadow}`
                     : `0 8px 18px ${book.spineStyle.shadow}`,
                   position: 'absolute',
@@ -352,16 +380,16 @@ export default function Books({ books }: BooksProps) {
                   position: 'absolute',
                   left: width + 'px',
                   transformOrigin: 'left',
-                  transform: index === selectedIndex ? 'rotateY(0deg)' : 'rotateY(90deg)',
+                  transform: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex) ? 'rotateY(0deg)' : 'rotateY(90deg)',
                   transition: 'all 400ms cubic-bezier(0.4, 0, 0.2, 1)',
                   backgroundColor: 'var(--color-bg-body)',
                   overflow: 'hidden',
                   borderRadius: '0 var(--radius-md) var(--radius-md) 0',
-                  boxShadow: index === selectedIndex
+                  boxShadow: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex)
                     ? '18px 20px 36px color-mix(in srgb, var(--color-text-primary) 24%, transparent), 0 0 0 1px color-mix(in srgb, var(--color-text-primary) 8%, transparent)'
                     : 'none',
                   zIndex: 1,
-                  marginRight: index === selectedIndex ? `${selectedSpacing}px` : '0',
+                  marginRight: getOriginalBookIndex(index) === selectedBookIndex && index === getRenderedSelectedIndex(selectedBookIndex) ? `${selectedSpacing}px` : '0',
                 }}
               >
                 <img
