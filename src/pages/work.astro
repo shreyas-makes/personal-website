@@ -179,30 +179,19 @@ const openSourceProjects = [
     <!-- Add visual separator -->
     <div class="my-20 border-t border-gray-200 "></div>
 
-    <!-- Open Source Tools and Side Quests -->
+    <!-- Open Source Projects -->
     <section class="mb-16">
-      <h2 class="text-2xl sm:text-3xl font-medium text-gray-800 mb-2">Open source quests</h2>
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
+      <h2 class="text-2xl sm:text-3xl font-medium text-gray-800 mb-2">Open source projects</h2>
+      <div class="open-source-list mt-8">
         {openSourceProjects.map((project) => (
-          <a
-            href={project.url}
-            aria-label={`Open ${project.name} on GitHub`}
-            class="quest-card group h-full rounded-2xl border border-gray-200/90 bg-white/95 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 p-4 sm:p-5 flex flex-col"
-          >
-            <div class="mb-3">
-              <h3 class="quest-title text-lg sm:text-xl font-semibold text-gray-900 tracking-tight">
-                <span class="mr-2" aria-hidden="true">{project.emoji}</span>{project.name}
-              </h3>
-            </div>
-            <p class="text-sm sm:text-base text-gray-700 leading-relaxed flex-1">
-              {project.description}
-            </p>
-            <div class="mt-4">
-              <span class="quest-tag inline-flex text-xs sm:text-sm font-medium px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 ">
-                {project.category}
-              </span>
-            </div>
-          </a>
+          <article class="open-source-item">
+            <h3 class="open-source-name">
+              <a href={project.url} aria-label={`Open ${project.name} on GitHub`}>
+                {project.name}
+              </a>
+            </h3>
+            <p class="open-source-description">{project.description}</p>
+          </article>
         ))}
       </div>
     </section>
@@ -336,6 +325,65 @@ const openSourceProjects = [
 
   </main>
 </BaseLayout>
+
+<style>
+  .open-source-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: var(--space-300);
+  }
+
+  .open-source-item {
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding: var(--space-200) 0;
+  }
+
+  .open-source-item:first-child,
+  .open-source-item:nth-child(2) {
+    padding-top: 0;
+  }
+
+  .open-source-name {
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-heading);
+    line-height: var(--line-height-heading);
+    margin: 0;
+  }
+
+  .open-source-name a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .open-source-name a:hover,
+  .open-source-name a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .open-source-description {
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-body);
+    line-height: var(--line-height-body);
+    margin: var(--space-75) 0 0;
+  }
+
+  @media (min-width: 768px) {
+    .open-source-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .open-source-item:nth-child(2) {
+      padding-top: var(--space-200);
+    }
+  }
+</style>
 
 <style>
   /* Clean, minimal styling */
