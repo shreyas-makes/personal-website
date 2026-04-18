@@ -23,7 +23,13 @@ No, absolutely not. I don't think this tight compressed sentence is even a cheap
 
 I'll give another example: More recently, a few team members picked up on the Microsoft copilot usage; and have been using it to process raw transcripts from interviews by asking the agents to ; `"summarise all the transcripts, and then come up with 10 key insights you've identified.."`
 
-It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on Dostoevsky's Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time. 
+It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on Dostoevsky's Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time.
+
+In the essay, [Writing as moats for humans](/writing-moats), I mention how LLMs are good at such recombinations/compressions, but not at genuinely spiky, human, meaning-making writing:
+
+> If good writing is what we call as mere combination, recombination of sequence of texts in harmless ways; then sure, AI writing could pass this test. But this is clearly not the larger umbrella of writing jobs. AI-writing only serves mundane writing-jobs such as: "business" writing, dry boring policies, condensing meeting action items, making exam notes, regurgitating legal text/s, literature reviews, market research, etc.  [As Venkatesh Rao describes it in his recent essay](https://contraptions.venkateshrao.com/p/texts-as-toys), "**writing is now toy-making, and reading is now playing with toys.**" As all these writing jobs are mix-and-match combinatorics are still "in-distribution" work. **It could be delegated/or automated out**. 
+> 
+> True writing is still "out-distribution"[^2] [^3] and cannot be automated away[^1]. It's about thinking hard, and it's not just a combinatrics problem. You still need to know how to play with all the text toys available in order to make the writing more spiky and opinionated.
 
 **We can't just offload the insight generation process to the LLMs; they're not the same.**
 
