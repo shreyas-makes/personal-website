@@ -1,14 +1,17 @@
 ---
 title: Read raw transcripts
-description: "I opened up Claude one day, and asked to summarise Dostoevsky's Crime and Punishment into one sentence; and it said: Would this mean that I've saved 20 hours of reading, 30 days of thinking about the..."
-date: 2025-07-26
+description: >-
+  I opened up Claude one day, and asked to summarise Dostoevsky's Crime and
+  Punishment into one sentence; and it said: Would this mean that I've saved 20
+  hours of reading, 30 days of thinking about the...
+date: '2025-07-26'
 slug: read-raw-transcripts
 tags:
   - knowledge
   - writing
 stage: plant
 ---
-I opened up Claude one day, and asked to summarise [[Dostoevsky]]'s Crime and Punishment into one sentence; and it said:
+I opened up Claude one day, and asked to summarise Dostoevsky's Crime and Punishment into one sentence; and it said:
 
 ```
 A young, impoverished ex-student named Raskolnikov murders an elderly pawnbroker to test his theory that extraordinary people are above moral law, only to be consumed by guilt and psychological torment until he confesses and finds redemption through love and spiritual awakening.
@@ -20,7 +23,7 @@ No, absolutely not. I don't think this tight compressed sentence is even a cheap
 
 I'll give another example: More recently, a few team members picked up on the Microsoft copilot usage; and have been using it to process raw transcripts from interviews by asking the agents to ; `"summarise all the transcripts, and then come up with 10 key insights you've identified.."`
 
-It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on [[Dostoevsky]]'s Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time. 
+It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on Dostoevsky's Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time. 
 
 **We can't just offload the insight generation process to the LLMs; they're not the same.**
 
@@ -37,3 +40,16 @@ The way each of us distill the raw transcripts might be totally different. When 
 Let the LLMs do the grunt work of compression; we can safely delegate them at this task.
 
 And we should continue reading more raw transcripts; reading footnotes; reading meta-commentaries; the "devil lies in the details", and how our brain interprets them. **Distillation might be the only remaining moat for us.** 
+
+I'd written about the alpha on raw-dogging transcripts in another essay titled, "Map is not the territory":
+
+> My thinking now is that, as long as these approximations exist, the human jobs are not going away any time soon.
+> 
+> I do have a similar argument to suggest folks to read raw transcripts. This is quite a contrary opinion still, and we're more used to referring to summaries. Maybe that’s a quick nugget and has faster absorption, but we do mistake comprehension for understanding sometimes. They are not the same. If I do have the luxury of time, I would personally prefer reading through the raw transcripts to get more higher dimensional granularity to what’s going on.. 
+> 
+> If we extend the analogy, the raw transcript is almost like the "territory" we're speaking about. And the insights generated, are more or less like the "map". And the map can never be equivalent to the territory.
+> 
+> Apart from this quirk to read raw transcripts, I also have a similar asymmetric thumb rule when it comes to reading long form blog posts. Some of them are really high alpha, high signal, so when a writer deeply resonates with me, I go the last mile and read the whole essay end to end. 
+> 
+> I have a similar principle here that I want to read it in its lossless format, without it being stripped of any details.. as “map is not the territory”, I do prefer waltzing through the territory in some occasions, and not use the map instead..
+

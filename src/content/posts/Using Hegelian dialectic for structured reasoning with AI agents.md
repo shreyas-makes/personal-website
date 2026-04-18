@@ -1,14 +1,11 @@
 ---
 title: Hegelian dialectic for structured reasoning with AI agents
-date: 2026-04-06T00:00:00.000Z
-slug: null
+date: '2026-04-06'
 tags:
   - philosophy
   - agentic-coding
 stage: seedling
 ---
-Today I want to talk about Hegelian dialectics.. it might actually sound like an obscure term, but let me try enticing you a bit first as to why you'd want to.. 
-
 You have an interesting thought in your head, and you want to get it out there, open, out in the internet. It's spiky, and has all the right characteristics for titillating the audience, hoping to convince the reader of an opinion. When you're in the heat of the moment, and having this word-burst moment, you ask yourself to think twice before you hit publish, and now that you think about, it does feel like the argument is not landing there precisely where you want it to be. 
 
 The argument is probably, not false, but not entirely true either. It's a bit on the fence, neither here nor there. It might not even be the fault of the argument not being "meaty", but it could be a victim of being trapped in the wrong frame.
