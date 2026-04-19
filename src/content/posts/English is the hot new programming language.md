@@ -1,17 +1,20 @@
 ---
-title: "English is the hot new programming language"
-description: "Intended Audience—Indie no-code developers, digital marketers and other non-tech professionals working in tech I made a resolution for 2024 to learn Ruby on Rails, a controversial web development..."
-date: "2024-02-17T10:27:02.000Z"
-slug: "english-is-the-hot-new-programming-language"
-tags: [software, no-code, rough-notes]
-stage: "plant"
+title: English is the hot new programming language
+description: >-
+  Intended Audience—Indie no-code developers, digital marketers and other
+  non-tech professionals working in tech I made a resolution for 2024 to learn
+  Ruby on Rails, a controversial web development...
+date: 2024-02-17T00:00:00.000Z
+slug: english-is-the-hot-new-programming-language
+tags:
+  - software
+  - no-code
+  - rough-notes
+stage: plant
 ---
-
-Intended Audience—Indie no-code developers, digital marketers and other non-tech professionals working in tech
-
 I made a resolution for 2024 to learn Ruby on Rails, a controversial web development framework famous for maximising developer productivity. In the business of building and growing products, I wanted to be a self-taught developer
 
-![](/images/2024/02/Untitled_Artwork-6-3.jpg)
+![[Attachments/images/2024/02/Untitled_Artwork-6-3.jpg]]
 
 The goal behind my trite, cliched new-year resolution was to get to a point where I could build apps in a weekend. I have been day-dreaming about a state where—I get a shower-thought, I write code, and in 2-3 hours, I have a production-grade software that’s ready to roll. An end goal of shower-thought driven software engineering was my final objective.
 
@@ -23,12 +26,11 @@ I realized that hard-coding was the only way. So I dived deep into Ruby on Rails
 
 My progress in hacking my way around, learning about enough coding to be dangerous, and also racing through [different steps of the web development (Git, IDEs, HTML, TypescriptCSS, JS, Ruby, Ruby on Rails)](https://github.com/shreyas314159) would have not been possible without asking the most stupidest of my questions to ChatGPT as a newbie, amateur, rookie developer.
 
-From the Founder Hacker course, where Ryan Kulp builds a Ruby on Rails app live on Youtube
+Throughout this exploration, I had used the Founder Hacker course as a baseline reference. It was quite enjoyable also to watch the livestreams where Ryan Kulp just builds a Ruby on Rails app live on Youtube. 
 
-I’ve found bugs in the code, copied the error without understanding into ChatGPT and then again back to the IDE to make changes and see if it works. And I’ve realised that the barrier for designers to code and bring their designs to life is getting narrower over time. You’re literally ‘spellcasting’ to get your code out, by just chatting with the LLM. 
+And with regards to the use of AI to help me learn in this path, I usually do a “copy paste” approach in the same way how I used to make use of Stackoverflow in the past. This involved finding bugs in the code, copying the errors into ChatGPT and then again back to the IDE to make changes and see if it works. And I’ve realised that the barrier for designers to code and bring their designs to life is getting narrower over time. You’re literally ‘spellcasting’ to get your code out, by just chatting with the LLM. 
 
 From [tl;draw](https://github.com/tldraw/make-real) to [Diagram](https://x.com/figma/status/1671929171331915776?s=20) and [Galileo AI](https://www.usegalileo.ai/explore), we’re seeing instances where prototypes are being built at the speed of the ‘mouth’. Every type of programming becomes a conversational design piece – text to text, text to video, text to code, text to game, text to UI, text to 3D prints, etc.
-
 
 Over time, I’ve realised that I am not actually learning Ruby on Rails. I’m learning a way to ask around and figure out in plain English. I’m building stuff by prompting. To name a few:
 
@@ -49,7 +51,6 @@ It somehow seems like a great time for anyone, be it an architect, product manag
 
 Everyone can now do shower-thought driven software engineering if all that’s needed is crafting good prompts.
 
-![](/images/2024/02/shreyas-17-02-2024-at-10.32.25@2x.jpg)
-
+![[Attachments/images/2024/02/shreyas-17-02-2024-at-10.32.25@2x.jpg]]
 > Update: Devin enters the chat.
 

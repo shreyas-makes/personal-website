@@ -1,7 +1,10 @@
 ---
 title: World's most ancient public health problem
-description: "From the place I come from, in Kerala, a baby is not given a name until he/she is 28 days old. And for marginalised castes/communities, the naming ceremony is delayed to 90 days. I never really..."
-date: 2024-01-23T18:00:00.000Z
+description: >-
+  From the place I come from, in Kerala, a baby is not given a name until he/she
+  is 28 days old. And for marginalised castes/communities, the naming ceremony
+  is delayed to 90 days. I never really...
+date: '2024-01-23'
 slug: before-building-a-product-hunt-a-purpose
 tags:
   - rough-notes
@@ -31,25 +34,13 @@ Let that sink in a bit. United States has seen a surprising rise in their MMR 
 
 We need innovations of all forms to tackle this. Not just technical innovations, but we need systemic innovations too. At Noora Health, we understand the power of health education training, and how that could have a profound impact for parents and their families. Our way of tackling this challenge has been through the systemic front.
 
-[
-
-Service walkthroughs for social change | The Companion
-
-A low-resource and high-impact alternative for exploring, evaluating, and communicating services within social impact organizations.
-
-![](https://noorahealth.org/wp-content/uploads/2022/03/cropped-fav-270x270.png)Noora Health
-
-![](https://noorahealth.org/wp-content/uploads/2024/01/HR_DistrictCivilHospital_Kaithal_June2023-01192_resize-scaled.jpg)
-
-](https://noorahealth.org/thecompanion/service-walkthroughs-for-social-change/)
-
-An example of how we do service walkthroughs at Noora Health
+## An example of how we do service walkthroughs at Noora Health
 
 By providing the right information at the right time, the curriculum is able to help new parents and their loved ones navigate this journey. For newly delivered mothers, it could be the first days for a newborn. For an expectant mother, it could be during the entire antenatal period.
 
 ![Picture Courtesy: Noora Health](https://cdn.blot.im/blog_42f15db394c3417381df80148e1ec9e3/_image_cache/9e6dda0e-e743-431f-8799-c6687d10ccce.png)
 
-Picture courtesy: Noora Health, Indonesia
+*Picture courtesy: Noora Health, Indonesia*
 
 Once a patient is discharged from the hospital, it’s the family who takes care of them. By imparting health education to the family, various risks are avoided. We want to tap into this unlimited resource. This, to us, is a systemic innovation as the desire to help people we love is universal.
 
@@ -63,7 +54,7 @@ The Care Companion Program (CCP) model at Noora Health is uniquely designed ar
 
 ![Effect of CCP](https://cdn.blot.im/blog_42f15db394c3417381df80148e1ec9e3/_image_cache/80232f8f-d234-4fb1-9d8a-d908d906a4e3.png)
 
-Effect of CCP
+## Effect of CCP
 
 ![](https://noorahealth.org/wp-content/uploads/2022/03/Ongoing-evaluations.jpg)
 

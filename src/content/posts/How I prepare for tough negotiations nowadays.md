@@ -1,10 +1,8 @@
 ---
 title: How I prepare for tough negotiations nowadays
 date: 2026-04-03T00:00:00.000Z
-slug: null
 tags:
   - negotiation
-  - rough-notes
 stage: seedling
 ---
 Negotiations are hard. And I want to win most of them; whether it has to do with convincing my partner to choose the right destination for a tourist trip, or even convincing the business when it comes to a challenging matter. I want to convince all of them, and win them all, and I can't take no for an answer.
@@ -16,31 +14,31 @@ And I found this book that I wanted to see if it could help me: it was called Ne
 I've read the book multiple times on re-read, and have taken some dense notes in this process. Now, what I do now is to do enough homework before I enter into a tough negotiation. For starters, those who do their homework always win. I do this as a writing exercise to cover as much points as possible steelmanning-strawmanning the discussion, before I take it forward.
 
 
-What do I want?
+**What do I want?**
 
-What is the minimum I need?
+**What is the minimum I need?**
 
-What is my BATNA?
+**What is my BATNA?**
 
-What are they likely afraid of?
+**What are they likely afraid of?**
 
-What bad thing are they already thinking about me?
+**What bad thing are they already thinking about me?**
 
-What accusation audit line should I use?
+**What accusation audit line should I use?**
 
-What label will I open with?
+**What label will I open with?**
 
-What mirror might unlock more?
+**What mirror might unlock more?**
 
-What what/how question will I ask?
+**What what/how question will I ask?**
 
-What summary could earn "that's right"?
+**What summary could earn "that's right"?**
 
-What hidden unknown might matter most?
+**What hidden unknown might matter most?**
 
-What is one cheap concession I can make?
+**What is one cheap concession I can make?**
 
-How will I test this implementation?
+**How will I test this implementation?**
 
 ## References
 

@@ -1,7 +1,12 @@
 ---
-title: How might we enable patients and caregivers to overcome preventable health conditions?
-description: "For MCH, a study we conducted in 2021 observed strong evidence that the health messaging service (RES) improved maternal knowledge and infant care. It observed significantly higher rates of..."
-date: 2022-06-16T15:27:02.000Z
+title: >-
+  How might we enable patients and caregivers to overcome preventable health
+  conditions?
+description: >-
+  For MCH, a study we conducted in 2021 observed strong evidence that the health
+  messaging service (RES) improved maternal knowledge and infant care. It
+  observed significantly higher rates of...
+date: '2022-06-16'
 slug: bdres
 tags:
   - digital-health
@@ -12,13 +17,13 @@ company: Noora Health
 role: Product Lead
 ---
 
+> Intended Audience—For product leaders and healthcare professionals working in the intersections of behaviour change, digital health and medical support
+
+
 For MCH, a study we conducted in 2021 observed strong evidence that the health messaging service (RES) improved maternal knowledge and infant care. It observed significantly higher rates of breastfeeding, safe infwhyant-feeding practices, and skin-to-skin care among the intervention group, as well as greater knowledge of maternal nutrition, breastfeeding, and cord care best practices.
 
 
-![](/images/2024/04/image-31-3.jpg)
-
-
-****Intended Audience****—For product leaders and healthcare professionals working in the intersections of behaviour change, digital health and medical support
+![[Attachments/images/2024/04/image-31-3.jpg]]
 
 Imagine being a young mother-to-be, living in a remote village in Bangladesh, eagerly awaiting the birth of your child. You make the long journey to the nearest hospital for a routine check-up, filled with excitement.
 
@@ -32,7 +37,7 @@ Over the past 30 months, my team has poured our heart, soul, and countless hours
 
 In this essay, I'll take you on the journey of Rabeya, that young expectant mother, and share the insights gained from our efforts with RES Bangladesh—
 
-![upload in progress, 0](/images/2024/04/image-31.jpg)
+![[Attachments/images/2024/04/image-31.jpg|upload in progress, 0]]
 
 A patient using the Remote Engagement Service (RES) on Whatsapp, listening in to an informative video on how to take better care of her baby
 
@@ -54,7 +59,7 @@ _Rabeya is onboarded to the service through a simple three-step process. She sel
 
 _Once onboarded, she is gently nudged to enter her expected due date on Whatsapp. The RES service gets personalised based on this crucial timing._
 
-![upload in progress, 0](/images/2024/04/27.jpg)
+![[Attachments/images/2024/04/27.jpg|upload in progress, 0]]
 
 ![upload in progress, 0](https://lex-img-p.s3.us-west-2.amazonaws.com/img/bb74c7f6-9a06-40d5-839e-ee43a8a0f176-RackMultipart20240427-129-qnsesb.png)
 
@@ -64,7 +69,7 @@ _As an expectant mother, Rabeya is guided towards doing her regular pregnancy ch
 
 _As she starts learning about various key topics, she starts asking questions surrounding her pregnancy. One day, she notices some signs in her body and remembers to seek help from the service._
 
-![upload in progress, 0](/images/2024/04/22.jpg)
+![[Attachments/images/2024/04/22.jpg|upload in progress, 0]]
 
 _In this way, she receives health support from clinical experts such as nurses and doctor as and when needed from the comfort of her home._
 
@@ -87,7 +92,7 @@ Journey behind building RES
 
 I'll go one level deeper into the process followed—
 
-![upload in progress, 0](/images/2024/04/MacBook-Air---1-1.jpg)
+![[Attachments/images/2024/04/MacBook-Air---1-1.jpg|upload in progress, 0]]
 
 The product cycle went through various key phases such as ****Defining Business Outcomes, Discover, Validate, Build, Launch, Evaluate, and Iterate****.
 
@@ -102,7 +107,7 @@ The phases such as **Defining Business Outcomes, Discovery, Validation, Building
 
 As a Business-to-Government-to-Consumer (B2G2C) model, we aimed to support Bangladesh government's health initiatives were focused on reducing the maternal mortality rate (MMR) and infant mortality rate (IMR). Bangladesh had roughly ~**157 maternal deaths per 100,000 live births**. To provide a benchmark, the Netherlands has ~4 maternal deaths per 100,000 live births. Noora Health's pitch to the government was to establish family caregiving as a standard of care, thereby reducing the MMR and IMR rates through the intervention.
 
-![upload in progress, 0](/images/2024/04/MacBook-Air---2.jpg)
+![[Attachments/images/2024/04/MacBook-Air---2.jpg|upload in progress, 0]]
 
 Noora Health's model consists of a cost-sharing model with health systems and funding support from a diversity of sources, including foundations, individuals, partnering organisations, and corporate giving. The cost sharing model allows Noora to eventually step-back from directly overseeing the program, enabling it to become an integrated and sustainable part of the healthcare infrastructure.
 
@@ -110,17 +115,17 @@ We got into our first MoU with the BD Health Ministry to pilot, gain evidence, a
 
 My initial efforts during this phase was to make RES simple and easy to remember. To reduce the complexity in the communication, and to revive and evangelise interest towards RES, I showed a vision for RES BD—**Every user overcomes any preventable medical condition digitally**. Nurses were also trained to communicate RES in a simplified manner as—'**Health education for you and your baby**'.
 
-![upload in progress, 0](/images/2024/04/MacBook-Air---8.jpg)
+![[Attachments/images/2024/04/MacBook-Air---8.jpg|upload in progress, 0]]
 
 Framing the vision in the format of a 'future press-release' to get team/stakeholders excited about the RES vision
 
-![upload in progress, 0](/images/2024/04/Group-146.jpg)
+![[Attachments/images/2024/04/Group-146.jpg|upload in progress, 0]]
 
 Creative Team at Noora Health assisted us in developing powerful visualisations through a storyboard to explain the ease with which one could get onboarded to the RES service
 
 To make the direction of the vision even clearer, I worked closely with the Head of Product to break down the complex roadmap of RES into a simpler, more digestible format for all team members.
 
-![upload in progress, 0](/images/2024/04/Frame-59.jpg)
+![[Attachments/images/2024/04/Frame-59.jpg|upload in progress, 0]]
 
 We visualised RES as a train engine consisting of multiple blocks. We had the signup engine, an engagement engine, as well as a response engine. For each, we depicted the current state, and the future state to receive inputs from the larger team.
 
@@ -130,7 +135,7 @@ Recognising that a direct replication of our previous strategies in India wouldn
 
 My team and I explored the patient health journey across district hospitals, sub-district hospitals, and primary care centers in Bangladesh. This exploration aimed to map out how patients were accessing healthcare systems.
 
-![upload in progress, 0](/images/2024/04/BD-CCP----Current-journey-in-SCANU--2-.jpg)
+![[Attachments/images/2024/04/BD-CCP----Current-journey-in-SCANU--2-.jpg|upload in progress, 0]]
 
 Mapping the current journey of a newly delivered mother
 
@@ -140,7 +145,7 @@ We were not optimising for a single user journey; rather, we addressed multiple 
 
 Each touchpoint represented a crucial opportunity to educate, empower and provide continuous support tailored to her evolving needs.
 
-![upload in progress, 0](/images/2024/04/97.jpg)
+![[Attachments/images/2024/04/97.jpg|upload in progress, 0]]
 
 Documenting the outcomes from the synthesis into various themes such as technology, personnel, health system etc. All these contributed to the drafting of the requirements
 
@@ -150,11 +155,11 @@ This synthesis ([through affinity maps](https://www.nngroup.com/articles/affinit
 
 Outlining decisions, the assumptions, and checkpoints on how we were validating the assumptions
 
-![upload in progress, 0](/images/2024/04/Group-156.jpg)
+![[Attachments/images/2024/04/Group-156.jpg|upload in progress, 0]]
 
 Another framework which proved to be quite useful in digesting the complexity of the multi-touchpoint user journey was the [service blueprint.](https://www.google.com/search?q=service+blueprint&oq=service+blueprint&sourceid=chrome&ie=UTF-8)
 
-![upload in progress, 0](/images/2024/04/shreyas-27-04-2024-at-21.30.47-1.gif)
+![[Attachments/images/2024/04/shreyas-27-04-2024-at-21.30.47-1.gif|upload in progress, 0]]
 
 [****Service blueprint****](https://www.google.com/search?q=service+blueprint&oq=service+blueprint&sourceid=chrome&ie=UTF-8) served as a great way to visualise and communicate not just the front stage actors, but the backstage actors, as well as the backend processes required to ensure everything is seamless.
 
@@ -166,9 +171,9 @@ Some key directions from our discovery phase:
 
 **Contextualisation and personalisation of the messages** — RES campaigns were made more personalised to the geography they served. We adopted a more conversational format mixing curative, and promotive themes for behaviour change. We went on to also hire country specific teams across the Health Communications, Medical Strategy as well as Media/Film to ensure the content was adapted to the context.
 
-![upload in progress, 0](/images/2024/04/104.jpg)
+![[Attachments/images/2024/04/104.jpg|upload in progress, 0]]
 
-![upload in progress, 0](/images/2024/04/1.jpeg)
+![[Attachments/images/2024/04/1.jpeg|upload in progress, 0]]
 
 A typical SCANU facility in Bangladesh
 
@@ -182,9 +187,9 @@ _Should we build and then test? Or should we test and then build?_
 
 When facing this dilemma of whether to—_build and then test a product or to test and then build_, our approach varied based on the situation. As we always dealt with the trifecta of scope, time and effort, we needed a more structured approach to deal with these decisions. For more 'risky' features, we designed a lightweight pilot version first to test the concept in a controlled, manageable way. However, if the associated risks were minimal, we chose to launch first and then validate the feasibility afterwards as shown below—
 
-![upload in progress, 0](/images/2024/04/MacBook-Air---5-1.jpg)
+![[Attachments/images/2024/04/MacBook-Air---5-1.jpg|upload in progress, 0]]
 
-![upload in progress, 0](/images/2024/04/shreyas-28-04-2024-at-07.59-1-1.jpg)
+![[Attachments/images/2024/04/shreyas-28-04-2024-at-07.59-1-1.jpg|upload in progress, 0]]
 
 This is an example of a feature which we implemented by testing first before building — For conversational IVR, as this was a high-impact and a crucial part of the onboarding flow, we didn't want to take any chances and performed a gradual rollout with significant period of testing internally by dogfooding
 
@@ -196,7 +201,7 @@ Our product development process blended elements of both waterfall and agile met
 
 We methodically rolled out features over a 2.5-year timeline, carefully managing the evolution and growth of the service. The roadmap for what needed to be built was articulated in a detailed service map (as shown below), which facilitated collaborative feedback from all stakeholders. This ensured smooth transitions during technical handoffs, reducing risks and enhancing the effectiveness of our launches.
 
-![upload in progress, 0](/images/2024/04/107-1.jpg)
+![[Attachments/images/2024/04/107-1.jpg|upload in progress, 0]]
 
 This was a standard format used while we went ahead developing various features as a part of the product roadmap.
 
@@ -206,7 +211,7 @@ This was a standard format used while we went ahead developing various features 
 
 Before we evaluated, we didn't have proper systems to evaluate. When we started, we lacked a centralised product dashboard integrating data from various sources.
 
-![upload in progress, 0](/images/2024/04/MacBook-Air---6-1.jpg)
+![[Attachments/images/2024/04/MacBook-Air---6-1.jpg|upload in progress, 0]]
 
 12-month long ongoing effort by the Data Engineering Team to streamline data collection efforts, building systems towards data warehousing, establishing pipelines, as well as dashboarding
 
@@ -216,7 +221,7 @@ To support the tech team, I created early prototypes of the dashboard to demonst
 
 After diagnosing, and identifying the gaps, the data engineering team established pipelines, warehouses and the dashboard for helping us take data-driven decisions.
 
-![upload in progress, 0](/images/2024/04/screenshot_2023-03-13_at_4.28.23_pm.png)
+![[Attachments/images/2024/04/screenshot_2023-03-13_at_4.28.23_pm.png|upload in progress, 0]]
 
 Early visualisations of the dashboard used in formulating the tech requirements. This eventually led to a full-fledged dashboard that helped improve the service over time
 
@@ -224,7 +229,7 @@ Early visualisations of the dashboard used in formulating the tech requirements.
 
 To collect more insights from the field and from our users themselves using our service, we established a regular schedule of field visits for the RES team to engage directly with patients and caregivers. This allowed us to continuously gather and analyse data from various channels to better understand their needs.
 
-![upload in progress, 0](/images/2024/04/108.jpg)
+![[Attachments/images/2024/04/108.jpg|upload in progress, 0]]
 
 Key initiatives that I spearheaded to deepen our user-feedback loops included:
 
@@ -245,7 +250,7 @@ In a recent strategic decision about expanding our service, we needed to determi
 
 During the first quarter of 2024, we observed a decline in telesupport productivity, with 28 team members averaging only 2-3 hours of calls per day. To enhance their efficiency without resorting to downsizing, I conducted detailed simulations. These simulations considered their current productivity, total working hours, and potential for additional tasks. Based on this data-driven analysis, we identified four new activities for the telesupport team. Implementing these activities significantly improved their productivity from 20% to 60%.
 
-![upload in progress, 0](/images/2024/04/shreyas-28-04-2024-at-08.38.27@2x.jpg)
+![[Attachments/images/2024/04/shreyas-28-04-2024-at-08.38.27@2x.jpg|upload in progress, 0]]
 
 * * *
 
@@ -253,7 +258,7 @@ During the first quarter of 2024, we observed a decline in telesupport productiv
 
 One of my core philosophies in product development is to view each product as a work in progress that is never truly complete. This perspective reinforces the necessity for continuous improvement, as a product is never 'done'. In managing our development cycles, I advocate for a 70% focus on enhancing existing features (exploit) and 30% on exploring new possibilities (explore). This approach ensures that while we continuously refine our product, we also remain vigilant to emerging cultural, regulatory, economic, and technological trends. Exploration is conducted through a **'5C lens'—Customers, Collaborators, Competitors, Climate, and Company**—to identify and integrate new opportunities into our opportunity hypothesis.
 
-![upload in progress, 0](/images/2024/04/100.jpg)
+![[Attachments/images/2024/04/100.jpg|upload in progress, 0]]
 
 [****Digital Health Allies****](https://www.digitalhealthallies.com/): Improved the benchmarking process of researching partner organisations, and scoping out the possible collaborations through an independent platform. I designed this platform to make it easier for the partnerships team to filter out prospects for further reachouts.
 
@@ -261,11 +266,11 @@ For instance, we observed a growing trend in the use of large language models (L
 
 In the exploitation phase—we focused on refining our core product—we devoted considerable efforts to structuring our response system more efficiently. This involved creating knowledge banks to prevent repetitive responses and formalising protocols through standard operating procedures.
 
-![upload in progress, 0](/images/2024/04/102-1.jpg)
+![[Attachments/images/2024/04/102-1.jpg|upload in progress, 0]]
 
 To reduce the waiting time for patients, as well as to efficiently use the time of doctors and experts, a ticketing system was setup on Freshdesk were queries were labelled, and organised to avoid answering repetitive questions.
 
-![upload in progress, 0](/images/2024/04/101-1.jpg)
+![[Attachments/images/2024/04/101-1.jpg|upload in progress, 0]]
 
 To bring more structure in the type of responses provided, as well as ensure that all responses are coherent in terms of tone, voice etc, standard operating procedures were drafted
 
@@ -274,17 +279,17 @@ To bring more structure in the type of responses provided, as well as ensure tha
 
 Beyond simple concept notes, we often found it more effective to simulate the entire user journey through a walkthrough. This approach transformed the experience into an interactive role-play rather than just a static document, making the feedback process more engaging and insightful.
 
-![upload in progress, 0](/images/2024/04/103.jpg)
+![[Attachments/images/2024/04/103.jpg|upload in progress, 0]]
 
 **One Pagers** — Sometimes showing a prototype might feel like too much effort was put into its production that some stakeholders might avoid providing harsher feedback. They might feel that it's already well formed, and any critical comments would probably not be incorporated. To avoid this barrier, [concept notes/one-pagers](https://docs.google.com/document/u/0/d/1h4iMs3TSb06dO7_uDivRpGNBwSLMz08i5dDZ20v6GTo/mobilebasic) come in handy.
 
-![upload in progress, 0](/images/2024/04/106.jpg)
+![[Attachments/images/2024/04/106.jpg|upload in progress, 0]]
 
 One pager for the introduction of conversational IVR feature
 
 **Medium Fidelity Prototypes** — When I usually build the case around the opportunity, and have to start from zero, momentum is gained with a medium-fidelity prototype. By putting an idea out there, even if it's totally wrong is much better catalyst for getting to a good solution as people are more likely to react to an idea than to nothing. Prototypes were a great source of enquiry. Prototyping was also my super-power and used my personal conviction to fuel the development of such prototypes.
 
-![upload in progress, 0](/images/2024/04/99.jpg)
+![[Attachments/images/2024/04/99.jpg|upload in progress, 0]]
 
 While setting up RES campaigns, we also observed the inefficiencies in the campaign setup process. Multiple team members logged entries on content spread across multiple spreadsheets which passed through various version edits. To streamline this process, we developed a medium-fidelity prototype of what we envisioned to get the larger team onboard. Noora CMS has automated various manual workflows improving the efficiency of the RES tech-ops team by 40% for campaign development
 

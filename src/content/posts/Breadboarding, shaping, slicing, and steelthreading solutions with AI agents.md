@@ -1,6 +1,6 @@
 ---
-title: Breadboarding, shaping, slicing, and steelthreading solutions with AI agents
-date: 2026-03-21
+title: 'Breadboarding, shaping, slicing, and steelthreading solutions with AI agents'
+date: '2026-03-21'
 slug: breadboarding
 tags:
   - product-management
@@ -166,7 +166,7 @@ Previously, I was considering to build a "chat with documents app" that connects
 
 Similarly, for this approach, I could have gone the vertical slice approach to test out the integration across the systems, but in this case, since the implementation of Ontolo didn't quite require heavy integration work, I skipped steelthreading. This should definitely be done on a case by case basis, depending on the type of project taken up. My rough rule is: if the risk is mostly around feature behavior, slice vertically; if the risk is mostly around systems integration, steel thread first.
 
-#### Recap..
+## Recap..
 
 To summarize what I just did so far, I first started with a vision skill where I started having a conversation with the agent to kind of craft my direction, it needed to be steered towards a particular goalpost. So it's needed important for us to tell it where the goalpost looks like and where the direction of the goalpost is. So after that conversation ended, I then scoped the problem and the solution together and in a format called as a shaping methodology, where it's possible for us to have a very tightly constrained problem, but the problem might not be the only problem which we can work on. There might be say a change of scope where we define a different approach towards a solution, and then we might have to update the problem accordingly as well. Sometimes this is also based on what is technically possible, so you might have to run a series of spikes, which you can also see from this process. 
 

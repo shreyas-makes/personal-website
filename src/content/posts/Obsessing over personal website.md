@@ -1,17 +1,19 @@
 ---
-title: "Obsessing over personal websites"
-description: "Intended Audience—For those of us who have attempted to make a personal website of their own and have guilt-tripped over making multiple updates every year I’ve been obsessed with my personal..."
-date: "2024-04-07T14:09:03.000Z"
-slug: "obsessing-over-personal-websites"
-tags: [software, personal-branding]
-stage: "seedling"
+title: Obsessing over personal websites
+description: >-
+  Intended Audience—For those of us who have attempted to make a personal
+  website of their own and have guilt-tripped over making multiple updates every
+  year I’ve been obsessed with my personal...
+date: '2024-04-07T14:09:03.000Z'
+slug: obsessing-over-personal-websites
+tags:
+  - software
+  - personal-branding
+stage: seedling
 ---
-
-Intended Audience—For those of us who have attempted to make a personal website of their own and have guilt-tripped over making multiple updates every year
-
 I’ve been obsessed with my personal website. It’s not even about the views and impressions which I’m receiving. I have one subscriber on my mailing list from my website, and compared to internet writer standards, I am virtually non existent. 
 
-![](/images/2024/04/shreyas-07-04-2024-at-14.59.27@2x.jpg)
+![[Attachments/images/2024/04/shreyas-07-04-2024-at-14.59.27@2x.jpg]]
 
 Yet, I care deeply about this little corner on the internet. It's a place where I optimise for depth over engagement and audience-building.
 
@@ -41,9 +43,9 @@ I had my skin-in-the-game as well as my soul-in-the-game.
 
 This year, I wanted to revamp my personal website with a focus on writing. I’ve been lately viewing writing as a form of thinking, and I wanted to condense and crystallize my ideas into one roof. I redesigned my website again with this brief in mind.
 
-![](/images/2024/04/shreyas-07-04-2024-at-15.00.56@2x-4.jpg)
+![[Attachments/images/2024/04/shreyas-07-04-2024-at-15.00.56@2x-4.jpg]]
 
-![](/images/2024/04/shreyas-07-04-2024-at-15.07.10@2x.jpg)
+![[Attachments/images/2024/04/shreyas-07-04-2024-at-15.07.10@2x.jpg]]
 
 Ghost website now pointing to blog.shreyasprakash.com
 
@@ -51,18 +53,18 @@ This was a setup I was satisfied until I realised how all those javascript anima
 
 I wanted to make my site more 'simple'. So, I dumped the earlier direction of a '13 megabyte parallax-ative home page prepping for some awwward banner on the top corner of my site'. I just used simple HTML5 tags, deleted all the complex JS and checked the performance speed again.
 
-![](/images/2024/04/shreyas-08-04-2024-at-06.34.39@2x.jpg)
+![[Attachments/images/2024/04/shreyas-08-04-2024-at-06.34.39@2x.jpg]]
 
 The site was just 8KB, and had a 100% performance rating as per Google PageSpeed Insights
 
 My current website reflects a lot of my ideals here. I dumped my original plan of making it more 'designerly', and went for simplicity instead. Simplicity is the ultimate sophistication.
 
-![](/images/2024/04/shreyas-08-04-2024-at-06.37.09@2x.jpg)
+![[Attachments/images/2024/04/shreyas-08-04-2024-at-06.37.09@2x.jpg]]
 
   
 Simple not just on the front-end, but on the back-end too. The front end blog is hosted on Ghost, an open-source platform for publishing blogs. The blog currently points to blog.shreyasprakash.com, and I have wrapped it on my personal domain as an external wrapper. I’ve been an aspiring founder/hacker, and have started to care about why and how my blog/website is setup. Also planning to setup a /now page to talk a bit more about my daily diaries and current updates. It would serve more as a one-to-many social network where I could post more ephemeral updates. 
 
-![](/images/2024/04/shreyas-07-04-2024-at-15.07.43@2x.jpg)
+![[Attachments/images/2024/04/shreyas-07-04-2024-at-15.07.43@2x.jpg]]
 
 I’m inspired by Derek Sivers to eventually migrate my email service provider as well as my file storage on a digital ocean droplet. Let’s see how it goes!
 

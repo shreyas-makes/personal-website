@@ -23,11 +23,13 @@ These questions sound very serious because they force a choice, but they also sm
 
 Especially in these lines of doing such rigorous exercises, and to arrive at a good framing of what needs to be discussed and reasoned with, Hegelian dialectic helps this quite a bit.
 
-I had almost forgotten about Hegel, but I'd renewed my interest in his ideas because of the Claude/Codex skill shared by Kyle on github called the hegelian-dialectic. I've tried this for various questions, they're not, in fact, deep philosophical questions such as "is there free will?" or "why is the sky blue" kinds, but were all quite practical such as "Should I prefer library X over library Y", and the likes. It's a very practical reasoning method. It's not a mere philosophical cosplay, and can have a lot of utility for our day-to-day too.
+I had almost forgotten about Hegel, but I'd renewed my interest in his ideas because of the Claude/Codex skill shared by Kyle on github called the hegelian-dialectic. 
+
+I've tried this for various questions, they're not, in fact, deep philosophical questions such as "is there free will?" or "why is the sky blue" kinds, but were all quite practical such as "Should I prefer library X over library Y", and the likes. It's a very practical reasoning method. It's not a mere philosophical cosplay, and can have a lot of utility for our day-to-day too.
 
 The way this works is to first discover when the question we're asking is in itself malformed? then pressure-test it until a better question emerges. 
 
-Hegelian dialectic in simple words:
+I found this example on Reddit which succinctly describes Hegelian dialectic in simple words:
 
 > It can be hard to understand, because its such a big idea. Sometimes its good to tackle big ideas like that with an example.
 > 
@@ -37,21 +39,25 @@ Hegelian dialectic in simple words:
 > 
 > What would you do? Would you decide to start picking on your friend and calling them names? No that would be silly. You wouldn’t say “everything I ever thought about being a good friend was TOTALLY wrong.” You would see that what you were doing was partially right. But it was just one little piece of the “Big Picture” of what being a good friend is all about—which includes lots of other stuff like respecting your friend’s space, and letting them be themselves. So now, you have a bigger, better understanding of what it means to be a good friend. [Aufhebung]
 
-Now that I give you a situational example, I would like to take you through another example of how this Hegelian dialectic can be applied more broadly too, even for say, politics of governments: 
+Now that I give you a situational example, I would like to take you through a political  example of an Hegelian dialectic. It’s such a broad, all-encompassing idea that casts such a vast net that it could be applied to anything, let’s now take the politics of governments: 
 
-The dialectic mode, as popularised by Hegel looks like this: you start with an existing synthesis (say, monarchy), which gets split up into a new thesis (say, democracy), and another anti-thesis (say, communism). These two ideas, could converge/diverse bringing forth more such theses, and anti-theses (such as libertarian democracy for eg.). This is how Hegelian ideas evolve over time..
+As per the dialectic mode: you start with an existing synthesis (say, monarchy), which gets split up into a new thesis (say, democracy), and another anti-thesis (say, communism). 
+
+These two ideas, could converge/diverse bringing forth more such theses, and anti-theses (such as libertarian democracy for eg.). This is how Hegelian ideas evolve over time..
 
 
 ![](Attachments/Pasted%20image%2020260406090915.png)
 
 
-Thesis and antithesis, here are not just teams to referee. They are pressure points. Each one fails in a specific way. Hegel's determinate negation matters here because it does not merely say, this is wrong. It says, this is wrong in a way that reveals what is missing. The negation has shape. The failure is informative. 
+Thesis, antithesis are a constant dance. Hegel's determinate negation matters here because it does not merely say, this is wrong, and this is right. It says, this is wrong in a way that reveals what is missing. The negation has shape. The failure is informative. 
 
-Synthesis, then, is not compromise. It is a reframing that preserves something real from both sides while making the original dispute feel too narrow to carry the weight you put on it.
+Synthesis, then, is not compromise. It is a reframing that preserves something real from both sides while making the original dispute feel too narrow to carry the weight you put on it. Reality is far from a black and white binary, and it gets you closer to this, The interesting move is usually not "find a better solution" but "change what the problem is about." 
 
-The interesting move is usually not "find a better solution" but "change what the problem is about." 
+Hegel’s views on synthesis between thesis and antithesis can be viewed in juxtaposition to his view that nature is an evolving organism striving towards progress as indicated here: 
 
-I could find more such exercises on the framing techniques from George Lakoff's book — *Metaphors we live by*:
+![](Attachments/IMG_0335.jpeg)
+
+In this attempt to arrive at a better synthesis, there are a lot more attempts here towards framing and reframing the ideas and their supporting questions. One could find more such exercises on the framing techniques from George Lakoff's book — *Metaphors we live by*. The author doesn’t specifically use the dialectic, but it comes forth in the way he constantly evolves the shaping of the framing, to come to a better framing. For eg, the “immigrant neighbourhood” problem then evolves into a “shared belonging” problem which is much more solvable from both ends of the political spectrum due to the more inclusive framing. 
 
 | Old frame                                                            | New frame                                                      | How this helps?                                                                                                                           |
 | -------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -65,13 +71,13 @@ A neighborhood in decline looks like a housing or public-order problem until som
 
 Even in the current context, AI-led job layoffs are usually framed as job-loss, versus innovation. One side warrants that the machines are coming for labour, and institutions should slow-down/regulate the usage as much as possible. The other side thinks everything is a positive-sum game, and should be treated with the foresight that even more abundance would be bestowed. Even here, a better framing from a hegelian dialectic can emerge, which could be that the real "question behind the question" is that we need institutions to better redistribute judgement..
 
-By means of this skill, it was also shown to me that AI agents can also help us with this exercise. 
+By means of this agent skill, it was also shown to me that AI agents can also help us with this exercise. 
 
 Especially, when we also see that humans are also not quite natural in holding this way of reasoning, and counter-reasoning. We can probably hold one position quite strongly, but become worser as we hold more opposite positions too with equal force, evidence and emotional seriousness. It is most likely to be lopsided in one direction.
 
-The skill has different phases: in the first phase, there is socratic questioning to uncover assumptions behind the questions posited. then it grounds the domain to ground the questions in the specifics. Then it creates two monks, each calibrated to carry the belief burden, plus targetted research directives for position specific evidence. both these electric monks write fully positioned essays to steelman their sides. This is purposefully spawned in separate sessions with no shared context, so that there is no path which is crossing over, and no context rot. With this approach, we look for "clinks in the armor", especially what we're aiming for is a state of self-sublation, where each position's own logic can potentially undermine itself. after this destructive dissolution, then comes creative induction, where the important atomic bits are brought together and recombined alongside the monks' material. Then comes sublation, where both electric monk A, and electric monk B are cancelled as complete truths, and a new "framing" emerges. This is what happened with politics as well, when capitalism got cancelled, and communism got cancelled too, and what emerged was a synthesis/antithesis dance, and then finally, "libertarian democracy". 
+Coming back to the usage of this Hegelian dialectic skill, it is a process which goes through different phases: in the first phase, there is socratic questioning to uncover assumptions behind the questions posited. then it grounds the domain to ground the questions in the specifics. Then it creates two monks, each calibrated to carry the belief burden, plus targetted research directives for position specific evidence. both these electric monks write fully positioned essays to steelman their sides. This is purposefully spawned in separate sessions with no shared context, so that there is no path which is crossing over, and no context rot. With this approach, we look for "clinks in the armor", especially what we're aiming for is a state of self-sublation, where each position's own logic can potentially undermine itself. after this destructive dissolution, then comes creative induction, where the important atomic bits are brought together and recombined alongside the monks' material. Then comes sublation, where both electric monk A, and electric monk B are cancelled as complete truths, and a new "framing" emerges. This is what happened with politics as well, when capitalism got cancelled, and communism got cancelled too, and what emerged was a synthesis/antithesis dance, and then finally, "libertarian democracy". 
 
-This is how the phases in this dialectic looks like as outlined by the OP:
+This is how the phases in this dialectic looks like as outlined by the author on GitHub:
 
 > 
 > The process has seven phases.
@@ -111,9 +117,7 @@ This is how the phases in this dialectic looks like as outlined by the OP:
 > The first round is calibration — the least insightful output. By Round 2–3, the dialectic has dug past the obvious framing into territory that neither you nor the Monks could have reached from the starting question. 
 
 
-I'm quite excited to use this skill judging by the levels of outputs that have been generated. 
-
-This is another one of the commentaries by a person who used this to test the dialectic of React versus Vue.. 
+This is another one of the commentaries by a person who used this to test the dialectic skill to help answer the question of “ React versus Vue” framework better..
 
 > In test runs, a React/Vue dialectic evolved from "corporate lab vs. auteur" into a "co-evolutionary arms race" framework. An institutional identity dialectic went through seven cycles, pulling in Gödel's incompleteness theorem, Coasean transaction costs, and jurisprudential concepts that had nothing to do with the original question — but were essential by the time the dialectic reached them.
 

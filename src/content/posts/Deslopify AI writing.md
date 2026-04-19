@@ -1,13 +1,13 @@
 ---
 title: Deslopify AI writing
 date: 2026-01-12T00:00:00.000Z
-slug: null
-tags: null
 stage: seedling
+tags:
+  - rough-notes
 ---
 I recently launched a skill that can be used to deslopify AI content of any form. I built it to remove AI tells from writing so it reads more human, without erasing the author behind it. I found it a bit weird to build this skill, as I was using AI to make it anti-AI, all I can say now is that this is more of an art experiment to see how much AI can strip itself out of any AI-ness in its words and essay outputs.
 
-I published the repo here: https://github.com/shreyas-makes/deslopify/tree/main. 
+[I published the repo here. ](https://github.com/shreyas-makes/deslopify/tree/main)
 
 I wanted this to work on real articles, not just a paragraph as a prompt. I also wanted to ensure structure gets preserved. Headings, lists, tables, links, and code blocks stay where they are; the copy inside them is what changes.
 
@@ -27,7 +27,7 @@ Another constraint mattered: no new voice. The skill should not invent humor, ur
 
 In practice, Deslopify behaves like a careful editor. It does not add new ideas. It trims, rephrases, and rebalances. The result is copy that reads clean and human while preserving structure.
 
-## How to use Deslopify
+To use Deslopify, open your Codex / Opencode / Claude Code CLI pointing to a certain folder, and reference the .md file you want to modify:
 
 1) Invoke it on a file:
 `deslopify article.md`
@@ -60,4 +60,6 @@ The scale is daunting, but there are reasons for hope. Renewable energy costs ha
 ```
 
 
-This is still premium-mediocre at best. There is no granulated texture to the writing, it lacks the soul and that's something which only humans can replicate. But at least it removes the usual trite cliches which AI generated writing is commonly used to. So that's at least like one step lesser to remove all the dirty laundry from the writing.
+The result was still premium-mediocre at best, mainly because the topic was also not so spiky and individuated. I could also observe that there is no granulated texture to the writing output, it lacks the personhood and soul that's something which only humans can replicate (something like the voice of Voldemorts Diary in the Harry Potter series). This skill doesn’t let you emulate “liveness” as that’s something which cannot be defined, and yet it exists. Christopher Alexander talks about this quality at length in the book, Timeless way of building, where he explains the fuzziness in defining a “great” building, it could be defined in so many ways such as being alive, beautiful, perfect etc, but yet there is no single word that could encapsulate it all. Christopher Alexander explains his personal definition struggle as the struggle to break down the difference between what is as is, and what it ought to be. That change becomes only evident when we experience something which is in the state of "ought to be", when we know some thing is in this state, we can say that it is already in the state, but it's hard to pin it down with definitions. 
+
+And as far as the deslopify skill goes, if you don’t have a formal definition of the rules, it becomes difficult to truly make writing human. But it does remove the usual trite cliches which AI generated writing is commonly used to. So that's at least like one step lesser to remove all the dirty laundry from the writing.

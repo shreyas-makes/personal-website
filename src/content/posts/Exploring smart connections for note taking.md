@@ -1,10 +1,15 @@
 ---
-title: "Exploring \"smart connections\" for note taking"
-description: "Not starting with a blank slate has been a great productivity boost in my writing. I wrote 50K words in 2024. And I can safely say that these 50K words have been written in a well thought manner,..."
-date: "2024-12-02T09:13:43.000Z"
-slug: "exploring-smart-connections-for-note-taking"
-tags: [knowledge, writing]
-stage: "plant"
+title: Exploring "smart connections" for note taking
+description: >-
+  Not starting with a blank slate has been a great productivity boost in my
+  writing. I wrote 50K words in 2024. And I can safely say that these 50K words
+  have been written in a well thought manner,...
+date: '2024-12-02T09:13:43.000Z'
+slug: exploring-smart-connections-for-note-taking
+tags:
+  - knowledge
+  - writing
+stage: plant
 ---
 
 Not starting with a blank slate has been a great productivity boost in my writing. I wrote 50K words in 2024. And I can safely say that these 50K words have been written in a well thought manner, instead of an AI generated word salad.
@@ -20,7 +25,7 @@ Why does it matter, and why should we care? Let's deep dive into this.
 
 Previously if I have to write an article about a 'dog', I search for the keyword 'dog' across all my notes and then find relevant ones. Absorb information from what I've written, and then copy paste snippets into the original doc, remixing and rehashing wherever necessary. However, this method fails to recognise that I might have written articles not just about the keyword 'dog', but also it's close cousins.
 
-![](/images/2024/12/image-1.png)
+![[Attachments/images/2024/12/image-1.png]]
 
 There might be an article on pets which I might draw some inspiration from. It might even be an article on 'pet parenting', or 'pet food', or 'dog walking', 'pet walking'. A standard keyword search might not provide me these results. And this leads to them getting deeply buried in the existing pile of notes.
 
@@ -53,7 +58,7 @@ Even for writing this article, as you could see on the right side, I am able to 
 
 For example, as I'm writing about 'smart connections' in general, it is able to connect this with a tweet by Connected Papers, and a relevant book of interest which talks about the same — The Goldilocks Map. It's even giving me a confidence level of correlation.
 
-![](/images/2024/12/shreyas-17-10-2023-at-10.18.04@2x.png)
+![[Attachments/images/2024/12/shreyas-17-10-2023-at-10.18.04@2x.png]]
 
 The note suggested has 79% similarity with the note I'm writing.
 
@@ -63,8 +68,7 @@ Another use of this plugin is the ability to ask questions based on your interna
   
 You might have already used some of those GPT based PDF chat services. It's the same, except that this works on all your private notes. For instance:
 
-![](/images/2024/12/shreyas-17-10-2023-at-10.24.59@2x.png)
+![[Attachments/images/2024/12/shreyas-17-10-2023-at-10.24.59@2x.png]]
 
 Notes serve as a source of inspiration and material to build upon, helping jumpstart the writing process. This is how I design my writing environment. With a fertile ground of ideas previously explored.
 
-You could [download the plugin here](https://github.com/brianpetro/obsidian-smart-connections)! (And yes, I'm not being paid for this)

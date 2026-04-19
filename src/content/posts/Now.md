@@ -1,10 +1,7 @@
 ---
 title: Now
-description: >-
-  Jan 2025 2025 is the year of AI. I'm aligning my professional goals to get
-  ahead on this S-curve. My thesis for product management is that it would
-  become more of prototype management. There would be...
-date: '2024-07-23T21:52:30.000Z'
+description: Fleeting ephemeral thoughts on a monthly outline
+date: 2024-07-23T21:52:30.000Z
 slug: now
 tags:
   - lifestyle
@@ -13,11 +10,28 @@ stage: seedling
 ---
 ## April 2026
 
-The biggest change since I last wrote here is that AI stopped feeling speculative. The broad thesis held: this really has become the period when agents entered ordinary work. For me, that shift was personal too. I moved from casually testing prototypes to using Claude Code, Codex, and related tools as part of how I actually build, think, and work. What used to feel like AI for demos now feels more like a new literacy.
+This year, I wanted to challenge myself by picking up three difficult-to-read, but rewarding books. These are: Infinite Jest by David Foster Wallace, In search of lost time by Marcel Proust, and Anna Karenina by Leo Tolstoy. In a manifestation exercise I did more recently, I was screaming with joy at the “idea” of finishing these three books, and I’m pretty sure it would mean something in the level of intellectual effort it would require. 
 
-That change spilled into both my side projects and my day job. I spent much of the past year building and shipping a small cluster of N=1 apps: Signify, a writing platform built around proof-of-human authorship; Dicto, a voice dictation tool with diarization and custom dictionary support; Papercup, for placing international phone calls from the browser; EditNext, an Obsidian plugin to help me identify the roughest essay draft worth improving next; and a rebuilt personal website that feels far more like my own taste. Doing this repeatedly gave me much sharper opinions on how to steer AI-assisted software instead of merely admiring it. At work too, AI stopped being an abstract trend report and became part of the texture of product conversations, workflows, and future-facing decisions. The bottleneck feels less like technical syntax now, and more like taste, judgment, and knowing what is actually worth building.
+So when I hopped around Waterstones books store recently, and when I found a paperback of the Infinite Jest, I really wanted to reward myself, so I took the plunge.
 
-Outside of that, life has become more settled and more legible. London feels less like a temporary backdrop and more like a real home now, complete with routines, furniture, errands, visitors, and its own emotional weather. Writing has come back to the center of things as well. I still think writing is thinking, but now I also have better tools to search my note archive, recover old threads, and turn them into essays with less friction. So the mood these days is to build more, publish more, and stop hesitating at the edge of the work I already know I want to do.
+![](Attachments/IMG_0211.jpeg)
+
+I’m only 30 pages into it, and this book is far far, more complicated than I imagine. Even Wallace himself, and all the literary critics who have opined  on the prologue have called it a painful (but enjoyable crawl). There is still 1000 pages left, and bringing this book to the London subway grabs eyeballs with a slight highbrow disdain, almost as if they think I’m conducting some cringe-pop version of performative reading with this in the subway.
+
+I also want to take a quick segue into 
+agentic coding which I’ve written at lengths in the recent past, I have also found that the topic of Agentic coding has stopped feeling speculative. The broad thesis held to be true: this really has become the period when agents entered ordinary work. 
+
+For me, that shift was personal too. I moved from casually testing prototypes to using Claude Code, Codex, and related tools as part of how I actually build, think, and work. What used to feel like AI for demos now feels more like a new literacy.
+
+That change spilled into both my side projects and my day job. I spent much of the past year building and shipping a small cluster of N=1 apps, mainly for exploring what the bleeding edge of tech looked like: I built Signify, a writing platform built around proof-of-human authorship; Dicto, a voice dictation tool with diarization and custom dictionary support; Papercup, for placing international phone calls from the browser; an Obsidian plugin to help me identify the roughest essay draft worth improving next; and a rebuilt personal website that feels far more like my own taste. 
+
+Doing this repeatedly gave me much sharper opinions on how to steer AI-assisted software instead of merely admiring it. At work too, AI stopped being an abstract trend report and became part of the texture of product conversations, workflows, and future-facing decisions. The bottleneck feels less like technical syntax now, and more like taste, judgment, and knowing what is actually worth building. For instance, now I know how best to whisper to the LLMs, to make them do things the right way. 
+
+Outside of that, London feels less like a temporary backdrop and more like a real home now, complete with routines, furniture, errands, visitors, and its own emotional weather. Praphulla and I also celebrated Vishu at our home. I did feel a bit guilt-tripped as I couldn’t contribute in the preparation of some of the dishes that were made, but she made it quite well. I thoroughly enjoyed it. 
+
+![](Attachments/IMG_0315.jpeg)
+
+Writing has also come back to the center of things as well. I still think writing is thinking, but now I also have better tools to search my note archive, recover old threads, and turn them into essays with less friction. So the mood these days is to build more, publish more, and stop hesitating at the edge of the work I already know I want to do.
 
 ## Jan 2025
 
@@ -77,7 +91,7 @@ In hindsight, this was the same day when the entire world witnessed one of the b
 
 While all this was happening around me, the airliners responded with— '_All flights are getting cancelled, (perhaps), the only way to make it to India is to travel by road and cross the Bangladesh-India border..._'.
 
-![](/images/2024/10/IMG_4374.jpg)
+![[Attachments/images/2024/10/IMG_4374.jpg]]
 
 I got a second opinion from my work colleagues on what I could do next. Apparently, the violence and protests had also reached the airport vicinity and it was not advised to step out of the airport. So, I just sat down and waited. Thinking of what I could do next.
 

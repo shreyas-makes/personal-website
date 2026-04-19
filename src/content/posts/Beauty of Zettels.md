@@ -1,7 +1,10 @@
 ---
 title: Beauty of Zettels
-description: "I've tried various tools and systems for online writing, but nothing beats the power of Zettels.  What are they, really? You may ask. They come from the Zettelkasten method, developed by Niklas..."
-date: 2024-12-06T14:11:48.000Z
+description: >-
+  I've tried various tools and systems for online writing, but nothing beats the
+  power of Zettels.  What are they, really? You may ask. They come from the
+  Zettelkasten method, developed by Niklas...
+date: '2024-12-06'
 slug: beauty-of-zettels
 tags:
   - writing
@@ -23,7 +26,7 @@ This interconnectedness leads to unexpected insights.
 
 Zettels lead to "**Consilience**" — the idea that all knowledge should eventually interlock, producing a unified understanding of reality. Below is a network showing this unity, as measured by co-citations.
 
-![](/images/2025/01/image-11.png)
+![[Attachments/images/2025/01/image-11.png]]
 
 But this power has a downside. You can get lost in the maze of connections. Casual browsing of your notes can spark more ideas than you can handle. It's like having a superpower you can't fully control.
 
@@ -35,9 +38,9 @@ There's something magical about the tightly interwoven matrix of mental models t
 
 If you're serious about writing or thinking, you owe it to yourself to try the Zettelkasten method. The best way to start is simple: use Roam Research. Break your notes into atomic units called Zettels.
 
-![](/images/2024/12/shreyas-06-12-2024-at-13.56.43@2x.jpg)
+![[Attachments/images/2024/12/shreyas-06-12-2024-at-13.56.43@2x.jpg]]
 
-![](/images/2024/12/shreyas-06-12-2024-at-13.57.11@2x.jpg)
+![[Attachments/images/2024/12/shreyas-06-12-2024-at-13.57.11@2x.jpg]]
 
 Literature notes are direct quotes or highlights from your sources. They're the raw material you're working with. In this example, I'd read two essays on Jhanas as a meditative experience which sparked an idea leading me to draft a Zettel around this.
 
@@ -47,10 +50,51 @@ Fleeting notes are where you let your mind wander. You're trying to connect idea
 
 Each Zettel is like a tripod, standing on three legs: fleeting notes, literature notes, and reference notes.
 
-![](/images/2024/12/image-3.png)
+![[Attachments/images/2024/12/image-3.png]]
 
 The power of this system isn't in any one note. It's in the connections between notes. As you build more connections, you'll start to see patterns you never noticed before.
 
-![](/images/2024/12/image-4.png)
+![[Attachments/images/2024/12/image-4.png]]
 
-That's when the real insights happen.
+That's when the real insights happen. 
+
+This is the template I use to draft my Zettels on my Obsidian vault:
+
+```
+---
+id: <% tp.date.now("YYYYMMDDHHmm") %>
+title: 
+created: <% tp.date.now("YYYY-MM-DD") %>
+tags: Zettel
+source: 
+---
+
+# <% tp.file.title %>
+
+## Idea
+Write the core idea in your own words.
+One idea only. If you use "and", split the note.
+
+## Reference notes
+- citations from the notes from which you have taken a reference 
+
+## Literature notes
+- these are direct notes taken without any reference, coming straight from your stream of consciousness on what you understood from the articles cited
+## Why it matters
+What changes if this idea is true?
+Where does it apply?
+
+## Connections
+- Related: 
+- Contrasts: 
+- Builds on: 
+
+## Evidence / Examples
+Concrete example, anecdote, or reference.
+
+## Open questions
+- 
+
+## Source note
+Optional short reference or link to source note
+```

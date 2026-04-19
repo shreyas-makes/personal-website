@@ -1,9 +1,15 @@
 ---
-title: "Publish Originally, Syndicate Elsewhere"
-description: "Writing for yourself on your personal website is the purest form of self-expression on the internet. It avoids any trappings from the algorithmic maze. And there are no digital echo chambers. It's..."
-date: 2025-01-16
-tags: ["blogging", "writing", "digital-gardens"]
-stage: "sprout"
+title: 'Publish Originally, Syndicate Elsewhere'
+description: >-
+  Writing for yourself on your personal website is the purest form of
+  self-expression on the internet. It avoids any trappings from the algorithmic
+  maze. And there are no digital echo chambers. It's...
+date: '2025-01-16'
+tags:
+  - blogging
+  - writing
+  - digital-gardens
+stage: sprout
 ---
 
 Writing for yourself on your personal website is the purest form of self-expression on the internet. It avoids any trappings from the algorithmic maze. And there are no digital echo chambers. It's just you and your ideas in your own cozy little garden.
@@ -18,7 +24,7 @@ Last year I focussed less on the "distribution" of ideas, and put in efforts mor
 
 Calling POSSE, a concept might be too reductive. It's a movement in itself picking up steam with the rise of various IndieWeb sister-concepts and other ideologically inclined social media platforms that faciliateed this movement such as [Bluesky](https://bsky.app/), [Mastodon](https://mastodon.social/), Threads etc.
 
-![](/images/2025/01/image-13.png)
+![[Attachments/images/2025/01/image-13.png]]
 
 Source: [Zach's video on POSSE](https://www.youtube.com/watch?v=X3SrZuH00GQ&t=835s)
 
@@ -26,9 +32,9 @@ So I wanted to stretch this idea as much as possible and figured out a solution 
 
 I am not internet-famous, and don't really have much of internet mentions. This is a rudimentary hello-world demo of me, mentioning my own post on Mastodon 😂
 
-![](/images/2025/01/image-12.png)
+![[Attachments/images/2025/01/image-12.png]]
 
-![](/images/2025/01/Screenshot-2025-01-16-at-7.39.16-PM.png)
+![[Attachments/images/2025/01/Screenshot-2025-01-16-at-7.39.16-PM.png]]
 
 This is my final implementation of Webmentions. As you can see here, I tried heading to Mastodon and commenting on a blog from this site on their platform.
 
@@ -40,7 +46,7 @@ Let's start by telling the internet that your site CAN receive webmentions.
 
 Add these lines to your Ghost header via Custom Injection. Your site needs to know how to display these inter-website conversations. We'll add specialized CSS to your site header that handles everything from avatar displays to comment threading. This creates a clean, professional look that rivals any social media platform. I was inspired by [Maggie Appleton](https://maggieappleton.com/)'s webmentions on her site, and I quickly hacked together a prototype using [Claude Projects](https://claude.ai/):  
 
-![](/images/2025/01/Screenshot-2025-01-16-at-7.52.52-PM.png)
+![[Attachments/images/2025/01/Screenshot-2025-01-16-at-7.52.52-PM.png]]
 
 Webmentions implemented on Maggie Appleton's site
 
@@ -505,3 +511,5 @@ Brid.gy's real power lies in its **bidirectional syndication**:
 And that's it. By implementing webmentions on your Ghost blog, you're not just adding a feature - you're joining a movement toward a more open, interconnected web.
 
 > The web was never meant to be a collection of isolated platforms. Your digital homestead awaits.
+
+Update: This was implemented for my previous version of my web page which was on Ghost. Now that I’ve written the new site on Astro JS, I would still have to rewrite this implementation for my new home.

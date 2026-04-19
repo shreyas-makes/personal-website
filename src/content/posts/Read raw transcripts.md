@@ -4,7 +4,7 @@ description: >-
   I opened up Claude one day, and asked to summarise Dostoevsky's Crime and
   Punishment into one sentence; and it said: Would this mean that I've saved 20
   hours of reading, 30 days of thinking about the...
-date: '2025-07-26'
+date: 2026-01-03T00:00:00.000Z
 slug: read-raw-transcripts
 tags:
   - knowledge
@@ -23,7 +23,9 @@ No, absolutely not. I don't think this tight compressed sentence is even a cheap
 
 I'll give another example: More recently, a few team members picked up on the Microsoft copilot usage; and have been using it to process raw transcripts from interviews by asking the agents to ; `"summarise all the transcripts, and then come up with 10 key insights you've identified.."`
 
-It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). As I've shown you earlier with the compressed one-liner quote on Dostoevsky's Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time.
+It's not bad to do this, and perhaps it could save some time (I did this once or twice, and I later realised I mistook signal for noise). 
+
+As I've shown you earlier with the compressed one-liner quote on Dostoevsky's Crime and Punishment, it does a poor job at unearthing insights. These "compressions" have this diabolic nature of making 0 sense, and also total sense at the same time.
 
 In the essay, [Writing as moats for humans](/writing-moats), I mention how LLMs are good at such recombinations/compressions, but not at genuinely spiky, human, meaning-making writing:
 
