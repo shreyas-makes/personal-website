@@ -77,7 +77,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
         fit: 'cover'
       },
       logo: {
-        path: './public/Favicon 128x128.png',
+        path: './public/favicon.png',
         size: [110]
       },
       padding: 60,

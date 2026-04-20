@@ -48,6 +48,7 @@
     "astro-markdoc-renderer": "^0.0.1-alpha.1",
     "astro-og-canvas": "^0.7.2",
     "canvaskit-wasm": "^0.40.0",
+    "chrome-devtools-mcp": "^0.21.0",
     "csv-parse": "^5.6.0",
     "dftree": "^1.0.1",
     "dotenv": "^16.5.0",
