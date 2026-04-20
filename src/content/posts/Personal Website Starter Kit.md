@@ -1,13 +1,12 @@
 ---
 title: Personal Website Starter Kit
-date: 2025-03-14
+date: 2025-03-14T00:00:00.000Z
 slug: personal-website-starter-kit
 tags:
   - ai-coding
-  - curiosities
 stage: plant
 description: A modern personal website template built with AstroJS
-url: https://github.com/shreyas-makes/astro-blog-ghost
+url: 'https://github.com/shreyas-makes/astro-blog-ghost'
 ---
 
 I recently open-sourced my [astro-blog-ghost GitHub repository](https://github.com/shreyas-makes/astro-blog-ghost) - a modern blog template built with AstroJS and Ghost CMS integration. This project serves as an excellent starting point for developers looking to create a portfolio website with:
@@ -42,4 +41,4 @@ The template supports:
 
 Deploy to any static host (Vercel, Netlify, GitHub Pages) with built-in CI/CD pipelines. 
 
-[Read this essay]([[How I blog blog with Obsidian, Cloudflare, AstroJS, Github]]) to know more about how I use Obsidian for publishing my blog posts on AstroJS.
+[Read this essay]([How I blog blog with Obsidian, Cloudflare, AstroJS, Github](/blog-obsidian-astrojs)) to know more about how I use Obsidian for publishing my blog posts on AstroJS.

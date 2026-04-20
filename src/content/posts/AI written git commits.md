@@ -10,7 +10,6 @@ tags:
   - cli
   - openai
   - git
-  - curiosities
   - rough-notes
 stage: seedling
 ---

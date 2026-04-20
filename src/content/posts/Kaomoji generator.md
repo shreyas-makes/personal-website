@@ -1,11 +1,13 @@
 ---
 title: Kaomoji generator
-description: "I've been working on a kaomoji generator. It's a simple tool that allows you to generate kaomojis for instant messaging. Another reason why I prefer to use kamojis is a form of counter-positioning to..."
-date: 2025-02-14
+description: >-
+  I've been working on a kaomoji generator. It's a simple tool that allows you
+  to generate kaomojis for instant messaging. Another reason why I prefer to use
+  kamojis is a form of counter-positioning to...
+date: 2025-02-14T00:00:00.000Z
 slug: kaomoji-generator
 tags:
   - software
-  - curiosities
   - ai-coding
 stage: plant
 ---

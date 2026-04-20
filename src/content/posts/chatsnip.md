@@ -1,15 +1,16 @@
 ---
 title: Export LLM conversations as snippets
-date: 2025-05-05
+date: 2025-05-05T00:00:00.000Z
 slug: chatsnip
 tags:
   - browser-extension
   - tools
-  - curiosities
   - ai-coding
 stage: seedling
-description: A browser extension that lets you export AI chat conversations as beautifully styled HTML snippets or well-formatted Markdown.
-url: https://github.com/shreyas-makes/chatsnip
+description: >-
+  A browser extension that lets you export AI chat conversations as beautifully
+  styled HTML snippets or well-formatted Markdown.
+url: 'https://github.com/shreyas-makes/chatsnip'
 ---
 I often have deep conversations with AI assistants like ChatGPT and Claude, and want to share these insights with colleagues or include them in blog posts. But copying raw text from these interfaces produces bland, unformatted content that loses the conversational flow. Existing screenshot tools didn't preserve the conversational format while allowing for text selection.
 

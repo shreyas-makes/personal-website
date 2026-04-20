@@ -1,9 +1,9 @@
 ---
 title: How I started building softwares with AI agents being non technical
-date: 2026-01-03
+date: 2026-01-03T00:00:00.000Z
 slug: building-softwares-with-ai-agents
 tags:
-  - agentic-engineering
+  - agentic-coding
 stage: seedling
 ---
 At the start of the year, the CEO of Anthropic had made a prediction that 90% of code in enterprises would be written by AI by September. Now that we have crossed September, we now know that the prediction turned out to be false. As Ethan Mollick mentions, he only seems to have been off by a couple of months (this was recently posted by Boris, the creator of Claude Code) where he mentions 100% of his contributions to Claude Code, written by Claude Code!

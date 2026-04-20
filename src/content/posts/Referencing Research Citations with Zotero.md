@@ -1,10 +1,12 @@
 ---
-title: Copy, Paste and Cite
-description: "Managing academic references often creates an unwelcome interruption in the natural flow of writing and research. This friction became particularly noticeable during long stretches of paper writing,..."
-date: 2025-02-14
+title: 'Copy, Paste and Cite'
+description: >-
+  Managing academic references often creates an unwelcome interruption in the
+  natural flow of writing and research. This friction became particularly
+  noticeable during long stretches of paper writing,...
+date: 2025-02-14T00:00:00.000Z
 slug: copy-paste-and-cite
 tags:
-  - curiosities
   - ai-coding
 stage: seedling
 ---
