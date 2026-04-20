@@ -21,7 +21,7 @@ This could be a simple way in which most Slack updates could be arranged as the 
 
 Putting this in this format helps them digest the key takeaway the fastest. And IF they have time, they could read the arguments and the supporting data that was used to arrive at the arguments more closely.
 
-![[Attachments/images/2024/12/shreyas-06-12-2024-at-15.16.44@2x.jpg]]
+![[Attachments/images/2024/12/shreyas-06-12-2024-at-15.16.44@2x_o.jpg]]
 
 When there are complicated situations to be discussed, SCIPAB framework is very handy. [Karthi Subbaraman](https://www.linkedin.com/in/skarthi?originalSubdomain=in) writes—
 > 
