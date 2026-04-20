@@ -77,7 +77,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
         fit: 'cover'
       },
       logo: {
-        path: './public/images/2024/12/shreyas-06-12-2024-at-15.16.44@2x_o.jpg',
+        path: './public/Favicon 128x128.png',
         size: [110]
       },
       padding: 60,
