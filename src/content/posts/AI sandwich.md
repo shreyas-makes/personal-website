@@ -4,6 +4,8 @@ date: 2026-04-18T00:00:00.000Z
 slug: ai-sandwich
 tags:
   - rough-notes
+  - agentic-coding
+  - product-development
 stage: seedling
 ---
 The AI sandwich technique outlines a process where certain phases of product development are led by AI agents, while others require human intervention. The phases led by AI agents include planning, coding, reviewing, testing, and creating pull requests (PR). These tasks are automated to enhance efficiency and consistency.
